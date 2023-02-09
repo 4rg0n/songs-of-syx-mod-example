@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>songs-of-syx-mod-example</artifactId>
+    <version>1</version>
+
+    <profiles>
+        <profile>
+            <id>windows</id>
+            <properties>
+                <mod.install.directory>${user.home}/AppData/Roaming/songsofsyx/mods/${mod.name}</mod.install.directory>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>linux</id>
+            <properties>
+                <mod.install.directory>${user.home}/.local/share/songsofsyx/mods/${mod.name}</mod.install.directory>
+            </properties>
+            <activation>
+                <os>
+                    <family>Linux</family>
+                </os>
+            </activation>
+        </profile>
+    </profiles>
+
+    <properties>
+        <!-- Songs of Syx uses Java 1.8 -->
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- These settings will go into the mods _info.txt file -->
+        <mod.version>${project.version}</mod.version>
+        <mod.name>${project.artifactId}</mod.name>
+        <mod.description>This is an example mod made by Jake the game developer.</mod.description>
+        <mod.author>Jake</mod.author>
+        <mod.info>Just a 1x1 tile room :)</mod.info>
+        <game.version.major>63</game.version.major>
+        <game.version.minor>0</game.version.minor>
+
+        <!-- Build settings -->
+        <game.version.directory>V${game.version.major}</game.version.directory>
+        <mod.files.name>mod-files</mod.files.name>
+        <mod.dependency.jar>${project.basedir}/lib/SongsOfSyx.jar</mod.dependency.jar>
+        <mod.build.output.directory>${basedir}/target/out/${mod.name}</mod.build.output.directory>
+        <mod.files.build.output.directory>${mod.build.output.directory}/${game.version.directory}</mod.files.build.output.directory>
+        <mod.script.output.directory>${mod.files.build.output.directory}/script/jar</mod.script.output.directory>
+        <mod.source.output.directory>${mod.files.build.output.directory}/script/_src</mod.source.output.directory>
+        <mod.files.directory>${project.basedir}/src/main/resources/${mod.files.name}</mod.files.directory>
+
+        <!-- Dependency versions -->
+        <junit-jupiter-engine.version>5.9.2</junit-jupiter-engine.version>
+        <mockito-core.version>4.11.0</mockito-core.version>
+        <assertj-core.version>3.24.2</assertj-core.version>
+
+        <!-- Build plugin versions -->
+        <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <junit-platform-surefire-provider.version>1.3.2</junit-platform-surefire-provider.version>
+        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+    </properties>
+
+    <dependencies>
+        <!-- Game dependency SongsOfSyx.jar -->
+        <dependency>
+            <groupId>gamatron</groupId>
+            <artifactId>songs-of-syx</artifactId>
+            <version>${game.version.major}.${game.version.minor}</version>
+            <scope>system</scope>
+            <systemPath>${mod.dependency.jar}</systemPath>
+        </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-jupiter-engine.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!-- We don't need the mod-files in our jar -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>${mod.files.name}/**</exclude>
+                </excludes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+
+
+        <plugins>
+            <!-- Attach source code -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven-source-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Build mod files -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resources-plugin.version}</version>
+                <executions>
+                    <!-- Copy files such as assets from the resources source-->
+                    <execution>
+                        <id>copy-mod-files</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${mod.files.build.output.directory}</outputDirectory>
+                            <includeEmptyDirs>true</includeEmptyDirs>
+                            <resources>
+                                <resource>
+                                    <directory>${mod.files.directory}</directory>
+                                    <filtering>true</filtering>
+                                    <excludes>
+                                        <!-- Everything beginning with a dot -->
+                                        <exclude>**/.*</exclude>
+                                        <exclude>_info.txt</exclude>
+                                    </excludes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+
+                    <!-- Copy mod _info.txt file and replace tokens -->
+                    <execution>
+                        <id>copy-mod-info</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${mod.build.output.directory}</outputDirectory>
+                            <includeEmptyDirs>true</includeEmptyDirs>
+                            <resources>
+                                <resource>
+                                    <directory>${mod.files.directory}</directory>
+                                    <includes>
+                                        <include>_info.txt</include>
+                                    </includes>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+
+                    <!-- Copy the actual compiled jar into the correct folder -->
+                    <execution>
+                        <id>copy-mod-script-jar</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${mod.script.output.directory}</outputDirectory>
+                            <includeEmptyDirs>true</includeEmptyDirs>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}</directory>
+                                    <includes>
+                                        <include>${project.build.finalName}.jar</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+
+                    <!-- Copy source code -->
+                    <execution>
+                        <id>copy-mod-source-code</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${mod.source.output.directory}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}</directory>
+                                    <includes>
+                                        <include>${project.build.finalName}-sources.jar</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+
+                    <!-- Copy the mod files into the game -->
+                    <execution>
+                        <id>copy-mod-to-game</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${mod.install.directory}</outputDirectory>
+                            <includeEmptyDirs>true</includeEmptyDirs>
+                            <resources>
+                                <resource>
+                                    <directory>${mod.build.output.directory}</directory>
+                                    <excludes>
+                                        <exclude>**/_src/**</exclude>
+                                    </excludes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Testing -->
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.junit.platform</groupId>
+                        <artifactId>junit-platform-surefire-provider</artifactId>
+                        <version>${junit-platform-surefire-provider.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,7 @@
+VERSION: "${mod.version}",
+GAME_VERSION_MAJOR: ${game.version.major},
+GAME_VERSION_MINOR: ${game.version.minor},
+NAME: "${mod.name}",
+DESC: "${mod.description}",
+AUTHOR: "${mod.author}",
+INFO: "${mod.info}",

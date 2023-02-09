@@ -1,0 +1,16 @@
+INFO: {
+	NAME: "mod room",
+	NAMES: "mod room",
+	DESC: "mod room? Mod room.",
+},
+
+STATS: [
+
+],
+
+ITEMS: [
+	{
+		NAME: "First Item",
+		DESC: "TFirst item.",
+	},
+],
