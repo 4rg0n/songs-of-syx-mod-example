@@ -135,10 +135,12 @@
         </pluginManagement>
 
         <plugins>
+            <!-- Prepare game dependencies (thx @ https://github.com/MilanDierick for pointing me to the game source files) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
                 <executions>
+                    <!-- Install game jar as dependency code -->
                     <execution>
                         <id>install-game-jar</id>
                         <phase>validate</phase>
@@ -155,6 +157,7 @@
                         </configuration>
                     </execution>
 
+                    <!-- Install game source jar as dependency code -->
                     <execution>
                         <id>install-game-sources-jar</id>
                         <phase>validate</phase>
@@ -174,7 +177,7 @@
                 </executions>
             </plugin>
 
-            <!-- Attach source code -->
+            <!-- Attach mod source code -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
