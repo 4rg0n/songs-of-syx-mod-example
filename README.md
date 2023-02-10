@@ -1,4 +1,4 @@
-This project is intended for people who want to start modding for the game [Songs of Syx](https://store.steampowered.com/app/1162750/Songs_of_Syx/.
+This project is intended for people who want to start modding for the game [Songs of Syx](https://store.steampowered.com/app/1162750/Songs_of_Syx/).
 It contains a **roommod**, which will add a simple 1x1 tile room to the game.
 The maven build pipeline will take care of compiling, packaging and installing the mod into the games mod folder.
 
@@ -6,9 +6,9 @@ The maven build pipeline will take care of compiling, packaging and installing t
 
 [Maven](https://maven.apache.org/) is required to compile, package and install the mod.
 
-**(1)** Do all at once: Copy games jar file; compile mod source; prepare mod file structure; copy mod files to game mod directory
+**(1)** Do all at once: Install games jar file as dependency; compile mod source; prepare mod file structure; copy mod files to game mod directory
 ```
-mvn install
+mvn validate install
 ```
 
 **(!)** Game installation and mod directory paths are configured in the `pom.xml` in the `<profiles>` and are default set to:
@@ -28,10 +28,12 @@ mvn install
 
 # Build commands
 
-**(i)** Copy only the games `SongsOfSyx.jar` into the project, add it and validate the dependency.
+**(i)** Installs only the games `SongsOfSyx.jar` and `info/SongsOfSyx-sources.jar` as a dependency, and validate whether it was successful.
 ```
 mvn validate
 ```
+
+**(!)** This is required or the project won't find the games code.
 
 **(i)** Building the mod only into `target/out`:
 ```
