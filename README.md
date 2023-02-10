@@ -42,6 +42,9 @@ Files (e.g. assets) for the mod are located in `src/main/java/resources/mod-file
 
 ## Debugging
 
+You can enable **Debug Mode** and **Developer Mode** in the game launcher **settings**. 
+You will get more detailed logs and in-game developer tools for testing.
+
 ### Intellij IDEA
 
 There are two `.xml`files in the `.run/` folder:
