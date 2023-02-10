@@ -1,5 +1,6 @@
 package jake.example;
 
+import lombok.Data;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -16,9 +17,14 @@ public class ExampleTest {
 
         // and there's Mockito for mocking
         IAmUseless iAmUselessMock = Mockito.mock(IAmUseless.class);
+
+        // lombok is there too for auto generated getter, setter, constructor, ...
+        IAmUseless iAmUseless = new IAmUseless();
+        int zero = iAmUseless.getOhLookZero();
     }
 
+    @Data
     static class IAmUseless {
-
+        private int ohLookZero = 0;
     }
 }
