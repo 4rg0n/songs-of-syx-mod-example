@@ -13,6 +13,7 @@
             <id>windows</id>
             <properties>
                 <mod.install.directory>${user.home}/AppData/Roaming/songsofsyx/mods/${mod.name}</mod.install.directory>
+                <game.install.directory>C:/Program Files (x86)/Steam/steamapps/common/Songs of Syx</game.install.directory>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -22,6 +23,7 @@
             <id>linux</id>
             <properties>
                 <mod.install.directory>${user.home}/.local/share/songsofsyx/mods/${mod.name}</mod.install.directory>
+                <game.install.directory>${user.home}/.steam/steam/SteamApps/common/Songs of Syx</game.install.directory>
             </properties>
             <activation>
                 <os>
@@ -48,8 +50,10 @@
 
         <!-- Build settings -->
         <game.version.directory>V${game.version.major}</game.version.directory>
+        <game.jar.name>SongsOfSyx.jar</game.jar.name>
         <mod.files.name>mod-files</mod.files.name>
-        <mod.dependency.sos.jar>${project.basedir}/lib/SongsOfSyx.jar</mod.dependency.sos.jar>
+        <mod.dependency.lib.directory>${project.basedir}/lib</mod.dependency.lib.directory>
+        <mod.dependency.sos.jar>${mod.dependency.lib.directory}/${game.jar.name}</mod.dependency.sos.jar>
         <mod.build.output.directory>${basedir}/target/out/${mod.name}</mod.build.output.directory>
         <mod.files.build.output.directory>${mod.build.output.directory}/${game.version.directory}</mod.files.build.output.directory>
         <mod.script.output.directory>${mod.files.build.output.directory}/script/jar</mod.script.output.directory>
@@ -135,6 +139,26 @@
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>${maven-resources-plugin.version}</version>
                 <executions>
+                    <!-- Copy games jar file into lib folder -->
+                    <execution>
+                        <id>copy-game-files</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${mod.dependency.lib.directory}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${game.install.directory}</directory>
+                                    <includes>
+                                        <include>${game.jar.name}</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+
                     <!-- Copy files such as assets from the resources source-->
                     <execution>
                         <id>copy-mod-files</id>

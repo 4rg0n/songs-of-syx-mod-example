@@ -6,25 +6,46 @@ The maven build pipeline will take care of compiling, packaging and installing t
 
 [Maven](https://maven.apache.org/) is required to compile, package and install the mod.
 
-**(1)** Copy the games `SongsOfSyx.jar` file into the `lib/` folder. You can find it under:
+**(1)** Do all at once: Copy games jar file; compile mod source; prepare mod file structure; copy mod files to game mod directory
+```
+mvn install
+```
 
+**(!)** Game installation and mod directory paths are configured in the `pom.xml` in the `<profiles>` and are default set to:
+
+**Game Installation**
 * **Windows:** C:\Program Files (x86)\Steam\steamapps\common\Songs of Syx
 * **Linux:** ~/.steam/steam/SteamApps/common/Songs of Syx
-* **OR** just open the local files of the game through your Steam library.
 
-**(2.a)** Building the mod only into `target/out`:
+**Mod Directory**
+* **Windows:** ${user.home}/AppData/Roaming/songsofsyx/mods/
+* **Linux:** ~/.local/share/songsofsyx/mods/
+
+
+**(2)** Run the game and you should see a `songs-of-syx-mod-example` mod. Activate it and launch.
+
+**(3)** Start a new game. In the new game settings activate the `room script` under **Scripts**.
+
+# Build commands
+
+**(i)** Copy only the games `SongsOfSyx.jar` into the project, add it and validate the dependency.
+```
+mvn validate
+```
+
+**(i)** Building the mod only into `target/out`:
 ```
 mvn package
 ```
 
 The source code of the mod will be copied into e.g. `target/out/songs-of-syx-mod-example/V63/script/_src`.
 
-**(2.b)** Build and copy the output into the games mods folder (excluding `_src`):
+**(i)** Build and copy the output into the games mods folder (excluding `_src`):
 ```
 mvn install
 ```
 
-The games mod folder location varies on each OS. There are maven profiles "windows" and "linux". The "windows" profile is the default.
+**(!)** The games mod folder location varies on each OS. There are maven profiles "windows" and "linux". The "windows" profile is the default.
 Maven should detect when you are building on a Linux OS and switch to the "linux" profile (not tested).
 You can force a profile with e.g.
 
@@ -32,11 +53,7 @@ You can force a profile with e.g.
 mvn install -P linux
 ```
 
-**(3)** Run the game and you should see a `songs-of-syx-mod-example` mod. Activate it and launch.
-
-**(4)** Start a new game. In the new game settings activate the `room script` under **Scripts**.
-
-## Mod Info / Build Settings
+# Mod Info / Build Settings
 
 In the `pom.xml` you will find `<properties>` where you can change information about the mod.
 There you can also change the `<game.version.major>` property to your used game version. 
@@ -44,12 +61,12 @@ The `<game.version.minor>` property is only important when your mod really depen
 
 Files (e.g. assets) for the mod are located in `src/main/java/resources/mod-files` and will be copied in the `package` phase.
 
-## Debugging
+# Debugging
 
 You can enable **Debug Mode** and **Developer Mode** in the game launcher **settings**. 
 You will get more detailed logs and in-game developer tools for testing.
 
-### Intellij IDEA
+## Intellij IDEA
 
 There are two `.xml`files in the `.run/` folder:
 
@@ -65,7 +82,7 @@ It's default set to: `jake.example.*`
 They should be automatically available [in the IDE](https://www.jetbrains.com/help/idea/run-debug-configuration.html). 
 You can also edit them there :)
 
-### Eclipse
+## Eclipse
 
 * Add a new [Run Configuration](https://www.subjectcoach.com/tutorials/detail/contents/beginners-guide-to-eclipse-ide/chapter/working-with-run-configurations).
 * Set the **main class** name to `init.MainLaunchLauncher`.
