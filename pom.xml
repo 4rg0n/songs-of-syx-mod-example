@@ -49,7 +49,7 @@
         <!-- Build settings -->
         <game.version.directory>V${game.version.major}</game.version.directory>
         <mod.files.name>mod-files</mod.files.name>
-        <mod.dependency.jar>${project.basedir}/lib/SongsOfSyx.jar</mod.dependency.jar>
+        <mod.dependency.sos.jar>${project.basedir}/lib/SongsOfSyx.jar</mod.dependency.sos.jar>
         <mod.build.output.directory>${basedir}/target/out/${mod.name}</mod.build.output.directory>
         <mod.files.build.output.directory>${mod.build.output.directory}/${game.version.directory}</mod.files.build.output.directory>
         <mod.script.output.directory>${mod.files.build.output.directory}/script/jar</mod.script.output.directory>
@@ -75,7 +75,7 @@
             <artifactId>songs-of-syx</artifactId>
             <version>${game.version.major}.${game.version.minor}</version>
             <scope>system</scope>
-            <systemPath>${mod.dependency.jar}</systemPath>
+            <systemPath>${mod.dependency.sos.jar}</systemPath>
         </dependency>
 
         <!-- Testing -->

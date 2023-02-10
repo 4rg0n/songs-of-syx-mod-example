@@ -40,6 +40,30 @@ The `<game.version.minor>` property is only important when your mod really depen
 
 Files (e.g. assets) for the mod are located in `src/main/java/resources/mod-files` and will be copied in the `package` phase.
 
+## Debugging
+
+### Intellij IDEA
+
+There are two `.xml`files in the `.run/` folder:
+
+* `Main.run.xml`launches the game directly
+* `MainLaunchLauncher.run.xml`launches the game directly
+
+You may want to edit the `WORKING_DIRECTORY` option to your local game installation path.
+It's default set to: `C:/Program Files (x86)/Steam/steamapps/common/Songs of Syx`.
+
+And your package name may also differ in the `PATTERN` option.
+It's default set to: `jake.example.*`
+
+They should be automatically available [in the IDE](https://www.jetbrains.com/help/idea/run-debug-configuration.html). 
+You can also edit them there :)
+
+### Eclipse
+
+* Add a new [Run Configuration](https://www.subjectcoach.com/tutorials/detail/contents/beginners-guide-to-eclipse-ide/chapter/working-with-run-configurations).
+* Set the **main class** name to `init.MainLaunchLauncher`.
+* In the tab **Arguments** set the **working directory** to your game installation folder e.g. `C:/Program Files (x86)/Steam/steamapps/common/Songs of Syx`.
+
 ## Testing
 
 There's [JUnit 5](https://junit.org/junit5/) with [AssertJ](https://assertj.github.io/doc/) and [Mockito 4](https://site.mockito.org/) for testing your code.
