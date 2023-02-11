@@ -1,5 +1,5 @@
 This project is intended for people who want to start modding for the game [Songs of Syx](https://store.steampowered.com/app/1162750/Songs_of_Syx/).
-It contains a **roommod**, which will add a simple 1x1 tile room to the game.
+It contains a **roommod**, which will add a simple 1x1 tile room to the game and a random weather eclipse event.
 The maven build pipeline will take care of compiling, packaging and installing the mod into the games mod folder.
 
 # Getting started

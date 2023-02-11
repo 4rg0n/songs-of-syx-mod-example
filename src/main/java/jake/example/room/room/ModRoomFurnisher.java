@@ -14,22 +14,22 @@ import snake2d.util.file.Json;
 /**
  * The most cumbersome part... Deals with the whole furnishing and construction process of a new room.
  * @author Jake
- *
  */
-class ModRoomFurnisher extends Furnisher{
+class ModRoomFurnisher extends Furnisher {
 
-	private final ROOM_MOD blue;
+	private final ModRoomBlueprint blueprint;
 	
-	protected ModRoomFurnisher(ROOM_MOD blue, RoomInitData init) throws IOException {
-		/**
+	protected ModRoomFurnisher(ModRoomBlueprint blueprint, RoomInitData init) throws IOException {
+		/*
 		 * pass along init, and state hw many items this room has, and how many "stats". A stat can be "workers", "efficiency" or "services".
 		 * These must match the actual case. We'll skip stats for now, and just do one item.
 		 */
 		super(init, 1, 0, 88, 44);
-		this.blue = blue;
+		this.blueprint = blueprint;
 		
-		//now we must construct the item. We sill start with
-		/**
+		//now we must construct the item. We will start with
+
+		/*
 		 * SPRITES
 		 */
 		
@@ -39,14 +39,14 @@ class ModRoomFurnisher extends Furnisher{
 		//rooms use different kind of sprites. The easiest one is just simply a 1x1 tile. We'll use that.
 		RoomSprite sprite = new RoomSprite1x1(sjson, "PRIMARY_1X1");
 		
-		/**
+		/*
 		 * TILES
 		 * Now we'll create a tile with the sprite and give it some properties
 		 */
 		
 		FurnisherItemTile tt = new FurnisherItemTile(this, sprite, AVAILABILITY.SOLID, false);
 		
-		/**
+		/*
 		 * ITEM from tiles
 		 */
 		
@@ -54,12 +54,12 @@ class ModRoomFurnisher extends Furnisher{
 			{tt},
 		};
 		
-		/**
+		/*
 		 * The '1' is a multiplier that will be applied to the stats and resource cost of this item.
 		 */
 		new FurnisherItem(itTiles, 1);
 		
-		//lets make another item
+		//let's make another item
 		
 		itTiles = new FurnisherItemTile [][] {
 			{tt,tt,tt},
@@ -83,7 +83,7 @@ class ModRoomFurnisher extends Furnisher{
 
 	@Override
 	public Room create(TmpArea area, RoomInit init) {
-		return new ModRoomInstance(blue, area, init);
+		return new ModRoomInstance(blueprint, area, init);
 	}
 	
 	@Override
@@ -93,7 +93,6 @@ class ModRoomFurnisher extends Furnisher{
 
 	@Override
 	public RoomBlueprintImp blue() {
-		return blue;
+		return blueprint;
 	}
-
 }

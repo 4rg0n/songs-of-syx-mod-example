@@ -3,7 +3,7 @@ package jake.example.room.room;
 import settlement.room.main.*;
 import settlement.room.main.util.RoomInit;
 
-class ModRoomInstance extends RoomInstance{
+class ModRoomInstance extends RoomInstance {
 
 	/**
 	 * sadly, rooms are serializable, one of the few things there are. Take heed not to keep
@@ -27,7 +27,7 @@ class ModRoomInstance extends RoomInstance{
 	 */
 	@Override
 	public RoomBlueprintIns<? extends RoomInstance> blueprintI() {
-		return (ROOM_MOD) blueprint();
+		return (ModRoomBlueprint) blueprint();
 	}
 
 	/**
@@ -35,14 +35,10 @@ class ModRoomInstance extends RoomInstance{
 	 */
 	@Override
 	protected void activateAction() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	protected void deactivateAction() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	/**
@@ -50,8 +46,5 @@ class ModRoomInstance extends RoomInstance{
 	 */
 	@Override
 	protected void dispose() {
-		// TODO Auto-generated method stub
-		
 	}
-	
 }
