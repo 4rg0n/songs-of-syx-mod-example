@@ -74,12 +74,9 @@ public final class ExampleScript implements SCRIPT {
         game.VERSION;
         game.battle.BATTLE;
         game.faction.FACTIONS;
-        game.nobility.NOBILITIES;
         game.time.TIME;
         game.tourism.TOURISM;
         
-        settlement.army.ai.ARMY_AI;
-        settlement.army.ai.general.ARMY_AI_GENERAL;
         settlement.entity.animal.ANIMALS;
         settlement.entry.SENTRY;
         settlement.environment.ENVIRONMENT;
@@ -93,8 +90,6 @@ public final class ExampleScript implements SCRIPT {
         settlement.thing.THINGS;
         settlement.thing.pointlight.POINTLIGHTS;
 
-        init.RANMAP;
-        init.biomes.CLIMATE;
         init.biomes.TERRAINS;
         init.boostable.BOOSTABLES;
         init.disease.DISEASES;
