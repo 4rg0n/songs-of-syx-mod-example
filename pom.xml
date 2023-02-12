@@ -12,7 +12,7 @@
         <profile>
             <id>windows</id>
             <properties>
-                <mod.install.directory>${user.home}/AppData/Roaming/songsofsyx/mods/${mod.name}</mod.install.directory>
+                <game.mod.directory>${user.home}/AppData/Roaming/songsofsyx/mods</game.mod.directory>
                 <game.install.directory>C:/Program Files (x86)/Steam/steamapps/common/Songs of Syx</game.install.directory>
             </properties>
             <activation>
@@ -22,7 +22,7 @@
         <profile>
             <id>linux</id>
             <properties>
-                <mod.install.directory>${user.home}/.local/share/songsofsyx/mods/${mod.name}</mod.install.directory>
+                <game.mod.direcotry>${user.home}/.local/share/songsofsyx/mods</game.mod.direcotry>
                 <game.install.directory>${user.home}/.steam/steam/SteamApps/common/Songs of Syx</game.install.directory>
             </properties>
             <activation>
@@ -53,6 +53,7 @@
         <game.jar.name>SongsOfSyx.jar</game.jar.name>
         <game.jar.source.name>SongsOfSyx-sources.jar</game.jar.source.name>
         <mod.files.name>mod-files</mod.files.name>
+        <mod.install.directory>${game.mod.directory}/${mod.name}</mod.install.directory>
         <mod.dependency.lib.directory>${project.basedir}/lib</mod.dependency.lib.directory>
         <mod.build.output.directory>${basedir}/target/out/${mod.name}</mod.build.output.directory>
         <mod.files.build.output.directory>${mod.build.output.directory}/${game.version.directory}</mod.files.build.output.directory>
@@ -72,6 +73,7 @@
         <junit-platform-surefire-provider.version>1.3.2</junit-platform-surefire-provider.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <maven-install-plugin.version>3.1.0</maven-install-plugin.version>
+        <maven-clean-plugin.version>3.2.0</maven-clean-plugin.version>
     </properties>
 
     <dependencies>
@@ -140,10 +142,31 @@
                     <artifactId>maven-install-plugin</artifactId>
                     <version>${maven-install-plugin.version}</version>
                 </plugin>
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${maven-clean-plugin.version}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
 
         <plugins>
+            <!-- Remove installed mod from games mod folder on clean -->
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${mod.install.directory}</directory>
+                            <includes>
+                                <!-- Deletes mod folder with files -->
+                                <include>**</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+
             <!-- Prepare game dependencies (thx @ https://github.com/MilanDierick for pointing me to the game source files) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

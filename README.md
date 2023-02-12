@@ -55,6 +55,11 @@ You can force a profile with e.g.
 mvn install -P linux
 ```
 
+**(i)** Deletes the `target` directory containing the packaged mod files and removes the mod from the games mod directory.
+```
+mvn clean
+```
+
 # Mod Info / Build Settings
 
 In the `pom.xml` you will find `<properties>` where you can change information about the mod.
