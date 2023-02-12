@@ -87,15 +87,14 @@ public final class ExampleScript implements SCRIPT {
         settlement.stats.STATS;
         settlement.stats.law.LAW;
         settlement.stats.standing.STANDINGS;
-        settlement.thing.THINGS;
-        settlement.thing.pointlight.POINTLIGHTS;
 
         init.biomes.TERRAINS;
         init.boostable.BOOSTABLES;
+        init.C;
+        init.D;
         init.disease.DISEASES;
         init.paths.PATHS;
         init.race.RACES;
-        init.resources.RESD;
         init.resources.RESOURCES;
         init.sprite.SPRITES;
         init.sprite.UI.UI;
