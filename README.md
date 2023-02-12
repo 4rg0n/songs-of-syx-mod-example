@@ -2,6 +2,8 @@ This project is intended for people who want to start modding for the game [Song
 It contains a **roommod**, which will add a simple 1x1 tile room to the game and a random weather eclipse event.
 The maven build pipeline will take care of compiling, packaging and installing the mod into the games mod folder.
 
+There are also some [tips for developing a mod](/doc/index.md).
+
 # Getting started
 
 [Maven](https://maven.apache.org/) is required to compile, package and install the mod.
@@ -98,6 +100,10 @@ You can also edit them there :)
 ## Testing
 
 There's [JUnit 5](https://junit.org/junit5/) with [AssertJ](https://assertj.github.io/doc/) and [Mockito 4](https://site.mockito.org/) for testing your code.
+
+## Developing Tips
+
+See [doc/index.md](doc/index.md).
 
 # Modding Resources
 
