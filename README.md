@@ -72,8 +72,8 @@ You will get more detailed logs and in-game developer tools for testing.
 
 There are two `.xml`files in the `.run/` folder:
 
-* `Main.run.xml`launches the game directly
-* `MainLaunchLauncher.run.xml`launches the game directly
+* `Main.run.xml` launches the game directly
+* `MainLaunchLauncher.run.xml` starts the game launcher
 
 You may want to edit the `WORKING_DIRECTORY` option to your local game installation path.
 It's default set to: `C:/Program Files (x86)/Steam/steamapps/common/Songs of Syx`.
