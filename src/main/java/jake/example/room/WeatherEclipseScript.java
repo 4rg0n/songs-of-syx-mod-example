@@ -26,17 +26,11 @@ import view.main.MessageText;
  */
 final class WeatherEclipseScript implements SCRIPT.SCRIPT_INSTANCE {
 
-	private int day = 16 + RND.rInt(16*10);
+	private int day = 16 + RND.rInt(16 * 10);
 	private boolean hasMess;
 	
 	public WeatherEclipseScript() {
-		IDebugPanel.add("Script Eclipse", new ACTION() {
-			
-			@Override
-			public void exe() {
-				day = TIME.days().bitsSinceStart()+1;
-			}
-		});
+		IDebugPanel.add("Script Eclipse", () -> day = TIME.days().bitsSinceStart() + 1);
 	}
 	
 	
@@ -54,20 +48,24 @@ final class WeatherEclipseScript implements SCRIPT.SCRIPT_INSTANCE {
 	public void update(double ds) {
 		if (TIME.days().bitsSinceStart() == day && TIME.light().dayIs()) {
 			if (!hasMess) {
-				new MessageText(new Json(PATHS.SCRIPT().text.get("EXAMPLE")).json("ECLIPSE_MESSAGE")).send();
+				Json messageJson = new Json(PATHS.SCRIPT().text.get("EXAMPLE"))
+						.json("ECLIPSE_MESSAGE");
+				new MessageText(messageJson).send();
+
 				hasMess = true;
 			}
 
-			double p = TIME.light().partOfCircular();
-			if (p > 0.5) {
-				p = Math.sqrt((p-0.5)*2);
-				double r = 1.0-0.75*p;
-				double o = 1.0-0.85*p;
-				SETT.WEATHER().lightColor().set(r, o, o);
+			double partOfCircular = TIME.light().partOfCircular();
+			if (partOfCircular > 0.5) {
+				partOfCircular = Math.sqrt((partOfCircular - 0.5) * 2);
+				double red = 1.0 - 0.75 * partOfCircular;
+				double green = 1.0 - 0.85 * partOfCircular;
+
+				SETT.WEATHER().lightColor().set(red, green, green);
 			}
 		} else {
 			if (TIME.days().bitsSinceStart() == day + 1) {
-				day = TIME.days().bitsSinceStart() + 16 + RND.rInt(16*10);
+				day = TIME.days().bitsSinceStart() + 16 + RND.rInt(16 * 10);
 			}
 				
 			hasMess = false;

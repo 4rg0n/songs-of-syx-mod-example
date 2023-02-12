@@ -15,6 +15,7 @@ import util.info.INFO;
  * See {@link SCRIPT} for some documentation.
  */
 @NoArgsConstructor
+@SuppressWarnings("unused") // used by the game via reflection
 public final class ModRoomScript implements SCRIPT {
 
 	private final INFO info = new INFO("room script", "more rooms");
