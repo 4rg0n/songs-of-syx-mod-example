@@ -77,13 +77,7 @@ public final class ExampleScript implements SCRIPT {
         game.time.TIME;
         game.tourism.TOURISM;
         
-        settlement.entity.animal.ANIMALS;
-        settlement.entry.SENTRY;
-        settlement.environment.ENVIRONMENT;
-        settlement.job.JOBS;
         settlement.main.SETT;
-        settlement.path.PATHING;
-        settlement.stats.STANDING;
         settlement.stats.STATS;
         settlement.stats.law.LAW;
         settlement.stats.standing.STANDINGS;
@@ -112,7 +106,26 @@ public final class ExampleScript implements SCRIPT {
 
 The following resources are ready to be accessed in these methods: 
 
-```view.sett.SettView``` via ```view.main.VIEW.s()``` => ```script.SCRIPT.SCRIPT_INSTANCE.update()```
+`view.sett.SettView` via `view.main.VIEW.s()` => `script.SCRIPT.SCRIPT_INSTANCE.update()`
 
+## Extending and using game classes (since V64?)
+
+A lot of the games classes are package private and aren't [accessible](https://www.javatpoint.com/access-modifiers) from within your mods package.
+For example your class is `my.awesome.mod.job.MyModJob` and you want to access the game class `settlement.job.Job`.
+In that case you will not be able to `import` it into your mods package. 
+
+The trick is to just put your classes into the same package:
+
+```java
+package settlement.job;
+
+public class MyModJob extends Job {
+    // ... do stuff here =)
+}
+```
+
+The way the game code is currently structured makes loose coupling of your mod classes to the games classes through 
+dependency injection and / or inversion of control very hard until impossible. So you mostly rely on extending classes and inherit their functionality.
+This has a higher risk for breaking your code when the game updates. Keep that in mind.
 
 
