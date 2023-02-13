@@ -108,3 +108,11 @@ public final class ExampleScript implements SCRIPT {
 }
 ```
 
+## Game and Mod initialization
+
+The following classes are ready to be accessed in these methods: 
+
+```view.main.VIEW``` => ```script.SCRIPT.SCRIPT_INSTANCE.update()```
+
+
+
