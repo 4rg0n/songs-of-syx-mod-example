@@ -1,0 +1,480 @@
+**If this race can be picked when starting a new game
+PLAYABLE: true,
+
+**Physical properties. the mass affects battles to some extent, although this mechanic needs some work.
+**Height determines shadow length, width is the hitbox size, which should roughly match the sprite. Max is 15
+**Some random, must have, properties
+PROPERTIES: {
+	**Determines the visual shadow height
+	HEIGHT: 12,
+	**Hitbox size in pixels. Max is 15.
+	WIDTH: 13,
+	**How long a newborn is a child in days. After these days, they become adult.
+	ADULT_AT_DAY: 0,
+	**will create flies and brown color when dead if on
+	CORPSE_DECAY: true,
+},
+
+
+**A bunch of preferences
+PREFERRED: {
+	**Used when calculating food preference. When a person visits an eatery/canteen, they'll try to grab one of these at random.
+	**If they suceed, food pref. goes up, else down.
+	FOOD: [
+		FRUIT,
+		VEGETABLE,
+		BREAD,
+		EGG,
+	],
+	**What kind of structure this race likes to spend time in. This must map to a file in settlement/structure. If no 
+	**file is found, it will ignore it.
+	STRUCTURE: {
+		STONE: 0.5,
+		GRAND: 0.5,
+		WOOD: 1.0,
+		MOUNTAIN: 0,
+	},
+	**What work the race preferes. Keys are to room files in init/room. If none is found, it will be ignored
+	WORK: {
+		** '*' is a wildcard, it works in some clauses, such as this. A wildcard will override all available keys. The keys that come after will override the wildcard.
+		*: 0.5,
+		FARM_COTTON: 1.0,
+		FARM_FRUIT: 1.0,
+		FARM_GRAIN: 1.0,
+		FARM_VEG: 1.0,
+		FARM_SPICES: 1.0,
+		EAT_EATERY_NORMAL: 1.0,
+		EAT_CANTEEN_NORMAL: 1.0,
+		EAT_TAVERN_NORMAL: 1.0,
+	},
+	** The preference of being a recruit/soldier
+	WORK_SOLDIER: 1.0,
+	**The preference of being a student
+	WORK_STUDENT: 0,
+	**Lists of other races, and how this race feels about sharing cities and regions with them. default is 0, can be negative or positive. Affects other species stat.
+	OTHER_RACES: {
+		DONDORIAN: 1.0,
+		GATHIMI: -2.0,
+	},
+},
+
+**Population for cities and world regions,
+POPULATION: {
+	**how many that can be attracted to a region
+	MAX_REGION: 1.0,
+	**how many that can be attracted to a city
+	MAX_CITY: 1.0,
+	**how fast they reproduce in a region.
+	REPRODUCTION_REGION_PER_DAY: 0.05,
+	**how much they like different climates. This is multiplied with above for final pop cap. This must be an entry in file init/config/CLIMATE.txt
+	CLIMATE: {
+		COLD: 0.2,
+		TEMPERATE: 1,
+		HOT: 1,
+	},
+	**how much they like different terrains. This is multiplied with above for final pop cap. This must be an entry in file init/config/TERRAIN.txt
+	TERRAIN: {
+		MOUNTAIN: 0.5,
+		WET: 1.0,
+		FOREST: 1.0,
+		NONE: 0.9,
+	},
+},
+
+**BONUS, or properties in this context. Determines the base value for all properites. You can look at _BOOSTABLES.txt in the technology folder to see what can be changed, and what the default values are. A special clause is ROOM, which holds all the rooms that have a production bonus.
+BONUS: {
+	PHYSICS: {
+		MASS: 80,
+	},
+},
+
+**The occurrence of traits. Traits are listed in init/race/trait. Will be ignored if not found
+TRAITS: {
+	*: 0,
+	FIGHTER: 0.0,
+	GLUTTON: 0.2,
+	SLEEPER: 0.2,
+	SPRINTER: 0.0,
+},
+
+**What resources can be extracted from a corpse. Filenames in init/resource
+RESOURCE: {
+	MEAT: 20,
+	LEATHER: 10,
+},
+
+**The visual appearance 
+APPEARANCE: {
+	
+	** Links to the different sprite sheets used to render the species
+	**Main sheet with portrait and in-game sprites. sprite/race. There is an example sprite/race/_Example.png that you can have a look at to better understand things here.
+	SPRITE_FILE: Dondorian,
+	**Extra stuff such as filth, tool animations and water overlay. Can be shared by most races. sprite/race/extra
+	SPRITE_EXTRA_FILE: Normal,
+	**The sheet to use for children. Replaces "SPRITE_FILE" when an induvidual is a child. Can also be shared with other species. sprite/race/child
+	SPRITE_CHILD_FILE: Humanoid,
+	
+	**A bunch of colors that will be used when rendering subjects clothes. Clothes will become more saturated with as more clothing is equipped. Only used by the in-game sprite, and applied to frame 5 in the example sheet
+	**You can have up to 15 colors for each color block. 
+	COLOR_CLOTHES: [
+		{R: 114, G: 101, B: 35,},
+		{R: 142, G: 126, B: 44,},
+		{R: 83, G: 181, B: 94,},
+		{R: 62, G: 135, B: 70,},
+		{R: 105, G: 125, B: 239,},
+		{R: 79, G: 94, B: 181,},
+		{R: 53, G: 64, B: 122,},
+		{R: 193, G: 77, B: 0,},
+	],
+	**The color of armour levels. The level goes from first to last. Is used when rendering armour on subjects. Applied to frame 19 in the example sheet. Also applied on the laying part of the sheet.
+	COLOR_ARMOUR_LEVELS: [
+		{R: 107, G: 79, B: 65,},
+		{R: 99, G: 99, B: 99,},
+		{R: 168, G: 168, B: 180,},
+		{R: 209, G: 159, B: 54,},
+	],
+	
+	** this is all the colors used when rendering an entity. Each entry has a key, which can be mapped from the TYPES clause below
+	COLORS: {
+		**the key for this one is SKIN
+		SKIN: {
+			**Optional, default: false. If a subject is retired, this will become gray in the game. On the portrait the color is interpolated to gray based on age.
+			TURNS_GRAY_WHEN_OLD: false,
+			**Optional, default: false. The tone will change to whit-ish if a subject is dead
+			TURNS_WHITE_WHEN_DEAD: true,
+			**Optional, default is the order of this entry. You can pick another seed, and you can have the same seed for other entires.
+			**The seed determines which color to randomly pick for a subject
+			**Useful if you want a darker, yet same hue as hair color for beards. You then set the same seeds, and make the beard entry the 
+			**same colors, but a little darker.
+			RANDOM_SEED: 1,
+			VALUES: [
+				{R: 183, G: 139, B: 119,},
+				{R: 198, G: 150, B: 131,},
+				{R: 214, G: 162, B: 141,},
+				{R: 226, G: 171, B: 149,},
+				{R: 221, G: 139, B: 119,},
+				{R: 232, G: 144, B: 125,},
+				{R: 244, G: 152, B: 132,},
+				{R: 244, G: 170, B: 154,},
+				{R: 221, G: 139, B: 93,},
+				{R: 206, G: 130, B: 88,},
+				{R: 206, G: 139, B: 103,},
+				{R: 206, G: 160, B: 136,},
+				{R: 221, G: 120, B: 93,},
+				{R: 237, G: 129, B: 101,},
+				{R: 237, G: 142, B: 118,},
+			],
+		},
+		HAIR: {
+			TURNS_GRAY_WHEN_OLD: true,
+			VALUES: [
+				{R: 198, G: 114, B: 54,},
+				{R: 96, G: 27, B: 11,},
+				{R: 196, G: 174, B: 153,},
+				{R: 154, G: 128, B: 101,},
+				{R: 18, G: 18, B: 18,},
+				{R: 35, G: 35, B: 35,},
+				{R: 32, G: 26, B: 26,},
+				{R: 136, G: 46, B: 20,},
+				{R: 84, G: 21, B: 3,},
+				{R: 54, G: 4, B: 7,},
+				{R: 61, G: 9, B: 11,},
+				{R: 35, G: 19, B: 15,},
+				{R: 102, G: 59, B: 16,},
+				{R: 58, G: 36, B: 15,},
+				{R: 116, G: 92, B: 66,},
+			],
+		},
+		EYE: {
+			VALUES: [
+				{R: 128, G: 173, B: 206,},
+				{R: 104, G: 141, B: 168,},
+				{R: 142, G: 193, B: 229,},
+				{R: 32, G: 74, B: 104,},
+				{R: 9, G: 110, B: 183,},
+				{R: 75, G: 196, B: 23,},
+				{R: 142, G: 196, B: 222,},
+				{R: 29, G: 114, B: 119,},
+				{R: 162, G: 151, B: 131,},
+				{R: 87, G: 95, B: 132,},
+				{R: 19, G: 80, B: 36,},
+			],
+		},
+		LEG: {
+			VALUES: [
+				{R: 80, G: 40, B: 20,},
+			],
+		},
+	},
+	
+	**below is types. Each type has different information on how to render a subject. Types can be gender, or whatnot.
+	**Being a child is sort of like having a special type, and here's what you can set:
+	CHILD: {
+		** EXTRA1 refers to frame nr 17 on the example spritesheet. You can set the random occurrence of that frame being rendered or not.
+		** Optional, default is 1.0. Usually used for beards.
+		OCCURRENCE_EXTRA1: 0,
+		** Optional, default is 1.0. Refers to frame 18. Usually hair
+		OCCURRENCE_EXTRA2: 1.0,
+		** Used when rendering frames 6-16 on the example sheet. Maps to a color you've declared in COLORS above
+		COLOR_SKIN: SKIN,
+		**Used when rendering frames 0-5 on the example sheet
+		COLOR_LEG: LEG,
+		** What colors to use for the two extra frames
+		COLOR_EXTRA1: HAIR,
+		COLOR_EXTRA2: HAIR,
+	},
+	
+	**Here comes the other types. You need at least one. A type can be male & female for example.
+	TYPES: [
+		{
+			**What chance a race entity has of being this type
+			OCCURENCE: 1.0,
+			**These six below are the same as the ones in CHILD above.
+			OCCURENCE_EXTRA1: 0.8,
+			OCCURENCE_EXTRA2: 0.5,
+			COLOR_SKIN: SKIN,
+			COLOR_LEG: LEG,
+			COLOR_EXTRA1: HAIR,
+			COLOR_EXTRA2: HAIR,
+			
+			**What names to use. These four points to a nameset file in text/race/nameset
+			NAMESET_FILE_FIRST: StdFirst,
+			NAMESET_FILE_SURNAME: StdLast,
+			NAMESET_FILE_FIRST_NOBLE: StdFirstNoble,
+			NAMESET_FILE_SURNAME_NOBLE: StdLastNoble,
+
+			**How to use the portrait frames in the spritesheet. Each clause in here represents 1 frame that will be rendered.
+			**You can do very complicated stuff here to max out the use of what you have drawn.
+			PORTRAIT: [
+				**Simple example. Render a random frame 0-4. Use the color "SKIN" listed in COLORS as a color mask.
+				{
+					FRAME_START: 0,
+					FRAME_VARIATIONS: 4, 
+					COLOR: SKIN,
+				},
+				**Advanced frame with all possible modulators.
+				{
+					FRAME_START: 4, **Which frame to render.
+					FRAME_VARIATIONS: 8, **how many frames that will be shuffled from the start frame.
+					FRAME_RANDOM: 0, **OPTIONAL which randomness that will be used when shuffling frames. Default is the order of the frame. Can be used to match two different frames, if you want the same shuffling.
+					OFF_X: 0, **OPTIONAL (default= 0). moves the frame by a constant in pixels.
+					OFF_X_RANDOM: 0, **OPTIONAL (default= 0). Moves the frame to the right randomly in pixels.  
+					OFF_Y: 0, **OPTIONAL (default= 0). moves the frame by a constant in pixels.
+					OFF_Y_RANDOM: 5, **OPTIONAL (default= 0). Moves the frame down randomly in pixels.  
+					FRAME_OCCURRENCE: 1.0, **OPTIONAL(default = 1.0) Chance of this frame to be rendered.
+					STAINS: true, **OPTIONAL(default = true). If blood and filth is rendered on this frame.
+					OPACITY: 255, **OPTIONAL (default= 255). What opacity to use when rendering the frame
+					COLOR: SKIN, **OPTIONAL Specifies what color to use as a mask when rendering. If not present, White will be used.
+					
+					ONLY_IF_OLD: false, **OPTIONAL(default = false). To only render this if a person is old.
+					ONLY_IF_OLD_NOT: false, **OPTIONAL(default = false). opposite of above.
+					ONLY_IF_DEAD: false, **OPTIONAL(default = false). only when dead (coins on eyes for example).
+					ONLY_IF_DEAD_NOT: false, **OPTIONAL(default = false). opposite ^^
+					ONLY_IF_EXTRA1: false, **OPTIONAL(default = false). Only if the entity has the EXTRA1.
+					ONLY_IF_EXTRA1_NOT: false, **OPTIONAL(default = false). opposite ^^
+					ONLY_IF_EXTRA2: false, **OPTIONAL(default = false). Only if the entity has the EXTRA2.
+					ONLY_IF_EXTRA2_NOT: false, **OPTIONAL(default = false). opposite ^^
+					
+					SPLITS: 1, **OPTIONAL (default= 1) splits the frames into separate rows, and this frame will be the row defined by "SPLIT".
+					SPLIT: 0, **OPTIONAL (default= 0) If the frame is split into rows, defined by "SPLITS", this is the row that will be rendered.
+				},
+				
+				
+				**EXAMPLES
+				**head
+				{
+					FRAME_START: 0,
+					FRAME_VARIATIONS: 8, 
+					COLOR: SKIN,
+				},
+				**wrinkles
+				{
+					FRAME_START: 12,
+					FRAME_VARIATIONS: 4, 
+					SPLITS: 3,
+					SPLIT: 2,
+					ONLY_IF_OLD: true,
+				},
+				**eye
+				{
+					FRAME_START: 8,
+					FRAME_VARIATIONS: 4,
+					SPLITS: 3,
+					SPLIT: 1,
+					OFF_Y: -2,
+					STAINS: false,
+				},
+				**iris
+				{
+					FRAME_START: 15,
+					FRAME_VARIATIONS: 1,
+					SPLITS: 3,
+					SPLIT: 1,
+					COLOR: EYE,
+					STAINS: false,
+				},
+				**mouth
+				{
+					FRAME_START: 12,
+					FRAME_VARIATIONS: 4, 
+					SPLITS: 3,
+					SPLIT: 2,
+					OFF_Y: -2,
+					STAINS: false,
+					COLOR: SKIN,
+					COLOR_RANDOM: 0,
+				},
+				**mustage
+				{
+					FRAME_START: 8,
+					FRAME_VARIATIONS: 4, 
+					SPLITS: 3,
+					SPLIT: 2,
+					COLOR: HAIR,
+					FRAME_OCCURENCE: 0.5,
+					COLOR_RANDOM: 1,
+				},
+				**beard
+				{
+					FRAME_START: 24,
+					FRAME_VARIATIONS: 8, 
+					SPLITS: 2,
+					SPLIT: 1,
+					COLOR: HAIR,
+					ONLY_IF_EXTRA1: true,
+					COLOR_RANDOM: 1,
+					OFF_Y: 2,
+				},
+				**nose
+				{
+					FRAME_START: 24,
+					FRAME_VARIATIONS: 8, 
+					COLOR: SKIN,
+					SPLITS: 2,
+					SPLIT: 0,
+					OFF_Y: 16,
+					COLOR_RANDOM: 0,
+				},
+				**eyebrows
+				{
+					FRAME_START: 8,
+					FRAME_VARIATIONS: 8, 
+					SPLITS: 3,
+					SPLIT: 0,
+					COLOR: HAIR,
+					OFF_Y: 8,
+				},
+				**hair
+				{
+					FRAME_START: 16,
+					FRAME_VARIATIONS: 8,
+					COLOR: HAIR,
+					ONLY_IF_EXTRA2: true,
+					COLOR_TURNS_GRAY: true,
+					COLOR_RANDOM: 1,
+				},
+			],
+		},
+	],
+},
+
+**Properties are listed in init/race/_STATS.txt in the PROPERTIES clause. They have a corresponding .txt file in text/race/_STATS.txt for info on what they do.
+PROPERTIES: {
+	RESISTANCE_HOT: 0.8,
+	SKINNY_DIPS: 1.0,
+	INTELLIGENCE: 0.3,
+	DEATH_AGE: 75,
+	CRIMINALITY: 0.4,
+	SUBMISSION: 1.0,
+	ARMOUR: 0.1,
+},
+
+**Values of different religions. Determines the odds of what religion a new citizen will follow. Also determines the effort needed to convert an indvidual. 
+RELIGION_INCLINATION: {
+	TEMPLE_CRETOR: 1,
+	TEMPLE_BARDOK: 0.5,
+	TEMPLE_ATHURI: 0,
+},
+
+**This is the fullfillment settings. Each stat has a standard setting, which can be overridden here. It has the same structure.
+STATS: {
+	**Special clause that lets you specify rooms in init/rooms which are services.
+	SERVICE: {
+		EAT_TAVERN_NORMAL: {
+			**If true, makes them happy when access is 0
+			INVERTED: false,
+			**multiplies the base value. If access is 0.5, you can make this 1 by having multiplier 2
+			MULTIPLIER: 1,
+			** Nobles like this with a value of 1
+			NOBLE: 1,
+			**Slaves doesn't care about this
+			SLAVE: 0,
+			** Same as nobles
+			CITIZEN: 1,
+		},
+	},
+	
+	EQUIP: {
+		_CLOTHES: {
+			NOBLE: 3,
+			SLAVE: 2,
+			CITIZEN: 2,
+		},
+	},
+	
+	ACCESS: {
+		ACCESS_HARMONY: {
+			NOBLE: 1,
+			SLAVE: 0.5,
+			CITIZEN: 1,
+		},
+	},
+	
+	DEATH: {
+	
+	},
+	
+	FOOD: {
+	
+	},
+	
+	BATTLE: {
+	
+	},
+	
+	NEEDS: {
+	
+	},
+	
+	WORK: {
+		**Most stats have special values by default. You can clear the default values, by doing this:
+		EMPLOYED: {
+		
+		},
+	},
+	
+	EDUCATION: {
+	
+	},
+	
+	ENVIRONMENT: {
+		ROUNDNESS: {
+			SLAVE: 0.5,
+			CITIZEN: 1,
+			NOBLE: 1.5,
+			MULTIPLIER: 2.0,
+		},
+	},
+	
+	POPULATION: {
+		SLAVES-SELF: {
+			INVERTED: true,
+			CITIZEN: 1.5,
+		},
+	},
+	
+	STORED: {
+	
+	},
+	
+},

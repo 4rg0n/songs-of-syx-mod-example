@@ -105,11 +105,18 @@ There's [JUnit 5](https://junit.org/junit5/) with [AssertJ](https://assertj.gith
 
 See [doc/index.md](doc/index.md).
 
+## Publish your Mod
+
+### Steam
+
+* [Official How to up- and download mods using Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2229540768)
+* [(Discord) Steam Workshop Uploader](https://cdn.discordapp.com/attachments/664478122347069441/1023961932476186704/Songs_of_Syx_Workshop_Uploader.zip)
+
 # Modding Resources
 
 * [Discord](https://discord.com/eacfCuE)
 * [Script Modding](https://docs.google.com/document/d/1FVOtfr3Y-cxH2Gw-i-OqW3Vbp0MPJp0xSyQ80UoCABE/edit)
-* [Modding Guide](https://drive.google.com/file/d/1_OesG68HtJ4CwyHK7M72hQDOaCjeqgqT/view)
+* [Modding Guide](https://drive.google.com/file/d/1_OesG68HtJ4CwyHK7M72hQDOaCjeqgqT/view) (OUTDATED)
 * [Basic Introduction](https://songsofsyx.old.mod.io/guides/introduction-adding-a-resource)
 * [Basic Sprites](https://songsofsyx.old.mod.io/guides/basics-sprites)
 
