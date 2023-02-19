@@ -243,7 +243,6 @@
                             <resources>
                                 <resource>
                                     <directory>${mod.files.directory}</directory>
-                                    <filtering>true</filtering>
                                     <excludes>
                                         <!-- Everything beginning with a dot -->
                                         <exclude>**/.*</exclude>
