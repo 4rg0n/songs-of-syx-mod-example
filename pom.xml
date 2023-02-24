@@ -114,6 +114,9 @@
     </dependencies>
 
     <build>
+        <!-- Always use the same name for the jar file -->
+        <finalName>${mod.name}</finalName>
+
         <!-- We don't need the mod-files in our mod jar -->
         <resources>
             <resource>
