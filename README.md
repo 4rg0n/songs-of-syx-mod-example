@@ -107,6 +107,24 @@ See [doc/index.md](doc/index.md).
 
 ## Publish your Mod
 
+There's a maven profile `mods-uploader` you can use to automatically copy and clean your files into the mod uploader.
+The directory is configurable via the `<game.mod.uploader.directory>` property in the `<profiles>`. It's default set to:
+
+* **Windows:** `${user.home}/AppData/Roaming/songsofsyx/mods-uploader`
+* **Linux:** `${user.home}/.local/share/songsofsyx/mods-uploader`
+
+Will copy the mod files into the [Steam Workshop Uploader](https://cdn.discordapp.com/attachments/664478122347069441/1023961932476186704/Songs_of_Syx_Workshop_Uploader.zip) directory.
+
+```
+mvn install -P mods-uploader
+```
+
+Will remove the mod files from the mod uploader. For updating the mod files.
+
+```
+mvn clean -P mods-uploader
+```
+
 ### Steam
 
 * [Official How to up- and download mods using Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2229540768)

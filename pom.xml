@@ -6,7 +6,7 @@
 
     <groupId>org.example</groupId>
     <artifactId>songs-of-syx-mod-example</artifactId>
-    <version>1</version>
+    <version>1.0.0</version>
 
     <profiles>
         <profile>
@@ -14,6 +14,7 @@
             <properties>
                 <game.mod.directory>${user.home}/AppData/Roaming/songsofsyx/mods</game.mod.directory>
                 <game.install.directory>C:/Program Files (x86)/Steam/steamapps/common/Songs of Syx</game.install.directory>
+                <game.mod.uploader.directory>${user.home}/AppData/Roaming/songsofsyx/mods-uploader</game.mod.uploader.directory>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -24,12 +25,63 @@
             <properties>
                 <game.mod.direcotry>${user.home}/.local/share/songsofsyx/mods</game.mod.direcotry>
                 <game.install.directory>${user.home}/.steam/steam/SteamApps/common/Songs of Syx</game.install.directory>
+                <game.mod.uploader.directory>${user.home}/.local/share/songsofsyx/mods-uploader</game.mod.uploader.directory>
             </properties>
             <activation>
                 <os>
                     <family>Linux</family>
                 </os>
             </activation>
+        </profile>
+        <profile>
+            <id>mods-uploader</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-clean-plugin</artifactId>
+                        <configuration>
+                            <filesets>
+                                <fileset>
+                                    <!-- Remove installed mod from mod uploader directory on clean -->
+                                    <directory>${mod.uploader.directory}</directory>
+                                    <includes>
+                                        <!-- Deletes mod folder with files -->
+                                        <include>**</include>
+                                    </includes>
+                                    <followSymlinks>false</followSymlinks>
+                                </fileset>
+                            </filesets>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <executions>
+                            <!-- Copy the mod files into the mod uploader folder -->
+                            <execution>
+                                <id>copy-mod-to-mod-uploader</id>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${mod.uploader.directory}</outputDirectory>
+                                    <includeEmptyDirs>true</includeEmptyDirs>
+                                    <overwrite>true</overwrite>
+                                    <resources>
+                                        <resource>
+                                            <directory>${mod.build.output.directory}</directory>
+                                            <excludes>
+                                                <exclude>**/_src/**</exclude>
+                                            </excludes>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 
@@ -52,8 +104,11 @@
         <game.version.directory>V${game.version.major}</game.version.directory>
         <game.jar.name>SongsOfSyx.jar</game.jar.name>
         <game.jar.source.name>SongsOfSyx-sources.jar</game.jar.source.name>
+        <game.mod.uploader.content.directory>${game.mod.uploader.directory}/WorkshopContent</game.mod.uploader.content.directory>
+
         <mod.files.name>mod-files</mod.files.name>
         <mod.install.directory>${game.mod.directory}/${mod.name}</mod.install.directory>
+        <mod.uploader.directory>${game.mod.uploader.content.directory}/${mod.name}</mod.uploader.directory>
         <mod.dependency.lib.directory>${project.basedir}/lib</mod.dependency.lib.directory>
         <mod.build.output.directory>${basedir}/target/out/${mod.name}</mod.build.output.directory>
         <mod.files.build.output.directory>${mod.build.output.directory}/${game.version.directory}</mod.files.build.output.directory>
@@ -117,6 +172,7 @@
         <!-- Always use the same name for the jar file -->
         <finalName>${mod.name}</finalName>
 
+
         <!-- We don't need the mod-files in our mod jar -->
         <resources>
             <resource>
@@ -153,12 +209,13 @@
         </pluginManagement>
 
         <plugins>
-            <!-- Remove installed mod from games mod folder on clean -->
+
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
                 <configuration>
                     <filesets>
                         <fileset>
+                            <!-- Remove installed mod from games mod folder on clean -->
                             <directory>${mod.install.directory}</directory>
                             <includes>
                                 <!-- Deletes mod folder with files -->
