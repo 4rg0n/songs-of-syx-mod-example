@@ -97,7 +97,7 @@
 
         <!-- These settings will go into the mods _Info.txt file -->
         <mod.version>${project.version}</mod.version>
-        <mod.name>${project.artifactId}</mod.name>
+        <mod.name>Example Mod</mod.name>
         <mod.description>This is an example mod made by Jake the game developer.</mod.description>
         <mod.author>Jake</mod.author>
         <mod.info>Just a 1x1 tile room :)</mod.info>

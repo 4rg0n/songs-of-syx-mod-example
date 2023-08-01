@@ -26,9 +26,7 @@ mvn validate install
 * **Linux:** ~/.local/share/songsofsyx/mods/
 
 
-**(2)** Run the game and you should see a `songs-of-syx-mod-example` mod. Activate it and launch.
-
-**(3)** Start a new game. In the new game settings activate the `room script` under **Scripts**.
+**(2)** Run the game, and you should see a `Example Mod` mod. Activate it and launch.
 
 # Build commands
 
