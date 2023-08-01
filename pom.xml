@@ -39,19 +39,23 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-clean-plugin</artifactId>
-                        <configuration>
-                            <filesets>
-                                <fileset>
-                                    <!-- Remove installed mod from mod uploader directory on clean -->
-                                    <directory>${mod.uploader.directory}</directory>
-                                    <includes>
-                                        <!-- Deletes mod folder with files -->
-                                        <include>**</include>
-                                    </includes>
-                                    <followSymlinks>false</followSymlinks>
-                                </fileset>
-                            </filesets>
-                        </configuration>
+                        <executions>
+                            <execution>
+                                <configuration>
+                                    <filesets>
+                                        <fileset>
+                                            <!-- Remove installed mod from mod uploader directory on clean -->
+                                            <directory>${mod.uploader.directory}</directory>
+                                            <includes>
+                                                <!-- Deletes mod folder with files -->
+                                                <include>**</include>
+                                            </includes>
+                                            <followSymlinks>false</followSymlinks>
+                                        </fileset>
+                                    </filesets>
+                                </configuration>
+                            </execution>
+                        </executions>
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -91,14 +95,14 @@
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <!-- These settings will go into the mods _info.txt file -->
+        <!-- These settings will go into the mods _Info.txt file -->
         <mod.version>${project.version}</mod.version>
         <mod.name>${project.artifactId}</mod.name>
         <mod.description>This is an example mod made by Jake the game developer.</mod.description>
         <mod.author>Jake</mod.author>
         <mod.info>Just a 1x1 tile room :)</mod.info>
-        <game.version.major>63</game.version.major>
-        <game.version.minor>0</game.version.minor>
+        <game.version.major>64</game.version.major>
+        <game.version.minor>40</game.version.minor>
 
         <!-- Build settings -->
         <game.version.directory>V${game.version.major}</game.version.directory>
@@ -134,7 +138,7 @@
     <dependencies>
         <!-- Game dependency SongsOfSyx.jar -->
         <dependency>
-            <groupId>org.songsofsyx</groupId>
+            <groupId>com.songsofsyx</groupId>
             <artifactId>songsofsyx</artifactId>
             <version>${game.version.major}.${game.version.minor}</version>
         </dependency>
@@ -240,7 +244,7 @@
                             <goal>install-file</goal>
                         </goals>
                         <configuration>
-                            <groupId>org.songsofsyx</groupId>
+                            <groupId>com.songsofsyx</groupId>
                             <artifactId>songsofsyx</artifactId>
                             <version>${game.version.major}.${game.version.minor}</version>
                             <packaging>jar</packaging>
@@ -306,14 +310,14 @@
                                     <excludes>
                                         <!-- Everything beginning with a dot -->
                                         <exclude>**/.*</exclude>
-                                        <exclude>_info.txt</exclude>
+                                        <exclude>_Info.txt</exclude>
                                     </excludes>
                                 </resource>
                             </resources>
                         </configuration>
                     </execution>
 
-                    <!-- Copy mod _info.txt file and replace tokens -->
+                    <!-- Copy mod _Info.txt file and replace tokens -->
                     <execution>
                         <id>copy-mod-info</id>
                         <phase>package</phase>
@@ -327,7 +331,7 @@
                                 <resource>
                                     <directory>${mod.files.directory}</directory>
                                     <includes>
-                                        <include>_info.txt</include>
+                                        <include>_Info.txt</include>
                                     </includes>
                                     <filtering>true</filtering>
                                 </resource>

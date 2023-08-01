@@ -16,6 +16,7 @@ import util.gui.misc.GBox;
 import view.interrupter.IDebugPanel;
 import view.keyboard.KEYS;
 import view.main.MessageText;
+import view.ui.message.MessageText;
 
 /**
  * Represents one instance of the script.
