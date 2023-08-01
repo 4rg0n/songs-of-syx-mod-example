@@ -10,12 +10,10 @@ import snake2d.MButt;
 import snake2d.Renderer;
 import snake2d.util.datatypes.COORDINATE;
 import snake2d.util.file.*;
-import snake2d.util.misc.ACTION;
 import snake2d.util.rnd.RND;
 import util.gui.misc.GBox;
 import view.interrupter.IDebugPanel;
 import view.keyboard.KEYS;
-import view.main.MessageText;
 import view.ui.message.MessageText;
 
 /**
