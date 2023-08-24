@@ -42,7 +42,7 @@ public final class ModRoomScript implements SCRIPT {
 	}
 
 	@Override
-	public SCRIPT_INSTANCE initAfterGameCreated() {
+	public SCRIPT_INSTANCE createInstance() {
 		return new WeatherEclipseScript();
 	}
 }

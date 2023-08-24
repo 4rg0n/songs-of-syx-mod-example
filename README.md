@@ -1,3 +1,5 @@
+**For V64**
+
 This project is intended for people who want to start modding for the game [Songs of Syx](https://store.steampowered.com/app/1162750/Songs_of_Syx/).
 It contains a **roommod**, which will add a simple 1x1 tile room to the game and a random weather eclipse event.
 The maven build pipeline will take care of compiling, packaging and installing the mod into the games mod folder.
@@ -32,9 +34,7 @@ mvn install
 * **Linux:** ~/.local/share/songsofsyx/mods/
 
 
-**(3)** Run the game and you should see a `songs-of-syx-mod-example` mod. Activate it and launch.
-
-**(4)** Start a new game. In the new game settings activate the `room script` under **Scripts**.
+**(3)** Run the game, and you should see a `Example Mod` mod. Activate it and launch.
 
 # Build commands
 
