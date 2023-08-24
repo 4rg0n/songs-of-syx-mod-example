@@ -8,10 +8,18 @@ There are also some [tips for developing a mod](/doc/index.md).
 
 [Maven](https://maven.apache.org/) is required to compile, package and install the mod.
 
-**(1)** Do all at once: Install games jar file as dependency; compile mod source; prepare mod file structure; copy mod files to game mod directory
+**(1)** Install games jar file as dependency by copying it from the game installation folder
 ```
-mvn validate install
+mvn validate 
 ```
+
+(i) You only have `validate` once (or when the games got an update you need)
+
+**(2)** Compile mod source; prepare mod file structure; copy mod files to game mod directory
+```
+mvn install 
+```
+
 
 **(!)** Game installation and mod directory paths are configured in the `pom.xml` in the `<profiles>` and are default set to:
 
@@ -24,9 +32,9 @@ mvn validate install
 * **Linux:** ~/.local/share/songsofsyx/mods/
 
 
-**(2)** Run the game and you should see a `songs-of-syx-mod-example` mod. Activate it and launch.
+**(3)** Run the game and you should see a `songs-of-syx-mod-example` mod. Activate it and launch.
 
-**(3)** Start a new game. In the new game settings activate the `room script` under **Scripts**.
+**(4)** Start a new game. In the new game settings activate the `room script` under **Scripts**.
 
 # Build commands
 

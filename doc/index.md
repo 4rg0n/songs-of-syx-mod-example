@@ -38,7 +38,7 @@ public final class ExampleScript implements SCRIPT {
     //...
 
     @Override
-    public SCRIPT_INSTANCE initAfterGameCreated() {
+    public SCRIPT_INSTANCE createInstance() {
         // will log the message with a stacktrace
         GAME.Notify("MESSAGE");
         
@@ -64,7 +64,7 @@ public final class ExampleScript implements SCRIPT {
     //...
 
     @Override
-    public SCRIPT_INSTANCE initAfterGameCreated() {
+    public SCRIPT_INSTANCE createInstance() {
 
         snake2d.CORE;
         view.main.VIEW;
