@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="DEBUG" type="Application" factoryName="Application">
+    <classpathModifications>
+      <entry path="C:\Program Files (x86)\Steam\steamapps\common\Songs of Syx\base\script\jar\Example.jar" />
+    </classpathModifications>
+    <option name="MAIN_CLASS_NAME" value="init.MainProcess" />
+    <option name="PROGRAM_PARAMETERS" value="-Djava.system.class.loader=script.SyxClassLoader" />
+    <option name="WORKING_DIRECTORY" value="C:/Program Files (x86)/Steam/steamapps/common/Songs of Syx" />
+  </configuration>
+</component>
