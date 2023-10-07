@@ -261,7 +261,7 @@
                             <goal>install-file</goal>
                         </goals>
                         <configuration>
-                            <groupId>org.songsofsyx</groupId>
+                            <groupId>com.songsofsyx</groupId>
                             <artifactId>songsofsyx</artifactId>
                             <version>${game.version.major}.${game.version.minor}</version>
                             <packaging>jar</packaging>
