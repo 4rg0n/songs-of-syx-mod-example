@@ -4,6 +4,7 @@ This project is intended for people who want to start modding for the game [Song
 It contains a **roommod**, which will add a simple 1x1 tile room to the game and a random weather eclipse event.
 The maven build pipeline will take care of compiling, packaging and installing the mod into the games mod folder.
 
+You will need a **Java 1.8 JDK** for developing.
 There are also some [tips for developing a mod](/doc/index.md).
 
 # Getting started
