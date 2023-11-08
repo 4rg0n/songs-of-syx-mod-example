@@ -6,7 +6,7 @@ dependency injection and / or inversion of control very hard until impossible. H
 ## Add an API layer
 
 The game code can drastically change from each major version. Because of this, it's a wise idea to be prepared for change.
-The easiest way would be to encapsulate code, which accesses game functionality into its own layer. This doesn't make always sense (e.g. UI code),
+The easiest way would be to encapsulate code, which accesses game functionality into its own layer. This doesn't always make sense (e.g. UI code),
 but should be applied if possible.
 
 Here an example API for manipulating the games settlement sound:
@@ -42,12 +42,12 @@ public class MyButton extends GButt.ButtPanel {
 }
 ```
 
-Keep in mind that this is a strong und somewhat unpredictable link between your custom code and the games code. 
-When the extended class changes its behavior in a game update, it can cause all sorts unwanted behavior in your code or even crash the game. 
+Keep in mind that this is a strong and somewhat unpredictable link between your custom code and the game code. 
+When the extended class changes its behavior in a game update, it can cause all sorts unwanted behavior or even crash the game. 
 
 ## Reflection
 
-This is useful when you need to access to something on runtime. 
+This is useful when you need access to something on runtime. 
 Via [reflection](https://www.baeldung.com/java-reflection), you can circumvent most visibility problems and access private methods and members.
 
 Let's say you want to access this private `Ground.all` field, which contains all available ground types:
@@ -93,7 +93,7 @@ In that case you will not be able to `import` it into your mods package.
 
 ### Extending
 
-The trick is to just put your classes into the same package:
+The trick is to just put your classes into the same package as the class with private access:
 
 ```java
 package settlement.job;
@@ -127,5 +127,5 @@ public abstract class Job implements SETT_JOB {
 ```
 
 When this is referenced by another class via `Job.NOTHING`, the reference won't be there anymore in the compiled Java Bytecode.
-The Java compile will replace all references with its real value. In this case `0x07F`.
+It will replace all references with its real value. In this case `0x07F`.
 So if you want this to be changed, you would also need to replace all classes in your mod, where the reference is used.
