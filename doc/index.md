@@ -1,3 +1,9 @@
+## Howto
+
+A collection of how to mod things in Songs of Syx.
+
+See [howto/index.md](howto/index.md)
+
 ## In-game Debug and Development Tool
 
 **(!)** You have to enable **Debug** and **Developer** in the games Launcher **Settings**.
