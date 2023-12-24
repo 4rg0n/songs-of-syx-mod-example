@@ -23,7 +23,7 @@
         <profile>
             <id>linux</id>
             <properties>
-                <game.mod.direcotry>${user.home}/.local/share/songsofsyx/mods</game.mod.direcotry>
+                <game.mod.directory>${user.home}/.local/share/songsofsyx/mods</game.mod.directory>
                 <game.install.directory>${user.home}/.steam/steam/SteamApps/common/Songs of Syx</game.install.directory>
                 <game.mod.uploader.directory>${user.home}/.local/share/songsofsyx/mods-uploader</game.mod.uploader.directory>
             </properties>
@@ -101,8 +101,8 @@
         <mod.description>This is an example mod made by Jake the game developer.</mod.description>
         <mod.author>Jake</mod.author>
         <mod.info>Just a 1x1 tile room :)</mod.info>
-        <game.version.major>64</game.version.major>
-        <game.version.minor>40</game.version.minor>
+        <game.version.major>65</game.version.major>
+        <game.version.minor>33</game.version.minor>
 
         <!-- Build settings -->
         <game.version.directory>V${game.version.major}</game.version.directory>
