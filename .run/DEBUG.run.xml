@@ -4,7 +4,11 @@
       <entry path="C:\Program Files (x86)\Steam\steamapps\common\Songs of Syx\base\script\jar\Example.jar" />
     </classpathModifications>
     <option name="MAIN_CLASS_NAME" value="init.MainProcess" />
+    <module name="songs-of-syx-mod-example" />
     <option name="PROGRAM_PARAMETERS" value="-Djava.system.class.loader=script.SyxClassLoader" />
     <option name="WORKING_DIRECTORY" value="C:/Program Files (x86)/Steam/steamapps/common/Songs of Syx" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
   </configuration>
 </component>

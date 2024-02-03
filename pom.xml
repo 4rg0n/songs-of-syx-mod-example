@@ -102,7 +102,7 @@
         <mod.author>Jake</mod.author>
         <mod.info>Just a 1x1 tile room :)</mod.info>
         <game.version.major>65</game.version.major>
-        <game.version.minor>33</game.version.minor>
+        <game.version.minor>65</game.version.minor>
 
         <!-- Build settings -->
         <game.version.directory>V${game.version.major}</game.version.directory>
