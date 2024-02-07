@@ -10,8 +10,9 @@ There are also some [tips for developing a mod](/doc/index.md).
 # Getting started
 
 [Maven](https://maven.apache.org/) is required to compile, package and install the mod.
+When using [Intellij IDEA](https://www.jetbrains.com/idea/download/), Maven is already bundled within.
 
-**(1)** Install games jar file as dependency by copying it from the game installation folder
+**(1)** Install games jar file as dependency by copying it from the game installation folder (check whether the path is correct)
 ```
 mvn validate 
 ```
@@ -22,7 +23,6 @@ mvn validate
 ```
 mvn install 
 ```
-
 
 **(!)** Game installation and mod directory paths are configured in the `pom.xml` in the `<profiles>` and are default set to:
 
@@ -36,6 +36,19 @@ mvn install
 
 
 **(3)** Run the game, and you should see a `Example Mod` mod. Activate it and launch.
+
+# Run the game from within your IDE (Intellij IDEA)
+
+There are 3 different "Run Configurations" in the `.run` folder:
+
+* `DEBUG` for running the game with debug capabilities via the little green bug icon
+* `Main` for running the game and skipping the launcher
+* `MainLaunchLauncher` for running the game with launcher
+
+You may have to edit the game installation paths in these files.
+Intellij should automatically recognize these files and add them to your "Run Configuration" selection.
+It is usually found in the upper right hand corner. You can select the via the dropdown menu and run them with the play icon.
+The green bug icon will run the game with debug capabilities. This will only work with the `DEBUG` run configuration though.
 
 # Build commands
 
@@ -74,14 +87,14 @@ mvn clean
 # Mod Info / Build Settings
 
 In the `pom.xml` you will find `<properties>` where you can change information about the mod.
-There you can also change the `<game.version.major>` property to your used game version. 
+There you can also change the `<game.version.major>` property to your used game version.
 The `<game.version.minor>` property is only important when your mod really depends on stuff in this version and isn't compatible with lower versions.
 
 Files (e.g. assets) for the mod are located in `src/main/java/resources/mod-files` and will be copied in the `package` phase.
 
 # Debugging
 
-You can enable **Debug Mode** and **Developer Mode** in the game launcher **settings**. 
+You can enable **Debug Mode** and **Developer Mode** in the game launcher **settings**.
 You will get more detailed logs and in-game developer tools for testing.
 
 ## Intellij IDEA
@@ -97,7 +110,7 @@ It's default set to: `C:/Program Files (x86)/Steam/steamapps/common/Songs of Syx
 And your package name may also differ in the `PATTERN` option.
 It's default set to: `jake.example.*`
 
-They should be automatically available [in the IDE](https://www.jetbrains.com/help/idea/run-debug-configuration.html). 
+They should be automatically available [in the IDE](https://www.jetbrains.com/help/idea/run-debug-configuration.html).
 You can also edit them there :)
 
 ## Eclipse
