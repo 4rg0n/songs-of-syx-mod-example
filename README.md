@@ -7,35 +7,43 @@ The maven build pipeline will take care of compiling, packaging and installing t
 You will need a **Java 1.8 JDK** for developing.
 There are also some [tips for developing a mod](/doc/index.md).
 
+
+# Prerequisite
+
+:warning: Game installation and mod directory paths are configured in the [pom.xml](pom.xml) in `<profiles>` and are default set to:
+
+**Game Installation**
+* **Windows:** `C:\Program Files (x86)\Steam\steamapps\common\Songs of Syx`
+* **Linux:** `~/.steam/steam/SteamApps/common/Songs of Syx`
+
+**Mod Directory**
+* **Windows:** `${user.home}/AppData/Roaming/songsofsyx/mods/`
+* **Linux:** `~/.local/share/songsofsyx/mods/`
+
+**[Mod Uploader](https://cdn.discordapp.com/attachments/664478122347069441/1023961932476186704/Songs_of_Syx_Workshop_Uploader.zip)**
+* **Windows:** `${user.home}/AppData/Roaming/songsofsyx/mods-uploader/`
+* **Linux:** `~/.local/share/songsofsyx/mods-uploader/`
+
+:warning: You may have to adjust these paths accordingly.
+
 # Getting started
 
 [Maven](https://maven.apache.org/) is required to compile, package and install the mod.
 When using [Intellij IDEA](https://www.jetbrains.com/idea/download/), Maven is already bundled within.
 
-**(1)** Install games jar file as dependency by copying it from the game installation folder (check whether the path is correct)
+:one: Install games jar file as [local maven dependency](https://www.baeldung.com/maven-local-repository) by copying it from the game installation folder.
 ```
 mvn validate 
 ```
 
-(i) You only have `validate` once (or when the games got an update you need)
+:information_source: You only have to run `validate` once (or when the games got an update you need)
 
-**(2)** Compile mod source; prepare mod file structure; copy mod files to game mod directory
+:two: Compile mod source; prepare mod file structure; copy mod files to game mod directory
 ```
 mvn install 
 ```
 
-**(!)** Game installation and mod directory paths are configured in the `pom.xml` in the `<profiles>` and are default set to:
-
-**Game Installation**
-* **Windows:** C:\Program Files (x86)\Steam\steamapps\common\Songs of Syx
-* **Linux:** ~/.steam/steam/SteamApps/common/Songs of Syx
-
-**Mod Directory**
-* **Windows:** ${user.home}/AppData/Roaming/songsofsyx/mods/
-* **Linux:** ~/.local/share/songsofsyx/mods/
-
-
-**(3)** Run the game, and you should see a `Example Mod` mod. Activate it and launch.
+:three: Run the game, and you should see a `Example Mod` mod. Activate it and launch.
 
 # Run the game from within your IDE (Intellij IDEA)
 
@@ -52,26 +60,26 @@ The green bug icon will run the game with debug capabilities. This will only wor
 
 # Build commands
 
-**(i)** Installs only the games `SongsOfSyx.jar` and `info/SongsOfSyx-sources.jar` as a dependency, and validate whether it was successful.
+:information_source: Installs only the games `SongsOfSyx.jar` and `info/SongsOfSyx-sources.jar` as a dependency, and validate whether it was successful.
 ```
 mvn validate
 ```
 
-**(!)** This is required or the project won't find the games code.
+:warning: This is required or the project won't find the games code.
 
-**(i)** Building the mod only into `target/out`:
+:information_source: Building the mod only into `target/out`:
 ```
 mvn package
 ```
 
 The source code of the mod will be copied into e.g. `target/out/songs-of-syx-mod-example/V63/script/_src`.
 
-**(i)** Build and copy the output into the games mods folder (excluding `_src`):
+:information_source: Build and copy the output into the games mods folder (excluding `_src`):
 ```
 mvn install
 ```
 
-**(!)** The games mod folder location varies on each OS. There are maven profiles "windows" and "linux". The "windows" profile is the default.
+:warning: The games mod folder location varies on each OS. There are maven profiles "windows" and "linux". The "windows" profile is the default.
 Maven should detect when you are building on a Linux OS and switch to the "linux" profile (not tested).
 You can force a profile with e.g.
 
@@ -79,7 +87,7 @@ You can force a profile with e.g.
 mvn install -P linux
 ```
 
-**(i)** Deletes the `target` directory containing the packaged mod files and removes the mod from the games mod directory.
+:information_source: Deletes the `target` directory containing the packaged mod files and removes the mod from the games mod directory.
 ```
 mvn clean
 ```
@@ -99,10 +107,11 @@ You will get more detailed logs and in-game developer tools for testing.
 
 ## Intellij IDEA
 
-There are two `.xml`files in the `.run/` folder:
+There are three `.xml`files in the `.run/` folder:
 
 * `Main.run.xml` launches the game directly
 * `MainLaunchLauncher.run.xml` starts the game launcher
+* `DEBUG.run.xml` starts the game with debug capabilities
 
 You may want to edit the `WORKING_DIRECTORY` option to your local game installation path.
 It's default set to: `C:/Program Files (x86)/Steam/steamapps/common/Songs of Syx`.
@@ -155,6 +164,7 @@ mvn clean -P mods-uploader
 # Modding Resources
 
 * [Discord](https://discord.com/eacfCuE)
+* [Make a mod](doc/res/MAKE_A_MOD.txt)
 * [Script Modding](https://docs.google.com/document/d/1FVOtfr3Y-cxH2Gw-i-OqW3Vbp0MPJp0xSyQ80UoCABE/edit)
 * [Modding Guide](https://drive.google.com/file/d/1_OesG68HtJ4CwyHK7M72hQDOaCjeqgqT/view) (OUTDATED)
 * [Basic Introduction](https://songsofsyx.old.mod.io/guides/introduction-adding-a-resource)

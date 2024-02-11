@@ -17,7 +17,9 @@
                 <game.mod.uploader.directory>${user.home}/AppData/Roaming/songsofsyx/mods-uploader</game.mod.uploader.directory>
             </properties>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <os>
+                    <family>windows</family>
+                </os>
             </activation>
         </profile>
         <profile>
@@ -29,7 +31,7 @@
             </properties>
             <activation>
                 <os>
-                    <family>Linux</family>
+                    <family>unix</family>
                 </os>
             </activation>
         </profile>
@@ -91,8 +93,8 @@
 
     <properties>
         <!-- Songs of Syx uses Java 1.8 -->
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- These settings will go into the mods _Info.txt file -->

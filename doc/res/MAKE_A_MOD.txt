@@ -1,0 +1,86 @@
+--------MMM_----_MMM---------
+--------MM-M----M-MM---------
+--------MM--M--M--MM---------
+--------MM--M--M--MM---------
+--------MM---MM---MM---------
+--------MM---MM---MM---------
+
+Modification of Songs of Syx is a fairly straight forward process. 
+This is a process where one adds or removes certain files, configurations, and/or scripts from 
+the game's data.zip to modify the behavior of the game.
+
+To get started, one needs to locate the directory where the operating system stored the user data folder for Songs of Syx. 
+One finds this information by clicking on the "INFO" sub-menu in the game's official launcher. 
+Once there, note down the system path for the "mods" folder for later navigation. 
+This path is the "root" or anchor point for all subsequent mention of the "mods" folder. Name this folder something unique, so that it doesn't clas with other folder here.
+
+A mod is a folder inside of the mods folder. The folder needs to contain a few things in order to work:
+
+VERSION FOLDER
+A folder named VXX - where XX is the main version of the game that the mod is built for, eg. V65.
+It can contain several VXX folders, and the game will pick the correct version automatically. EG. the game is version 65, folders V64 and V63
+exist. the game will pick V64. Naturally, ideally there should be a V65 folder. The version folder is where you put all your stuff.
+
+INFO FILE
+Within the user's mod folder, it is required to have a text file with the name "_Info.txt". 
+Treat the name of this file as case-sensitive, i.e. it must be spelt exactly as described. 
+Once the file is named and created, open it with an editor, 
+e.g. Notepad on Windows or vi on Linux or Mac OS, and paste in the contents between the /--...--/
+
+/------------------------------------------------------/
+VERSION: "0.3",
+NAME: "My mod",
+DESC: "My mod description",
+AUTHOR: "My name",
+INFO: "My web page, etc",
+/------------------------------------------------------/
+
+This is the meta data that the game uses to identify the user's mod within the mod list. 
+For those not familiar, this list of five records is a key-value list where each record is separated by a comma. 
+VERSION is a self-designated numerical format to keep track of ones work. Songs of Syx uses RR.MM.mm, where RR is the release number, MM is major number, and mm is minor number, e.g. 0.61.28. 
+However, one is free to use any convention so long as they are consistent. 
+NAME is the mod name as it will appeare in the launcher's mod list. This identifier doesn't need to be equivalent to the mod folder's identifier. 
+However, one is encouraged to keep them similar. Do not use a name with double quote (") in them as currently there is no escape mechanism in the string, e.g. 
+"My "fish" mod" is an erroneous string for NAME. DESC, AUTHOR, and INFO are further opportunities for one to keep and give information to the public. 
+The only advise here is to keep them curt and informative.
+
+
+
+
+In the end it should look like this:
+
+Fig.1 Folder structure of a mod (characters following // are comments):
+|------/[mods]
+	|------/[user's-mod-name] // Folder
+		|------(_Info.txt) // File
+		|------/[V##] //Target game version
+		|	|------/[*] //Folder with changes to the game's data.zip
+		|	|------/[*]
+		|------/[V##]
+		|	|------/[*]
+		|	|------/[*]
+		|...
+		|...
+		|...
+
+
+
+Once you've put these two things into your mod folder, it should be displayed when you run the launcher of the game.
+
+MODDING
+
+Ok, now back to your current version folder. Go to the game installation directory. Find the base/data.zip . Unzip data.zip somehwere convinient.
+in the unzipped result there is a folder named "data". Now this is the "mod" the game reads from when playing vanilla. When having a mod enabled,
+the game first looks in your version folder for a file and tries to use that one, then falls back on the data folder.
+In your version folder you can mimic the data folder and overwrite every single file. Files beginning with an _ are special, in that they must exist.
+Other files are read dynamically, like a list. For instance when looking for a hunter room, the game will look for _HUNTER.txt. But when looking for a
+refiner room, the game will grab all files that are refiners and make refiners out of them. When you add a refiner file in your mod, you'll get a 
+union of the vanilla ones and yours as a result. If you want to skip the vanilla ones, add an empty file _IgnoreVanilla.txt in the folder of what you want
+gone from the vanilla.
+
+Use "developer" and "debug" in the launcher when modding, to pick up any errors. 
+
+P.S. Note, this quick guide made no mention of how to "upload" the mod to a distribution service such as mod.io or Steam's workshop. This is a complex topic that is subject to change, so consult the user within Songs of Syx Discord (#modding-chat) channel for help in this matter.
+
+
+
