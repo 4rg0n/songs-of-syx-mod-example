@@ -58,6 +58,10 @@ Intellij should automatically recognize these files and add them to your "Run Co
 It is usually found in the upper right hand corner. You can select the via the dropdown menu and run them with the play icon.
 The green bug icon will run the game with debug capabilities. This will only work with the `DEBUG` run configuration though.
 
+# Start making your own mod
+
+See [make your own mod](doc/howto/make_your_own_mod.md).
+
 # Build commands
 
 :information_source: Installs only the games `SongsOfSyx.jar` and `info/SongsOfSyx-sources.jar` as a dependency, and validate whether it was successful.

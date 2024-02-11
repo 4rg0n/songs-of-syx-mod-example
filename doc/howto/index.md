@@ -1,5 +1,7 @@
 # How to
 
+## [Make your own mod](make_your_own_mod.md)
+
 ## Code
 
 ### [Access game code](access_game_code.md)

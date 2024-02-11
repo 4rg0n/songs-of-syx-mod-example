@@ -6,7 +6,7 @@ See [howto/index.md](howto/index.md)
 
 ## In-game Debug and Development Tool
 
-**(!)** You have to enable **Debug** and **Developer** in the games Launcher **Settings**.
+:warning: You have to enable **Debug** and **Developer** in the games Launcher **Settings**.
 
 ```java
 import view.interrupter.IDebugPanel;
@@ -391,7 +391,7 @@ public class AfterGameCreatedAvailabilityTest {
 ```
 ### RunningGame
 
-**(i)** This means when `SCRIPT_INSTANCE.update()` of your mod is executed by the game.
+:information_source: This means when `SCRIPT_INSTANCE.update()` of your mod is executed by the game.
 
 ```java
 public class RunningGameAvailabilityTest {
