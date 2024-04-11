@@ -4,6 +4,28 @@ A collection of how to mod things in Songs of Syx.
 
 See [howto/index.md](howto/index.md)
 
+## Game Boosters
+
+Boosters are found all over the place in the `.txt` configuration files of the game.
+They are mostly under the key `BOOST` or `BONUS`. They follow a special syntax:
+
+```
+BOOST: {
+	RELIGION_CRATOR>ADD: -1.0,
+	RELIGION_AMINION>ADD: -1.0,
+	RELIGION_ATHURI>ADD: 0.0,
+	RELIGION_SHMALOR>ADD: -1.0,
+	PHYSICS_RESISTANCE_COLD>MUL: 2.0,
+	PHYSICS_RESISTANCE_HOT>MUL: 0.75,
+},
+```
+
+```
+{BOOSTER_KEY}>{ADD|MUL}: 0.0,
+```
+
+* [All possible BOOSTER_KEYs](howto/index.md)
+
 ## In-game Debug and Development Tool
 
 :warning: You have to enable **Debug** and **Developer** in the games Launcher **Settings**.
