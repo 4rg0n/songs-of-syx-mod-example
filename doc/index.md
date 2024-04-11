@@ -24,7 +24,7 @@ BOOST: {
 {BOOSTER_KEY}>{ADD|MUL}: 0.0,
 ```
 
-* [All possible BOOSTER_KEYs](howto/index.md)
+* [All possible BOOSTER_KEYs](booster/boosters_all.md)
 
 ## In-game Debug and Development Tool
 
