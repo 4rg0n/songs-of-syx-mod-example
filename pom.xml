@@ -26,7 +26,7 @@
             <id>linux</id>
             <properties>
                 <game.mod.directory>${user.home}/.local/share/songsofsyx/mods</game.mod.directory>
-                <game.install.directory>${user.home}/.steam/steam/SteamApps/common/Songs of Syx</game.install.directory>
+                <game.install.directory>${user.home}/.steam/steam/steamapps/common/Songs of Syx</game.install.directory>
                 <game.mod.uploader.directory>${user.home}/.local/share/songsofsyx/mods-uploader</game.mod.uploader.directory>
             </properties>
             <activation>
