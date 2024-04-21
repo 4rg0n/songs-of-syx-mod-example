@@ -26,6 +26,10 @@ There are also some [tips for developing a mod](/doc/index.md).
 
 :warning: You may have to adjust these paths accordingly.
 
+# Setup for Intellij IDEA
+
+[Setup Intellij IDEA](doc/howto/intellij_setup.md)
+
 # Getting started
 
 [Maven](https://maven.apache.org/) is required to compile, package and install the mod.
@@ -108,23 +112,6 @@ Files (e.g. assets) for the mod are located in `src/main/java/resources/mod-file
 
 You can enable **Debug Mode** and **Developer Mode** in the game launcher **settings**.
 You will get more detailed logs and in-game developer tools for testing.
-
-## Intellij IDEA
-
-There are three `.xml`files in the `.run/` folder:
-
-* `Main.run.xml` launches the game directly
-* `MainLaunchLauncher.run.xml` starts the game launcher
-* `DEBUG.run.xml` starts the game with debug capabilities
-
-You may want to edit the `WORKING_DIRECTORY` option to your local game installation path.
-It's default set to: `C:/Program Files (x86)/Steam/steamapps/common/Songs of Syx`.
-
-And your package name may also differ in the `PATTERN` option.
-It's default set to: `jake.example.*`
-
-They should be automatically available [in the IDE](https://www.jetbrains.com/help/idea/run-debug-configuration.html).
-You can also edit them there :)
 
 ## Eclipse
 

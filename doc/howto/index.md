@@ -1,6 +1,7 @@
 # How to
 
 ## [Make your own mod](make_your_own_mod.md)
+## [Setup Intellij IDEA](intellij_setup.md)
 
 ## Code
 
