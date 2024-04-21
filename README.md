@@ -14,7 +14,7 @@ There are also some [tips for developing a mod](/doc/index.md).
 
 **Game Installation**
 * **Windows:** `C:\Program Files (x86)\Steam\steamapps\common\Songs of Syx`
-* **Linux:** `~/.steam/steam/SteamApps/common/Songs of Syx`
+* **Linux:** `~/.steam/steam/steamapps/common/Songs of Syx`
 
 **Mod Directory**
 * **Windows:** `${user.home}/AppData/Roaming/songsofsyx/mods/`
