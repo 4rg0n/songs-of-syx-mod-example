@@ -13,12 +13,17 @@ import util.info.INFO;
 /**
  * Entry point for the mod.
  * See {@link SCRIPT} for some documentation.
+ *
+ * Adds the new room to the game and initializes the mod {@link script.SCRIPT.SCRIPT_INSTANCE}.
  */
 @NoArgsConstructor
 @SuppressWarnings("unused") // used by the game via reflection
-public final class ModRoomScript implements SCRIPT {
+public final class MainScript implements SCRIPT {
 
-	private final INFO info = new INFO("room script", "more rooms");
+	/**
+	 * This info will be displayed when starting a new game and choosing a script
+	 */
+	private final INFO info = new INFO("Example Mod", "Adds a 1x1 room and a sun eclipse, which changes the light color.");
 
 	@Override
 	public CharSequence name() {
@@ -43,6 +48,6 @@ public final class ModRoomScript implements SCRIPT {
 
 	@Override
 	public SCRIPT_INSTANCE createInstance() {
-		return new WeatherEclipseScript();
+		return new InstanceScript();
 	}
 }
