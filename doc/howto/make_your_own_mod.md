@@ -47,4 +47,49 @@ See also [Java package naming conventions](https://docs.oracle.com/javase/tutori
 
 The `package` is also referenced in the Java `.class` files. So you'll have to adjust them there too.
 
+You can delete the `room` package and your `*Script` classes should look like:
+
+`MainScript.java`
+```java
+@NoArgsConstructor
+public final class MainScript implements SCRIPT {
+
+	private final INFO info = new INFO("Your Mod Name", "Your Description");
+
+	@Override
+	public CharSequence name() {
+		return info.name;
+	}
+
+	@Override
+	public CharSequence desc() {
+		return info.desc;
+	}
+
+	@Override
+	public void initBeforeGameCreated() {}
+
+	@Override
+	public SCRIPT_INSTANCE createInstance() {
+		return new InstanceScript();
+	}
+}
+```
+
+`InstanceScript.java`
+```java
+@NoArgsConstructor
+final class InstanceScript implements SCRIPT.SCRIPT_INSTANCE {
+    
+    @Override
+    public void save(FilePutter file) {}
+    
+    @Override
+    public void load(FileGetter file) {}
+    
+    @Override
+    public void update(double ds) {}
+}
+```
+
 ## Start modding!
