@@ -17,6 +17,7 @@ import snake2d.util.gui.clickable.CLICKABLE;
 import snake2d.util.gui.renderable.RENDEROBJ;
 import snake2d.util.misc.ACTION;
 import util.gui.misc.GText;
+import view.main.VIEW;
 
 import static menu.GUI.*;
 
@@ -31,35 +32,48 @@ class ScMain implements SC{
 
 	private final GuiSection first;
 	private final GuiSection play;
+	private final GuiSection scenario;
 	private GuiSection current;
 	private final RENDEROBJ.Sprite logo;
 	private final Menu menu;
 	private final GText version = new GText(UI.FONT().H2, VERSION.VERSION_STRING);
 	ScMain(Menu menu) {
-		
+
 		D.t(this);
 		this.menu = menu;
 		first = getFirst(menu);
 		play = getPlay(menu);
 		play.body().moveY1(first.body().y1());
-		
-		logo = new RENDEROBJ.Sprite(RESOURCES.s().logo);
+		scenario = getScenario(menu);
+		scenario.body().moveY1(first.body().y1());
+
+		logo = new RENDEROBJ.Sprite(menu.res.s().logo);
 		logo.body().moveX2(left.x2());
 		logo.body().centerY(left);
-		logo.setColor(COLORS.menu);
-		
-		
-		
+		logo.setColor(GUI.COLORS.menu);
+
+
+
 		current = first;
-		
+
 	}
-	
+
+	private static CharSequence ¤¤continue = "continue";
+	private static CharSequence ¤¤quit = "quit";
+	private static CharSequence ¤¤play = "play";
+	private static CharSequence ¤¤scenario = "scenario";
+	private static CharSequence ¤¤editor = "editor";
+
+	static {
+		D.ts(ScMain.class);
+	}
+
 	private GuiSection getFirst(Menu menu){
-		
+
 		GuiSection current = new GuiSection();
 		CLICKABLE text;
-		
-		text = getNavButt(D.g("play"));
+
+		text = getNavButt(¤¤play);
 		text.clickActionSet(new ACTION() {
 			@Override
 			public void exe() {
@@ -67,15 +81,15 @@ class ScMain implements SC{
 			}
 		});
 		current.addDown(0, text);
-		
-		text = new Button(UI.FONT().H1.getText(D.g("continue"))) {
+
+		text = new Button(UI.FONT().H1.getText(¤¤continue)) {
 			@Override
 			protected void render(SPRITE_RENDERER r, float ds, boolean isActive, boolean isSelected,
-					boolean isHovered) {
+								  boolean isHovered) {
 				activeSet(menu.load.hasSaves());
 				super.render(r, ds, isActive, isSelected, isHovered);
 			}
-			
+
 			@Override
 			protected void clickA() {
 				if (menu.load.hasSaves())
@@ -83,8 +97,8 @@ class ScMain implements SC{
 			}
 		};
 		current.addDown(8, text);
-		
-		text = getNavButt(D.g("settings"));
+
+		text = getNavButt(ScOptions.¤¤name);
 		text.clickActionSet(new ACTION() {
 			@Override
 			public void exe() {
@@ -92,8 +106,8 @@ class ScMain implements SC{
 			}
 		});
 		current.addDown(8, text);
-		
-		text = getNavButt(D.g("credits"));
+
+		text = getNavButt(ScCredits.¤¤name);
 		text.clickActionSet(new ACTION() {
 			@Override
 			public void exe() {
@@ -103,7 +117,7 @@ class ScMain implements SC{
 		current.addDown(8, text);
 
 		// MODDED: adds another menu entry opening the credits
-		text = getNavButt("Example Mod");
+		text = getNavButt("Example Entry (Credits)");
 		text.clickActionSet(new ACTION() {
 			@Override
 			public void exe() {
@@ -111,8 +125,8 @@ class ScMain implements SC{
 			}
 		});
 		current.addDown(8, text);
-		
-		text = getNavButt(D.g("quit"));
+
+		text = getNavButt(¤¤quit);
 		text.clickActionSet(new ACTION() {
 			@Override
 			public void exe() {
@@ -120,48 +134,20 @@ class ScMain implements SC{
 			}
 		});
 		current.addDown(8, text);
-		
+
 		current.body().moveX1(right.x1());
 		current.body().centerY(right.y1(), right.y2());
-		
-//		RENDEROBJ rr = new RENDEROBJ.RenderImp(600, 400) {
-//			
-//			private final Str s = new Str("");
-//			{
-//				s.add("Quicksave").s().NL();
-//				s.add("This is you captain speaking. Please ramian in your seats while I open this new conjak. I feel a bit dizzy, I think I'm loosing control of the plane");
-//				s.NL();
-//				s.add("abcdefghijklmnopqrstuvxyzåäöabcdefghijklmnopqrstuvxyzåäöabcdefghijklmnopqrstuvxyzåäöabcdefghijklmnopqrstuvxyzåäö");
-//			}
-//			double d = 0;
-//			
-//			@Override
-//			public void render(SPRITE_RENDERER r, float ds) {
-//				d += ds*0.5;
-//				int st = (int) (d % DIR.ALL.size());
-//				COLOR.RED100.render(r, body);
-//				
-//				Font f = UI.FONT().H2;
-//				
-//				
-//				f.renderIn(r, body(), DIR.ALL.get(st), s, 2);
-//				
-//				
-//			}
-//		};
-//		
-//		current.addRelBody(8, DIR.W, rr);
-		
+
 		return current;
 	}
-	
-	
+
+
 	private GuiSection getPlay(Menu menu){
-		
+
 		GuiSection current = new GuiSection();
-		
+
 		CLICKABLE text;
-		
+
 		text = getNavButt(ScLoad.¤¤name);
 		text.clickActionSet(new ACTION() {
 			@Override
@@ -170,35 +156,19 @@ class ScMain implements SC{
 			}
 		});
 		current.addDown(0, text);
-		
-		
-		text = getNavButt(D.g("tutorial"));
+
+		text = getNavButt(ScCampaign.¤¤name);
 		text.clickActionSet(new ACTION() {
 			@Override
 			public void exe() {
-				menu.start(new GameLoader(PATHS.MISC().SAVES.get("_Tutorial")) {
-					@Override
-					public CORE_STATE getState() {
-						CORE_STATE s = super.getState();
-						GAME.events().tutorial.enabled = true;
-						return s;
-					}
-				});
-			}
-		});
-		text.activeSet(PATHS.MISC().hasTutorial);
-		current.addDown(8, text);
-		
-		text = getNavButt(menu.examples.¤¤name);
-		text.clickActionSet(new ACTION() {
-			@Override
-			public void exe() {
-				menu.switchScreen(menu.examples);
+				menu.switchScreen(menu.campaigns);
+
 			}
 		});
 		current.addDown(8, text);
-		
-		text = getNavButt(menu.sandbox.¤¤name);
+
+
+		text = getNavButt(ScRandom.¤¤name);
 		text.clickActionSet(new ACTION() {
 			@Override
 			public void exe() {
@@ -206,7 +176,18 @@ class ScMain implements SC{
 			}
 		});
 		current.addDown(8, text);
-		
+
+
+
+		text = getNavButt(¤¤scenario);
+		text.clickActionSet(new ACTION() {
+			@Override
+			public void exe() {
+				switchNavigator(scenario);
+			}
+		});
+		current.addDown(8, text);
+
 		text = getBackArrow();
 		text.clickActionSet(new ACTION() {
 			@Override
@@ -215,18 +196,73 @@ class ScMain implements SC{
 			}
 		});
 		current.addDown(10, text);
-		
+
 		current.body().moveX1(right.x1());
 		current.body().centerY(right);
-		
+
 		return current;
 	}
-	
+
+	private GuiSection getScenario(Menu menu){
+
+		GuiSection current = new GuiSection();
+
+		CLICKABLE text;
+
+		for (ScLoader l : menu.loads) {
+			text = getNavButt(l.name);
+			text.clickActionSet(new ACTION() {
+				@Override
+				public void exe() {
+					menu.switchScreen(l);
+				}
+			});
+			if (!l.hasSaves())
+				text.activeSet(false);
+			current.addDown(8, text);
+		}
+
+		text = getNavButt(¤¤editor);
+		text.clickActionSet(new ACTION() {
+			@Override
+			public void exe() {
+				menu.start(new CORE_STATE.Constructor() {
+
+					@Override
+					public CORE_STATE getState() {
+						new GAME();
+						CORE_STATE s = new VIEW();
+
+						VIEW.world().editor.activate();
+
+						return s;
+					}
+				});
+			}
+		});
+		current.addDown(8, text);
+
+
+		text = getBackArrow();
+		text.clickActionSet(new ACTION() {
+			@Override
+			public void exe() {
+				switchNavigator(play);
+			}
+		});
+		current.addDown(10, text);
+
+		current.body().moveX1(right.x1());
+		current.body().centerY(right);
+
+		return current;
+	}
+
 	private void switchNavigator(GuiSection section){
 		current = section;
 		current.hover(menu.getMCoo());
 	}
-	
+
 	@Override
 	public void render(SPRITE_RENDERER r, float ds) {
 		logo.render(r, ds);
@@ -243,11 +279,14 @@ class ScMain implements SC{
 	public boolean click() {
 		return current.click();
 	}
-	
+
 	@Override
 	public boolean back(Menu menu) {
 		if (current != first) {
-			switchNavigator(first);
+			if (current == scenario)
+				switchNavigator(play);
+			else
+				switchNavigator(first);
 			return true;
 		}
 		return false;

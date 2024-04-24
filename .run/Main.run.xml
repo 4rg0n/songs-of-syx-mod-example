@@ -5,7 +5,7 @@
     <option name="WORKING_DIRECTORY" value="C:/Program Files (x86)/Steam/steamapps/common/Songs of Syx" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="jake.example.*" />
+        <option name="PATTERN" value="your.mod.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>

@@ -32,22 +32,22 @@ The game will read this to check whether your mod is compatible with the game ve
 <mod.name>Example Mod</mod.name>
 <mod.description>This is an example mod made by Jake the game developer.</mod.description>
 <mod.author>Jake</mod.author>
-<mod.info>Just a 1x1 tile room :)</mod.info>
-<game.version.major>65</game.version.major>
-<game.version.minor>65</game.version.minor>
+<mod.info>Example</mod.info>
+<game.version.major>66</game.version.major>
+<game.version.minor>12</game.version.minor>
 ```
 
 ## Java Package
 
 :warning: This is only required when your mod will have code. Else you could just delete the [src/main/java/jake](../../src/main/java/jake) folder.
 
-The example mod uses `jake.example.room` as package in [src/main/java](../../src/main/java) folder. 
+The example mod uses `your.mod` as package in [src/main/java](../../src/main/java) folder. 
 You should refactor the names to your own package e.g. `com.github.argon.mymod`.
 See also [Java package naming conventions](https://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html).
 
 The `package` is also referenced in the Java `.class` files. So you'll have to adjust them there too.
 
-You can delete the `room` package and your `*Script` classes should look like:
+Your `*Script` classes should look like:
 
 `MainScript.java`
 ```java

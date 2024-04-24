@@ -1,7 +1,7 @@
 **For V66**
 
 This project is intended for people who want to start modding for the game [Songs of Syx](https://store.steampowered.com/app/1162750/Songs_of_Syx/).
-It contains a **roommod**, which will add a simple 1x1 tile room to the game and a random weather eclipse event.
+It contains a random weather eclipse event, which changes the light color.
 The maven build pipeline will take care of compiling, packaging and installing the mod into the games mod folder.
 
 You will need a **Java 1.8 JDK** for developing.
@@ -163,7 +163,7 @@ mvn clean -P mods-uploader
 
 # DISCLAIMER
 
-The source code of the "roommod" example comes from the game files itself and were written by the game dev Jake de Laval.
+The source code of the "eclipse" example comes from the game files itself and were written by the game dev Jake de Laval.
 I've just build the maven tooling around it.
 
 

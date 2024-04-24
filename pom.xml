@@ -102,9 +102,9 @@
         <mod.name>Example Mod</mod.name>
         <mod.description>This is an example mod made by Jake the game developer.</mod.description>
         <mod.author>Jake</mod.author>
-        <mod.info>Just a 1x1 tile room :)</mod.info>
+        <mod.info>Example</mod.info>
         <game.version.major>66</game.version.major>
-        <game.version.minor>0</game.version.minor>
+        <game.version.minor>12</game.version.minor>
 
         <!-- Build settings -->
         <game.version.directory>V${game.version.major}</game.version.directory>
