@@ -104,7 +104,7 @@
         <mod.author>Jake</mod.author>
         <mod.info>Example</mod.info>
         <game.version.major>66</game.version.major>
-        <game.version.minor>12</game.version.minor>
+        <game.version.minor>45</game.version.minor>
 
         <!-- Build settings -->
         <game.version.directory>V${game.version.major}</game.version.directory>

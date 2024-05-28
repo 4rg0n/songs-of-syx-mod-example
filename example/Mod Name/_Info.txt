@@ -1,0 +1,7 @@
+VERSION: "1.0.0",
+GAME_VERSION_MAJOR: 66,
+GAME_VERSION_MINOR: 45,
+NAME: "Example Mod",
+DESC: "Example",
+AUTHOR: "Example",
+INFO: "Example",
