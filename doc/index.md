@@ -4,11 +4,11 @@ A collection of how to mod things in Songs of Syx.
 
 See [howto/index.md](howto/index.md)
 
-## Mod file structure
+## Mod folder structure
 
 The mod structure reflects the structure found in the game `base/data.zip/data` folder. 
 I would suggest you extract it and open the folder in an editor of your choice (e.g. IDEA or VS Code).
-This way you can easily search and browse through the vanilla game files and get a better understanding.
+This way you can easily search and browse through the vanilla game files and get a better understanding of them.
 You can find an [example here](../example).
 
 ```
@@ -38,10 +38,10 @@ You can replace vanilla game files by naming them the same as the original and p
 ```
 Mod Name
 └── V66
-   └── assets
-       └── init
-           └── race
-               └── HUMAN.txt
+    └── assets
+        └── init
+            └── race
+                └── HUMAN.txt
 ```
 
 
@@ -50,10 +50,10 @@ The same way it's possible to add your own custom files in some places e.g. for 
 ```
 Mod Name
 └── V66
-   └── assets
-       └── init
-           └── race
-               └── YOUR_RACE.txt
+    └── assets
+        └── init
+            └── race
+                └── YOUR_RACE.txt
 ```
 
 By placing a file named `_IgnoreVanilla.txt` in a folder, the game will ignore the vanilla files and only load your mod files.
@@ -62,11 +62,11 @@ With this it's possible to e.g. remove all vanilla races from the game and only 
 ```
 Mod Name
 └── V66
-   └── assets
-       └── init
-           └── race
-               ├── YOUR_ONLY_RACE.txt
-               └── _IgnoreVanilla.txt              
+    └── assets
+        └── init
+            └── race
+                ├── YOUR_ONLY_RACE.txt
+                └── _IgnoreVanilla.txt              
 ```
 
 ## Game Boosters
