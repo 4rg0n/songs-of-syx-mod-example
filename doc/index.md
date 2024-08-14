@@ -4,6 +4,40 @@ A collection of how to mod things in Songs of Syx.
 
 See [howto/index.md](howto/index.md)
 
+## Mod file structure
+
+The mod structure reflects the structure found in the game `base/data.zip/data` folder. 
+I would suggest you extract it and open the folder in an editor of your choice (e.g. IDEA or VS Code).
+This way you can easily search and browse through the vanilla game files and get a better understanding.
+You can find an [example here](../example).
+
+```
+Mod Name            // this should be the name of your mod
+├── V66             // this must be the game major version
+|   ├── assets      // here all sorts of configurations, sprites and sounds are located
+|   ├── campaigns   // custom made campaigns (I guess it's still WIP)
+|   ├── examples    // a place to put save some example save games for your mod
+|   ├── saves       // if you want to publish your save(s) as a downloadable mod
+|   └── script      // here your code would life in form of one or multiple Java *.jar files
+└── _Info.txt       // contains some basic information about your mod.
+```
+
+**\_Info.txt**
+```
+VERSION: "1.0.0",
+GAME_VERSION_MAJOR: 66,
+GAME_VERSION_MINOR: 45,
+NAME: "Example Mod",
+DESC: "This is an example mod made by Jake the game developer.",
+AUTHOR: "Jake",
+INFO: "Example",
+```
+
+You can replace vanilla game files by naming them the same as the original and putting it in the same directory of your mod.
+The same way it's possible to add your own custom files in some places e.g. for races or rooms.
+By placing a file named `_IgnoreVanilla.txt` in a folder, the game will ignore the vanilla files and only load your mod files.
+With this it's possible to e.g. remove all vanilla races from the game and only load your own.
+
 ## Game Boosters
 
 Boosters are found all over the place in the `.txt` configuration files of the game.
