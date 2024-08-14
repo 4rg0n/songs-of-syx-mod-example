@@ -34,9 +34,40 @@ INFO: "Example",
 ```
 
 You can replace vanilla game files by naming them the same as the original and putting it in the same directory of your mod.
+
+```
+Mod Name
+└── V66
+   └── assets
+       └── init
+           └── race
+               └── HUMAN.txt
+```
+
+
 The same way it's possible to add your own custom files in some places e.g. for races or rooms.
+
+```
+Mod Name
+└── V66
+   └── assets
+       └── init
+           └── race
+               └── YOUR_RACE.txt
+```
+
 By placing a file named `_IgnoreVanilla.txt` in a folder, the game will ignore the vanilla files and only load your mod files.
 With this it's possible to e.g. remove all vanilla races from the game and only load your own.
+
+```
+Mod Name
+└── V66
+   └── assets
+       └── init
+           └── race
+               ├── YOUR_ONLY_RACE.txt
+               └── _IgnoreVanilla.txt              
+```
 
 ## Game Boosters
 
