@@ -4,6 +4,12 @@ A collection of how to mod things in Songs of Syx.
 
 See [howto/index.md](howto/index.md)
 
+## What is a mod in Songs of Syx?
+
+A mod follows a defined **folder structure**. It can contain game assets such as configs, sprites, sounds or texts and it can contain Java code.
+The games config structures makes it possible to extend. So it's easy to add new content or alter already present content via just configuration files.
+As soon as you want to change a behavior or add a new feature, you will have to use Java code to achieve this.
+
 ## Mod folder structure
 
 The mod structure reflects the structure found in the game `base/data.zip/data` folder. 
@@ -67,6 +73,15 @@ Mod Name
             └── race
                 ├── YOUR_ONLY_RACE.txt
                 └── _IgnoreVanilla.txt              
+```
+
+If you want to, you can have multiple `Vxx` folders in your mod, for supporting multiple game versions.
+
+```
+Mod Name
+├── V64
+├── V65
+└── V66            
 ```
 
 ## Game Boosters
@@ -148,7 +163,8 @@ public final class ExampleScript implements SCRIPT {
 
 ## Static game classes
 
-These classes contain various accessible information and features for the game.
+These classes contain various accessible information and features for the game. This was made for V64 of the game.
+So things may have changed, but this still gives you a rough idea what to expect.
 
 ```java
 
