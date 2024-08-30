@@ -108,7 +108,10 @@ BOOST: {
 
 ## In-game Debug and Development Tool
 
-:warning: You have to enable **Debug** and **Developer** in the games Launcher **Settings**.
+:warning: You have to enable **Developer** mode in the games Launcher **Settings**.
+
+:information_source: **Debug** mode will display additional code related information in some places. 
+It will also occasionally pause your game. Enable this only if you really need it.
 
 ```java
 import view.interrupter.IDebugPanel;
