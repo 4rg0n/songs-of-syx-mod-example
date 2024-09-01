@@ -7,8 +7,9 @@
 
 ### [Access game code](access_game_code.md)
 ### [Modding Strategy](modding_strategy.md)
+### [Add a UI Element](add_ui_element.md)
 ### Add a Job
-### Add an UI Element
+
 
 ## Configure
 
