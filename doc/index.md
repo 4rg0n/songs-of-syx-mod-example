@@ -106,6 +106,17 @@ BOOST: {
 
 * [All possible BOOSTER_KEYs](booster/boosters_all.md)
 
+## Scripting / Coding
+
+You can extend or change the game in any way you want via Java code.
+This project serves as a good starting point for it.
+The two most important things here are the `script.SCRIPT` and `script.SCRIPT.SCRIPT_INSTANCE` interfaces.
+
+`script.SCRIPT` - Any class implementing this interface, will be loaded by the game and displayed as an entry in "Scripts" when starting a new game. See: [MainScript](../src/main/java/your/mod/MainScript.java)
+
+`script.SCRIPT.SCRIPT_INSTANCE` - Any `SCRIPT` has to provide an instance. See. [InstanceScript](../src/main/java/your/mod/InstanceScript.java)
+
+
 ## In-game Debug and Development Tool
 
 :warning: You have to enable **Developer** mode in the games Launcher **Settings**.
