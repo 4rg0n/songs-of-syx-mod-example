@@ -1,13 +1,10 @@
 package menu;
 
 import game.GAME;
-import game.GameLoader;
 import game.VERSION;
 import init.C;
-import init.D;
-import init.paths.PATHS;
 import init.sprite.UI.UI;
-import menu.GUI.*;
+import init.text.D;
 import snake2d.CORE;
 import snake2d.CORE_STATE;
 import snake2d.SPRITE_RENDERER;
