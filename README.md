@@ -62,6 +62,10 @@ Intellij should automatically recognize these files and add them to your "Run Co
 It is usually found in the upper right hand corner. You can select the via the dropdown menu and run them with the play icon.
 The green bug icon will run the game with debug capabilities. This will only work with the `DEBUG` run configuration though.
 
+# Mod SDK
+
+See [Mod SDK Setup](doc/howto/mod_sdk_setup.md)
+
 # Start making your own mod
 
 See [make your own mod](doc/howto/make_your_own_mod.md).
