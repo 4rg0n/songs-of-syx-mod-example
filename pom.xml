@@ -13,6 +13,7 @@
             <id>windows</id>
             <properties>
                 <game.mod.directory>${user.home}/AppData/Roaming/songsofsyx/mods</game.mod.directory>
+                <game.workshop.directory>C:/Program Files (x86)/Steam/steamapps/workshop/content/1162750</game.workshop.directory>
                 <game.install.directory>C:/Program Files (x86)/Steam/steamapps/common/Songs of Syx</game.install.directory>
                 <game.mod.uploader.directory>${user.home}/AppData/Roaming/songsofsyx/mods-uploader</game.mod.uploader.directory>
             </properties>
@@ -26,6 +27,7 @@
             <id>linux</id>
             <properties>
                 <game.mod.directory>${user.home}/.local/share/songsofsyx/mods</game.mod.directory>
+                <game.workshop.directory>${user.home}/.steam/steam/steamapps/workshop/content/1162750</game.workshop.directory>
                 <game.install.directory>${user.home}/.steam/steam/steamapps/common/Songs of Syx</game.install.directory>
                 <game.mod.uploader.directory>${user.home}/.local/share/songsofsyx/mods-uploader</game.mod.uploader.directory>
             </properties>
@@ -36,28 +38,88 @@
             </activation>
         </profile>
         <profile>
+            <id>mod-sdk-steam</id>
+            <properties>
+                <mod.sdk.directory>${game.workshop.directory}/${mod.sdk.workshop.id}</mod.sdk.directory>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>mod-sdk</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-install-plugin</artifactId>
+                        <executions>
+                            <!-- Install mod-sdk jar as dependency code -->
+                            <execution>
+                                <id>install-mod-sdk-jar</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>install-file</goal>
+                                </goals>
+                                <configuration>
+                                    <groupId>com.github.argon.sos</groupId>
+                                    <artifactId>sos-mod-sdk</artifactId>
+                                    <version>sdk-${mod.sdk.version}</version>
+                                    <packaging>jar</packaging>
+                                    <file>${mod.sdk.jar.directory}/${mod.sdk.name}.jar</file>
+                                    <generatePom>true</generatePom>
+                                </configuration>
+                            </execution>
+
+                            <!-- Install mod-sdk source jar as dependency code -->
+                            <execution>
+                                <id>install-mod-sdk-sources-jar</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>install-file</goal>
+                                </goals>
+                                <configuration>
+                                    <groupId>com.github.argon.sos</groupId>
+                                    <artifactId>sos-mod-sdk</artifactId>
+                                    <version>sdk-${mod.sdk.version}</version>
+                                    <packaging>jar</packaging>
+                                    <classifier>sources</classifier>
+                                    <file>${mod.sdk.jar.src.directory}/${mod.sdk.name}-sources.jar</file>
+                                    <generatePom>false</generatePom>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+            <dependencies>
+                <dependency>
+                    <groupId>com.github.argon.sos</groupId>
+                    <artifactId>sos-mod-sdk</artifactId>
+                    <version>sdk-${mod.sdk.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
             <id>mods-uploader</id>
             <build>
                 <plugins>
                     <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-clean-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <configuration>
-                                    <filesets>
-                                        <fileset>
-                                            <!-- Remove installed mod from mod uploader directory on clean -->
-                                            <directory>${mod.uploader.directory}</directory>
-                                            <includes>
-                                                <!-- Deletes mod folder with files -->
-                                                <include>**</include>
-                                            </includes>
-                                            <followSymlinks>false</followSymlinks>
-                                        </fileset>
-                                    </filesets>
-                                </configuration>
-                            </execution>
-                        </executions>
+                        <configuration>
+                            <filesets>
+                                <fileset>
+                                    <!-- Remove installed mod from mod uploader directory on clean -->
+                                    <directory>${mod.uploader.directory}</directory>
+                                    <includes>
+                                        <!-- Deletes mod folder with files -->
+                                        <include>**</include>
+                                    </includes>
+                                    <followSymlinks>false</followSymlinks>
+                                </fileset>
+                            </filesets>
+                        </configuration>
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -112,7 +174,16 @@
             * Maven is then able to find and resolve the new Songs of Syx code
          -->
         <game.version.major>67</game.version.major>
-        <game.version.minor>27</game.version.minor>
+        <game.version.minor>35</game.version.minor>
+
+        <!-- Mod SDK (this only applies when "mod-sdk" profile is enabled) -->
+        <mod.sdk.version>0</mod.sdk.version>
+        <mod.sdk.name>Mod SDK V${mod.sdk.version}</mod.sdk.name>
+        <mod.sdk.workshop.id>3331182511</mod.sdk.workshop.id>
+        <mod.sdk.directory>${game.mod.directory}/${mod.sdk.name}</mod.sdk.directory>
+        <mod.sdk.jar.directory>${mod.sdk.directory}/${game.version.directory}/script</mod.sdk.jar.directory>
+        <mod.sdk.jar.src.directory>${mod.sdk.jar.directory}/_src</mod.sdk.jar.src.directory>
+
 
         <!-- Build settings -->
         <game.version.directory>V${game.version.major}</game.version.directory>
@@ -187,7 +258,6 @@
         <!-- Always use the same name for the jar file -->
         <finalName>${mod.name}</finalName>
 
-
         <!-- We don't need the mod-files in our mod jar -->
         <resources>
             <resource>
@@ -217,6 +287,7 @@
                     <version>${maven-install-plugin.version}</version>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-clean-plugin</artifactId>
                     <version>${maven-clean-plugin.version}</version>
                 </plugin>
@@ -253,6 +324,7 @@
             </plugin>
 
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
                 <configuration>
                     <filesets>
