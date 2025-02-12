@@ -19,6 +19,16 @@
    ![Maven](../img/intellij-setup/maven.png)
 8) After that run the `install` command
 
+## Reading the games source code
+
+In the project tree on the left-hand site, you will see **External Libraries** at the bottom.
+Under this you will find a "Maven" dependency called something like `com.songsofsyx:songsofsyx:XX.XX`.
+
+![](../img/intellij-setup/source_code.png)
+
+There you can browse the game source code.
+
+
 ## Running the game with the mod
 
 There are three `.xml`files in the `.run/` folder:
