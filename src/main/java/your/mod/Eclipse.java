@@ -25,9 +25,7 @@ public class Eclipse {
     public void update() {
         if (TIME.days().bitsSinceStart() == day && TIME.light().dayIs()) {
             if (!hasMess) {
-                Json messageJson = new Json(PATHS.SCRIPT().text.get("EXAMPLE"))
-                    .json("ECLIPSE_MESSAGE");
-                new MessageText(messageJson).send();
+                new MessageText("Eclipse incoming :)").send();
 
                 hasMess = true;
             }

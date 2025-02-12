@@ -1,12 +1,19 @@
 package menu;
 
+import static menu.GUI.getBackArrow;
+import static menu.GUI.getNavButt;
+import static menu.GUI.left;
+import static menu.GUI.right;
+
 import game.GAME;
 import game.VERSION;
 import init.C;
 import init.sprite.UI.UI;
 import init.text.D;
+import menu.GUI.Button;
 import snake2d.CORE;
 import snake2d.CORE_STATE;
+import snake2d.CORE_STATE.Constructor;
 import snake2d.SPRITE_RENDERER;
 import snake2d.util.datatypes.COORDINATE;
 import snake2d.util.gui.GuiSection;
@@ -15,16 +22,8 @@ import snake2d.util.gui.renderable.RENDEROBJ;
 import snake2d.util.misc.ACTION;
 import util.gui.misc.GText;
 import view.main.VIEW;
+import view.menu.MenuScreenLoad;
 
-import static menu.GUI.*;
-
-/**
- * This is a game class.
- * To overwrite game classes you can copy them into the same package in your mod.
- * In this case it's the "menu" package.
- *
- * Here an additional main menu entry is added. Search for "MODDED"
- */
 class ScMain implements SC{
 
 	private final GuiSection first;
@@ -145,7 +144,7 @@ class ScMain implements SC{
 
 		CLICKABLE text;
 
-		text = getNavButt(ScLoad.¤¤name);
+		text = getNavButt(MenuScreenLoad.¤¤name);
 		text.clickActionSet(new ACTION() {
 			@Override
 			public void exe() {
@@ -206,7 +205,7 @@ class ScMain implements SC{
 
 		CLICKABLE text;
 
-		for (ScLoader l : menu.loads) {
+		for (ScLoad l : menu.loads) {
 			text = getNavButt(l.name);
 			text.clickActionSet(new ACTION() {
 				@Override
@@ -223,12 +222,11 @@ class ScMain implements SC{
 		text.clickActionSet(new ACTION() {
 			@Override
 			public void exe() {
-				menu.start(new CORE_STATE.Constructor() {
+				menu.start(new Constructor() {
 
 					@Override
 					public CORE_STATE getState() {
-						new GAME();
-						CORE_STATE s = new VIEW();
+						CORE_STATE s = GAME.create();
 
 						VIEW.world().editor.activate();
 
@@ -288,6 +286,6 @@ class ScMain implements SC{
 		}
 		return false;
 	}
-	
+
 
 }

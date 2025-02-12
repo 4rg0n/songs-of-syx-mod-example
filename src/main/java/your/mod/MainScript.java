@@ -39,11 +39,6 @@ public final class MainScript implements SCRIPT {
 	@Override
 	public void initBeforeGameCreated() {}
 
-	/**
-	 * Called when the game ui is available and accessible
-	 */
-	@Override
-	public void onViewSetup() {}
 
 	/**
 	 * @return whether mod shall be selectable when starting a new game
@@ -60,30 +55,6 @@ public final class MainScript implements SCRIPT {
 	public boolean forceInit() {
 		return SCRIPT.super.forceInit();
 	}
-
-	/**
-	 * Called after save file loaded
-	 *
-	 * @param saveFile path to the loaded save file
-	 */
-	@Override
-	public void onGameLoaded(Path saveFile) {}
-
-	/**
-	 * Called after save file saved
-	 *
-	 * @param saveFile path to the saved save file
-	 */
-	@Override
-	public void onGameSaved(Path saveFile) {}
-
-	/**
-	 * For initializing custom rooms
-	 *
-	 * @param init rooms data loaded from the init/room folder
-	 */
-	@Override
-	public void createRooms(RoomInitData init) {}
 
 	/**
 	 * This actually creates the "instance" of your script.
