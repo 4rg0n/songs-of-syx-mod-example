@@ -51,16 +51,30 @@ mvn install
 
 # Run the game from within your IDE (Intellij IDEA)
 
-There are 3 different "Run Configurations" in the `.run` folder:
+There are three different "Run Configurations" in the `.run` folder:
 
 * `DEBUG` for running the game with debug capabilities via the little green bug icon
 * `Main` for running the game and skipping the launcher
 * `MainLaunchLauncher` for running the game with launcher
 
-You may have to edit the game installation paths in these files.
+You may have to *edit the game installation paths* in these files.
 Intellij should automatically recognize these files and add them to your "Run Configuration" selection.
-It is usually found in the upper right hand corner. You can select the via the dropdown menu and run them with the play icon.
+It is usually found in the upper right-hand corner.
+You can select the via the dropdown menu and run them with the play icon.
 The green bug icon will run the game with debug capabilities. This will only work with the `DEBUG` run configuration though.
+
+**DEBUG.run.xml**
+```xml
+    <classpathModifications>
+      <entry path="C:\Program Files (x86)\Steam\steamapps\common\Songs of Syx\base\script\Examples.jar" />
+      <entry path="C:\Program Files (x86)\Steam\steamapps\common\Songs of Syx\base\script\Tutorial.jar" />
+      <entry path="$PROJECT_DIR$\target\Example Mod.jar" />
+    </classpathModifications>
+```
+
+For debugging Java code, some additional **classpathModifications** are necessary. 
+These can differ on your system. 
+Also, the name of your built `*.jar` file may be different.
 
 # Mod SDK (Optional and not V68 compatible yet)
 
