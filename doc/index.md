@@ -63,7 +63,7 @@ Mod Name
 ```
 
 By placing a file named `_IgnoreVanilla.txt` in a folder, the game will ignore the vanilla files and only load your mod files.
-With this it's possible to e.g. remove all vanilla races from the game and only load your own.
+With this, it's possible to e.g. remove all vanilla races from the game and only load your own.
 
 ```
 Mod Name

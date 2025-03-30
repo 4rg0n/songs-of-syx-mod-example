@@ -125,7 +125,7 @@ mvn clean
 
 # Mod Info / Build Settings
 
-In the `pom.xml` you will find `<properties>` where you can change information about the mod.
+In the [pom.xml](pom.xml) you will find `<properties>` where you can change information about the mod.
 There you can also change the `<game.version.major>` property to your used game version.
 The `<game.version.minor>` property is only important when your mod really depends on stuff in this version and isn't compatible with lower versions.
 
@@ -153,7 +153,9 @@ See [doc/index.md](doc/index.md).
 ## Publish your Mod
 
 There's a maven profile `mods-uploader` you can use to automatically copy and clean your files into the mod uploader.
-The directory is configurable via the `<game.mod.uploader.directory>` property in the `<profiles>`. It's default set to:
+The directory is configurable via the `<game.mod.uploader.directory>` property in the `<profiles>` in the [pom.xml](pom.xml). 
+
+Default set to:
 
 * **Windows:** `${user.home}/AppData/Roaming/songsofsyx/mods-uploader`
 * **Linux:** `${user.home}/.local/share/songsofsyx/mods-uploader`
@@ -183,6 +185,64 @@ mvn clean -P mods-uploader
 * [Modding Guide](https://drive.google.com/file/d/1_OesG68HtJ4CwyHK7M72hQDOaCjeqgqT/view) (OUTDATED)
 * [Basic Introduction](https://songsofsyx.old.mod.io/guides/introduction-adding-a-resource)
 * [Basic Sprites](https://songsofsyx.old.mod.io/guides/basics-sprites)
+
+# FAQ
+
+### How can I read and browse the source code of Songs of Syx?
+
+See: [Setup IntelliJ IDEA](doc/howto/intellij_setup.md)
+
+### What programming language is Songs of Syx written in?
+
+Songs of Syx is written in Java 1.8. 
+It is shipped with its own Java Runtime Environment (JRE) found in the game installation directory under `jre/`.
+
+### Which engine is Songs of Syx written in?
+
+Songs of Syx uses a custom engine, especially tinkered for its purpose. 
+The engine is not a general purpose city builder engine, but more a Songs of Syx engine :)
+It's based on [LWJGL 3.x](https://www.lwjgl.org/) and the game code refers to it as `Snake2D`.
+
+### I am overwhelmed... where shall I start?
+
+Make sure you have a running development environment.
+* **See:** [Setup IntelliJ IDEA](doc/howto/intellij_setup.md)
+
+Then you need to be sure of what kind of mod you want to make:
+
+For **adding or changing content** in the game in the form of races, rooms, music, maps, technology, etc. you can extend or replace the game data.
+* **See:** [Mod Folder Structure](doc/index.md#mod-folder-structure).
+
+For **adding or changing features** in the game, you have to extend or replace the source code.
+* **See:** [Java Package](doc/howto/make_your_own_mod.md#java-package), [Modding Strategy](doc/howto/modding_strategy.md)
+
+### What is Maven and why do I need it?
+
+[Maven](https://maven.apache.org/) is a build tool to compile, test, package and publish your software "artifacts".
+It is used for the following things in the mod example:
+
+* Delete (`clean`) the mod files from the game mod directory and mod uploader directory
+* Provide (`validate`) the installed game `SongsOfSyx.jar` as Maven dependency
+* `compile` and `test` your mod source code
+* `package` the built code and your other mod files to the game mod structure
+* Copy (`install`) the built mod into the game mod directory
+* Copy (`install`) the built mod into the mod uploader directory (optional)
+* Add and manage third party dependencies like [Lombok](https://projectlombok.org/) and [JUnit](https://junit.org/junit5/)
+
+The build process follows a certain "[build lifecycle](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html)".
+These are the phases:
+
+```
+1. compile
+2. test
+3. package
+4. verify
+5. install
+(6. site)
+(7. deploy)
+```
+
+If e.g. `package` is executed. It will also run `compile` and then `test`.
 
 # DISCLAIMER
 

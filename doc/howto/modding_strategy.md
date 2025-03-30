@@ -5,12 +5,12 @@
 The game code is written how the Dev needed it. It wasn't design to be super reusable and extendable. 
 To add or change something in the code can be very tricky, and you will most likely don't even know where to start.
 I'll try to explain some techniques I'm using to find and inject stuff into the code. 
-I am using the [Intellij IDEA Community Edition](https://www.jetbrains.com/idea/download), which is free.
-I won't dictate you what to use and what not, that's just what I'm most comfortable with.
+I am using the [IntelliJ IDEA Community Edition](https://www.jetbrains.com/idea/download), which is free.
+I won't dictate you what to use and what not. That's just what I'm most comfortable with.
 
 ## Journey to add a button
 
-**TASK** Add a clickable button to the top ui panel on the upper right hand side.
+**TASK** Add a clickable button to the top ui panel on the upper right-hand side.
 
 ![Add button](../img/journey/add-button-top-panel.png)
 
