@@ -28,28 +28,32 @@ There are also some [tips for developing a mod](/doc/index.md).
 
 # Setup for Intellij IDEA
 
-[Setup Intellij IDEA](doc/howto/intellij_setup.md)
+[Setup IntelliJ IDEA](doc/howto/intellij_setup.md)
 
 # Getting started
 
-[Maven](https://maven.apache.org/) is required to compile, package and install the mod.
-When using [Intellij IDEA](https://www.jetbrains.com/idea/download/), Maven is already bundled within.
+:information_source: [Maven](https://maven.apache.org/) is required to compile, package and install the mod.
+When using [IntelliJ IDEA](https://www.jetbrains.com/idea/download/), Maven is already bundled within.
 
-:one: Install games jar file as [local maven dependency](https://www.baeldung.com/maven-local-repository) by copying it from the game installation folder.
+You can run the Maven commands via the `m` icon on the right-hand side in the IntelliJ IDEA UI:
+
+![Maven UI](doc/img/maven.png)
+
+#### 1. Install the game jar file as [local maven dependency](https://www.baeldung.com/maven-local-repository) by copying it from the game installation folder.
 ```
 mvn validate 
 ```
 
 :information_source: You only have to run `validate` once (or when the games got an update you need)
 
-:two: Compile mod source; prepare mod file structure; copy mod files to game mod directory
+#### 2.  Compile mod source code; built jar file; prepare mod file structure; copy mod files to game mod directory
 ```
 mvn install 
 ```
 
-:three: Run the game, and you should see a `Example Mod` mod. Activate it and launch.
+#### 3. Run the game, and you should see a `Example Mod` mod. Activate it and launch.
 
-# Run the game from within your IDE (Intellij IDEA)
+# Run the game from within your IDE (IntelliJ IDEA)
 
 There are three different "Run Configurations" in the `.run` folder:
 
@@ -60,7 +64,7 @@ There are three different "Run Configurations" in the `.run` folder:
 You may have to *edit the game installation paths* in these files.
 Intellij should automatically recognize these files and add them to your "Run Configuration" selection.
 It is usually found in the upper right-hand corner.
-You can select the via the dropdown menu and run them with the play icon.
+You can select the command via the dropdown menu and run them with the play icon.
 The green bug icon will run the game with debug capabilities. This will only work with the `DEBUG` run configuration though.
 
 **DEBUG.run.xml**
@@ -105,7 +109,8 @@ The source code of the mod will be copied into e.g. `target/out/songs-of-syx-mod
 mvn install
 ```
 
-:warning: The games mod folder location varies on each OS. There are maven profiles "windows" and "linux". The "windows" profile is the default.
+:warning: The game mod folder location varies on each OS.
+There are maven profiles "windows" and "linux". The "windows" profile is the default.
 Maven should detect when you are building on a Linux OS and switch to the "linux" profile (not tested).
 You can force a profile with e.g.
 
@@ -182,6 +187,6 @@ mvn clean -P mods-uploader
 # DISCLAIMER
 
 The source code of the "eclipse" example comes from the game files itself and were written by the game dev Jake de Laval.
-I've just build the maven tooling around it.
+I just built the maven tooling around it.
 
 
