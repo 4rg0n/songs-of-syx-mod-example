@@ -20,7 +20,7 @@ There are also some [tips for developing a mod](/doc/index.md).
 * **Windows:** `${user.home}/AppData/Roaming/songsofsyx/mods/`
 * **Linux:** `~/.local/share/songsofsyx/mods/`
 
-**[Mod Uploader](https://cdn.discordapp.com/attachments/664478122347069441/1023961932476186704/Songs_of_Syx_Workshop_Uploader.zip?ex=67adff5c&is=67acaddc&hm=e6c3e2e9cb6e365e61cb69c0cb242be13f2856cf06391d46541f842a6b3902f7&)**
+**[Mod Uploader](https://cdn.discordapp.com/attachments/664478122347069441/1023961932476186704/Songs_of_Syx_Workshop_Uploader.zip?ex=67ef419c&is=67edf01c&hm=9c4cb16f1e6b6007000c8fb07392bc997e44f880614340bc2035d1d4431b4da7&)**
 * **Windows:** `${user.home}/AppData/Roaming/songsofsyx/mods-uploader/`
 * **Linux:** `~/.local/share/songsofsyx/mods-uploader/`
 
@@ -160,7 +160,7 @@ Default set to:
 * **Windows:** `${user.home}/AppData/Roaming/songsofsyx/mods-uploader`
 * **Linux:** `${user.home}/.local/share/songsofsyx/mods-uploader`
 
-Will copy the mod files into the [Steam Workshop Uploader](https://cdn.discordapp.com/attachments/664478122347069441/1023961932476186704/Songs_of_Syx_Workshop_Uploader.zip?ex=67adff5c&is=67acaddc&hm=e6c3e2e9cb6e365e61cb69c0cb242be13f2856cf06391d46541f842a6b3902f7&) directory.
+Will copy the mod files into the [Steam Workshop Uploader](https://cdn.discordapp.com/attachments/664478122347069441/1023961932476186704/Songs_of_Syx_Workshop_Uploader.zip?ex=67ef419c&is=67edf01c&hm=9c4cb16f1e6b6007000c8fb07392bc997e44f880614340bc2035d1d4431b4da7&) directory.
 
 ```
 mvn install -P mods-uploader
