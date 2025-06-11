@@ -4,10 +4,11 @@
 ## [Setup Intellij IDEA](intellij_setup.md)
 
 ## Code
-
+### [Understand game code](game_code.md)
 ### [Access game code](access_game_code.md)
 ### [Modding Strategy](modding_strategy.md)
 ### [Add a UI Element](add_ui_element.md)
+
 ### Add a Job
 
 
