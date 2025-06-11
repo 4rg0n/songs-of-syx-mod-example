@@ -3,6 +3,7 @@
 ## Important packages
 
 * `game`: core game logic code
+* `game.boosting`: logic for the "boosters" used in config files
 * `init`: data objects and their initialization read from `*.txt` files in the `data.zip` archive
 * `launcher`: code needed for the game launcher
 * `menu`: game main menu logic
@@ -18,6 +19,12 @@
 
 ## Important classes
 
+* `game.GAME`: actual game instance running as a separate process started via the main menu
+* `game.events.EVENTS`: access to all the random events, which can happen during playing
+* `game.events.FACTONS`: access to all the NPC factions and your player faction
+* `init.Main`: logic for starting the game launcher process
+* `init.MainLaunchLauncher`: just starts the Main 
+* `init.MainProcess`: logic for starting the game menu process
 * `init.paths.PATHS`: all the game and mod file paths
 * `init.race.RACES`: access to all the races currently loaded (also modded ones)
 * `init.tech.TECHS`: access to all the techs currently loaded (also modded ones)
@@ -28,6 +35,8 @@
 * `settlement.stats.STATS`: game statistics like your population count or happiness
 * `settlement.room.main.util.RoomsCreator`: for creating and registering custom rooms with custom logic
 * `snake2d.util.gui.GuiSection`: container for arranging and displaying your ui elements
+* `snake2d.CORE`: initializes and controls game core functionalities like the render and update loops
+* `snake2d.Updater`: game update and render loops
 
 ## Conventions
 
@@ -86,10 +95,11 @@ public class GameSaver {
 In contradiction to the [open–closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle), Songs of Syx uses a more closed approach.
 Classes often exist in a package and are only accessible from within this package. 
 So when writing a class for your mod, you often cannot easily extend from a certain vanilla class. 
-You have to move it into the same package space as the vanilla class you are trying to extend from.
+You have to instead move it into the same package space as the vanilla class you are trying to extend from.
 
 Code also isn't structured in a way that makes it easy to hook into or add functionality to it. 
 You may have to overwrite whole game classes if you want to add something in most cases.
+See: [Access game code](access_game_code.md)
 
 ## GUI
 
