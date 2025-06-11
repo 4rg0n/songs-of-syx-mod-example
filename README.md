@@ -1,4 +1,4 @@
-**For V68**
+**For V69**
 
 This project is intended for people who want to start modding for the game [Songs of Syx](https://store.steampowered.com/app/1162750/Songs_of_Syx/).
 It contains a random weather eclipse event, which changes the light color.
@@ -80,7 +80,7 @@ For debugging Java code, some additional **classpathModifications** are necessar
 These can differ on your system. 
 Also, the name of your built `*.jar` file may be different.
 
-# Mod SDK (Optional and not V68 compatible yet)
+# Mod SDK (Optional and not V69 compatible yet)
 
 See [Mod SDK Setup](doc/howto/mod_sdk_setup.md)
 
