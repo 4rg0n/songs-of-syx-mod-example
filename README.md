@@ -244,6 +244,38 @@ These are the phases:
 
 If e.g. `package` is executed. It will also run `compile` and then `test`.
 
+### I get cryptic errors when trying to "compile" or "install"
+
+The most common cause is a not matching game major version. 
+Check which version of the game you've installed by starting the launcher. 
+There you can find the version in the **Info** screen.
+You have to set the correct major version in the [pom.xml](pom.xml) file or install the correct game version.
+
+```xml
+<properties>
+    ...
+
+    <game.version.major>69</game.version.major>
+        
+    ...
+</properties>
+```
+
+Additionally, there is a code example,
+which may only work specific versions of the game in [src/main/java](src/main/java) and can file when compiling.
+You can delete everything in the *java* folder if you don't plan to do any Java coding, or fix the compiling errors. 
+
+After you've done that run:
+
+```
+mvn clean validate
+```
+
+This will clear all built mod files and re-register SongsOfSyx as dependency with the correct version.
+If you use IntelliJ IDEA, you may have
+to [Reload All Maven Projects](https://www.jetbrains.com/help/idea/delegate-build-and-run-actions-to-maven.html#reload_all_projects).
+
+
 # DISCLAIMER
 
 The source code of the "eclipse" example comes from the game files itself and were written by the game dev Jake de Laval.
