@@ -169,6 +169,7 @@
             This is the game version you are currently using. When the game updates:
             * Download the new game version if you don't have it
             * Check the version of the game by launching it
+            * Run a "mvn clean" for removing up the old version
             * Change the version here
             * Run a "mvn validate" to install the new version in the local maven repository
             * Maven is then able to find and resolve the new Songs of Syx code

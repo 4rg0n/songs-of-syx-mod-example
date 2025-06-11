@@ -186,7 +186,7 @@ mvn clean -P mods-uploader
 * [Basic Introduction](https://songsofsyx.old.mod.io/guides/introduction-adding-a-resource)
 * [Basic Sprites](https://songsofsyx.old.mod.io/guides/basics-sprites)
 
-# FAQ
+# FAQ & Troubleshooting
 
 ### How can I read and browse the source code of Songs of Syx?
 
@@ -275,6 +275,7 @@ This will clear all built mod files and re-register SongsOfSyx as dependency wit
 If you use IntelliJ IDEA, you may have
 to [Reload All Maven Projects](https://www.jetbrains.com/help/idea/delegate-build-and-run-actions-to-maven.html#reload_all_projects).
 
+![Reload All Maven Projects](doc/img/maven_reload_projects.png)
 
 # DISCLAIMER
 
