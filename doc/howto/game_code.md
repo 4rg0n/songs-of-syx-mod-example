@@ -23,11 +23,13 @@
 * `game.events.EVENTS`: access to all the random events, which can happen during playing
 * `game.events.FACTONS`: access to all the NPC factions and your player faction
 * `init.Main`: logic for starting the game launcher process
-* `init.MainLaunchLauncher`: just starts the Main 
+* `init.MainLaunchLauncher`: just starts the init.Main 
 * `init.MainProcess`: logic for starting the game menu process
 * `init.paths.PATHS`: all the game and mod file paths
 * `init.race.RACES`: access to all the races currently loaded (also modded ones)
+* `init.settings.S`: contains information about the current game settings made in-game
 * `init.tech.TECHS`: access to all the techs currently loaded (also modded ones)
+* `init.C`: contains constants with core game configs like the screen dimensions
 * `init.text.D`: handles translations for GUIs
 * `menu.ScMain`: main menu you see when starting
 * `script.SCRIPT`: interface for hooking into some of the game features
@@ -77,7 +79,8 @@ public class GameSaver {
 }
 ```
 
-The injection is triggered in a static block via the `init.text.D` class: 
+The injection is triggered in a static block via the `init.text.D` class. 
+This is done before any non-static code is executed.
 
 ```java
 public class GameSaver {
@@ -96,15 +99,19 @@ In contradiction to the [open–closed principle](https://en.wikipedia.org/wiki/
 Classes often exist in a package and are only accessible from within this package. 
 So when writing a class for your mod, you often cannot easily extend from a certain vanilla class. 
 You have to instead move it into the same package space as the vanilla class you are trying to extend from.
+See: [Access game code](access_game_code.md#extending)
 
-Code also isn't structured in a way that makes it easy to hook into or add functionality to it. 
-You may have to overwrite whole game classes if you want to add something in most cases.
+Code also isn't structured in a way that makes it easy to hook into or add functionality to it.
+There are a few exceptions like adding a new room.
+You may have to overwrite whole game classes
+or rely on somewhat more unconventional methods if you want to add something in most cases.
 See: [Access game code](access_game_code.md)
 
 ## GUI
 
 Most of the game GUI is located in the `view` package. 
 It is custom written for Songs of Syx and uses [Swing](https://en.wikipedia.org/wiki/Swing_(Java)) under the hood.
+See [Add UI element](add_ui_element.md) for how to add a new element.
 
 There are different interfaces providing basic APIs:
 
@@ -115,9 +122,43 @@ There are different interfaces providing basic APIs:
 
 The `snake2d.util.gui.GuiSection` is used as a container for multiple UI elements. 
 There you can arrange elements and build a layout with. It acts like a `<div>` in HTML.
+GUI elements like a simple Button `util.gui.GButt.Panel` are in the `util.gui` package.
 
-GUI elements are in the `util.gui` package. 
-They contain elements like the `util.gui.GButt.Panel` for rendering a simple button.
+```java
+import snake2d.util.datatypes.DIR;
+import snake2d.util.gui.GuiSection;
+import util.gui.misc.GButt;
 
+public class MyOwnView extends GuiSection {
 
+    public MyOwnView() {
+        GButt.Panel button = new GButt.Panel("Button");
 
+        // add the button without any arrangement 
+        add(button);
+
+        // add the button under the last element with 5px space between them
+        addDown(5, button);
+
+        // add the button under the last element horizontally centered with 5px space between them
+        addDownC(5, button);
+
+        // add the button right next to the last element with 5px space between them
+        addRight(5, button);
+
+        // add the button right next to the last element horizontally centered with 5px space between them
+        addRightC(5, button);
+
+        // add the button vertically and horizontally centered 
+        addCentredX(button, body().cX());
+
+        // add another GuiSection above this one with two buttons
+        GuiSection section = new GuiSection();
+        section.addRightC(0, button);
+        section.addRightC(0, button);
+        addRelBody(50, DIR.N, section);
+        
+        // ...
+    }
+}
+```

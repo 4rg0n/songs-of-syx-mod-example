@@ -41,7 +41,7 @@ You may want to edit the `WORKING_DIRECTORY`and anything in `<classpathModificat
 It's default set to: `C:/Program Files (x86)/Steam/steamapps/common/Songs of Syx`.
 
 For the future: Your package name may also differ in the `PATTERN` option.
-It's default set to: `your.mod.*`
+It's set default to: `your.mod.*`
 
 They should be automatically available [in the IDE](https://www.jetbrains.com/help/idea/run-debug-configuration.html): 
 

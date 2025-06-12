@@ -16,7 +16,7 @@ I'm going mostly with something like: `com.github.argon`.
 
 The `<artifactId>` is the name of your mod in lowercase letters. You can separate words with a dash.
 
-The `<version>` is ofcourse the version of your mod. You can start with a `0.0.1` or `1.0.0`.
+The `<version>` is of course the version of your mod. You can start with a `0.0.1` or `1.0.0`.
 The first number is your `major` version. You should increase this if there are breaking changes.
 The second is the `minor` version. This is increased whenever you'll add a new feature. 
 The third is the `bugfix` version. You'll increase this when you fix a bug.
@@ -39,7 +39,8 @@ The game will read this to check whether your mod is compatible with the game ve
 
 ## Java Package
 
-:warning: This is only required when your mod will have code. Else you could just delete the [src/main/java/your](../../src/main/java/your) and [src/test/java/your](../../src/test/java/your) folders.
+:warning: This is only required when your mod will have code. 
+Else you could delete the [src/main/java/your](../../src/main/java/your) and [src/test/java/your](../../src/test/java/your) folders.
 
 The example mod uses `your.mod` as package in [src/main/java](../../src/main/java) folder. 
 You should refactor the names to your own package e.g. `com.github.argon.mymod`.

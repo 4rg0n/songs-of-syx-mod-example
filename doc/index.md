@@ -6,7 +6,7 @@ See [howto/index.md](howto/index.md)
 
 ## What is a mod in Songs of Syx?
 
-A mod follows a defined **folder structure**. It can contain game assets such as configs, sprites, sounds or texts and it can contain Java code.
+A mod follows a defined **folder structure**. It can contain game assets such as configs, sprites, sounds, texts or Java code.
 The games config structures makes it possible to extend. So it's easy to add new content or alter already present content via just configuration files.
 As soon as you want to change a behavior or add a new feature, you will have to use Java code to achieve this.
 

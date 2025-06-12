@@ -9,7 +9,7 @@ You can then simply rewrite just a few methods and the rest of your code still f
 
 **Example:** Adding a button into the top bar.
 
-There are at least 3 instances of the top bar in different UIs:
+There are at least three instances of the top bar in different UIs:
 
 * Battle UI
 * World UI
@@ -18,7 +18,7 @@ There are at least 3 instances of the top bar in different UIs:
 If you want your button to be present in all of them, you also have to inject them into all 3 of them.
 
 I would suggest you create a `ReflectionUtil` class with some `static` methods helping you with all this nasty reflection stuff.
-Of course, I prepared one just for you. This example will handle reading values from a private and therefor inaccessible member variable.
+Of course, I prepared one just for you. This example will handle reading values from a private and therefore inaccessible member variable.
 
 ```java
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -51,8 +51,11 @@ public class ReflectionUtil {
 }
 ```
 
-Now you can do something similiar for accessing stuff in the games UI. In this case a `Singleton` pattern fits better than static methods. 
-It gives more flexibility in the future. The code actually looks a lot, but is basically just 3 methods repeated 3 times. One method for each of the 3 top panels.
+Now you can do something similar for accessing stuff in the game UI. 
+In this case a `Singleton` pattern fits better than static methods. 
+It'll give more flexibility in the future. 
+The code actually looks a lot, but is basically just three methods repeated three times. 
+One method for each of the three top panels.
 
 ```java
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
@@ -186,7 +189,7 @@ It's not always possible to access UI elements via reflection. In this case you 
 Replacing code in this way decreases your mods compatibility to other mods and increases the coupling to the game code itself. 
 This means when the vanilla code you changed in your mod changes in a newer version, you will have to redo your changes in the new code than.
 
-To make this work you have to copy the class you want from the vanilla game code and place it in the exact the same package with the exact same name into your mod.
+To make this work, you have to copy the class you want from the vanilla game code and place it in the exact the same package with the exact same name into your mod.
 See the [ScMain](../../src/main/java/menu/ScMain.java) for an example. You can find this block in there:
 
 ```java
@@ -215,4 +218,4 @@ public class ScMain implements SC {
 }
 ```
 
-This part is modified and adds a new entry to the games main menu.
+This part is modified and adds a new entry to the game main menu.

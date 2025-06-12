@@ -1,7 +1,7 @@
 # Access game code
 
 The way the game code is structured makes loose coupling of your mod classes to the game classes through
-dependency injection and / or inversion of control very hard until impossible.
+dependency injection and / or inversion of control tough until impossible.
 Here are some tips on how you can extend and alter the game code.
 I will refer a lot to methods used in so-called "[Monkey Patching](https://www.baeldung.com/java-monkey-patching)" here.
 
@@ -133,7 +133,7 @@ public class MyModJob extends Job {
 
 ### Replacing
 
-With the same method it's possible to replace game classes with your own custom ones. Just copy it into the same package.
+With the same method it's possible to replace game classes with your own custom ones. Copy it into the same package.
 
 ```java
 package settlement.job;
