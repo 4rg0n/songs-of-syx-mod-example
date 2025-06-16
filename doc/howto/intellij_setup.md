@@ -27,6 +27,7 @@ Under this you will find a "Maven" dependency called something like `com.songsof
 ![](../img/intellij-setup/source_code.png)
 
 There you can browse the game source code.
+See: [Reading and understanding the Songs of Syx Source Code](game_code.md) for some more information.
 
 
 ## Running the game with the mod
