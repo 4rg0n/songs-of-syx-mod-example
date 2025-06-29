@@ -19,6 +19,10 @@
    ![Maven](../img/intellij-setup/maven.png)
 8) After that run the `install` command
 
+## Problems?
+
+Check [](../../README.md#faq--troubleshooting)
+
 ## Reading the games source code
 
 In the project tree on the left-hand site, you will see **External Libraries** at the bottom.
