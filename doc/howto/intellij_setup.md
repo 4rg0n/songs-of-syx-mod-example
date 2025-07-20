@@ -21,7 +21,7 @@
 
 ## Problems?
 
-Check [](../../README.md#faq--troubleshooting)
+Check [FAQ & Troubleshooting](../../README.md#faq--troubleshooting)
 
 ## Reading the games source code
 
