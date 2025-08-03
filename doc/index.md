@@ -15,7 +15,7 @@ As soon as you want to change a behavior or add a new feature, you will have to 
 The mod structure reflects the structure found in the game `base/data.zip/data` folder. 
 I would suggest you extract it and open the folder in an editor of your choice (e.g. IDEA or VS Code).
 This way you can easily search and browse through the vanilla game files and get a better understanding of them.
-You can find an [example here](../example).
+You can find a simple [example mod here](example).
 
 ```
 Mod Name            // this should be the name of your mod
