@@ -46,7 +46,7 @@ mvn validate
 
 :information_source: You only have to run `validate` once (or when the games got an update you need)
 
-#### 2.  Compile mod source code; built jar file; prepare mod file structure; copy mod files to game mod directory
+#### 2. Compile mod source code; build jar file; prepare mod file structure; copy mod files and jar to game mod directory
 ```
 mvn install 
 ```
@@ -80,7 +80,7 @@ For debugging Java code, some additional **classpathModifications** are necessar
 These can differ on your system. 
 Also, the name of your built `*.jar` file may be different.
 
-# Mod SDK (Optional and not V69 compatible yet)
+# Mod SDK (Optional)
 
 See [Mod SDK Setup](doc/howto/mod_sdk_setup.md)
 
