@@ -1,4 +1,4 @@
-**For V69**
+**For V70**
 
 This project is intended for people who want to start modding for the game [Songs of Syx](https://store.steampowered.com/app/1162750/Songs_of_Syx/).
 It contains a random weather eclipse event, which changes the light color.
