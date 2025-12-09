@@ -8,24 +8,6 @@ You will need a **Java 1.8 JDK** for developing.
 There are also some [tips for developing a mod](/doc/index.md).
 
 
-# Prerequisite
-
-:warning: Game installation and mod directory paths are configured in the [pom.xml](pom.xml) in `<profiles>` and are default set to:
-
-**Game Installation**
-* **Windows:** `C:\Program Files (x86)\Steam\steamapps\common\Songs of Syx`
-* **Linux:** `~/.steam/steam/steamapps/common/Songs of Syx`
-
-**Mod Directory**
-* **Windows:** `${user.home}/AppData/Roaming/songsofsyx/mods/`
-* **Linux:** `~/.local/share/songsofsyx/mods/`
-
-**[Mod Uploader](https://cdn.discordapp.com/attachments/664478122347069441/1023961932476186704/Songs_of_Syx_Workshop_Uploader.zip?ex=67ef419c&is=67edf01c&hm=9c4cb16f1e6b6007000c8fb07392bc997e44f880614340bc2035d1d4431b4da7&)**
-* **Windows:** `${user.home}/AppData/Roaming/songsofsyx/mods-uploader/`
-* **Linux:** `~/.local/share/songsofsyx/mods-uploader/`
-
-:warning: You may have to adjust these paths accordingly.
-
 # Setup for Intellij IDEA
 
 [Setup IntelliJ IDEA](doc/howto/intellij_setup.md)

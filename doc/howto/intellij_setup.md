@@ -1,22 +1,52 @@
 # Setup Intellij IDEA
 
-1) Download and install [Intellij IDEA Community Edition](https://www.jetbrains.com/idea/download) (not Ultimate)
+1) Download and install [Intellij IDEA Community Edition](https://www.jetbrains.com/idea/download) (**not** Ultimate)
+
+
 2) Create a `File->New->Project from Version Control` via:
 
    ![New Project from Version Control](../img/intellij-setup/new_project.png)
+
+
 3) Enter the git url `https://github.com/4rg0n/songs-of-syx-mod-example.git` and "clone" the repository: 
 
    ![clone](../img/intellij-setup/project_from_version_control.png)
+
+
 4) Goto `File->Project Structure` and choose to download a JDK:
  
    ![JDK Project Structure](../img/intellij-setup/jdk_project_structure.png)
+
+
 5) Choose `Version 1.8` and a Vendor of your choice and download it: 
 
    ![JDK Download](../img/intellij-setup/jdk_download.png)
-6) Check the [README Prerequisite](../../README.md#prerequisite), for the correct game installation paths
+
+
+6) Setup file paths: 
+
+    :warning: Game installation and mod directory paths are configured in the [pom.xml](pom.xml) in `<profiles>` and are default set to:
+
+    **Game Installation**
+    * **Windows:** `C:\Program Files (x86)\Steam\steamapps\common\Songs of Syx`
+    * **Linux:** `~/.steam/steam/steamapps/common/Songs of Syx`
+
+    **Mod Directory**
+    * **Windows:** `${user.home}/AppData/Roaming/songsofsyx/mods/`
+    * **Linux:** `~/.local/share/songsofsyx/mods/`
+
+    **[Mod Uploader](https://cdn.discordapp.com/attachments/664478122347069441/1023961932476186704/Songs_of_Syx_Workshop_Uploader.zip?ex=67ef419c&is=67edf01c&hm=9c4cb16f1e6b6007000c8fb07392bc997e44f880614340bc2035d1d4431b4da7&)**
+    * **Windows:** `${user.home}/AppData/Roaming/songsofsyx/mods-uploader/`
+    * **Linux:** `~/.local/share/songsofsyx/mods-uploader/`
+
+    :warning: You may have to adjust these paths accordingly.
+
+
 7) On the right hand side click on the `M` icon and doubleclick the maven `validate` command: 
 
    ![Maven](../img/intellij-setup/maven.png)
+
+
 8) After that run the `install` command
 
 ## Problems?
