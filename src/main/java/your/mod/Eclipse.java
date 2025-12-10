@@ -1,15 +1,17 @@
 package your.mod;
 
 import game.time.TIME;
-import init.paths.PATHS;
 import lombok.Getter;
 import lombok.Setter;
 import settlement.main.SETT;
-import snake2d.util.file.Json;
 import snake2d.util.rnd.RND;
 import view.interrupter.IDebugPanel;
 import view.ui.message.MessageText;
 
+/**
+ * Example mod, which adds a color effect over your settlement.
+ * You can delete this class if you don't need it.
+ */
 public class Eclipse {
     @Setter
     @Getter
@@ -22,6 +24,9 @@ public class Eclipse {
         IDebugPanel.add("Script Eclipse", () -> day = TIME.days().bitsSinceStart() + 1);
     }
 
+    /**
+     * Has to be called by the game update loop
+     */
     public void update() {
         if (TIME.days().bitsSinceStart() == day && TIME.light().dayIs()) {
             if (!hasMess) {

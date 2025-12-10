@@ -31,6 +31,13 @@ import view.main.VIEW;
 import view.menu.MenuScreenLoad;
 import world.battle.spec.BATTLE_RESULT;
 
+/**
+ * This is an example for overwriting / replacing vanilla game classes.
+ * It's overwriting menu.ScMain, which holds the UI for the game main menu.
+ *
+ * If you search for the "// MODDED" comment, you will find an added "Modded Example Entry (Credits)" menu entry.
+ * You can delete this class if you don't plan to modify the main menu.
+ */
 class ScMain implements SC{
 
 	private final GuiSection first;
