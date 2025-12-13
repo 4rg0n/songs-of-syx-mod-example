@@ -21,14 +21,14 @@ You can run the Maven commands via the `m` icon on the right-hand side in the In
 
 ![Maven UI](doc/img/maven.png)
 
-#### 1. Install the game jar file as [local maven dependency](https://www.baeldung.com/maven-local-repository) by copying it from the game installation folder.
+#### 1. (**mvn validate**) Install the game jar file as [local maven dependency](https://www.baeldung.com/maven-local-repository) by copying it from the game installation folder.
 ```
 mvn validate 
 ```
 
 :information_source: You only have to run `validate` once (or when the games got an update you need)
 
-#### 2. Compile mod source code; build jar file; prepare mod file structure; copy mod files and jar to game mod directory
+#### 2. (**mvn install**) Compile mod source code; build jar file; prepare mod file structure; copy mod files and jar to game mod directory
 ```
 mvn install 
 ```
@@ -257,7 +257,7 @@ This will clear all built mod files and re-register SongsOfSyx as dependency wit
 If you use IntelliJ IDEA, you may have
 to [Reload All Maven Projects](https://www.jetbrains.com/help/idea/delegate-build-and-run-actions-to-maven.html#reload_all_projects).
 
-![Reload All Maven Projects](doc/img/maven_reload_projects.png)
+![Reload All Maven Projects](doc/img/maven_refresh.png)
 
 # DISCLAIMER
 

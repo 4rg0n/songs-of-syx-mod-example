@@ -8,11 +8,11 @@ Because this skips the launcher process, make sure your mod is active.
 1. Go to the game installation folder
 2. RIGHT + LEFT CLICK on empty space in the folder; this should open a context menu
 3. Choose "Open in Terminal" or "Open PowerShell window here"
-4. Enter `.\jre\bin\java.exe -jar SongsofSyx.jar`
+4. Enter `.\jre\bin\java.exe -jar SongsOfSyx.jar`
 5. The game should start and it skips the launcher
 
 **Linux / MacOS**
 
 1. Open a shell in the game installation folder or navigate to it
-2. Enter `./jre/bin/java -jar SongsofSyx.jar`
+2. Enter `./jre/bin/java -jar SongsOfSyx.jar`
 3. The game should start and it skips the launcher
