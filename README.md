@@ -4,7 +4,7 @@ This project is intended for people who want to start modding for the game [Song
 It contains a random weather eclipse event, which changes the light color.
 The maven build pipeline will take care of compiling, packaging and installing the mod into the games mod folder.
 
-You will need a **Java 1.8 JDK** for developing.
+You will need a **Java 21 JDK** for developing.
 There are also some [tips for developing a mod](/doc/index.md).
 
 
@@ -84,7 +84,7 @@ mvn validate
 mvn package
 ```
 
-The source code of the mod will be copied into e.g. `target/out/songs-of-syx-mod-example/V63/script/_src`.
+The source code of the mod will be copied into e.g. `target/out/songs-of-syx-mod-example/V70/script/_src`.
 
 :information_source: Build and copy the output into the games mods folder (excluding `_src`):
 ```
@@ -176,7 +176,7 @@ See: [Setup IntelliJ IDEA](doc/howto/intellij_setup.md)
 
 ### What programming language is Songs of Syx written in?
 
-Songs of Syx is written in Java 1.8. 
+Songs of Syx was written primarily in Java 1.8, but it runs with Java 21. 
 It is shipped with its own Java Runtime Environment (JRE) found in the game installation directory under `jre/`.
 
 ### Which engine is Songs of Syx written in?

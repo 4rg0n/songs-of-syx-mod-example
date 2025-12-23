@@ -18,7 +18,7 @@
    ![JDK Project Structure](../img/intellij-setup/jdk_project_structure.png)
 
 
-5) Choose `Version 1.8` and a Vendor of your choice and download it: 
+5) Choose `Version 21` and a Vendor of your choice and download it: 
 
    ![JDK Download](../img/intellij-setup/jdk_download.png)
 
