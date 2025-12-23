@@ -154,7 +154,7 @@
     </profiles>
 
     <properties>
-        <!-- Songs of Syx uses Java 1.8 -->
+        <!-- Songs of Syx uses Java 21 -->
         <maven.compiler.target>21</maven.compiler.target>
         <maven.compiler.source>21</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -175,7 +175,7 @@
             * Maven is then able to find and resolve the new Songs of Syx code
          -->
         <game.version.major>70</game.version.major>
-        <game.version.minor>14</game.version.minor>
+        <game.version.minor>21</game.version.minor>
 
         <!-- Mod SDK (this only applies when "mod-sdk" profile is enabled) -->
         <mod.sdk.version>0</mod.sdk.version>
@@ -206,7 +206,7 @@
         <junit-jupiter-engine.version>5.9.2</junit-jupiter-engine.version>
         <mockito-core.version>4.11.0</mockito-core.version>
         <assertj-core.version>3.24.2</assertj-core.version>
-        <lombok.version>1.18.26</lombok.version>
+        <lombok.version>1.18.42</lombok.version>
 
         <!-- Build plugin versions -->
         <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
