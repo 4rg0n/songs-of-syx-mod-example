@@ -132,7 +132,7 @@ public final class ExampleScript implements SCRIPT {
     //...
 
     @Override
-    public SCRIPT_INSTANCE initAfterGameCreated() {
+    public SCRIPT_INSTANCE initBeforeGameInited() {
         // adds a command that opens the copier tool
         IDebugPanel.add("Copy Stuff", () -> VIEW.s().ui.copier.activate());
 
