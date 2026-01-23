@@ -1,6 +1,6 @@
 # Setup Intellij IDEA
 
-1) Download and install [Intellij IDEA Community Edition](https://www.jetbrains.com/idea/download) (**not** Ultimate)
+1) Download and install [Intellij IDEA Community Edition](https://www.jetbrains.com/idea/download/other.html) (**not** Ultimate)
 
 
 2) Create a `File->New->Project from Version Control` via:
