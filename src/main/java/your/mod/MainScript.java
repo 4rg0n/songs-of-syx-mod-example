@@ -19,7 +19,7 @@ public final class MainScript implements SCRIPT {
 	/**
 	 * This info will be displayed when starting a new game and choosing a script
 	 */
-	private final INFO info = new INFO("Example Mod", "Adds a sun eclipse, which changes the light color.");
+	private final INFO info = new INFO("Example Mod", "Description goes here");
 
 	@Override
 	public CharSequence name() {
@@ -31,12 +31,22 @@ public final class MainScript implements SCRIPT {
 		return info.desc;
 	}
 
+
 	/**
 	 * Called before an actual game is started or loaded
 	 */
 	@Override
-	public void initBeforeGameCreated() {}
+	public void initBeforeGameCreated() {
+		System.out.println("[EXAMPLE MOD] initBeforeGameCreated");
+	}
 
+	/**
+	 * Called after the game is created, but before the initiation
+	 */
+	@Override
+	public void initBeforeGameInited() {
+		System.out.println("[EXAMPLE MOD] initBeforeGameInited");
+	}
 
 	/**
 	 * @return whether mod shall be selectable when starting a new game
@@ -59,6 +69,7 @@ public final class MainScript implements SCRIPT {
 	 */
 	@Override
 	public SCRIPT_INSTANCE createInstance() {
+		System.out.println("[EXAMPLE MOD] createInstance");
 		return new InstanceScript();
 	}
 }

@@ -19,8 +19,6 @@ import view.keyboard.KEYS;
  */
 final class InstanceScript implements SCRIPT.SCRIPT_INSTANCE {
 
-	private final Eclipse eclipse = new Eclipse();
-
 	/**
 	 * Called whenever the game saves
 	 *
@@ -28,29 +26,28 @@ final class InstanceScript implements SCRIPT.SCRIPT_INSTANCE {
 	 */
 	@Override
 	public void save(FilePutter file) {
-		file.i(eclipse.getDay());
+		System.out.println("[EXAMPLE MOD] Writing save game: " + file.path);
 	}
 
 	/**
 	 * Called whenever the game loads a save file
 	 *
 	 * @param file to read your saved data from
-	 * @throws IOException when reading the save file fails
 	 */
 	@Override
-	public void load(FileGetter file) throws IOException {
-		eclipse.setDay(file.i());
+	public void load(FileGetter file) {
+		System.out.println("[EXAMPLE MOD] Reading save game: " + file.path);
 	}
 
 	/**
-	 * This is where the actual eclipse is happening.
 	 * The update method will be called multiple times a second by the game.
 	 *
-	 * @param ds how many seconds of in-game time that has passed since the previous update
+	 * @param deltaSeconds how many seconds of in-game time that has passed since the previous update
 	 */
 	@Override
-	public void update(double ds) {
-		eclipse.update();
+	public void update(double deltaSeconds) {
+		// this is spammy
+		// System.out.println("[EXAMPLE MOD] update: " + deltaSeconds + " delta seconds");
 	}
 
 	/**
@@ -60,24 +57,31 @@ final class InstanceScript implements SCRIPT.SCRIPT_INSTANCE {
 	 * @param text the hover box, which would or could be shown
 	 */
 	@Override
-	public void hoverTimer(double mouseTimer, GBox text) {}
+	public void hoverTimer(double mouseTimer, GBox text) {
+		System.out.println("[EXAMPLE MOD] hover time: " + mouseTimer + " seconds");
+	}
 
 	/**
 	 * Called multiple times when the game renders
 	 *
 	 * @param renderer used for rendering something
-	 * @param ds timestamp of the current render process
+	 * @param deltaSeconds timestamp of the current render process
 	 */
 	@Override
-	public void render(Renderer renderer, float ds) {}
+	public void render(Renderer renderer, float deltaSeconds) {
+		// this is spammy
+		// System.out.println("[EXAMPLE MOD] render: " + deltaSeconds + " delta seconds");
+	}
 
 	/**
 	 * Called whenever a keyboard key was pushed
 	 *
-	 * @param key pushed key
+	 * @param keys for interacting with the kys
 	 */
 	@Override
-	public void keyPush(KEYS key) {}
+	public void keyPush(KEYS keys) {
+		System.out.println("[EXAMPLE MOD] key pushed");
+	}
 
 	/**
 	 * Called whenever a mouse button was clicked
@@ -85,7 +89,9 @@ final class InstanceScript implements SCRIPT.SCRIPT_INSTANCE {
 	 * @param button clicked mouse button
 	 */
 	@Override
-	public void mouseClick(MButt button) {}
+	public void mouseClick(MButt button) {
+		System.out.println("[EXAMPLE MOD] Mouse button clicked: " + button);
+	}
 
 	/**
 	 * Called whenever the mouse hovers something
@@ -94,7 +100,9 @@ final class InstanceScript implements SCRIPT.SCRIPT_INSTANCE {
 	 * @param mouseHasMoved whether the mouse has moved since last call
 	 */
 	@Override
-	public void hover(COORDINATE mCoo, boolean mouseHasMoved) {}
+	public void hover(COORDINATE mCoo, boolean mouseHasMoved) {
+		System.out.println("[EXAMPLE MOD] hovering over x:" + mCoo.x() + " y:" + mCoo.y());
+	}
 
 	/**
 	 * @return whether the game shall crash when it receives an error from the mod while loading the save game

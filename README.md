@@ -1,7 +1,6 @@
 **For V70**
 
 This project is intended for people who want to start modding for the game [Songs of Syx](https://store.steampowered.com/app/1162750/Songs_of_Syx/).
-It contains a random weather eclipse event, which changes the light color.
 The maven build pipeline will take care of compiling, packaging and installing the mod into the games mod folder.
 
 You will need a **Java 21 JDK** for developing.
@@ -258,10 +257,3 @@ If you use IntelliJ IDEA, you may have
 to [Reload All Maven Projects](https://www.jetbrains.com/help/idea/delegate-build-and-run-actions-to-maven.html#reload_all_projects).
 
 ![Reload All Maven Projects](doc/img/maven_refresh.png)
-
-# DISCLAIMER
-
-The source code of the "eclipse" example comes from the game files itself and were written by the game dev Jake de Laval.
-I just built the maven tooling around it.
-
-

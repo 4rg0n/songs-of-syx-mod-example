@@ -190,7 +190,7 @@ Replacing code in this way decreases your mods compatibility to other mods and i
 This means when the vanilla code you changed in your mod changes in a newer version, you will have to redo your changes in the new code than.
 
 To make this work, you have to copy the class you want from the vanilla game code and place it in the exact the same package with the exact same name into your mod.
-See the [ScMain](../../src/main/java/menu/ScMain.java) for an example. You can find this block in there:
+Adding a new main menu entry in `ScMain` for example:
 
 ```java
 package menu;

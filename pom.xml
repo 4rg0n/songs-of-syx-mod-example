@@ -175,7 +175,7 @@
             * Maven is then able to find and resolve the new Songs of Syx code
          -->
         <game.version.major>70</game.version.major>
-        <game.version.minor>26</game.version.minor>
+        <game.version.minor>32</game.version.minor>
 
         <!-- Mod SDK (this only applies when "mod-sdk" profile is enabled) -->
         <mod.sdk.version>0</mod.sdk.version>
