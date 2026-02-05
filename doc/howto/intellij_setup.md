@@ -25,7 +25,7 @@
 
 6) Setup file paths: 
 
-    :warning: Game installation and mod directory paths are configured in the [pom.xml](pom.xml) in `<profiles>` and are default set to:
+    :warning: Game installation and mod directory paths are configured in the [pom.xml](../../pom.xml) in `<profiles>` and are default set to:
 
     **Game Installation**
     * **Windows:** `C:\Program Files (x86)\Steam\steamapps\common\Songs of Syx`
