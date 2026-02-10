@@ -66,7 +66,7 @@ See: [Reading and understanding the Songs of Syx Source Code](game_code.md) for 
 
 ## Running the game with the mod
 
-There are three `.xml`files in the `.run/` folder:
+There are three `.xml`files in the [.run](../../.run) folder:
 
 * `Main` launches the game directly
 * `MainLaunchLauncher` starts the game launcher

@@ -37,6 +37,15 @@ The game will read this to check whether your mod is compatible with the game ve
 <game.version.minor>12</game.version.minor>
 ```
 
+## Run configurations
+
+The project comes with custom build Intellij run configs found in [.run](../../.run).
+In the [DEBUG.run.xml](../../.run/DEBUG.run.xml) you have to change the name of the `Example Mod.jar` file to the name you entered in the `<mod.name>`:
+
+```xml
+<entry path="$PROJECT_DIR$\target\Example Mod.jar" />
+```
+
 ## Java Package
 
 :warning: This is only required when your mod will have code. 

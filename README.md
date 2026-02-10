@@ -9,7 +9,7 @@ There are also some [tips for developing a mod](/doc/index.md).
 
 # Setup for Intellij IDEA
 
-[Setup IntelliJ IDEA](doc/howto/intellij_setup.md)
+See [Setup IntelliJ IDEA](doc/howto/intellij_setup.md)
 
 # Getting started
 
@@ -161,11 +161,9 @@ mvn clean -P mods-uploader
 # Modding Resources
 
 * [Discord](https://discord.com/eacfCuE)
-* [Make a mod](doc/res/MAKE_A_MOD.txt)
-* [Script Modding](https://docs.google.com/document/d/1FVOtfr3Y-cxH2Gw-i-OqW3Vbp0MPJp0xSyQ80UoCABE/edit)
+* [Make a mod](doc/res/MAKE_A_MOD.txt) (OUTDATED)
+* [Script Modding](https://docs.google.com/document/d/1FVOtfr3Y-cxH2Gw-i-OqW3Vbp0MPJp0xSyQ80UoCABE/edit) (OUTDATED)
 * [Modding Guide](https://drive.google.com/file/d/1_OesG68HtJ4CwyHK7M72hQDOaCjeqgqT/view) (OUTDATED)
-* [Basic Introduction](https://songsofsyx.old.mod.io/guides/introduction-adding-a-resource)
-* [Basic Sprites](https://songsofsyx.old.mod.io/guides/basics-sprites)
 
 # FAQ & Troubleshooting
 
