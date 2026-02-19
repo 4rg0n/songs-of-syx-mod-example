@@ -1,16 +1,10 @@
-## Howto
-
-A collection of how to mod things in Songs of Syx.
-
-See [howto/index.md](howto/index.md)
-
-## What is a mod in Songs of Syx?
+# What is a mod in Songs of Syx?
 
 A mod follows a defined **folder structure**. It can contain game assets such as configs, sprites, sounds, texts or Java code.
-The games config structures makes it possible to extend. So it's easy to add new content or alter already present content via just configuration files.
+The games config structures make it possible to extend. So it's easy to add new content or alter already present content via just configuration files.
 As soon as you want to change a behavior or add a new feature, you will have to use Java code to achieve this.
 
-## Mod folder structure
+# Mod folder structure
 
 The mod structure reflects the structure found in the game `base/data.zip/data` folder. 
 I would suggest you extract it and open the folder in an editor of your choice (e.g. IDEA or VS Code).
@@ -84,7 +78,7 @@ Mod Name
 └── V70            
 ```
 
-## Game Boosters
+# Game Boosters
 
 Boosters are found all over the place in the `.txt` configuration files of the game.
 They are mostly under the key `BOOST` or `BONUS`. They follow a special syntax:
@@ -106,7 +100,7 @@ BOOST: {
 
 * [All possible BOOSTER_KEYs](booster/boosters_all.md)
 
-## Scripting / Coding
+# Scripting / Coding
 
 You can extend or change the game in any way you want via Java code.
 This project serves as a good starting point for it.
@@ -175,7 +169,7 @@ public final class ExampleScript implements SCRIPT {
 }
 ```
 
-## Static game classes
+## Static Game Classes
 
 These classes contain various accessible information and features for the game. This was made for V64 of the game.
 So things may have changed, but this still gives you a rough idea what to expect.

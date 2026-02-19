@@ -1,17 +1,48 @@
 **For V70**
 
+# Content
+
+* [Introduction](#introduction)
+* [General Modding Information](doc/index.md)
+  * [Mod Folder Structure](doc/index.md#mod-folder-structure) 
+  * [Game Boosters](doc/index.md#game-boosters)
+  * [Scripting / Coding](doc/index.md#scripting--coding)
+    * [In-game Debug and Development Tool](doc/index.md#in-game-debug-and-development-tool)
+    * [Logging](doc/index.md#logging)
+    * [Static Game Classes](doc/index.md#static-game-classes)
+    * [Game and Mod Initialization](doc/index.md#game-and-mod-initialization)
+* [Example Mod Structure](doc/example)
+* [Project Setup](doc/howto/intellij_setup.md)
+* [Getting Started](#getting-started)
+* [Mod SDK (Optional)](#mod-sdk-optional)
+  * [Code](https://github.com/4rg0n/songs-of-syx-mod-more-options/tree/main/mod-sdk)
+  * [Documentation](https://github.com/4rg0n/songs-of-syx-mod-more-options/tree/main/mod-sdk/src/main/java/com/github/argon/sos/mod/sdk#mod-sdk)
+* [Make your own Mod](doc/howto/make_your_own_mod.md)
+* [Publish your Mod](#publish-your-mod)
+* [How-to Guides](doc/howto/index.md)
+* [Project Build Commands](#project-build-commands)
+* [Mod Info / Build Settings](#mod-info--build-settings)
+* [Debugging your Mod](#debugging)
+* [Other Modding Resources](#other-modding-resources)
+* [FAQ & Troubleshooting](#faq--troubleshooting)
+
+# Introduction
+
 This project is intended for people who want to start modding for the game [Songs of Syx](https://store.steampowered.com/app/1162750/Songs_of_Syx/).
+It contains [documentation](doc/index.md) on general modding techniques and serves as a starting point if you want to create code mods.
 The maven build pipeline will take care of compiling, packaging and installing the mod into the games mod folder.
 
 You will need a **Java 21 JDK** for developing.
-There are also some [tips for developing a mod](/doc/index.md).
 
+# General Modding Information
+
+See [Documentation](doc/index.md)
 
 # Setup for Intellij IDEA
 
 See [Setup IntelliJ IDEA](doc/howto/intellij_setup.md)
 
-# Getting started
+# Getting Started
 
 :information_source: [Maven](https://maven.apache.org/) is required to compile, package and install the mod.
 When using [IntelliJ IDEA](https://www.jetbrains.com/idea/download/), Maven is already bundled within.
@@ -63,13 +94,49 @@ Also, the name of your built `*.jar` file may be different.
 
 # Mod SDK (Optional)
 
+:information_source: The Mod SDK is still somewhat experimental. 
+I'm using it for my [More Options](https://github.com/4rg0n/songs-of-syx-mod-more-options) mod. 
+That's also the place where currently the [code](https://github.com/4rg0n/songs-of-syx-mod-more-options/tree/main/mod-sdk) and [documentation](https://github.com/4rg0n/songs-of-syx-mod-more-options/tree/main/mod-sdk/src/main/java/com/github/argon/sos/mod/sdk#mod-sdk) of it lives.
+
 See [Mod SDK Setup](doc/howto/mod_sdk_setup.md)
 
 # Start making your own mod
 
 See [make your own mod](doc/howto/make_your_own_mod.md).
 
-# Build commands
+# Publish your Mod
+
+There's a maven profile `mods-uploader` you can use to automatically copy and clean your files into the mod uploader.
+The directory is configurable via the `<game.mod.uploader.directory>` property in the `<profiles>` in the [pom.xml](pom.xml).
+
+Default set to:
+
+* **Windows:** `${user.home}/AppData/Roaming/songsofsyx/mods-uploader`
+* **Linux:** `${user.home}/.local/share/songsofsyx/mods-uploader`
+
+Will copy the mod files into the [Steam Workshop Uploader](https://cdn.discordapp.com/attachments/664478122347069441/1023961932476186704/Songs_of_Syx_Workshop_Uploader.zip?ex=67ef419c&is=67edf01c&hm=9c4cb16f1e6b6007000c8fb07392bc997e44f880614340bc2035d1d4431b4da7&) directory.
+
+```
+mvn install -P mods-uploader
+```
+
+Will remove the mod files from the mod uploader. For updating the mod files.
+
+```
+mvn clean -P mods-uploader
+```
+
+## Steam
+
+* [Official How to up- and download mods using Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2229540768)
+* [(Discord) Steam Workshop Uploader](https://cdn.discordapp.com/attachments/664478122347069441/1023961932476186704/Songs_of_Syx_Workshop_Uploader.zip?ex=67adff5c&is=67acaddc&hm=e6c3e2e9cb6e365e61cb69c0cb242be13f2856cf06391d46541f842a6b3902f7&)
+
+
+# How-to Guides
+
+See [How-to Guides](doc/howto/index.md)
+
+# Project Build Commands
 
 :information_source: Installs only the games `SongsOfSyx.jar` and `info/SongsOfSyx-sources.jar` as a dependency, and validate whether it was successful.
 ```
@@ -131,34 +198,7 @@ There's [JUnit 5](https://junit.org/junit5/) with [AssertJ](https://assertj.gith
 
 See [doc/index.md](doc/index.md).
 
-## Publish your Mod
-
-There's a maven profile `mods-uploader` you can use to automatically copy and clean your files into the mod uploader.
-The directory is configurable via the `<game.mod.uploader.directory>` property in the `<profiles>` in the [pom.xml](pom.xml). 
-
-Default set to:
-
-* **Windows:** `${user.home}/AppData/Roaming/songsofsyx/mods-uploader`
-* **Linux:** `${user.home}/.local/share/songsofsyx/mods-uploader`
-
-Will copy the mod files into the [Steam Workshop Uploader](https://cdn.discordapp.com/attachments/664478122347069441/1023961932476186704/Songs_of_Syx_Workshop_Uploader.zip?ex=67ef419c&is=67edf01c&hm=9c4cb16f1e6b6007000c8fb07392bc997e44f880614340bc2035d1d4431b4da7&) directory.
-
-```
-mvn install -P mods-uploader
-```
-
-Will remove the mod files from the mod uploader. For updating the mod files.
-
-```
-mvn clean -P mods-uploader
-```
-
-### Steam
-
-* [Official How to up- and download mods using Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2229540768)
-* [(Discord) Steam Workshop Uploader](https://cdn.discordapp.com/attachments/664478122347069441/1023961932476186704/Songs_of_Syx_Workshop_Uploader.zip?ex=67adff5c&is=67acaddc&hm=e6c3e2e9cb6e365e61cb69c0cb242be13f2856cf06391d46541f842a6b3902f7&)
-
-# Modding Resources
+# Other Modding Resources
 
 * [Discord](https://discord.com/eacfCuE)
 * [Make a mod](doc/res/MAKE_A_MOD.txt) (OUTDATED)
