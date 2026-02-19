@@ -5,10 +5,10 @@
 ## [Run in console](run_in_console.md)
 
 ## Code
-### [Understand game code](game_code.md)
+### [Understand Game Code](game_code.md)
 ### [Access game code](access_game_code.md)
 ### [Modding Strategy](modding_strategy.md)
-### [Add a UI Element](add_ui_element.md)
+### [Add an UI Element](add_ui_element.md)
 
 ## Configure
 ### Add a Race
