@@ -49,9 +49,68 @@
 
 8) After that run the `install` command
 
+## What is Maven and why do I need it?
+
+[Maven](https://maven.apache.org/) is a build tool to compile, test, package and publish your software "artifacts".
+It is used for the following things in the mod example:
+
+* Delete (`clean`) the mod files from the game mod directory and mod uploader directory
+* Provide (`validate`) the installed game `SongsOfSyx.jar` as Maven dependency
+* `compile` and `test` your mod source code
+* `package` the built code and your other mod files to the game mod structure
+* Copy (`install`) the built mod into the game mod directory
+* Copy (`install`) the built mod into the mod uploader directory (optional)
+* Add and manage third party dependencies like [Lombok](https://projectlombok.org/) and [JUnit](https://junit.org/junit5/)
+
+The build process follows a certain "[build lifecycle](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html)".
+These are the phases:
+
+```
+1. compile
+2. test
+3. package
+4. verify
+5. install
+(6. site)
+(7. deploy)
+```
+
+If e.g. `package` is executed. It will also run `compile` and then `test`.
+
 ## Problems?
 
-Check [FAQ & Troubleshooting](../../README.md#faq--troubleshooting)
+### I get cryptic errors when trying to "compile" or "install"
+
+The most common cause is a not matching game major version.
+Check which version of the game you've installed by starting the launcher.
+There you can find the version in the **Info** screen.
+You have to set the correct major version in the [pom.xml](pom.xml) file or install the correct game version.
+
+```xml
+<properties>
+    ...
+
+    <game.version.major>69</game.version.major>
+        
+    ...
+</properties>
+```
+
+Additionally, there is a code example,
+which may only work specific versions of the game in [src/main/java](src/main/java) and can file when compiling.
+You can delete everything in the *java* folder if you don't plan to do any Java coding, or fix the compiling errors.
+
+After you've done that run:
+
+```
+mvn clean validate
+```
+
+This will clear all built mod files and re-register SongsOfSyx as dependency with the correct version.
+If you use IntelliJ IDEA, you may have
+to [Reload All Maven Projects](https://www.jetbrains.com/help/idea/delegate-build-and-run-actions-to-maven.html#reload_all_projects).
+
+![Reload All Maven Projects](../../doc/img/maven_refresh.png)
 
 ## Reading the games source code
 
@@ -84,4 +143,3 @@ They should be automatically available [in the IDE](https://www.jetbrains.com/he
 
 Run the game at first through the `MainLaunchLauncher` and enable the `Example Mod` in the launcher.
 Once the mod is enabled, you can skip the launcher by running the `Main` or `DEBUG` command.
-

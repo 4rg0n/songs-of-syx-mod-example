@@ -169,56 +169,6 @@ public final class ExampleScript implements SCRIPT {
 }
 ```
 
-## Static Game Classes
-
-These classes contain various accessible information and features for the game. This was made for V64 of the game.
-So things may have changed, but this still gives you a rough idea what to expect.
-
-```java
-
-public final class ExampleScript implements SCRIPT {
-
-    //...
-
-    @Override
-    public SCRIPT_INSTANCE createInstance() {
-
-        snake2d.CORE;
-        view.main.VIEW;
-        integrations.INTEGRATIONS;
-        
-        game.GAME;
-        game.VERSION;
-        game.battle.BATTLE;
-        game.faction.FACTIONS;
-        game.time.TIME;
-        game.tourism.TOURISM;
-        
-        settlement.main.SETT;
-        settlement.stats.STATS;
-        settlement.stats.law.LAW;
-        settlement.stats.standing.STANDINGS;
-
-        init.biomes.TERRAINS;
-        init.boostable.BOOSTABLES;
-        init.C;
-        init.D;
-        init.disease.DISEASES;
-        init.paths.PATHS;
-        init.race.RACES;
-        init.resources.RESOURCES;
-        init.sprite.SPRITES;
-        init.sprite.UI.UI;
-        init.tech.TECHS;
-        
-        world.army.WARMYD;
-        world.army.WINDU;
-
-        return new Instance();
-    }
-}
-```
-
 ## Game and Mod Initialization
 
 When which static game class is available for your mod to use.

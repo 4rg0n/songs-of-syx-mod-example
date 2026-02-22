@@ -1,5 +1,21 @@
 # Reading and understanding the Songs of Syx Source Code
 
+## Which engine is Songs of Syx written in?
+
+Songs of Syx uses a custom engine, especially tinkered for its purpose.
+The engine is not a general purpose city builder engine, but more a Songs of Syx engine :)
+It's based on [LWJGL 3.x](https://www.lwjgl.org/) and the game code refers to it as `Snake2D`.
+
+## What programming language is Songs of Syx written in?
+
+Songs of Syx was written primarily in Java 1.8, but it runs with Java 21.
+It is shipped with its own Java Runtime Environment (JRE) found in the game installation directory under `jre/`.
+
+## How can I read and browse the source code of Songs of Syx?
+
+You can either follow the [Setup IntelliJ IDEA](../../doc/howto/intellij_setup.md) guide or look into the game installation directory under `info/SongsOfSyx-sources.jar`.
+This is a `zip` archive, which you can extract and browse.
+
 ## Important packages
 
 * `game`: core game logic code
@@ -20,25 +36,37 @@
 ## Important classes
 
 * `game.GAME`: actual game instance running as a separate process started via the main menu
+* `game.boosting.BOOSTABLES`: contains all the bonuses
+* `game.VERSION`: contains information about the current game version
 * `game.events.EVENTS`: access to all the random events, which can happen during playing
-* `game.events.FACTONS`: access to all the NPC factions and your player faction
+* `game.faction.FACTONS`: access to all the NPC factions and your player faction
+* `game.time.TIME`: information about the game time like the current day, month and year
+* `game.tourism.TOURISM`: information about your settlement tourism
 * `init.Main`: logic for starting the game launcher process
 * `init.MainLaunchLauncher`: just starts the init.Main 
 * `init.MainProcess`: logic for starting the game menu process
 * `init.paths.PATHS`: all the game and mod file paths
 * `init.race.RACES`: access to all the races currently loaded (also modded ones)
+* `init.resources.RESOURCES`: all the available resources like wood and stone
 * `init.settings.S`: contains information about the current game settings made in-game
+* `init.sprite.SPRITES`: all the game sprites
+* `init.sprite.UI.UI`: all the sprites used for the UI
 * `init.tech.TECHS`: access to all the techs currently loaded (also modded ones)
-* `init.C`: contains constants with core game configs like the screen dimensions
-* `init.text.D`: handles translations for GUIs
+* `init.constant.C`: contains constants with core game configs like the screen dimensions
+* `util.text.D`: handles translations for GUIs
+* `init.type.DISEASES`: contains information about all available diseases
+* `integrations.INTEGRATIONS`: handles Steam integrations for e.g. achievements
 * `menu.ScMain`: main menu you see when starting
 * `script.SCRIPT`: interface for hooking into some of the game features
 * `settlement.main.SETT`: access to everything in your settlement map, like the buildings or the terrain
 * `settlement.stats.STATS`: game statistics like your population count or happiness
+* `settlement.stats.law.LAW`: current status of your settlement crimes and prisoners etc.
+* `settlement.stats.standing.STANDINGS`: happiness of your citizens
 * `settlement.room.main.util.RoomsCreator`: for creating and registering custom rooms with custom logic
 * `snake2d.util.gui.GuiSection`: container for arranging and displaying your ui elements
 * `snake2d.CORE`: initializes and controls game core functionalities like the render and update loops
 * `snake2d.Updater`: game update and render loops
+* `view.main.VIEW`: contains all the UIs (world, settlement, battle)
 
 ## Conventions
 
