@@ -1,8 +1,14 @@
-**For V70**
+# Songs of Syx Modding Guide and Template for V70
 
-# Content
+This project is intended for people who want to start modding for the game [Songs of Syx](https://store.steampowered.com/app/1162750/Songs_of_Syx/).
+It contains [documentation](doc/index.md) on general modding techniques and serves as a starting point if you want to create code mods.
+The automated build pipeline will take care of compiling, packaging and installing the mod into the games mod folder.
+So the game will always load your latest changes you made in your mod without manually copying files.
 
-* [Introduction](#introduction)
+You will need a **Java 21 JDK** for developing.
+
+## Content
+
 * [General Modding Information](doc/index.md)
   * [Mod Folder Structure](doc/index.md#mod-folder-structure) 
   * [Game Boosters](doc/index.md#game-boosters)
@@ -31,23 +37,15 @@
 * [Other Modding Resources](#other-modding-resources)
 * [FAQ & Troubleshooting](#faq--troubleshooting)
 
-# Introduction
-
-This project is intended for people who want to start modding for the game [Songs of Syx](https://store.steampowered.com/app/1162750/Songs_of_Syx/).
-It contains [documentation](doc/index.md) on general modding techniques and serves as a starting point if you want to create code mods.
-The maven build pipeline will take care of compiling, packaging and installing the mod into the games mod folder.
-
-You will need a **Java 21 JDK** for developing.
-
-# General Modding Information
+## General Modding Information
 
 See [Documentation](doc/index.md)
 
-# Setup for Intellij IDEA
+## Setup for Intellij IDEA
 
 See [Setup IntelliJ IDEA](doc/howto/intellij_setup.md)
 
-# Getting Started
+## Getting Started
 
 :information_source: [Maven](https://maven.apache.org/) is required to compile, package and install the mod.
 When using [IntelliJ IDEA](https://www.jetbrains.com/idea/download/), Maven is already bundled within.
@@ -97,7 +95,7 @@ For debugging Java code, some additional **classpathModifications** are necessar
 These can differ on your system. 
 Also, the name of your built `*.jar` file may be different.
 
-# Mod SDK (Optional)
+## Mod SDK (Optional)
 
 :information_source: The Mod SDK is still somewhat experimental. 
 I'm using it for my [More Options](https://github.com/4rg0n/songs-of-syx-mod-more-options) mod. 
@@ -105,11 +103,11 @@ That's also the place where currently the [code](https://github.com/4rg0n/songs-
 
 See [Mod SDK Setup](doc/howto/mod_sdk_setup.md)
 
-# Start making your own mod
+## Start making your own mod
 
 See [make your own mod](doc/howto/make_your_own_mod.md).
 
-# Publish your Mod
+## Publish your Mod
 
 There's a maven profile `mods-uploader` you can use to automatically copy and clean your files into the mod uploader.
 The directory is configurable via the `<game.mod.uploader.directory>` property in the `<profiles>` in the [pom.xml](pom.xml).
@@ -131,17 +129,17 @@ Will remove the mod files from the mod uploader. For updating the mod files.
 mvn clean -P mods-uploader
 ```
 
-## Steam
+### Steam
 
 * [Official How to up- and download mods using Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2229540768)
 * [(Discord) Steam Workshop Uploader](https://cdn.discordapp.com/attachments/664478122347069441/1023961932476186704/Songs_of_Syx_Workshop_Uploader.zip?ex=67adff5c&is=67acaddc&hm=e6c3e2e9cb6e365e61cb69c0cb242be13f2856cf06391d46541f842a6b3902f7&)
 
 
-# How-to Guides
+## How-to Guides
 
 See [How-to Guides](doc/howto/index.md)
 
-# Project Build Commands
+## Project Build Commands
 
 :information_source: Installs only the games `SongsOfSyx.jar` and `info/SongsOfSyx-sources.jar` as a dependency, and validate whether it was successful.
 ```
@@ -176,7 +174,7 @@ mvn install -P linux
 mvn clean
 ```
 
-# Mod Info / Build Settings
+## Mod Info / Build Settings
 
 In the [pom.xml](pom.xml) you will find `<properties>` where you can change information about the mod.
 There you can also change the `<game.version.major>` property to your used game version.
@@ -184,33 +182,33 @@ The `<game.version.minor>` property is only important when your mod really depen
 
 Files (e.g. assets) for the mod are located in `src/main/java/resources/mod-files` and will be copied in the `package` phase.
 
-# Debugging
+## Debugging
 
 You can enable **Debug Mode** and **Developer Mode** in the game launcher **settings**.
 You will get more detailed logs and in-game developer tools for testing.
 
-## Eclipse
+### Eclipse
 
 * Add a new [Run Configuration](https://www.subjectcoach.com/tutorials/detail/contents/beginners-guide-to-eclipse-ide/chapter/working-with-run-configurations).
 * Set the **main class** name to `init.MainLaunchLauncher`.
 * In the tab **Arguments** set the **working directory** to your game installation folder e.g. `C:/Program Files (x86)/Steam/steamapps/common/Songs of Syx`.
 
-## Testing
+### Testing
 
 There's [JUnit 5](https://junit.org/junit5/) with [AssertJ](https://assertj.github.io/doc/) and [Mockito 4](https://site.mockito.org/) for testing your code.
 
-## Developing Tips
+### Developing Tips
 
 See [doc/index.md](doc/index.md).
 
-# Other Modding Resources
+## Other Modding Resources
 
 * [Discord](https://discord.com/eacfCuE)
 * [Make a mod](doc/res/MAKE_A_MOD.txt) (OUTDATED)
 * [Script Modding](https://docs.google.com/document/d/1FVOtfr3Y-cxH2Gw-i-OqW3Vbp0MPJp0xSyQ80UoCABE/edit) (OUTDATED)
 * [Modding Guide](https://drive.google.com/file/d/1_OesG68HtJ4CwyHK7M72hQDOaCjeqgqT/view) (OUTDATED)
 
-# FAQ & Troubleshooting
+## FAQ & Troubleshooting
 
 ### How can I read and browse the source code of Songs of Syx?
 
