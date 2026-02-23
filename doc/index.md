@@ -25,8 +25,8 @@ Mod Name            // this should be the name of your mod
 **\_Info.txt**
 ```
 VERSION: "1.0.0",
-GAME_VERSION_MAJOR: 66,
-GAME_VERSION_MINOR: 45,
+GAME_VERSION_MAJOR: 70,
+GAME_VERSION_MINOR: 32,
 NAME: "Example Mod",
 DESC: "This is an example mod made by Jake the game developer.",
 AUTHOR: "Jake",
