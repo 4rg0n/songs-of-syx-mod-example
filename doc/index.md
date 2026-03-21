@@ -80,7 +80,7 @@ Mod Name
 
 # Mod Locations
 
-The game has multiple locations for storing mods:
+The game uses two locations for storing mods:
 
 ## General
 
