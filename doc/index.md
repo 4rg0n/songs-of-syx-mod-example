@@ -86,15 +86,15 @@ The game has multiple locations for storing mods:
 
 Here you can manually install mods. When developing a mod, I would suggest to use this folder.
 
-**Windows:** `%APPDATA%\songsofsyx\mods`
-**Linux:** `~/.local/share/songsofsyx/mods`
+* **Windows:** `%APPDATA%\songsofsyx\mods`
+* **Linux:** `~/.local/share/songsofsyx/mods`
 
 ## Steam Only
 
 Here Steam will store your subscribed mods.
 
-**Windows:** `C:\Program Files (x86)\Steam\steamapps\workshop\content\1162750`
-**Linux:** `~/.steam/steam/steamapps/workshop/content/1162750`
+* **Windows:** `C:\Program Files (x86)\Steam\steamapps\workshop\content\1162750`
+* **Linux:** `~/.steam/steam/steamapps/workshop/content/1162750`
 
 # Game Boosters
 
