@@ -16,7 +16,7 @@ Mod Name            // this should be the name of your mod
 ├── V70             // this must be the game major version
 |   ├── assets      // here all sorts of configurations, sprites and sounds are located
 |   ├── campaigns   // custom made campaigns (I guess it's still WIP)
-|   ├── examples    // a place to put save some example save games for your mod
+|   ├── examples    // a place to put some example save games for your mod
 |   ├── saves       // if you want to publish your save(s) as a downloadable mod
 |   └── script      // here your code would life in form of one or multiple Java *.jar files
 └── _Info.txt       // contains some basic information about your mod.
@@ -77,6 +77,24 @@ Mod Name
 ├── V69
 └── V70            
 ```
+
+# Mod Locations
+
+The game has multiple locations for storing mods:
+
+## General
+
+Here you can manually install mods. When developing a mod, I would suggest to use this folder.
+
+**Windows:** `%APPDATA%\songsofsyx\mods`
+**Linux:** `~/.local/share/songsofsyx/mods`
+
+## Steam Only
+
+Here Steam will store your subscribed mods.
+
+**Windows:** `C:\Program Files (x86)\Steam\steamapps\workshop\content\1162750`
+**Linux:** `~/.steam/steam/steamapps/workshop/content/1162750`
 
 # Game Boosters
 
