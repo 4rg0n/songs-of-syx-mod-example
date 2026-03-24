@@ -26,6 +26,7 @@ You will need a **Java 21 JDK** for developing.
 * [Publish your Mod](#publish-your-mod)
 * [How-to Guides](doc/howto/index.md)
   * [Run in Console](doc/howto/run_in_console.md) 
+  * [Add JVM Arguments](doc/howto/jvmargs.md)
   * [Understand Game Code](doc/howto/game_code.md) 
   * [Access Game Code](doc/howto/access_game_code.md) 
   * [Modding Strategy](doc/howto/modding_strategy.md) 
