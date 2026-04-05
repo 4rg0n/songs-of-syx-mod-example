@@ -33,6 +33,20 @@ AUTHOR: "Jake",
 INFO: "Example",
 ```
 
+The `_Info.txt` is essential for your mod. 
+It has to be named exactly `_Info.txt`. 
+Naming it `_info.txt` won't work.
+It contains the following meta information:
+
+* **VERSION** is the version of your mod: ` MAJOR.MINOR.PATCH` (https://semver.org/).
+* **GAME_VERSION_MAJOR** is the latest **major** game version your mod supports.
+* **GAME_VERSION_MINOR** is the latest **minor** game version your mod supports. 
+This isn't as important as the **major** version is.
+* **NAME** is the name of your mod
+* **DESC** is a short description of what your mod does
+* **AUTHOR** is you =D
+* **INFO** is some additional information you might want to add 
+
 You can replace vanilla game files by naming them the same as the original and putting it in the same directory of your mod.
 
 ```
