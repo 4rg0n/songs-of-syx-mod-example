@@ -46,6 +46,7 @@ This isn't as important as the **major** version is.
 * **DESC** is a short description of what your mod does
 * **AUTHOR** is you =D
 * **INFO** is some additional information you might want to add 
+* **TEXTURE_CACHE_SIZE** this is **optional** and defaults to `4069` bytes. The max value is `16384`. You may want to set this when you have a lot of custom sprites.
 
 You can replace vanilla game files by naming them the same as the original and putting it in the same directory of your mod.
 
