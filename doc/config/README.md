@@ -6,3 +6,4 @@ This is handy if you want to add your own content via mods.
 * [Animals](animal.md)
 * [Diseases](disease.md)
 * [Races](race.md)
+* [Religions](religion.md)
