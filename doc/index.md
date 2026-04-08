@@ -48,7 +48,10 @@ This isn't as important as the **major** version is.
 * **INFO** is some additional information you might want to add 
 * **TEXTURE_CACHE_SIZE** this is **optional** and defaults to `4069` bytes. The max value is `16384`. You may want to set this when you have a lot of custom sprites.
 
+## Replacing / Overwriting whole vanilla config files
+
 You can replace vanilla game files by naming them the same as the original and putting it in the same directory of your mod.
+:warning: Since version **V71** it is required to place a `__OVERWRITE: true,` into the file you want to overwrite.
 
 ```
 Mod Name
@@ -59,8 +62,28 @@ Mod Name
                 └── HUMAN.txt
 ```
 
+## Replacing / Overwriting individual values in a vanilla config file
 
-The same way it's possible to add your own custom files in some places e.g. for races or rooms.
+Since **V71** it is possible to overwrite individual values in a vanilla config file. 
+This significantly increases mod compatibility.
+
+```
+Mod Name
+└── V71
+    └── assets
+        └── init
+            └── race
+                └── CANTOR.txt
+```
+
+With this single line in your `CANTOR.txt`, you would make the Cantor race playable:
+```
+PLAYABLE: true,
+```
+
+## Adding your own custom config files
+
+The same way it's possible to add your own custom files in some places, e.g. for races or rooms.
 
 ```
 Mod Name
@@ -70,6 +93,31 @@ Mod Name
             └── race
                 └── YOUR_RACE.txt
 ```
+
+### Adding your own custom room
+
+**Rooms** follow a special semantic. 
+Each room file starting with an `_` (e.g. `_ASYLUM.txt`) is a "unique" room.
+These can't have new implementations without modifying the game code. 
+
+All other rooms can get a new implementation with your own configuration though.
+For example if you made a new weapon "Crossbow", you can have a `WORKSHOP` like `WORKSHOP_BOWYER.txt`, 
+but you would call it e.g.`WORKSHOP_CROSSBOW.txt` and configure it to produce crossbows instead. 
+
+```
+Mod Name
+└── V70
+    └── assets
+        └── init
+            └── room
+                ├── REFINER_YOUR_NAME.txt
+                ├── MINE_YOUR_NAME.txt
+                ├── ...
+                ├── SHRINE_YOUR_NAME.txt
+                └── WORKSHOP_YOUR_NAME.txt
+```
+
+## Removing all vanilla config files from a folder
 
 By placing a file named `_IgnoreVanilla.txt` in a folder, the game will ignore the vanilla files and only load your mod files.
 With this, it's possible to e.g. remove all vanilla races from the game and only load your own.
@@ -83,6 +131,8 @@ Mod Name
                 ├── YOUR_ONLY_RACE.txt
                 └── _IgnoreVanilla.txt              
 ```
+
+## Supporting multiple game versions
 
 If you want to, you can have multiple `Vxx` folders in your mod, for supporting multiple game versions.
 
