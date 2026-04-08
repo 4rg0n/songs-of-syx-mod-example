@@ -22,7 +22,7 @@ Mod Name            // this should be the name of your mod
 └── _Info.txt       // contains some basic information about your mod.
 ```
 
-**\_Info.txt**
+## _Info.txt
 ```
 VERSION: "1.0.0",
 GAME_VERSION_MAJOR: 70,
@@ -38,7 +38,7 @@ It has to be named exactly `_Info.txt`.
 Naming it `_info.txt` won't work.
 It contains the following meta information:
 
-* **VERSION** is the version of your mod: ` MAJOR.MINOR.PATCH` (https://semver.org/).
+* **VERSION** is the version of your mod: `MAJOR.MINOR.PATCH` (https://semver.org/).
 * **GAME_VERSION_MAJOR** is the latest **major** game version your mod supports.
 * **GAME_VERSION_MINOR** is the latest **minor** game version your mod supports. 
 This isn't as important as the **major** version is.
@@ -160,6 +160,53 @@ Here Steam will store your subscribed mods.
 
 * **Windows:** `C:\Program Files (x86)\Steam\steamapps\workshop\content\1162750`
 * **Linux:** `~/.steam/steam/steamapps/workshop/content/1162750`
+
+# FAQ
+
+## Why my mod isn't showing up in the launcher?
+
+Doublecheck the [mod locations](#mod-locations).
+If you are on a **Linux** OS and your subscribed **Steam** mod isn't showing up:
+
+The game may have some trouble locating the Steam workshop folder when it is running via [Proton](https://www.protondb.com/).
+In this case, you can symlink the correct locations with a workaround (credit to **Fatmice** from the Discord):
+
+1) Find the full path for Steam workshop for the game. 
+The folder is **1162750** under `.../workshop/content` inside of your `steamapps` folder
+2) Find the full path for the proton prefix for the game. 
+The folder is **1162750** under `.../compatdata` inside of the `steamapps` folder
+3) Open a terminal and navigate to the above and type: 
+    ```
+    cd 'pfx/drive_c/users/steamuser/Application Data/songsofsyx'
+    ```
+4) Type `ls` to list the content.
+You should see a folder name `mods`. Delete it with:
+    ```
+    rm -rf mods
+    ```
+5) Type the command:
+    ```
+    ln -s <full-path-to-steamapps>/workshop/content/1162750 mods
+    ```
+6) Type `ls mods` and you should see some folders with numbers. 
+This indicates that you should now see mods in the game launcher for things that you subscribed from the Steam workshop.
+7) Close out the terminal.
+
+**Example** `<full-path-to-steamapps>`:
+
+If `<full-path-to-steamapps>` = `/home/bob/.local/share/steam/steamapps`, 
+then for **step 5**, while under the proton prefix the command would be:
+```
+ln -s /home/bob/.local/share/steam/steamapps/workshop/content/1162750 mods
+```
+
+
+
+## Why my mod is displayed as unsupported?
+
+Does your mod folder contain an [_Info.txt](#_infotxt) file with the correct content?  
+Did you name your version folder correct? 
+For example `V70` and **not** `v70`?
 
 # Game Boosters
 
