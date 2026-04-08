@@ -1,7 +1,7 @@
 # Songs of Syx Modding Guide and Template for V70
 
 This project is intended for people who want to start modding for the game [Songs of Syx](https://store.steampowered.com/app/1162750/Songs_of_Syx/).
-It contains [documentation](doc/index.md) on general modding techniques and serves as a starting point if you want to create code mods.
+It contains [documentation](doc/README) on general modding techniques and serves as a starting point if you want to create code mods.
 The automated build pipeline will take care of compiling, packaging and installing the mod into the games mod folder.
 So the game will always load your latest changes you made in your mod without manually copying files.
 
@@ -9,27 +9,28 @@ You will need a **Java 21 JDK** for developing.
 
 ## Content
 
-* [General Modding Information](doc/index.md)
-  * [Mod Folder Structure](doc/index.md#mod-folder-structure) 
-    * [_Info.txt](doc/index.md#_infotxt) 
-    * [Replacing / Overwriting whole vanilla config files](doc/index.md#replacing--overwriting-whole-vanilla-config-files)
-    * [Replacing / Overwriting individual values in a vanilla config file](doc/index.md#replacing--overwriting-individual-values-in-a-vanilla-config-file)
-    * [Adding your own custom config files](doc/index.md#adding-your-own-custom-config-files)
-      * [Adding your own custom room](doc/index.md#adding-your-own-custom-room)
-    * [Removing all vanilla config files from a folder](doc/index.md#removing-all-vanilla-config-files-from-a-folder)
-    * [Supporting multiple game versions](doc/index.md#supporting-multiple-game-versions)
-  * [FAQ](doc/index.md#faq)
-  * [Game Boosters](doc/index.md#game-boosters)
-  * [Scripting / Coding](doc/index.md#scripting--coding)
-    * [In-game Debug and Development Tool](doc/index.md#in-game-debug-and-development-tool)
-    * [Logging](doc/index.md#logging)
-    * [Game and Mod Initialization](doc/index.md#game-and-mod-initialization)
+* [General Modding Information](doc/README)
+  * [Mod Folder Structure](doc/README#mod-folder-structure) 
+    * [_Info.txt](doc/README#_infotxt) 
+    * [Replacing / Overwriting whole vanilla config files](doc/README#replacing--overwriting-whole-vanilla-config-files)
+    * [Replacing / Overwriting individual values in a vanilla config file](doc/README#replacing--overwriting-individual-values-in-a-vanilla-config-file)
+    * [Adding your own custom config files](doc/README#adding-your-own-custom-config-files)
+      * [Adding your own custom room](doc/README#adding-your-own-custom-room)
+    * [Removing all vanilla config files from a folder](doc/README#removing-all-vanilla-config-files-from-a-folder)
+    * [Supporting multiple game versions](doc/README#supporting-multiple-game-versions)
+  * [FAQ](doc/README#faq)
+  * [Game Boosters](doc/README#game-boosters)
+  * [Scripting / Coding](doc/README#scripting--coding)
+    * [In-game Debug and Development Tool](doc/README#in-game-debug-and-development-tool)
+    * [Logging](doc/README#logging)
+    * [Game and Mod Initialization](doc/README#game-and-mod-initialization)
 * [Example Mod Structure](doc/example)
 * [Project Setup](doc/howto/intellij_setup.md)
 * [Getting Started](#getting-started)
 * [Mod SDK (Optional)](#mod-sdk-optional)
   * [Code](https://github.com/4rg0n/songs-of-syx-mod-more-options/tree/main/mod-sdk)
   * [Documentation](https://github.com/4rg0n/songs-of-syx-mod-more-options/tree/main/mod-sdk/src/main/java/com/github/argon/sos/mod/sdk#mod-sdk)
+* [Init Config Files Documentation](doc/config/README.md)
 * [Make your own Mod](doc/howto/make_your_own_mod.md)
 * [Publish your Mod](#publish-your-mod)
 * [How-to Guides](doc/howto/index.md)
@@ -46,7 +47,7 @@ You will need a **Java 21 JDK** for developing.
 
 ## General Modding Information
 
-See [Documentation](doc/index.md)
+See [Documentation](doc/README)
 
 ## Setup for Intellij IDEA
 
@@ -204,7 +205,7 @@ There's [JUnit 5](https://junit.org/junit5/) with [AssertJ](https://assertj.gith
 
 ### Developing Tips
 
-See [doc/index.md](doc/index.md).
+See [doc/index.md](doc/README).
 
 ## Other Modding Resources
 
