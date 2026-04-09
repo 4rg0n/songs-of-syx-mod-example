@@ -7,3 +7,4 @@ This is handy if you want to add your own content via mods.
 * [Diseases](disease.md)
 * [Races](race.md)
 * [Religions](religion.md)
+* [Resources](resource.md)
