@@ -52,17 +52,70 @@ For `ADMIN_` rooms only.
 2) Capacity
 3) Efficiency
 
+## ARCHERY rooms
+
+For `ARCHERY_` rooms only.
+
+| Key                            | Required | Default     | Min  | Max                                                                                            | Description                                                                                                         | Example                                                                                            |
+|--------------------------------|----------|-------------|------|------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
+| DIV_SPRITE.ICON                | no       | dummy icon  | none | none                                                                                           | Path to the sprite tile used for the icon. The path will look into `assets/init/sprite/icon`.                       | `16->Misc->5`<br/>The real path would be:<br/>`assets/init/icon/16/Misc.png` sixth (5) tile        |
+| DIV_SPRITE.COLOR               | no       | 127_127_127 | none | none                                                                                           | Will colorize the sprite in given color. Can also be a list of colors. You can either have TINT or COLOR, not both. | `255_255_255` or<br/>`{ R: 255, G: 255, B: 255, }` or as list<br/> `[ 111_111_111, 222_222_222, ]` |
+| TRAINING.FULL_TRAINING_IN_DAYS | yes      | none        | 0    | [Integr.MAX_VALUE](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#MAX_VALUE) | Amount of days required to train to 100%                                                                            |                                                                                                    |
+| TRAINING.BOOST.\<KEY\>         | yes      | none        | none | none                                                                                           | See [boosts](boost.md)                                                                                              |                                                                                                    |
+| EMPLOYMENT                     | no       | none        | none | none                                                                                           | See [EMPLOYMENT key](#employment-key)                                                                               |                                                                                                    |
+| ENVIRONMENT_EMIT               | no       | none        | none | none                                                                                           | See [ENVIRONMENT_EMIT key](#environment_emit-key)                                                                   |                                                                                                    |
+
+### ITEMS
+
+#### Furniture
+1) Training Targets
+
+#### Stats multipliers per furniture
+1) Capacity
+
+## EMPLOYMENT key
+
+For rooms with employees.
+
+| Key                           | Required | Default | Min  | Max     | Description                                                                                | Example |
+|-------------------------------|----------|---------|------|---------|--------------------------------------------------------------------------------------------|---------|
+| EMPLOYMENT.SHIFT_OFFSET       | yes      | none    | 0.0  | 0.99    | At which percentage of a day length the work shift starts.                                 |         |
+| EMPLOYMENT.NIGHT_SHIFT        | no       | false   | none | none    | Whether employees should work at night.                                                    |         |
+| EMPLOYMENT.FULLFILLMENT       | no       | 0.5     | 0.0  | 1.0     | How much fulfillment an employee will get when working in this room.                       |         |
+| EMPLOYMENT.ACCIDENTS_PER_YEAR | no       | 0.0     | 0.0  | 10000.0 | Maximum numbers of work accidents which can happen in a year. Actual value will be halved. |         |
+| EMPLOYMENT.HEALTH_FACTOR      | no       | 1.0     | 0.0  | 1.0     | How much health will decrease (1.0 means no decrease) when working in this room.           |         |
+
+
 ## WORK key
 
 For rooms with employees.
 
-| Key                     | Required | Default  | Min  | Max     | Description                                                                      | Example                                                                                       |
-|-------------------------|----------|----------|------|---------|----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
-| WORK.SHIFT_OFFSET       | yes      | none     | 0.0  | 0.99    | At which percentage of a day length the work shift starts.                       |                                                                                               |
-| WORK.NIGHT_SHIFT        | no       | false    | none | none    | Whether employees should work at night.                                          |                                                                                               |
-| WORK.FULLFILLMENT       | no       | 0.5      | 0.0  | 1.0     | How much fulfillment an employee will get when working in this room.             |                                                                                               |
-| WORK.ACCIDENTS_PER_YEAR | no       | 0.0      | 0.0  | 10000.0 | Maximum numbers of work accidents which can happen in a year.                    |                                                                                               |
-| WORK.HEALTH_FACTOR      | no       | 1.0      | 0.0  | 1.0     | How much health will decrease (1.0 means no decrease) when working in this room. |                                                                                               |
+| Key                     | Required | Default | Min  | Max     | Description                                                                                | Example |
+|-------------------------|----------|---------|------|---------|--------------------------------------------------------------------------------------------|---------|
+| WORK.SHIFT_OFFSET       | yes      | none    | 0.0  | 0.99    | At which percentage of a day length the work shift starts.                                 |         |
+| WORK.NIGHT_SHIFT        | no       | false   | none | none    | Whether employees should work at night.                                                    |         |
+| WORK.FULLFILLMENT       | no       | 0.5     | 0.0  | 1.0     | How much fulfillment an employee will get when working in this room.                       |         |
+| WORK.ACCIDENTS_PER_YEAR | no       | 0.0     | 0.0  | 10000.0 | Maximum numbers of work accidents which can happen in a year. Actual value will be halved. |         |
+| WORK.HEALTH_FACTOR      | no       | 1.0     | 0.0  | 1.0     | How much health will decrease (1.0 means no decrease) when working in this room.           |         |
+
+## ENVIRONMENT_EMIT key
+
+Used for rooms emitting something like noise or light.
+Possible \<EMIT\> values:
+
+* _NOISE
+* _LIGHT
+* _SPACE
+* _URBANISATION
+* _WATER_SWEET
+* _WATER_SALT
+
+| Key                              | Required | Default | Min | Max | Description               | Example |
+|----------------------------------|----------|---------|-----|-----|---------------------------|---------|
+| ENVIRONMENT_EMIT.\<EMIT\>.VALUE  | yes      | none    | 0.0 | 1.0 | How much it emits.        |         |
+| ENVIRONMENT_EMIT.\<EMIT\>.RADIUS | yes      | none    | 0.0 | 1.0 | How far the emit reaches. |         |
+
+
 
 ## ITEMS key
 
