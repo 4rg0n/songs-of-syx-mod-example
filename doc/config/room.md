@@ -17,6 +17,7 @@ For all kinds of rooms.
 | Key                     | Required | Default     | Min  | Max  | Description                                                                                                                                                           | Example                                                                                       |
 |-------------------------|----------|-------------|------|------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
 | ICON                    | no       | dummy icon  | none | none | Path to the sprite tile used for the icon. The path will look into `assets/init/sprite/icon`.                                                                         | `32->INFRA->0`<br/>The real path would be:<br/>`assets/init/icon/32/INFRA.png` first (0) tile |
+| TYPE                    | no       | none        | none | none | Type of the room.                                                                                                                                                     | `ARENA_G`                                                                                     |
 | MINI _COLOR             | no       | 127_127_127 | none | none | For displaying the room on the minimap and when max zoomed out.                                                                                                       | `255_255_255` or<br/> `{R: 255, G: 255, B: 255, }`                                            |
 | RESOURCES               | yes      | none        | none | none | List with resources used for construction. A maximum of 4 resources can be defined.<br/>See file names in `assets/init/resource` and sub folders for possible values. | `[STONE, WOOD,],`                                                                             |
 | AREA_COSTS              | yes      | none        | none | none | List with resource costs per tile for furnishing the room.                                                                                                            | `[1, 1,],`                                                                                    |
@@ -72,6 +73,34 @@ For `ARCHERY_` rooms only.
 
 #### Stats multipliers per furniture
 1) Capacity
+
+## ARENAG rooms
+
+For `ARENAG_` rooms only.
+
+| Key     | Required | Default | Min  | Max  | Description                     | Example |
+|---------|----------|---------|------|------|---------------------------------|---------|
+| WORK    | no       | none    | none | none | See [WORK key](#work-key)       |         |
+| SERVICE | no       | none    | none | none | See [SERVICE key](#service-key) |         |
+
+## SERVICE key
+
+| Key                         | Required | Default | Min  | Max       | Description                                                                               | Example  |
+|-----------------------------|----------|---------|------|-----------|-------------------------------------------------------------------------------------------|----------|
+| SERVICE.RADIUS              | no       | 150     | 0    | 50000     | How far the services reaches.                                                             |          |
+| SERVICE.STANDING.PRIO       | no       | 1.0     | 0.0  | 100000.0  | Used for displaying standings ordered by prio.                                            |          |
+| SERVICE.STANDING.INVERTED   | no       | false   | none | none      | Whether the standing shall have a negative effect.                                        |          |
+| SERVICE.STANDING.MULTIPLIER | no       | 0.0     | 0.0  | 10000.0   | Multiplier for how much standing it generates.                                            |          |
+| SERVICE.STANDING.EXPONENT   | no       | 1.0     | 0.01 | 100000.0  | Exponential factor for increasing the standing.                                           |          |
+| SERVICE.STANDING.DISMISS    | no       | false   | none | none      | Whether the standing shall not count to the overall reachable maximum standing.           |          |
+| SERVICE.STANDING.NOBLE      | no       | 0.0     | 0.0  | 1000000.0 | How much the standing affects nobles.                                                     |          |
+| SERVICE.STANDING.CITIZEN    | no       | 0.0     | 0.0  | 1000000.0 | How much the standing affects normal citizens.                                            |          |
+| SERVICE.STANDING.SLAVE      | no       | 0.0     | 0.0  | 1000000.0 | How much the standing affects slaves.                                                     |          |
+| SERVICE.STANDING.CHILD      | no       | 0.0     | 0.0  | 1000000.0 | How much the standing affects children.                                                   |          |
+| SERVICE.STANDING.OTHER      | no       | 0.0     | 0.0  | 1000000.0 | How much the standing affects all other people living in your settlement.                 |          |
+| SERVICE.USAGE               | no       | 1.0     | 0.0  | 1.0       | How much of a service need will be fulfilled when visiting the room.                      |          |
+| SERVICE.NEED                | yes      | none    | none | none      | Which need the room will fulfill. Possible needs can be found in `assets/init/stats/need` | `ARENAG` |
+| SERVICE.BOOST.\<KEY\>       | no       | none    | none | none      | See [boosts](boost.md)                                                                    |          |
 
 ## EMPLOYMENT key
 
