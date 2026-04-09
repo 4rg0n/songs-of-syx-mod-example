@@ -228,7 +228,7 @@ BOOST: {
 {BOOSTER_KEY}>{ADD|MUL}: 0.0,
 ```
 
-* [All possible BOOSTER_KEYs](booster/boosters_all.md)
+* [All possible BOOSTER_KEYs](res/boosters_all.md)
 
 # Scripting / Coding
 
