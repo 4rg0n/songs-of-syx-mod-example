@@ -1,6 +1,7 @@
 # Boosts / Bonuses
 
-Boosts or bonuses are something special too. They also follow a special semantic and are partially hardcoded and partially generated from game assets (e.g. room boosters).
+Boosts or bonuses are something special. 
+They follow a special semantic and are partially hardcoded and partially generated from game assets (e.g. room boosters).
 Key syntax: `{BOOSTER_KEY}>{ADD|MUL}` e.g. `ROOM_ADMIN_NORMAL>MUL`, which would be a bonus for the admin room.
 Booster keys can also count for multiple bonuses by using a wildcard. E.g. `ROOM_FARM*` would count for all rooms starting with `ROOM_FARM`.
 You can find a list with all available vanilla boosters [here](../booster/boosters_all.md).
