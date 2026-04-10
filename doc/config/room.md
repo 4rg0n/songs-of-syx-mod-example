@@ -129,6 +129,80 @@ This is for calculating the ranges between the values defined there with some ra
 #### Stats multipliers per furniture
 none
 
+## BARBER rooms
+
+For `BARBER_` rooms only.
+
+| Key               | Required | Default | Min  | Max                                                                                           | Description                                                                           | Example |
+|-------------------|----------|---------|------|-----------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|---------|
+| WORK_TIME_IN_DAYS | yes      | none    | 0.0  | [Double.MAX_VALUE](https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html#MAX_VALUE) | How long it takes to perform the job.<br/>The actual work time will be divided by 16. |         |
+| WORK              | no       | none    | none | none                                                                                          | See [WORK key](#work-key)                                                             |         |
+| SERVICE           | no       | none    | none | none                                                                                          | See [SERVICE key](#service-key)                                                       |         |
+
+### ITEMS
+
+#### Furniture
+1) Booths
+2) Carpets
+
+#### Stats multipliers per furniture
+1) Services
+2) Workers
+3) Quality
+
+## BARRACKS rooms
+
+For `BARRACKS_` rooms only.
+
+| Key                            | Required | Default     | Min  | Max                                                                                            | Description                                                                                                         | Example                                                                                            |
+|--------------------------------|----------|-------------|------|------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
+| DIV_SPRITE.ICON                | no       | dummy icon  | none | none                                                                                           | Path to the sprite tile used for the icon. The path will look into `assets/init/sprite/icon`.                       | `16->Misc->5`<br/>The real path would be:<br/>`assets/init/icon/16/Misc.png` sixth (5) tile        |
+| DIV_SPRITE.COLOR               | no       | 127_127_127 | none | none                                                                                           | Will colorize the sprite in given color. Can also be a list of colors. You can either have TINT or COLOR, not both. | `255_255_255` or<br/>`{ R: 255, G: 255, B: 255, }` or as list<br/> `[ 111_111_111, 222_222_222, ]` |
+| TRAINING.FULL_TRAINING_IN_DAYS | yes      | none        | 0    | [Integr.MAX_VALUE](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#MAX_VALUE) | Amount of days required to train to 100%                                                                            |                                                                                                    |
+| TRAINING.BOOST.\<KEY\>         | yes      | none        | none | none                                                                                           | See [boosts](boost.md)                                                                                              |                                                                                                    |
+| EMPLOYMENT                     | no       | none        | none | none                                                                                           | See [EMPLOYMENT key](#employment-key)                                                                               |                                                                                                    |
+| ENVIRONMENT_EMIT               | no       | none        | none | none                                                                                           | See [ENVIRONMENT_EMIT key](#environment_emit-key)                                                                   |                                                                                                    |
+| UPGRADES                       | no       | none        | none | none                                                                                           | See [UPGRADES key](#upgrades-key)                                                                                   |                                                                                                    |
+
+### ITEMS
+
+#### Furniture
+1) Training Dummies
+
+#### Stats multipliers per furniture
+1) Capacity
+
+## UPGRADES key
+
+Upgrades are possible room improvements. 
+They are defined as a list where the first entry is the first upgrade level.
+Example:
+```
+UPGRADES: [
+	{
+		RESOURCE_MASK: [1,1.25,0,0,],
+		BOOST: 0,
+		AI: 0,
+	},
+	{
+		RESOURCE_MASK: [1,1.25,2,0,],
+		BOOST: 0.5,
+		AI: 0,
+	},
+	{
+		RESOURCE_MASK: [1,1.25,3,0.75,],
+		BOOST: 1.0,
+		AI: 0,
+	},
+],
+```
+
+| Key           | Required | Default   | Min                                                                                            | Max                                                                                           | Description                                                                                                                          | Example         |
+|---------------|----------|-----------|------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-----------------|
+| RESOURCE_MASK | yes      | none      | none                                                                                           | none                                                                                          | Upgrade costs for each level<br/>It contains amount a list of multipliers for the resources defined in the `RESOURCES` list.         | `[1,1.25,0,0,]` |
+| BOOST         | yes      | none      | -[Double.MAX_VALUE](https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html#MAX_VALUE) | [Double.MAX_VALUE](https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html#MAX_VALUE) | The actual improvement. It is added to the actual room bonus.<br/>It can be negative. What it actually improves depends on the room. |                 |
+| AI            | no       | BOOST / 2 | 0.0                                                                                            | 10000.0                                                                                       | The bonus value applied to NPCs                                                                                                      |                 |
+
 ## SERVICE key
 
 | Key                         | Required | Default | Min  | Max       | Description                                                                               | Example  |
