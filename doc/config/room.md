@@ -18,7 +18,7 @@ For all kinds of rooms.
 |-------------------------|----------|-------------|------|------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
 | ICON                    | no       | dummy icon  | none | none | Path to the sprite tile used for the icon. The path will look into `assets/init/sprite/icon`.                                                                         | `32->INFRA->0`<br/>The real path would be:<br/>`assets/init/icon/32/INFRA.png` first (0) tile |
 | TYPE                    | no       | none        | none | none | Type of the room.                                                                                                                                                     | `ARENA_G`                                                                                     |
-| MINI _COLOR             | no       | 127_127_127 | none | none | For displaying the room on the minimap and when max zoomed out.                                                                                                       | `255_255_255` or<br/> `{R: 255, G: 255, B: 255, }`                                            |
+| MINI_COLOR              | no       | 127_127_127 | none | none | For displaying the room on the minimap and when max zoomed out.                                                                                                       | `255_255_255` or<br/> `{R: 255, G: 255, B: 255, }`                                            |
 | RESOURCES               | yes      | none        | none | none | List with resources used for construction. A maximum of 4 resources can be defined.<br/>See file names in `assets/init/resource` and sub folders for possible values. | `[STONE, WOOD,],`                                                                             |
 | AREA_COSTS              | yes      | none        | none | none | List with resource costs per tile for furnishing the room.                                                                                                            | `[1, 1,],`                                                                                    |
 | FLOOR                   | yes      | none        | none | none | Floor used for this room.<br/>Possible floor names can be found in `assets/init/settlement/floor`.                                                                    | `WOOD`                                                                                        |
@@ -82,6 +82,52 @@ For `ARENAG_` rooms only.
 |---------|----------|---------|------|------|---------------------------------|---------|
 | WORK    | no       | none    | none | none | See [WORK key](#work-key)       |         |
 | SERVICE | no       | none    | none | none | See [SERVICE key](#service-key) |         |
+
+### ITEMS
+
+#### Furniture
+1) Entrance
+
+#### Stats multipliers per furniture
+1) Gladiators
+2) Spectators
+
+## ARTILLERY rooms
+
+For `ARTILLERY_` rooms only.
+Artillery Projectiles have a `FROM` and `TO` section. 
+This is for calculating the ranges between the values defined there with some randomness.
+
+
+| Key                                    | Required | Default                           | Min  | Max        | Description                                                                                                                                          | Example                                            |
+|----------------------------------------|----------|-----------------------------------|------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
+| PROJECTILE_RESOURCE                    | yes      | none                              | none | none       | Resource used in the catapult.<br/>See file names in `assets/init/resource` and sub folders for possible values.                                     | `STONE`                                            |
+| PROJECTILE.COLOR                       | no       | 127_127_127                       | none | none       | For colorizing the projectile.                                                                                                                       | `255_255_255` or<br/> `{R: 255, G: 255, B: 255, }` |
+| PROJECTILE.SPRITE_FILE                 | no       | dummy projectile with given COLOR | none | none       | Sprite used for the projectile.<br/>Projectile sprites are read from `assets/sprite/settlement/projectile`.                                          | `_CATAPULT`                                        |
+| PROJECTILE.FROM.MASS                   | yes      | none                              | 0.01 | 100000.0   | Weight of the projectile.                                                                                                                            |                                                    |
+| PROJECTILE.FROM.TILE_SPEED             | yes      | none                              | 0.5  | 250.0      | Velocity of the projectile.                                                                                                                          |                                                    |
+| PROJECTILE.FROM.RELOAD_SECONDS         | yes      | none                              | 0.01 | 10000.0    | Time between shots.                                                                                                                                  |                                                    |
+| PROJECTILE.FROM.ACCURACY               | yes      | none                              | 0.01 | 1.0        | Chance to hit the target.                                                                                                                            |                                                    |
+| PROJECTILE.FROM.DEXTERITY              | yes      | none                              | 0.0  | 10000000.0 | Chance to break block defense of the target.                                                                                                         |                                                    |
+| PROJECTILE.FROM.TILE_RADIUS_DAMAGE     | no       | 0.0                               | 0.0  | 10000.0    | Area of effect for the impact.                                                                                                                       |                                                    |
+| PROJECTILE.FROM.MAX_ARCH_ANGLE_DEGREES | yes      | none                              | 0.0  | 75.0       | Maximum launch angle of the projectile.                                                                                                              |                                                    |
+| PROJECTILE.FROM.DAMAGE.\<DAMAGE_TYPE\> | yes      | none                              | 0.0  | 100000.0   | Which damage type and how much damage the projectile does on impact.<br/>See file names in `assets/init/stats/damage` for possible \<DAMAGE_TYPE\>s. | `PIERCE: 15`                                       |
+| PROJECTILE.TO.MASS                     | yes      | none                              | 0.01 | 100000.0   | Weight of the projectile.                                                                                                                            |                                                    |
+| PROJECTILE.TO.TILE_SPEED               | yes      | none                              | 0.5  | 250.0      | Velocity of the projectile.                                                                                                                          |                                                    |
+| PROJECTILE.TO.RELOAD_SECONDS           | yes      | none                              | 0.01 | 10000.0    | Time between shots.                                                                                                                                  |                                                    |
+| PROJECTILE.TO.ACCURACY                 | yes      | none                              | 0.01 | 1.0        | Chance to hit the target.                                                                                                                            |                                                    |
+| PROJECTILE.TO.DEXTERITY                | yes      | none                              | 0.0  | 10000000.0 | Chance to break block defense of the target.                                                                                                         |                                                    |
+| PROJECTILE.TO.TILE_RADIUS_DAMAGE       | no       | 0.0                               | 0.0  | 10000.0    | Area of effect for the impact.                                                                                                                       |                                                    |
+| PROJECTILE.TO.MAX_ARCH_ANGLE_DEGREES   | yes      | none                              | 0.0  | 75.0       | Maximum launch angle of the projectile.                                                                                                              |                                                    |
+| PROJECTILE.TO.DAMAGE.\<DAMAGE_TYPE\>   | yes      | none                              | 0.0  | 100000.0   | Which damage type and how much damage the projectile does on impact.<br/>See file names in `assets/init/stats/damage` for possible \<DAMAGE_TYPE\>s. | `PIERCE: 30`                                       |
+
+### ITEMS
+
+#### Furniture
+1) Catapult
+
+#### Stats multipliers per furniture
+none
 
 ## SERVICE key
 
