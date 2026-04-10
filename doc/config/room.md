@@ -1,8 +1,4 @@
-<style>
-    article {
-        width: 95%;
-    }
-</style>
+<style>article {width: 95%;}</style>
 # Rooms
 
 `data/assets/init/room`
