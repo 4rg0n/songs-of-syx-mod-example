@@ -14,19 +14,25 @@ but you would call it e.g.`WORKSHOP_CROSSBOW.txt` and configure it to produce cr
 
 For all kinds of rooms.
 
-| Key                       | Required | Default       | Min  | Max    | Description                                                                                                                                                                                        | Example                                                                                       |
-|---------------------------|----------|---------------|------|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
-| ICON                      | no       | dummy icon    | none | none   | Path to the sprite tile used for the icon. The path will look into `assets/init/sprite/icon`.                                                                                                      | `32->INFRA->0`<br/>The real path would be:<br/>`assets/init/icon/32/INFRA.png` first (0) tile |
-| TYPE                      | no       | none          | none | none   | Type of the room.                                                                                                                                                                                  | `ARENA_G`                                                                                     |
-| MINI_COLOR                | no       | 127_127_127   | none | none   | For displaying the room on the minimap and when max zoomed out.                                                                                                                                    | `255_255_255` or<br/> `{R: 255, G: 255, B: 255, }`                                            |
-| MINI_COLOR_PATTERN        | no       | blank pattern | none | none   | Custom pattern when displayed in minimap or zoomed out.<br/>It is a list of Strings with numbers in it.<br/>All Strings must have the same length.<br/>There can be a maximum of 32 Strings in it. | `[<br/>  "44444444",<br/>  "99999999",<br/>  "00000000",<br/>  "44444444",<br/>]`             |
-| RESOURCES                 | yes      | none          | none | none   | List with resources used for construction. A maximum of 4 resources can be defined.<br/>See file names in `assets/init/resource` and sub folders for possible values.                              | `[STONE, WOOD,],`                                                                             |
-| AREA_COSTS                | yes      | none          | none | none   | List with resource costs per tile for furnishing the room.                                                                                                                                         | `[1, 1,],`                                                                                    |
-| FLOOR                     | yes      | none          | none | none   | Floor used for this room.<br/>Possible floor names can be found in `assets/init/settlement/floor`.                                                                                                 | `WOOD`                                                                                        |
-| REQUIRES.\<COMPARATOR\>   | no       | none          | none | none   | See [requires](require.md)                                                                                                                                                                         | `GREATER: { WORKFORCE: 3500, },`                                                              |
-| BONUS.CLIMATE.\<CLIMATE\> | no       | none          | 0.0  | 2000.0 | Room bonus multiplier when in a certain climate. <br/>Possible climates can be found in `assets/init/config/CLIMATE.txt`.                                                                          | `{ COLD: 0.8, TEMPERATE: 1.0, HOT: 0.0, }`</br>or `{ *: 0.5, }` for all climates              |
-| ITEMS                     | no       | none          | none | none   | See [items](#items-key)                                                                                                                                                                            |                                                                                               |
-| SPRITES                   | yes      | none          | none | none   | See [SPRITES key](#sprites-key)                                                                                                                                                                    |                                                                                               |
+| Key                       | Required | Default       | Min  | Max    | Description                                                                                                                                                                                        | Example                                                                                                            |
+|---------------------------|----------|---------------|------|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
+| ICON                      | no       | dummy icon    | none | none   | Path to the sprite tile used for the icon. The path will look into `assets/init/sprite/icon`.<br/>You can either have a single sprite as icon or have a more complex setup (see below).            | `32->INFRA->0`<br/>The real path would be:<br/>`assets/init/icon/32/INFRA.png` first (0) tile                      |
+| ICON.BG                   | yes      | none          | none | none   | Path to the sprite tile used for the icon background. The path will look into `assets/init/sprite/icon`.                                                                                           | `32->BG->3`<br/>The real path would be:<br/>`assets/init/icon/32/BG.png` fourth (3) tile                           |
+| ICON.FG                   | yes      | none          | none | none   | Path to the sprite tile used for the icon foreground. The path will look into `assets/init/sprite/icon`.                                                                                           | `24->resource->Cotton->0`<br/>The real path would be:<br/>`assets/init/icon/24/resource/Cotton.png` first (0) tile |
+| ICON.SHADOW               | no       | 0             | -100 | 100    | How much of a shadow in pixels should be cast inside (negative) or outside (positive) of the icon.                                                                                                 |                                                                                                                    |
+| ICON.OFFX                 | no       | 0             | -100 | 100    | Offset in pixels on the X axis for casting the shadow.                                                                                                                                             |                                                                                                                    |
+| ICON.OFFY                 | no       | 0             | -100 | 100    | Offset in pixels on the Y axis for casting the shadow.                                                                                                                                             |                                                                                                                    |
+| TYPE                      | no       | none          | none | none   | Type of the room.                                                                                                                                                                                  | `ARENA_G`                                                                                                          |
+| MINI_COLOR                | no       | 127_127_127   | none | none   | For displaying the room on the minimap and when max zoomed out.                                                                                                                                    | `255_255_255` or<br/> `{R: 255, G: 255, B: 255, }`                                                                 |
+| MINI_COLOR_PATTERN        | no       | blank pattern | none | none   | Custom pattern when displayed in minimap or zoomed out.<br/>It is a list of Strings with numbers in it.<br/>All Strings must have the same length.<br/>There can be a maximum of 32 Strings in it. | `[<br/>  "44444444",<br/>  "99999999",<br/>  "00000000",<br/>  "44444444",<br/>]`                                  |
+| RESOURCES                 | yes      | none          | none | none   | List with resources used for construction. A maximum of 4 resources can be defined.<br/>See file names in `assets/init/resource` and sub folders for possible values.                              | `[STONE, WOOD,],`                                                                                                  |
+| AREA_COSTS                | yes      | none          | none | none   | List with resource costs per tile for furnishing the room.                                                                                                                                         | `[1, 1,],`                                                                                                         |
+| DEGRADE_RATE              | no       | 0.75          | 0.0  | 1.0    | Multiplier for how fast a room degrades.                                                                                                                                                           |                                                                                                                    |
+| FLOOR                     | yes      | none          | none | none   | Floor used for this room. Can also be a list of floors.<br/>Possible floor names can be found in `assets/init/settlement/floor`.                                                                   | `WOOD` or<br/> `[DIRT, WOOD, STONE2,]`                                                                             |
+| REQUIRES.\<COMPARATOR\>   | no       | none          | none | none   | See [requires](require.md)                                                                                                                                                                         | `GREATER: { WORKFORCE: 3500, },`                                                                                   |
+| BONUS.CLIMATE.\<CLIMATE\> | no       | none          | 0.0  | 2000.0 | Room bonus multiplier when in a certain climate. <br/>Possible climates can be found in `assets/init/config/CLIMATE.txt`.                                                                          | `{ COLD: 0.8, TEMPERATE: 1.0, HOT: 0.0, }`</br>or `{ *: 0.5, }` for all climates                                   |
+| ITEMS                     | no       | none          | none | none   | See [items](#items-key)                                                                                                                                                                            |                                                                                                                    |
+| SPRITES                   | yes      | none          | none | none   | See [SPRITES key](#sprites-key)                                                                                                                                                                    |                                                                                                                    |
 
 
 
@@ -34,15 +40,15 @@ For all kinds of rooms.
 
 For `ADMIN_` rooms only.
 
-| Key                      | Required | Default | Min        | Max                                                                                            | Description                                                                                                                                                                                                               | Example                                                          |
-|--------------------------|----------|---------|------------|------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
-| POP_MIN                  | yes      | none    | 0          | [Integr.MAX_VALUE](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#MAX_VALUE) | Minimum population count for the room to work.                                                                                                                                                                            |                                                                  |
-| INCREASE_POW             | yes      | none    | 0.0        | 100.0                                                                                          | How big of an exponential increase of employees is needed for the admin rooms.<br/>The formula is: `((<ALL_EMPLOYEES> - <ROOM_EMPLOYEES>) - (POP_MIN - POP_MIN - (POP_MIN/BOOST_TO ^ 1.0/INCREASE_POW))) ^ INCREASE_POW`. |                                                                  |
-| BOOST_FROM               | yes      | none    | 0.0        | 1.0                                                                                            | Minimum boost value used for boosters in `BOOSTING`.                                                                                                                                                                      |                                                                  |
-| BOOST_TO                 | yes      | none    | BOOST_FROM | 1000.0                                                                                         | Maximum boost value used for boosters in `BOOSTING`.                                                                                                                                                                      |                                                                  |
-| BOOSTING                 | no       | none    | none       | none                                                                                           | A list of booster keys for increasing various things when the admin room is working properly. The boosts will be multiplied.<br/>For possible booster keys see: [all boosters](../res/boosters_all.md)                    | `[ ROOM_FARM*, ROOM_MINE*, WORLD_WORLD_RESOURCE_PRODUCTION_*, ]` |
-| WORK                     | no       | none    | none       | none                                                                                           | See [WORK key](#work-key)                                                                                                                                                                                                 |                                                                  |
-| INDUSTRY.IN.\<RESOURCE\> | yes      | none    | 0.0        | 10000.0                                                                                        | Input resource consumed when working.<br/>Possible \<RESOURCE\>s can be found in `assets/init/resource`.<br/>See [INDUSTRY key](#industry-and-industries-keys)                                                            | See [INDUSTRY and INDUSTRIES key](#industry-and-industries-keys) |
+| Key                      | Required | Default | Min        | Max                                                                                             | Description                                                                                                                                                                                                               | Example                                                          |
+|--------------------------|----------|---------|------------|-------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+| POP_MIN                  | yes      | none    | 0          | [Integer.MAX_VALUE](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#MAX_VALUE) | Minimum population count for the room to work.                                                                                                                                                                            |                                                                  |
+| INCREASE_POW             | yes      | none    | 0.0        | 100.0                                                                                           | How big of an exponential increase of employees is needed for the admin rooms.<br/>The formula is: `((<ALL_EMPLOYEES> - <ROOM_EMPLOYEES>) - (POP_MIN - POP_MIN - (POP_MIN/BOOST_TO ^ 1.0/INCREASE_POW))) ^ INCREASE_POW`. |                                                                  |
+| BOOST_FROM               | yes      | none    | 0.0        | 1.0                                                                                             | Minimum boost value used for boosters in `BOOSTING`.                                                                                                                                                                      |                                                                  |
+| BOOST_TO                 | yes      | none    | BOOST_FROM | 1000.0                                                                                          | Maximum boost value used for boosters in `BOOSTING`.                                                                                                                                                                      |                                                                  |
+| BOOSTING                 | no       | none    | none       | none                                                                                            | A list of booster keys for increasing various things when the admin room is working properly. The boosts will be multiplied.<br/>For possible booster keys see: [all boosters](../res/boosters_all.md)                    | `[ ROOM_FARM*, ROOM_MINE*, WORLD_WORLD_RESOURCE_PRODUCTION_*, ]` |
+| WORK                     | no       | none    | none       | none                                                                                            | See [WORK key](#work-key)                                                                                                                                                                                                 |                                                                  |
+| INDUSTRY.IN.\<RESOURCE\> | yes      | none    | 0.0        | 10000.0                                                                                         | Input resource consumed when working.<br/>Possible \<RESOURCE\>s can be found in `assets/init/resource`.<br/>See [INDUSTRY key](#industry-and-industries-keys)                                                            | See [INDUSTRY and INDUSTRIES key](#industry-and-industries-keys) |
 
 ### ITEMS
 
@@ -157,15 +163,15 @@ For `BARBER_` rooms only.
 
 For `BARRACKS_` rooms only.
 
-| Key                            | Required | Default     | Min  | Max                                                                                            | Description                                                                                                         | Example                                                                                            |
-|--------------------------------|----------|-------------|------|------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
-| DIV_SPRITE.ICON                | no       | dummy icon  | none | none                                                                                           | Path to the sprite tile used for the icon. The path will look into `assets/init/sprite/icon`.                       | `16->Misc->5`<br/>The real path would be:<br/>`assets/init/icon/16/Misc.png` sixth (5) tile        |
-| DIV_SPRITE.COLOR               | no       | 127_127_127 | none | none                                                                                           | Will colorize the sprite in given color. Can also be a list of colors. You can either have TINT or COLOR, not both. | `255_255_255` or<br/>`{ R: 255, G: 255, B: 255, }` or as list<br/> `[ 111_111_111, 222_222_222, ]` |
-| TRAINING.FULL_TRAINING_IN_DAYS | yes      | none        | 0    | [Integr.MAX_VALUE](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#MAX_VALUE) | Amount of days required to train to 100%                                                                            |                                                                                                    |
-| TRAINING.BOOST.\<KEY\>         | yes      | none        | none | none                                                                                           | See [boosts](boost.md)                                                                                              |                                                                                                    |
-| EMPLOYMENT                     | no       | none        | none | none                                                                                           | See [EMPLOYMENT key](#employment-key)                                                                               |                                                                                                    |
-| ENVIRONMENT_EMIT               | no       | none        | none | none                                                                                           | See [ENVIRONMENT_EMIT key](#environment_emit-key)                                                                   |                                                                                                    |
-| UPGRADES                       | no       | none        | none | none                                                                                           | See [UPGRADES key](#upgrades-key)                                                                                   |                                                                                                    |
+| Key                            | Required | Default     | Min  | Max                                                                                             | Description                                                                                                         | Example                                                                                            |
+|--------------------------------|----------|-------------|------|-------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
+| DIV_SPRITE.ICON                | no       | dummy icon  | none | none                                                                                            | Path to the sprite tile used for the icon. The path will look into `assets/init/sprite/icon`.                       | `16->Misc->5`<br/>The real path would be:<br/>`assets/init/icon/16/Misc.png` sixth (5) tile        |
+| DIV_SPRITE.COLOR               | no       | 127_127_127 | none | none                                                                                            | Will colorize the sprite in given color. Can also be a list of colors. You can either have TINT or COLOR, not both. | `255_255_255` or<br/>`{ R: 255, G: 255, B: 255, }` or as list<br/> `[ 111_111_111, 222_222_222, ]` |
+| TRAINING.FULL_TRAINING_IN_DAYS | yes      | none        | 0    | [Integer.MAX_VALUE](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#MAX_VALUE) | Amount of days required to train to 100%                                                                            |                                                                                                    |
+| TRAINING.BOOST.\<KEY\>         | yes      | none        | none | none                                                                                            | See [boosts](boost.md)                                                                                              |                                                                                                    |
+| EMPLOYMENT                     | no       | none        | none | none                                                                                            | See [EMPLOYMENT key](#employment-key)                                                                               |                                                                                                    |
+| ENVIRONMENT_EMIT               | no       | none        | none | none                                                                                            | See [ENVIRONMENT_EMIT key](#environment_emit-key)                                                                   |                                                                                                    |
+| UPGRADES                       | no       | none        | none | none                                                                                            | See [UPGRADES key](#upgrades-key)                                                                                   |                                                                                                    |
 
 ### ITEMS
 
@@ -260,6 +266,134 @@ none
 3) Irrigation
 4) Yearly Output
 
+## FIGHTPIT rooms
+
+For `FIGHTPIT_` rooms only.
+
+| Key      | Required | Default | Min  | Max  | Description                       | Example |
+|----------|----------|---------|------|------|-----------------------------------|---------|
+| WORK     | no       | none    | none | none | See [WORK key](#work-key)         |         |
+| SERVICE  | no       | none    | none | none | See [SERVICE key](#service-key)   |         |
+| UPGRADES | no       | none    | none | none | See [UPGRADES key](#upgrades-key) |         |
+
+### ITEMS
+
+#### Furniture
+1) Fight pit
+
+#### Stats multipliers per furniture
+1) Gladiators
+2) Quality
+
+## FISHERY rooms
+
+For `FISHERY_` rooms only.
+
+| Key                       | Required | Default | Min  | Max     | Description                                                                      | Example |
+|---------------------------|----------|---------|------|---------|----------------------------------------------------------------------------------|---------|
+| WORK                      | no       | none    | none | none    | See [WORK key](#work-key)                                                        |         |
+| UPGRADES                  | no       | none    | none | none    | See [UPGRADES key](#upgrades-key)                                                |         |
+| INDUSTRY.OUT.\<RESOURCE\> | no       | none    | 0.0  | 10000.0 | Produced resource with amount. See [INDUSTRY key](#industry-and-industries-keys) |         |
+
+### ITEMS
+
+#### Furniture
+1) Gatehouse
+
+#### Stats multipliers per furniture
+none
+
+## GATEHOUSE rooms
+
+For `GATEHOUSE_` rooms only.
+
+### ITEMS
+
+#### Furniture
+1) Gatehouse
+
+#### Stats multipliers per furniture
+none
+
+## GRAVEYARD rooms
+
+For `GRAVEYARD_` rooms only.
+
+| Key                 | Required | Default | Min  | Max       | Description                                                                                              | Example  |
+|---------------------|----------|---------|------|-----------|----------------------------------------------------------------------------------------------------------|----------|
+| WORK                | no       | none    | none | none      | See [WORK key](#work-key)                                                                                |          |
+| PATHWAY             | yes      | none    | none | none      | Material used for the pathways.<br/>Possible floor names can be found in `assets/init/settlement/floor`. | `STONE1` |
+| STANDING.PRIO       | no       | 1.0     | 0.0  | 100000.0  | Used for displaying standings ordered by prio.                                                           |          |
+| STANDING.INVERTED   | no       | false   | none | none      | Whether the standing shall have a negative effect.                                                       |          |
+| STANDING.MULTIPLIER | no       | 0.0     | 0.0  | 10000.0   | Multiplier for how much standing it generates.                                                           |          |
+| STANDING.EXPONENT   | no       | 1.0     | 0.01 | 100000.0  | Exponential factor for increasing the standing.                                                          |          |
+| STANDING.DISMISS    | no       | false   | none | none      | Whether the standing shall not count to the overall reachable maximum standing.                          |          |
+| STANDING.NOBLE      | no       | 0.0     | 0.0  | 1000000.0 | How much the standing affects nobles.                                                                    |          |
+| STANDING.CITIZEN    | no       | 0.0     | 0.0  | 1000000.0 | How much the standing affects normal citizens.                                                           |          |
+| STANDING.SLAVE      | no       | 0.0     | 0.0  | 1000000.0 | How much the standing affects slaves.                                                                    |          |
+| STANDING.CHILD      | no       | 0.0     | 0.0  | 1000000.0 | How much the standing affects children.                                                                  |          |
+
+### ITEMS
+
+#### Furniture
+1) Grave
+2) Tree
+3) Flowers
+4) Pathway
+
+#### Stats multipliers per furniture
+1) Workers
+2) Graves
+3) Respect
+
+## HUNTER rooms
+
+For `HUNTER_` rooms only.
+
+| Key          | Required | Default | Min  | Max   | Description                                                                     | Example |
+|--------------|----------|---------|------|-------|---------------------------------------------------------------------------------|---------|
+| WORK         | no       | none    | none | none  | See [WORK key](#work-key)                                                       |         |
+| MAX_EMPLOYED | yes      | none    | 1    | 10000 | How many hunters can work in this room.                                         |         |
+| INDUSTRIES   | no       | none    | none | none  | Produces multiple outputs. See [INDUESTRIES key](#industry-and-industries-keys) |         |
+
+### ITEMS
+
+#### Furniture
+1) Butcher Table
+2) Utilities
+
+#### Stats multipliers per furniture
+1) Hunters
+2) Efficiency
+3) Output
+
+## LABORATORY rooms
+
+For `LABORATORY_` rooms only.
+
+| Key                            | Required | Default | Min                                                                                            | Max                                                                                             | Description                                                                                                                                                                                    | Example |
+|--------------------------------|----------|---------|------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
+| VALUE_DEGRADE_PER_YEAR         | yes      | none    | 0.0                                                                                            | 10.0                                                                                            | How fast knowledge shall be lost.                                                                                                                                                              |         |
+| VALUE_PER_WORKER               | no       | none    | 0.0                                                                                            | 100000.0                                                                                        | How much knowledge is generated per station.                                                                                                                                                   |         |
+| VALUE_WORK_SPEED               | no       | none    | 0.0                                                                                            | 1000.0                                                                                          | How long it takes to perform the job.                                                                                                                                                          |         |
+| CONSUMPTION.\<RESOURCE\>.RATE  | no       | none    | 0.0                                                                                            | 10000.0                                                                                         | How much of the \<RESOURCE\> is consumed per performed job.<br/>See file names in `assets/init/resource` and sub folders for possible \<RESOURCE\>s.                                           |         |
+| CONSUMPTION.\<RESOURCE\>.BONUS | no       | none    | 0.0                                                                                            | 1000.0                                                                                          | How much bonus to knowledge generation consuming the \<RESOURCE\> will give.<br/>Bonus will be added.<br/>See file names in `assets/init/resource` and sub folders for possible \<RESOURCE\>s. |         |
+| EXPERIENCE_BONUS.BONUS         | no       | none    | -[Double.MAX_VALUE](https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html#MAX_VALUE) | [Double.MAX_VALUE](https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html#MAX_VALUE)   |                                                                                                                                                                                                |         |
+| EXPERIENCE_BONUS.MAX_EMPLOYEES | no       | none    | 50                                                                                             | [Integer.MAX_VALUE](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#MAX_VALUE) |                                                                                                                                                                                                |         |
+| WORK                           | no       | none    | none                                                                                           | none                                                                                            | See [WORK key](#work-key)                                                                                                                                                                      |         |
+| UPGRADES                       | no       | none    | none                                                                                           | none                                                                                            | See [UPGRADES key](#upgrades-key)                                                                                                                                                              |         |
+
+### ITEMS
+
+#### Furniture
+1) Station
+2) Auxiliaries
+3) Auxiliaries
+
+#### Stats multipliers per furniture
+1) Workers
+2) Innovation
+
 ## UPGRADES key
 
 Upgrades are possible room improvements. 
@@ -322,7 +456,6 @@ For rooms with employees.
 | EMPLOYMENT.ACCIDENTS_PER_YEAR | no       | 0.0     | 0.0  | 10000.0 | Maximum numbers of work accidents which can happen in a year. Actual value will be halved. |         |
 | EMPLOYMENT.HEALTH_FACTOR      | no       | 1.0     | 0.0  | 1.0     | How much health will decrease (1.0 means no decrease) when working in this room.           |         |
 
-
 ## WORK key
 
 For rooms with employees.
@@ -351,8 +484,6 @@ Possible \<EMIT\> values:
 |----------------------------------|----------|---------|-----|-----|---------------------------|---------|
 | ENVIRONMENT_EMIT.\<EMIT\>.VALUE  | yes      | none    | 0.0 | 1.0 | How much it emits.        |         |
 | ENVIRONMENT_EMIT.\<EMIT\>.RADIUS | yes      | none    | 0.0 | 1.0 | How far the emit reaches. |         |
-
-
 
 ## ITEMS key
 
