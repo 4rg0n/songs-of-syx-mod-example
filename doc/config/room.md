@@ -14,17 +14,20 @@ but you would call it e.g.`WORKSHOP_CROSSBOW.txt` and configure it to produce cr
 
 For all kinds of rooms.
 
-| Key                     | Required | Default     | Min  | Max  | Description                                                                                                                                                           | Example                                                                                       |
-|-------------------------|----------|-------------|------|------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
-| ICON                    | no       | dummy icon  | none | none | Path to the sprite tile used for the icon. The path will look into `assets/init/sprite/icon`.                                                                         | `32->INFRA->0`<br/>The real path would be:<br/>`assets/init/icon/32/INFRA.png` first (0) tile |
-| TYPE                    | no       | none        | none | none | Type of the room.                                                                                                                                                     | `ARENA_G`                                                                                     |
-| MINI_COLOR              | no       | 127_127_127 | none | none | For displaying the room on the minimap and when max zoomed out.                                                                                                       | `255_255_255` or<br/> `{R: 255, G: 255, B: 255, }`                                            |
-| RESOURCES               | yes      | none        | none | none | List with resources used for construction. A maximum of 4 resources can be defined.<br/>See file names in `assets/init/resource` and sub folders for possible values. | `[STONE, WOOD,],`                                                                             |
-| AREA_COSTS              | yes      | none        | none | none | List with resource costs per tile for furnishing the room.                                                                                                            | `[1, 1,],`                                                                                    |
-| FLOOR                   | yes      | none        | none | none | Floor used for this room.<br/>Possible floor names can be found in `assets/init/settlement/floor`.                                                                    | `WOOD`                                                                                        |
-| REQUIRES.\<COMPARATOR\> | no       | none        | none | none | See [requires](require.md)                                                                                                                                            | `GREATER: { WORKFORCE: 3500, },`                                                              |
-| ITEMS                   | no       | none        | none | none | See [items](#items-key)                                                                                                                                               | `GREATER: { WORKFORCE: 3500, },`                                                              |
-| SPRITES                 | yes      | none        | none | none | See [SPRITES key](#sprites-key)                                                                                                                                       |                                                                                               |
+| Key                       | Required | Default       | Min  | Max    | Description                                                                                                                                                                                        | Example                                                                                       |
+|---------------------------|----------|---------------|------|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| ICON                      | no       | dummy icon    | none | none   | Path to the sprite tile used for the icon. The path will look into `assets/init/sprite/icon`.                                                                                                      | `32->INFRA->0`<br/>The real path would be:<br/>`assets/init/icon/32/INFRA.png` first (0) tile |
+| TYPE                      | no       | none          | none | none   | Type of the room.                                                                                                                                                                                  | `ARENA_G`                                                                                     |
+| MINI_COLOR                | no       | 127_127_127   | none | none   | For displaying the room on the minimap and when max zoomed out.                                                                                                                                    | `255_255_255` or<br/> `{R: 255, G: 255, B: 255, }`                                            |
+| MINI_COLOR_PATTERN        | no       | blank pattern | none | none   | Custom pattern when displayed in minimap or zoomed out.<br/>It is a list of Strings with numbers in it.<br/>All Strings must have the same length.<br/>There can be a maximum of 32 Strings in it. | `[<br/>  "44444444",<br/>  "99999999",<br/>  "00000000",<br/>  "44444444",<br/>]`             |
+| RESOURCES                 | yes      | none          | none | none   | List with resources used for construction. A maximum of 4 resources can be defined.<br/>See file names in `assets/init/resource` and sub folders for possible values.                              | `[STONE, WOOD,],`                                                                             |
+| AREA_COSTS                | yes      | none          | none | none   | List with resource costs per tile for furnishing the room.                                                                                                                                         | `[1, 1,],`                                                                                    |
+| FLOOR                     | yes      | none          | none | none   | Floor used for this room.<br/>Possible floor names can be found in `assets/init/settlement/floor`.                                                                                                 | `WOOD`                                                                                        |
+| REQUIRES.\<COMPARATOR\>   | no       | none          | none | none   | See [requires](require.md)                                                                                                                                                                         | `GREATER: { WORKFORCE: 3500, },`                                                              |
+| BONUS.CLIMATE.\<CLIMATE\> | no       | none          | 0.0  | 2000.0 | Room bonus multiplier when in a certain climate. <br/>Possible climates can be found in `assets/init/config/CLIMATE.txt`.                                                                          | `{ COLD: 0.8, TEMPERATE: 1.0, HOT: 0.0, }`</br>or `{ *: 0.5, }` for all climates              |
+| ITEMS                     | no       | none          | none | none   | See [items](#items-key)                                                                                                                                                                            |                                                                                               |
+| SPRITES                   | yes      | none          | none | none   | See [SPRITES key](#sprites-key)                                                                                                                                                                    |                                                                                               |
+
 
 
 ## ADMIN rooms
@@ -39,7 +42,7 @@ For `ADMIN_` rooms only.
 | BOOST_TO                 | yes      | none    | BOOST_FROM | 1000.0                                                                                         | Maximum boost value used for boosters in `BOOSTING`.                                                                                                                                                                      |                                                                  |
 | BOOSTING                 | no       | none    | none       | none                                                                                           | A list of booster keys for increasing various things when the admin room is working properly. The boosts will be multiplied.<br/>For possible booster keys see: [all boosters](../res/boosters_all.md)                    | `[ ROOM_FARM*, ROOM_MINE*, WORLD_WORLD_RESOURCE_PRODUCTION_*, ]` |
 | WORK                     | no       | none    | none       | none                                                                                           | See [WORK key](#work-key)                                                                                                                                                                                                 |                                                                  |
-| INDUSTRY.IN.\<RESOURCE\> | yes      | none    | 0.0        | 10000.0                                                                                        | Input resource consumed when working.<br/>Possible \<RESOURCE\>s can be found in `assets/init/resource`.                                                                                                                  | See [INDUSTRY and INDUSTRIES key](#industry-and-industries-keys) |
+| INDUSTRY.IN.\<RESOURCE\> | yes      | none    | 0.0        | 10000.0                                                                                        | Input resource consumed when working.<br/>Possible \<RESOURCE\>s can be found in `assets/init/resource`.<br/>See [INDUSTRY key](#industry-and-industries-keys)                                                            | See [INDUSTRY and INDUSTRIES key](#industry-and-industries-keys) |
 
 ### ITEMS
 
@@ -171,6 +174,91 @@ For `BARRACKS_` rooms only.
 
 #### Stats multipliers per furniture
 1) Capacity
+
+## BATH rooms
+
+For `BATH_` rooms only.
+
+| Key                      | Required | Default     | Min  | Max     | Description                                                                       | Example                                        |
+|--------------------------|----------|-------------|------|---------|-----------------------------------------------------------------------------------|------------------------------------------------|
+| WORK                     | no       | none        | none | none    | See [WORK key](#work-key)                                                         |                                                |
+| SERVICE                  | no       | none        | none | none    | See [SERVICE key](#service-key)                                                   |                                                |
+| INDUSTRY.IN.\<RESOURCE\> | no       | none        | 0.0  | 10000.0 | Resource for heating the water. See [INDUSTRY key](#industry-and-industries-keys) |                                                |
+| WATER_COLOR_COLOR        | no       | 127_127_127 | none | none    | For tinting the water.                                                            | `20_40_100` or<br/> `{R: 20, G: 40, B: 100, }` |
+| WATER_OPACITY            | yes      | none        | 0.0  | 1.0     | How transparent the water shall be.                                               |                                                |
+
+### ITEMS
+
+#### Furniture
+1) Basin
+2) Benches
+
+#### Stats multipliers per furniture
+1) Baths
+2) Relaxation
+
+## CANTEEN rooms
+
+For `CANTEEN_` rooms only.
+
+| Key                      | Required | Default     | Min  | Max     | Description                                                                         | Example                                        |
+|--------------------------|----------|-------------|------|---------|-------------------------------------------------------------------------------------|------------------------------------------------|
+| WORK                     | no       | none        | none | none    | See [WORK key](#work-key)                                                           |                                                |
+| SERVICE                  | no       | none        | none | none    | See [SERVICE key](#service-key)                                                     |                                                |
+| INDUSTRY.IN.\<RESOURCE\> | no       | none        | 0.0  | 10000.0 | Resource for flavouring the food. See [INDUSTRY key](#industry-and-industries-keys) |                                                |
+
+### ITEMS
+
+#### Furniture
+1) Cooking station
+2) Tables
+
+#### Stats multipliers per furniture
+1) Guests
+2) Workers
+3) Tables
+
+## EATERY rooms
+
+For `EATERY_` rooms only.
+
+| Key      | Required | Default | Min  | Max  | Description                       | Example |
+|----------|----------|---------|------|------|-----------------------------------|---------|
+| WORK     | no       | none    | none | none | See [WORK key](#work-key)         |         |
+| SERVICE  | no       | none    | none | none | See [SERVICE key](#service-key)   |         |
+| UPGRADES | no       | none    | none | none | See [UPGRADES key](#upgrades-key) |         |
+
+### ITEMS
+
+#### Furniture
+1) Stall
+
+#### Stats multipliers per furniture
+1) Storage
+2) Workers
+
+## FARM rooms
+
+For `FARM_` rooms only.
+
+| Key                       | Required | Default | Min  | Max     | Description                                                                                       | Example |
+|---------------------------|----------|---------|------|---------|---------------------------------------------------------------------------------------------------|---------|
+| WORK                      | no       | none    | none | none    | See [WORK key](#work-key)                                                                         |         |
+| SERVICE                   | no       | none    | none | none    | See [SERVICE key](#service-key)                                                                   |         |
+| INDOORS                   | no       | false   | none | none    | Whether the farm must be in an enclosed room with walls.                                          |         |
+| GROWABLE                  | yes      | none    | none | none    | Which resource this farm produces.<br/>Possible resources can be found in `assets/init/resource`. |         |
+| INDUSTRY.OUT.\<RESOURCE\> | no       | none    | 0.0  | 10000.0 | Produced resource with amount. See [INDUSTRY key](#industry-and-industries-keys)                  |         |
+
+### ITEMS
+
+#### Furniture
+none
+
+#### Stats multipliers per furniture
+1) Soil
+2) Farmers
+3) Irrigation
+4) Yearly Output
 
 ## UPGRADES key
 
