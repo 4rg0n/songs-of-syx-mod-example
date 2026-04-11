@@ -13,6 +13,13 @@ but you would call it e.g.`WORKSHOP_CROSSBOW.txt` and configure it to produce cr
 ## Overview
 
 * [General](#general)
+* [_ASYLUM](#_asylum-room)
+* [_BENCH](#_bench-room)
+* [_BUILDER](#_builder-room)
+* [_CANNIBAL](#_cannibal-room)
+* [_COURT](#_court-room)
+* [_DUMP_CORPSE](#_dump_corpse-room)
+* [_EMBASSY](#_embassy-room)
 * [ADMIN](#admin-rooms)
 * [ARCHERY](#archery-rooms)
 * [ARENAG](#arenag-rooms)
@@ -75,6 +82,137 @@ For all kinds of rooms.
 | BONUS.CLIMATE.\<CLIMATE\> | no       | none          | 0.0  | 2000.0 | Room bonus multiplier when in a certain climate. <br/>Possible climates can be found in `assets/init/config/CLIMATE.txt`.                                                                                                 | `{ COLD: 0.8, TEMPERATE: 1.0, HOT: 0.0, }`</br>or `{ *: 0.5, }` for all climates                                   |
 | ITEMS                     | no       | none          | none | none   | See [items](#items-key)                                                                                                                                                                                                   |                                                                                                                    |
 | SPRITES                   | yes      | none          | none | none   | See [SPRITES key](#sprites-key)                                                                                                                                                                                           |                                                                                                                    |
+
+## _ASYLUM room
+
+For the `_ASYLUM` room only.
+
+| Key                      | Required | Default | Min  | Max     | Description                                                                                                                                                  | Example                                                          |
+|--------------------------|----------|---------|------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+| FLOOR2                   | yes      | none    | none | none    | Floor used for the cells. Possible floor names can be found in `assets/init/settlement/floor`.                                                               | `STONE_MEDIUM_DARK`                                              |
+| WORK                     | no       | none    | none | none    | See [WORK key](#work-key)                                                                                                                                    |                                                                  |
+| INDUSTRY.IN.\<RESOURCE\> | yes      | none    | 0.0  | 10000.0 | Input resource consumed by inmates.<br/>Possible \<RESOURCE\>s can be found in `assets/init/resource`.<br/>See [INDUSTRY key](#industry-and-industries-keys) | See [INDUSTRY and INDUSTRIES key](#industry-and-industries-keys) |
+
+### ITEMS
+
+#### Furniture
+1) Cells
+
+#### Stats multipliers per furniture
+1) Deranged
+2) Wards
+
+## _BENCH room
+
+For the `_BENCH` room only.
+
+| Key      | Required | Default | Min  | Max  | Description                       | Example |
+|----------|----------|---------|------|------|-----------------------------------|---------|
+| UPGRADES | no       | none    | none | none | See [UPGRADES key](#upgrades-key) |         |
+
+### ITEMS
+
+#### Furniture
+1) Bench
+
+#### Stats multipliers per furniture
+none
+
+## _BUILDER room
+
+For the `_BUILDER` room only.
+
+| Key                      | Required | Default | Min  | Max     | Description                                                                                                                                                  | Example                                                          |
+|--------------------------|----------|---------|------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+| WORK                     | no       | none    | none | none    | See [WORK key](#work-key)                                                                                                                                    |                                                                  |
+
+### ITEMS
+
+#### Furniture
+none
+
+#### Stats multipliers per furniture
+none
+
+## _CANNIBAL room
+
+For the `_CANNIBAL` room only.
+
+| Key                      | Required | Default | Min  | Max     | Description                                                                                                                                                  | Example                                                          |
+|--------------------------|----------|---------|------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+| WORK                     | no       | none    | none | none    | See [WORK key](#work-key)                                                                                                                                    |                                                                  |
+
+### ITEMS
+
+#### Furniture
+1) Work Bench
+2) Auxiliary Station
+
+#### Stats multipliers per furniture
+1) Butchers
+2) Efficiency
+
+## _COURT room
+
+For the `_COURT` room only.
+
+| Key     | Required | Default | Min  | Max  | Description                     | Example |
+|---------|----------|---------|------|------|---------------------------------|---------|
+| SERVICE | no       | none    | none | none | See [SERVICE key](#service-key) |         |
+| WORK    | no       | none    | none | none | See [WORK key](#work-key)       |         |
+
+### ITEMS
+
+#### Furniture
+1) Courts
+2) Spectators
+
+#### Stats multipliers per furniture
+1) Clients
+2) Judges
+3) Spectators
+
+## _DUMP_CORPSE room
+
+For the `_DUMP_CORPSE` room only.
+
+| Key     | Required | Default | Min  | Max  | Description                     | Example |
+|---------|----------|---------|------|------|---------------------------------|---------|
+| SERVICE | no       | none    | none | none | See [SERVICE key](#service-key) |         |
+
+### ITEMS
+
+#### Furniture
+none
+
+#### Stats multipliers per furniture
+1) Graves
+
+## _EMBASSY room
+
+For the `_EMBASSY` room only.
+
+| Key                            | Required | Default | Min  | Max      | Description                                                                                                                                                                                | Example                                                          |
+|--------------------------------|----------|---------|------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+| WORK                           | no       | none    | none | none     | See [WORK key](#work-key)                                                                                                                                                                  |                                                                  |
+| CONSUMPTION.\<RESOURCE\>.RATE  | no       | none    | 0.0  | 10000.0  | How much of the \<RESOURCE\> is consumed per performed job.<br/>See file names in `assets/init/resource` and sub folders for possible \<RESOURCE\>s.                                       |                                                                  |
+| CONSUMPTION.\<RESOURCE\>.BONUS | no       | none    | 0.0  | 1000.0   | How much bonus to trust generation consuming the \<RESOURCE\> will give.<br/>Bonus will be added.<br/>See file names in `assets/init/resource` and sub folders for possible \<RESOURCE\>s. |                                                                  |
+| VALUE_DEGRADE_PER_YEAR         | yes      | none    | 0.0  | 10.0     | How fast trust shall be lost.                                                                                                                                                              |                                                                  |
+| VALUE_PER_WORKER               | no       | none    | 0.0  | 100000.0 | How much trust is generated per station.                                                                                                                                                   |                                                                  |
+| VALUE_WORK_SPEED               | no       | none    | 0.0  | 1000.0   | How long it takes to perform the job.                                                                                                                                                      |                                                                  |
+| INDUSTRY.IN.\<RESOURCE\>       | yes      | none    | 0.0  | 10000.0  | Input resource consumed when working.<br/>Possible \<RESOURCE\>s can be found in `assets/init/resource`.<br/>See [INDUSTRY key](#industry-and-industries-keys)                             | See [INDUSTRY and INDUSTRIES key](#industry-and-industries-keys) |
+
+
+### ITEMS
+
+#### Furniture
+1) Workstation
+2) Nicknacks
+3) Carpets
+
+#### Stats multipliers per furniture
+1) Emissaries
+2) Efficiency
 
 ## ADMIN rooms
 
@@ -405,8 +543,8 @@ For `LABORATORY_` rooms only.
 
 | Key                            | Required | Default | Min                                                                                            | Max                                                                                             | Description                                                                                                                                                                                    | Example |
 |--------------------------------|----------|---------|------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
-| VALUE_DEGRADE_PER_YEAR         | yes      | none    | 0.0                                                                                            | 10.0                                                                                            | How fast inovation shall be lost.                                                                                                                                                              |         |
-| VALUE_PER_WORKER               | no       | none    | 0.0                                                                                            | 100000.0                                                                                        | How much inovation is generated per station.                                                                                                                                                   |         |
+| VALUE_DEGRADE_PER_YEAR         | yes      | none    | 0.0                                                                                            | 10.0                                                                                            | How fast innovation shall be lost.                                                                                                                                                             |         |
+| VALUE_PER_WORKER               | no       | none    | 0.0                                                                                            | 100000.0                                                                                        | How much innovation is generated per station.                                                                                                                                                  |         |
 | VALUE_WORK_SPEED               | no       | none    | 0.0                                                                                            | 1000.0                                                                                          | How long it takes to perform the job.                                                                                                                                                          |         |
 | CONSUMPTION.\<RESOURCE\>.RATE  | no       | none    | 0.0                                                                                            | 10000.0                                                                                         | How much of the \<RESOURCE\> is consumed per performed job.<br/>See file names in `assets/init/resource` and sub folders for possible \<RESOURCE\>s.                                           |         |
 | CONSUMPTION.\<RESOURCE\>.BONUS | no       | none    | 0.0                                                                                            | 1000.0                                                                                          | How much bonus to knowledge generation consuming the \<RESOURCE\> will give.<br/>Bonus will be added.<br/>See file names in `assets/init/resource` and sub folders for possible \<RESOURCE\>s. |         |
