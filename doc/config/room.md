@@ -36,30 +36,45 @@ but you would call it e.g.`WORKSHOP_CROSSBOW.txt` and configure it to produce cr
 * [NURSERY](#nursery-rooms)
 * [ORCHARD](#orchard-rooms)
 * [PASTURE](#pasture-rooms)
+* [PHYSICIAN](#physician-rooms)
+* [PLEASURE](#pleasure-rooms)
+* [POOL](#pool-rooms)
+* [REFINER](#refiner-rooms)
+* [RESTHOME](#resthome-rooms)
+* [SCHOOL](#school-rooms)
+* [SHRINE](#shrine-rooms)
+* [SPEAKER](#speaker-rooms)
+* [STAGE](#stage-rooms)
+* [TAVERN](#tavern-rooms)
+* [TEMPLE](#temple-rooms)
+* [TOMB](#tomb-rooms)
+* [UNIVERSITY](#university-rooms)
+* [WELL](#well-rooms)
+* [WORKSHOP](#workshop-rooms)
 
 ## General
 
 For all kinds of rooms.
 
-| Key                       | Required | Default       | Min  | Max    | Description                                                                                                                                                                                        | Example                                                                                                            |
-|---------------------------|----------|---------------|------|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
-| ICON                      | no       | dummy icon    | none | none   | Path to the sprite tile used for the icon. The path will look into `assets/init/sprite/icon`.<br/>You can either have a single sprite as icon or have a more complex setup (see below).            | `32->INFRA->0`<br/>The real path would be:<br/>`assets/init/icon/32/INFRA.png` first (0) tile                      |
-| ICON.BG                   | yes      | none          | none | none   | Path to the sprite tile used for the icon background. The path will look into `assets/init/sprite/icon`.                                                                                           | `32->BG->3`<br/>The real path would be:<br/>`assets/init/icon/32/BG.png` fourth (3) tile                           |
-| ICON.FG                   | yes      | none          | none | none   | Path to the sprite tile used for the icon foreground. The path will look into `assets/init/sprite/icon`.                                                                                           | `24->resource->Cotton->0`<br/>The real path would be:<br/>`assets/init/icon/24/resource/Cotton.png` first (0) tile |
-| ICON.SHADOW               | no       | 0             | -100 | 100    | How much of a shadow in pixels should be cast inside (negative) or outside (positive) of the icon.                                                                                                 |                                                                                                                    |
-| ICON.OFFX                 | no       | 0             | -100 | 100    | Offset in pixels on the X axis for casting the shadow.                                                                                                                                             |                                                                                                                    |
-| ICON.OFFY                 | no       | 0             | -100 | 100    | Offset in pixels on the Y axis for casting the shadow.                                                                                                                                             |                                                                                                                    |
-| TYPE                      | no       | none          | none | none   | Type of the room.                                                                                                                                                                                  | `ARENA_G`                                                                                                          |
-| MINI_COLOR                | no       | 127_127_127   | none | none   | For displaying the room on the minimap and when max zoomed out.                                                                                                                                    | `255_255_255` or<br/> `{R: 255, G: 255, B: 255, }`                                                                 |
-| MINI_COLOR_PATTERN        | no       | blank pattern | none | none   | Custom pattern when displayed in minimap or zoomed out.<br/>It is a list of Strings with numbers in it.<br/>All Strings must have the same length.<br/>There can be a maximum of 32 Strings in it. | `[<br/>  "44444444",<br/>  "99999999",<br/>  "00000000",<br/>  "44444444",<br/>]`                                  |
-| RESOURCES                 | yes      | none          | none | none   | List with resources used for construction. A maximum of 4 resources can be defined.<br/>See file names in `assets/init/resource` and sub folders for possible values.                              | `[STONE, WOOD,],`                                                                                                  |
-| AREA_COSTS                | yes      | none          | none | none   | List with resource costs per tile for furnishing the room.                                                                                                                                         | `[1, 1,],`                                                                                                         |
-| DEGRADE_RATE              | no       | 0.75          | 0.0  | 1.0    | Multiplier for how fast a room degrades.                                                                                                                                                           |                                                                                                                    |
-| FLOOR                     | yes      | none          | none | none   | Floor used for this room. Can also be a list of floors.<br/>Possible floor names can be found in `assets/init/settlement/floor`.                                                                   | `WOOD` or<br/> `[DIRT, WOOD, STONE2,]`                                                                             |
-| REQUIRES.\<COMPARATOR\>   | no       | none          | none | none   | See [requires](require.md)                                                                                                                                                                         | `GREATER: { WORKFORCE: 3500, },`                                                                                   |
-| BONUS.CLIMATE.\<CLIMATE\> | no       | none          | 0.0  | 2000.0 | Room bonus multiplier when in a certain climate. <br/>Possible climates can be found in `assets/init/config/CLIMATE.txt`.                                                                          | `{ COLD: 0.8, TEMPERATE: 1.0, HOT: 0.0, }`</br>or `{ *: 0.5, }` for all climates                                   |
-| ITEMS                     | no       | none          | none | none   | See [items](#items-key)                                                                                                                                                                            |                                                                                                                    |
-| SPRITES                   | yes      | none          | none | none   | See [SPRITES key](#sprites-key)                                                                                                                                                                    |                                                                                                                    |
+| Key                       | Required | Default       | Min  | Max    | Description                                                                                                                                                                                                               | Example                                                                                                            |
+|---------------------------|----------|---------------|------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
+| ICON                      | no       | dummy icon    | none | none   | Path to the sprite tile used for the icon. The path will look into `assets/init/sprite/icon`.<br/>You can either have a single sprite as icon or have a more complex setup (see below).                                   | `32->INFRA->0`<br/>The real path would be:<br/>`assets/init/icon/32/INFRA.png` first (0) tile                      |
+| ICON.BG                   | yes      | none          | none | none   | Path to the sprite tile used for the icon background. The path will look into `assets/init/sprite/icon`.                                                                                                                  | `32->BG->3`<br/>The real path would be:<br/>`assets/init/icon/32/BG.png` fourth (3) tile                           |
+| ICON.FG                   | yes      | none          | none | none   | Path to the sprite tile used for the icon foreground. The path will look into `assets/init/sprite/icon`.                                                                                                                  | `24->resource->Cotton->0`<br/>The real path would be:<br/>`assets/init/icon/24/resource/Cotton.png` first (0) tile |
+| ICON.SHADOW               | no       | 0             | -100 | 100    | How much of a shadow in pixels should be cast inside (negative) or outside (positive) of the icon.                                                                                                                        |                                                                                                                    |
+| ICON.OFFX                 | no       | 0             | -100 | 100    | Offset in pixels on the X axis for casting the shadow.                                                                                                                                                                    |                                                                                                                    |
+| ICON.OFFY                 | no       | 0             | -100 | 100    | Offset in pixels on the Y axis for casting the shadow.                                                                                                                                                                    |                                                                                                                    |
+| TYPE                      | no       | none          | none | none   | Type of the room.                                                                                                                                                                                                         | `ARENA_G`                                                                                                          |
+| MINI_COLOR                | no       | 127_127_127   | none | none   | For displaying the room on the minimap and when max zoomed out.                                                                                                                                                           | `255_255_255` or<br/> `{R: 255, G: 255, B: 255, }`                                                                 |
+| MINI_COLOR_PATTERN        | no       | blank pattern | none | none   | Custom pattern when displayed in minimap or zoomed out.<br/>It is a list of Strings with numbers or a `-` (transparent) in it.<br/>All Strings must have the same length.<br/>There can be a maximum of 32 Strings in it. | `[<br/>  "44444444",<br/>  "99999999",<br/>  "00000000",<br/>  "44444444",<br/>]`                                  |
+| RESOURCES                 | yes      | none          | none | none   | List with resources used for construction. A maximum of 4 resources can be defined.<br/>See file names in `assets/init/resource` and sub folders for possible values.                                                     | `[STONE, WOOD,],`                                                                                                  |
+| AREA_COSTS                | yes      | none          | none | none   | List with resource costs per tile for furnishing the room.                                                                                                                                                                | `[1, 1,],`                                                                                                         |
+| DEGRADE_RATE              | no       | 0.75          | 0.0  | 1.0    | Multiplier for how fast a room degrades.                                                                                                                                                                                  |                                                                                                                    |
+| FLOOR                     | yes      | none          | none | none   | Floor used for this room. Can also be a list of floors.<br/>Possible floor names can be found in `assets/init/settlement/floor`.                                                                                          | `WOOD` or<br/> `[DIRT, WOOD, STONE2,]`                                                                             |
+| REQUIRES.\<COMPARATOR\>   | no       | none          | none | none   | See [requires](require.md)                                                                                                                                                                                                | `GREATER: { WORKFORCE: 3500, },`                                                                                   |
+| BONUS.CLIMATE.\<CLIMATE\> | no       | none          | 0.0  | 2000.0 | Room bonus multiplier when in a certain climate. <br/>Possible climates can be found in `assets/init/config/CLIMATE.txt`.                                                                                                 | `{ COLD: 0.8, TEMPERATE: 1.0, HOT: 0.0, }`</br>or `{ *: 0.5, }` for all climates                                   |
+| ITEMS                     | no       | none          | none | none   | See [items](#items-key)                                                                                                                                                                                                   |                                                                                                                    |
+| SPRITES                   | yes      | none          | none | none   | See [SPRITES key](#sprites-key)                                                                                                                                                                                           |                                                                                                                    |
 
 ## ADMIN rooms
 
@@ -367,11 +382,11 @@ For `GRAVEYARD_` rooms only.
 
 For `HUNTER_` rooms only.
 
-| Key          | Required | Default | Min  | Max   | Description                                                                     | Example |
-|--------------|----------|---------|------|-------|---------------------------------------------------------------------------------|---------|
-| WORK         | no       | none    | none | none  | See [WORK key](#work-key)                                                       |         |
-| MAX_EMPLOYED | yes      | none    | 1    | 10000 | How many hunters can work in this room.                                         |         |
-| INDUSTRIES   | no       | none    | none | none  | Produces multiple outputs. See [INDUESTRIES key](#industry-and-industries-keys) |         |
+| Key          | Required | Default | Min  | Max   | Description                                                                    | Example |
+|--------------|----------|---------|------|-------|--------------------------------------------------------------------------------|---------|
+| WORK         | no       | none    | none | none  | See [WORK key](#work-key)                                                      |         |
+| MAX_EMPLOYED | yes      | none    | 1    | 10000 | How many hunters can work in this room.                                        |         |
+| INDUSTRIES   | no       | none    | none | none  | Produces multiple outputs. See [INDUSTRIES key](#industry-and-industries-keys) |         |
 
 ### ITEMS
 
@@ -593,6 +608,326 @@ For `PASTURE_` rooms only.
 2) Fertility
 3) Irrigation
 4) Output
+
+## PHYSICIAN rooms
+
+For `PHYSICIAN_` rooms only.
+
+| Key                         | Required | Default | Min  | Max       | Description                                                                     | Example |
+|-----------------------------|----------|---------|------|-----------|---------------------------------------------------------------------------------|---------|
+| WORK                        | no       | none    | none | none      | See [WORK key](#work-key)                                                       |         |
+| SERVICE                     | no       | none    | none | none      | See [SERVICE key](#service-key)                                                 |         |
+
+### ITEMS
+
+#### Furniture
+1) Workbench
+2) Shelves
+
+#### Stats multipliers per furniture
+1) Physicians
+2) Services
+3) Quality
+
+## PLEASURE rooms
+
+For `PLEASURE_` rooms only.
+
+| Key              | Required | Default     | Min  | Max  | Description                                                                                                  | Example                                            |
+|------------------|----------|-------------|------|------|--------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
+| COLOR_PIXEL_BASE | no       | 127_127_127 | none | none | Used for blurring citizens having "pleasure"                                                                 | `255_255_255` or<br/> `{R: 255, G: 255, B: 255, }` |
+| FLOOR2           | yes      | none        | none | none | Floor to be placed under furnisher.<br/>Possible floor names can be found in `assets/init/settlement/floor`. | `WOOD`                                             |
+| WORK             | no       | none        | none | none | See [WORK key](#work-key)                                                                                    |                                                    |
+| SERVICE          | no       | none        | none | none | See [SERVICE key](#service-key)                                                                              |                                                    |
+| UPGRADES         | no       | none        | none | none | See [UPGRADES key](#upgrades-key)                                                                            |                                                    |
+
+### ITEMS
+
+#### Furniture
+1) Booth
+2) Decorations
+3) Carpets
+
+#### Stats multipliers per furniture
+1) Clients
+2) Coziness
+3) Workers
+
+## POOL rooms
+
+For `POOL_` rooms only.
+
+| Key                 | Required | Default     | Min  | Max                        | Description                                                                                                   | Example                                        |
+|---------------------|----------|-------------|------|----------------------------|---------------------------------------------------------------------------------------------------------------|------------------------------------------------|
+| WATER_COLOR         | no       | 127_127_127 | none | none                       | For tinting the water.                                                                                        | `20_40_100` or<br/> `{R: 20, G: 40, B: 100, }` |
+| WATER_DEPTH         | yes      | none        | 0.0  | 1.0                        | Defines the opacity of the water.                                                                             |                                                |
+| CLEARS_GRASS        | no       | false       | none | none                       | Whether the placed pool should remove fertility.                                                              |                                                |
+| BOTTOM_TEXTURE.FILE | yes      | none        | none | none                       | Texture used for rendering underwater.<br/>Possible floor names can be found in `assets/sprite/game/texture`. | `ORGANIC`                                      |
+| BOTTOM_TEXTURE.ROW  | yes      | none        | 0    | depends on the spritesheet | Number of the row in the spritesheet file to use. Starting at 0.                                              |                                                |
+
+### ITEMS
+
+#### Furniture
+none
+
+#### Stats multipliers per furniture
+none
+
+## REFINER rooms
+
+For `REFINER_` rooms only.
+
+| Key                                  | Required | Default | Min  | Max     | Description                                                                                                                                                    | Example                                                          |
+|--------------------------------------|----------|---------|------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+| STORAGE                              | yes      | none    | 4    | 500     | How much of the resource can be stored per tile.                                                                                                               |                                                                  |
+| WORK                                 | no       | none    | none | none    | See [WORK key](#work-key)                                                                                                                                      |                                                                  |
+| SERVICE                              | no       | none    | none | none    | See [SERVICE key](#service-key)                                                                                                                                |                                                                  |
+| UPGRADES                             | no       | none    | none | none    | See [UPGRADES key](#upgrades-key)                                                                                                                              |                                                                  |
+| INDUSTRIES.INDUSTRY.IN.\<RESOURCE\>  | yes      | none    | 0.0  | 10000.0 | Input resource required for refining.<br/>Possible \<RESOURCE\>s can be found in `assets/init/resource`.<br/>See [INDUSTRY key](#industry-and-industries-keys) | See [INDUSTRY and INDUSTRIES key](#industry-and-industries-keys) |
+| INDUSTRIES.INDUSTRY.OUT.\<RESOURCE\> | yes      | none    | 0.0  | 10000.0 | Output resource produced.<br/>Possible \<RESOURCE\>s can be found in `assets/init/resource`.<br/>See [INDUSTRY key](#industry-and-industries-keys)             | See [INDUSTRY and INDUSTRIES key](#industry-and-industries-keys) |
+| ENVIRONMENT_EMIT                     | no       | none    | none | none    | See [ENVIRONMENT_EMIT key](#environment_emit-key)                                                                                                              |                                                                  |
+
+### ITEMS
+
+#### Furniture
+1) Furniture used for refining (e.g. Oven)
+2) Storage
+3) Auxiliary
+
+#### Stats multipliers per furniture
+1) Workers
+2) Efficiency
+3) Output
+
+## RESTHOME rooms
+
+For `RESTHOME_` rooms only.
+
+| Key        | Required | Default | Min  | Max  | Description                           | Example |
+|------------|----------|---------|------|------|---------------------------------------|---------|
+| EMPLOYMENT | no       | none    | none | none | See [EMPLOYMENT key](#employment-key) |         |
+
+### ITEMS
+
+#### Furniture
+1) Tables
+2) Dance floor
+3) Decorations
+4) Carpets
+
+#### Stats multipliers per furniture
+1) Capacity
+2) Coziness
+
+## SCHOOL rooms
+
+For `SCHOOL_` rooms only.
+
+| Key                      | Required | Default | Min  | Max     | Description                                                                                                                                                     | Example                                                          |
+|--------------------------|----------|---------|------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+| LEARNING_SPEED           | yes      | 0.0     | 1.0  | none    | How fast citizens will learn. Formula is `1 / LEARNING_SPEED = DAYS_TO_EDUCATE`                                                                                 |                                                                  |
+| WORK                     | no       | none    | none | none    | See [WORK key](#work-key)                                                                                                                                       |                                                                  |
+| SERVICE                  | no       | none    | none | none    | See [SERVICE key](#service-key)                                                                                                                                 |                                                                  |
+| INDUSTRY.IN.\<RESOURCE\> | yes      | none    | 0.0  | 10000.0 | Input resource consumed when learning.<br/>Possible \<RESOURCE\>s can be found in `assets/init/resource`.<br/>See [INDUSTRY key](#industry-and-industries-keys) | See [INDUSTRY and INDUSTRIES key](#industry-and-industries-keys) |
+
+### ITEMS
+
+#### Furniture
+1) Bench
+2) Shelf
+3) Carpets
+
+#### Stats multipliers per furniture
+1) Seats
+2) Quality
+
+## SHRINE rooms
+
+For `SHRINE_` rooms only.
+
+| Key      | Required | Default | Min  | Max  | Description                                                                               | Example   |
+|----------|----------|---------|------|------|-------------------------------------------------------------------------------------------|-----------|
+| RELIGION | no       | none    | none | none | Which religion to worship.<br/>Possible religions can be found in `assets/init/religion`. | `AMINION` |
+| SERVICE  | no       | none    | none | none | See [SERVICE key](#service-key)                                                           |           |
+| UPGRADES | no       | none    | none | none | See [UPGRADES key](#upgrades-key)                                                         |           |
+
+### ITEMS
+
+#### Furniture
+1) Shrine
+
+#### Stats multipliers per furniture
+1) Worshippers
+
+## SPEAKER rooms
+
+For `SPEAKER_` rooms only.
+
+| Key                         | Required | Default | Min  | Max       | Description                                                                     | Example |
+|-----------------------------|----------|---------|------|-----------|---------------------------------------------------------------------------------|---------|
+| WORK                        | no       | none    | none | none      | See [WORK key](#work-key)                                                       |         |
+| SERVICE                     | no       | none    | none | none      | See [SERVICE key](#service-key)                                                 |         |
+| UPGRADES                    | no       | none    | none | none      | See [UPGRADES key](#upgrades-key)                                               |         |
+
+### ITEMS
+
+#### Furniture
+1) Speaker
+
+#### Stats multipliers per furniture
+1) Workers
+2) Spectators
+
+## STAGE rooms
+
+For `STAGE_` rooms only.
+
+| Key                         | Required | Default | Min  | Max       | Description                                                                     | Example |
+|-----------------------------|----------|---------|------|-----------|---------------------------------------------------------------------------------|---------|
+| WORK                        | no       | none    | none | none      | See [WORK key](#work-key)                                                       |         |
+| SERVICE                     | no       | none    | none | none      | See [SERVICE key](#service-key)                                                 |         |
+| UPGRADES                    | no       | none    | none | none      | See [UPGRADES key](#upgrades-key)                                               |         |
+
+### ITEMS
+
+#### Furniture
+1) Stage
+
+#### Stats multipliers per furniture
+1) Workers
+2) Spectators
+
+## TAVERN rooms
+
+For `TAVERN_` rooms only.
+
+| Key              | Required | Default | Min  | Max  | Description                                       | Example |
+|------------------|----------|---------|------|------|---------------------------------------------------|---------|
+| WORK             | no       | none    | none | none | See [WORK key](#work-key)                         |         |
+| SERVICE          | no       | none    | none | none | See [SERVICE key](#service-key)                   |         |
+| UPGRADES         | no       | none    | none | none | See [UPGRADES key](#upgrades-key)                 |         |
+| ENVIRONMENT_EMIT | no       | none    | none | none | See [ENVIRONMENT_EMIT key](#environment_emit-key) |         |
+
+### ITEMS
+
+#### Furniture
+1) Table
+2) Nicknacks
+3) Carpets
+
+#### Stats multipliers per furniture
+1) Tables
+2) Coziness
+
+## TEMPLE rooms
+
+For `TEMPLE_` rooms only.
+
+| Key            | Required | Default | Min  | Max  | Description                                                                                                                      | Example                                |
+|----------------|----------|---------|------|------|----------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|
+| RELIGION       | no       | none    | none | none | Which religion to worship.<br/>Possible religions can be found in `assets/init/religion`.                                        | `AMINION`                              |
+| SACRIFICE_TYPE | yes      | none    | none | none | Which type of sacrifice the religion wants.<br/>Possible values are `RESOURCE`, `ANIMAL`, `HUMAN`.                               | `HUMAN`                                |
+| SACRIFICE_TYPE | yes      | none    | none | none | Which type of sacrifice the religion wants.<br/>Possible values are `RESOURCE`, `ANIMAL`, `HUMAN`.                               | `HUMAN`                                |
+| FLOOR          | yes      | none    | none | none | Floor used for this room. Can also be a list of floors.<br/>Possible floor names can be found in `assets/init/settlement/floor`. | `WOOD` or<br/> `[DIRT, WOOD, STONE2,]` |
+| FLOOR_PATH     | no       | none    | none | none | Which floor to use for the pathways.<br/>Possible floor names can be found in `assets/init/settlement/floor`.                    | `STONE_LARGE_DARK`                     |
+| WORK           | no       | none    | none | none | See [WORK key](#work-key)                                                                                                        |                                        |
+| SERVICE        | no       | none    | none | none | See [SERVICE key](#service-key)                                                                                                  |                                        |
+
+### ITEMS
+
+#### Furniture
+1) Altar
+2) Decorations
+3) Torch
+4) Relief
+5) Pathway
+
+#### Stats multipliers per furniture
+1) Priests
+2) Worshippers
+3) Decoration
+4) Grandeur
+5) Space
+
+## TOMB rooms
+
+For `TOMB_` rooms only.
+
+| Key      | Required | Default | Min  | Max  | Description                                                                                                                      | Example |
+|----------|----------|---------|------|------|----------------------------------------------------------------------------------------------------------------------------------|---------|
+| MONUMENT     | no       | none    | none | none | Which monument to be used as statues.<br/>Possible monuments can be found in `assets/init/rooms`.<br/>Starting with `MONUMENT_`. | `MONUMENT_STATUE`        |
+| WORK     | no       | none    | none | none | See [WORK key](#work-key)                                                                                                        |         |
+| STANDING | no       | none    | none | none | See [STANDING key](#standing-key)                                                                                                |         |
+
+### ITEMS
+
+#### Furniture
+1) Grave
+2) Statue
+
+#### Stats multipliers per furniture
+1) Workers
+2) Graves
+3) Respect
+
+## UNIVERSITY rooms
+
+For `UNIVERSITY_` rooms only.
+
+| Key            | Required | Default | Min  | Max  | Description                                                                     | Example |
+|----------------|----------|---------|------|------|---------------------------------------------------------------------------------|---------|
+| LEARNING_SPEED | yes      | 0.0     | 1.0  | none | How fast citizens will learn. Formula is `1 / LEARNING_SPEED = DAYS_TO_EDUCATE` |         |
+| EMPLOYMENT     | no       | none    | none | none | See [EMPLOYMENT key](#employment-key)                                           |         |
+
+### ITEMS
+
+#### Furniture
+1) Podium
+2) Shelf
+
+#### Stats multipliers per furniture
+1) Students
+2) Quality
+
+## WELL rooms
+
+For `WELL_` rooms only.
+
+| Key                         | Required | Default | Min  | Max       | Description                                                                     | Example |
+|-----------------------------|----------|---------|------|-----------|---------------------------------------------------------------------------------|---------|
+| SERVICE                     | no       | none    | none | none      | See [SERVICE key](#service-key)                                                 |         |
+| UPGRADES                    | no       | none    | none | none      | See [UPGRADES key](#upgrades-key)                                               |         |
+
+### ITEMS
+
+#### Furniture
+1) Well
+
+#### Stats multipliers per furniture
+1) Spots
+
+## WORKSHOP rooms
+
+For `WORKSHOP_` rooms only.
+
+| Key                                  | Required | Default | Min  | Max  | Description                                                                                  | Example |
+|--------------------------------------|----------|---------|------|------|----------------------------------------------------------------------------------------------|---------|
+| STORAGE                              | yes      | none    | 4    | 500  | How much of the resource can be stored per tile.                                             |         |
+| WORK                                 | no       | none    | none | none | See [WORK key](#work-key)                                                                    |         |
+| ENVIRONMENT_EMIT                     | no       | none    | none | none | See [ENVIRONMENT_EMIT key](#environment_emit-key)                                            |         |
+| INDUSTRIES.INDUSTRY.IN.\<RESOURCE\>  | no       | none    | none | none | Input resource consumed for the product. See [INDUSTRIES key](#industry-and-industries-keys) |         |
+| INDUSTRIES.INDUSTRY.OUT.\<RESOURCE\> | no       | none    | none | none | The output product. See [INDUSTRIES key](#industry-and-industries-keys)                      |         |
+
+### ITEMS
+
+#### Furniture
+1) Storage
+2) Work Bench
+3) Auxiliary Station
+
+#### Stats multipliers per furniture
+1) Workers
+2) Efficiency
 
 ## STANDING key
 
