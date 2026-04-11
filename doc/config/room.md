@@ -20,6 +20,30 @@ but you would call it e.g.`WORKSHOP_CROSSBOW.txt` and configure it to produce cr
 * [_COURT](#_court-room)
 * [_DUMP_CORPSE](#_dump_corpse-room)
 * [_EMBASSY](#_embassy-room)
+* [_EXECUTION](#_execution-room)
+* [_EXPORT](#_export-room)
+* [_GUARD](#_guard-room)
+* [_HAULER](#_hauler-room)
+* [_HEARTH](#_hearth-room)
+* [_HOME](#_home-room)
+* [_HOME_CHAMBER](#_home_chamber-room)
+* [_HOSPITAL](#_hospital-room)
+* [_IMPORT](#_import-room)
+* [_INN](#_inn-room)
+* [_JANITOR](#_janitor-room)
+* [_MILITARY_SUPPLY](#_military_supply-room)
+* [_PRISON](#_prison-room)
+* [_SLAVER](#_slaver-room)
+* [_STATION](#_station-room)
+* [_STOCKADE](#_stockade-room)
+* [_STOCKPILE](#_stockpile-room)
+* [_STOCKS](#_stocks-room)
+* [_THRONE](#_throne-room)
+* [_TRANSPORT](#_transport-room)
+* [_WATERCANAL](#_watercanal-room)
+* [_WATERDRAIN](#_waterdrain-room)
+* [_WATERPUMP](#_waterpump-room)
+* [_WOODCUTTER](#_woodcutter-room)
 * [ADMIN](#admin-rooms)
 * [ARCHERY](#archery-rooms)
 * [ARENAG](#arenag-rooms)
@@ -202,7 +226,6 @@ For the `_EMBASSY` room only.
 | VALUE_WORK_SPEED               | no       | none    | 0.0  | 1000.0   | How long it takes to perform the job.                                                                                                                                                      |                                                                  |
 | INDUSTRY.IN.\<RESOURCE\>       | yes      | none    | 0.0  | 10000.0  | Input resource consumed when working.<br/>Possible \<RESOURCE\>s can be found in `assets/init/resource`.<br/>See [INDUSTRY key](#industry-and-industries-keys)                             | See [INDUSTRY and INDUSTRIES key](#industry-and-industries-keys) |
 
-
 ### ITEMS
 
 #### Furniture
@@ -213,6 +236,422 @@ For the `_EMBASSY` room only.
 #### Stats multipliers per furniture
 1) Emissaries
 2) Efficiency
+
+## _EXECUTION room
+
+For the `_EXECUTION` room only.
+
+| Key     | Required | Default | Min  | Max  | Description                                                          | Example  |
+|---------|----------|---------|------|------|----------------------------------------------------------------------|----------|
+| FLOOR2  | yes      | none    | none | none | Possible floor names can be found in `assets/init/settlement/floor`. | `STONE2` |
+| WORK    | no       | none    | none | none | See [WORK key](#work-key)                                            |          |
+| SERVICE | no       | none    | none | none | See [SERVICE key](#service-key)                                      |          |
+
+### ITEMS
+
+#### Furniture
+1) Gallows
+2) Chopping Blocks
+3) Decorations
+
+#### Stats multipliers per furniture
+1) Executions
+2) Executioners
+3) Fear
+
+## _EXPORT room
+
+For the `_EXPORT` room only.
+
+| Key     | Required | Default | Min  | Max  | Description                                                          | Example  |
+|---------|----------|---------|------|------|----------------------------------------------------------------------|----------|
+| FLOOR2  | yes      | none    | none | none | Possible floor names can be found in `assets/init/settlement/floor`. | `STONE2` |
+| WORK    | no       | none    | none | none | See [WORK key](#work-key)                                            |          |
+
+### ITEMS
+
+#### Furniture
+1) Export Depot
+
+#### Stats multipliers per furniture
+1) Trader
+
+## _GUARD room
+
+For the `_GUARD` room only.
+
+| Key              | Required | Default | Min  | Max  | Description                                                                | Example          |
+|------------------|----------|---------|------|------|----------------------------------------------------------------------------|------------------|
+| EQUIPMENT_TO_USE | yes      | none    | none | none | Possible equipment names can be found in `assets/init/stats/equip/battle`. | `ARMOUR_LEATHER` |
+| WORK             | no       | none    | none | none | See [WORK key](#work-key)                                                  |                  |
+| UPGRADES         | no       | none    | none | none | See [UPGRADES key](#upgrades-key)                                          |                  |
+
+### ITEMS
+
+#### Furniture
+1) Guardpost
+
+#### Stats multipliers per furniture
+1) Guards
+2) Radius
+
+## _HAULER room
+
+For the `_HAULER` room only.
+
+| Key     | Required | Default | Min  | Max  | Description                                                          | Example  |
+|---------|----------|---------|------|------|----------------------------------------------------------------------|----------|
+| WORK    | no       | none    | none | none | See [WORK key](#work-key)                                            |          |
+
+### ITEMS
+
+#### Furniture
+1) Hauling Station
+
+#### Stats multipliers per furniture
+none
+
+## _HEARTH room
+
+For the `_HEARTH` room only.
+
+| Key      | Required | Default | Min  | Max  | Description                       | Example |
+|----------|----------|---------|------|------|-----------------------------------|---------|
+| UPGRADES | no       | none    | none | none | See [UPGRADES key](#upgrades-key) |         |
+| SERVICE  | no       | none    | none | none | See [SERVICE key](#service-key)   |         |
+
+### ITEMS
+
+#### Furniture
+1) Hearth
+
+#### Stats multipliers per furniture
+1) Spots
+
+## _HOME room
+
+For the `_HOME` room only.
+
+| Key      | Required | Default | Min  | Max  | Description                       | Example |
+|----------|----------|---------|------|------|-----------------------------------|---------|
+| UPGRADES | no       | none    | none | none | See [UPGRADES key](#upgrades-key) |         |
+
+### ITEMS
+
+#### Furniture
+1) Apartment
+2) House
+3) Longhouse
+
+#### Stats multipliers per furniture
+1) Residents
+
+## _HOME_CHAMBER room
+
+For the `_HOME_CHAMBER` room only.
+
+| Key      | Required | Default | Min  | Max  | Description                                                                                                                     | Example           |
+|----------|----------|---------|------|------|---------------------------------------------------------------------------------------------------------------------------------|-------------------|
+| SERVICE  | no       | none    | none | none | See [SERVICE key](#service-key)                                                                                                 |                   |
+| WORK     | no       | none    | none | none | See [WORK key](#work-key)                                                                                                       |                   |
+| MONUMENT | no       | none    | none | none | Which monument to be used as statue.<br/>Possible monuments can be found in `assets/init/rooms`.<br/>Starting with `MONUMENT_`. | `MONUMENT_STATUE` |
+
+### ITEMS
+
+#### Furniture
+1) Chamber
+
+#### Stats multipliers per furniture
+1) Servants
+2) Residents
+
+## _HOSPITAL room
+
+For the `_HOSPITAL` room only.
+
+| Key                      | Required | Default | Min  | Max     | Description                                                                                                                                                             | Example                                                          |
+|--------------------------|----------|---------|------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+| SERVICE                  | no       | none    | none | none    | See [SERVICE key](#service-key)                                                                                                                                         |                                                                  |
+| WORK                     | no       | none    | none | none    | See [WORK key](#work-key)                                                                                                                                               |                                                                  |
+| INDUSTRY.IN.\<RESOURCE\> | yes      | none    | 0.0  | 10000.0 | Input resource consumed for treating patients.<br/>Possible \<RESOURCE\>s can be found in `assets/init/resource`.<br/>See [INDUSTRY key](#industry-and-industries-keys) | See [INDUSTRY and INDUSTRIES key](#industry-and-industries-keys) |
+
+### ITEMS
+
+#### Furniture
+1) Beds
+
+#### Stats multipliers per furniture
+1) Patients
+2) Caretakers
+
+## _IMPORT room
+
+For the `_IMPORT` room only.
+
+| Key    | Required | Default | Min  | Max  | Description                                                          | Example  |
+|--------|----------|---------|------|------|----------------------------------------------------------------------|----------|
+| FLOOR2 | yes      | none    | none | none | Possible floor names can be found in `assets/init/settlement/floor`. | `STONE2` |
+
+### ITEMS
+
+#### Furniture
+1) Import Depot
+
+#### Stats multipliers per furniture
+1) Crates
+
+## _INN room
+
+For the `_INN` room only.
+
+| Key     | Required | Default | Min  | Max  | Description                                                          | Example  |
+|---------|----------|---------|------|------|----------------------------------------------------------------------|----------|
+| FLOOR2  | yes      | none    | none | none | Possible floor names can be found in `assets/init/settlement/floor`. | `STONE2` |
+| SERVICE | no       | none    | none | none | See [SERVICE key](#service-key)                                      |          |
+| WORK    | no       | none    | none | none | See [WORK key](#work-key)                                            |          |
+
+### ITEMS
+
+#### Furniture
+1) Room
+2) Decorations 
+3) Carpets
+
+#### Stats multipliers per furniture
+1) Guests
+2) Coziness
+3) Workers
+
+## _JANITOR room
+
+For the `_JANITOR` room only.
+
+| Key     | Required | Default | Min  | Max  | Description                                                          | Example  |
+|---------|----------|---------|------|------|----------------------------------------------------------------------|----------|
+| WORK    | no       | none    | none | none | See [WORK key](#work-key)                                            |          |
+
+### ITEMS
+
+#### Furniture
+1) Work Stations
+2) Utilities
+
+#### Stats multipliers per furniture
+1) Janitors
+2) Efficiency
+
+## _MILITARY_SUPPLY room
+
+For the `_MILITARY_SUPPLY` room only.
+
+| Key       | Required | Default | Min  | Max  | Description                                                                                                     | Example     |
+|-----------|----------|---------|------|------|-----------------------------------------------------------------------------------------------------------------|-------------|
+| FLOOR2    | yes      | none    | none | none | Possible floor names can be found in `assets/init/settlement/floor`.                                            | `STONE2`    |
+| FENCE     | yes      | none    | none | none | Which kind of fence to use for the borders.<br/>Possible fences can be found in `assets/init/settlement/fence`. | `WOOD`      |
+| LIVESTOCK | yes      | none    | none | none | Resource used for livestock.<br/>See file names in `assets/init/resource` and sub folders for possible values.  | `LIVESTOCK` |
+| WORK      | no       | none    | none | none | See [WORK key](#work-key)                                                                                       |             |
+
+### ITEMS
+
+#### Furniture
+1) Crates
+
+#### Stats multipliers per furniture
+1) Workers
+2) Storage
+
+## _PRISON room
+
+For the `_PRISON` room only.
+
+| Key       | Required | Default | Min  | Max  | Description                                                                                | Example     |
+|-----------|----------|---------|------|------|--------------------------------------------------------------------------------------------|-------------|
+| FLOOR2    | yes      | none    | none | none | Floor used for cells. Possible floor names can be found in `assets/init/settlement/floor`. | `STONE2`    |
+| WORK      | no       | none    | none | none | See [WORK key](#work-key)                                                                  |             |
+
+### ITEMS
+
+#### Furniture
+1) Cells
+
+#### Stats multipliers per furniture
+1) Prisoners
+2) Guards
+
+## _SLAVER room
+
+For the `_SLAVER` room only.
+
+| Key       | Required | Default | Min  | Max  | Description                                                                                | Example     |
+|-----------|----------|---------|------|------|--------------------------------------------------------------------------------------------|-------------|
+| WORK      | no       | none    | none | none | See [WORK key](#work-key)                                                                  |             |
+
+### ITEMS
+
+#### Furniture
+1) Station
+
+#### Stats multipliers per furniture
+1) Clients
+
+## _STATION room
+
+For the `_STATION` room only.
+
+| Key    | Required | Default | Min  | Max  | Description                                                          | Example  |
+|--------|----------|---------|------|------|----------------------------------------------------------------------|----------|
+| FLOOR2 | yes      | none    | none | none | Possible floor names can be found in `assets/init/settlement/floor`. | `STONE2` |
+| WORK   | no       | none    | none | none | See [WORK key](#work-key)                                            |          |
+
+### ITEMS
+
+#### Furniture
+1) Unloading Station
+
+#### Stats multipliers per furniture
+none
+
+## _STOCKADE room
+
+For the `_STOCKADE` room only.
+
+| Key       | Required | Default | Min  | Max  | Description                                                                                | Example     |
+|-----------|----------|---------|------|------|--------------------------------------------------------------------------------------------|-------------|
+| WORK      | no       | none    | none | none | See [WORK key](#work-key)                                                                  |             |
+
+### ITEMS
+
+#### Furniture
+1) Entrance
+
+#### Stats multipliers per furniture
+1) Guards
+2) Prisoners
+
+## _STOCKPILE room
+
+For the `_STOCKPILE` room only.
+
+| Key      | Required | Default | Min  | Max  | Description                       | Example |
+|----------|----------|---------|------|------|-----------------------------------|---------|
+| WORK     | no       | none    | none | none | See [WORK key](#work-key)         |         |
+| UPGRADES | no       | none    | none | none | See [UPGRADES key](#upgrades-key) |         |
+
+### ITEMS
+
+#### Furniture
+1) Crates
+
+#### Stats multipliers per furniture
+1) Storage
+
+## _STOCKS room
+
+For the `_STOCKS` room only.
+
+### ITEMS
+
+#### Furniture
+1) Stock
+
+#### Stats multipliers per furniture
+none
+
+## _THRONE room
+
+For the `_THRONE` room only.
+
+### ITEMS
+
+#### Furniture
+none
+
+#### Stats multipliers per furniture
+none
+
+## _TRANSPORT room
+
+For the `_TRANSPORT` room only.
+
+| Key    | Required | Default | Min  | Max  | Description                                                          | Example  |
+|--------|----------|---------|------|------|----------------------------------------------------------------------|----------|
+| FLOOR2 | yes      | none    | none | none | Possible floor names can be found in `assets/init/settlement/floor`. | `STONE2` |
+| WORK   | no       | none    | none | none | See [WORK key](#work-key)                                            |          |
+
+### ITEMS
+
+#### Furniture
+1) Loading Station
+
+#### Stats multipliers per furniture
+1) Transports
+
+## _WATERCANAL room
+
+For the `_WATERCANAL` room only.
+
+### ITEMS
+
+#### Furniture
+1) Canal
+
+#### Stats multipliers per furniture
+none
+
+## _WATERDRAIN room
+
+For the `_WATERDRAIN` room only.
+
+### ITEMS
+
+#### Furniture
+1) Culvert
+
+#### Stats multipliers per furniture
+none
+
+## _WATERPUMP room
+
+For the `_WATERPUMP` room only.
+
+| Key              | Required | Default | Min  | Max  | Description                                       | Example |
+|------------------|----------|---------|------|------|---------------------------------------------------|---------|
+| WORK             | no       | none    | none | none | See [WORK key](#work-key)                         |         |
+| UPGRADES         | no       | none    | none | none | See [UPGRADES key](#upgrades-key)                 |         |
+| ENVIRONMENT_EMIT | no       | none    | none | none | See [ENVIRONMENT_EMIT key](#environment_emit-key) |         |
+
+### ITEMS
+
+#### Furniture
+1) Water Pump
+
+#### Stats multipliers per furniture
+1) Workers
+
+## _WOODCUTTER room
+
+For the `_WOODCUTTER` room only.
+
+| Key                       | Required | Default | Min  | Max     | Description                                                                      | Example |
+|---------------------------|----------|---------|------|---------|----------------------------------------------------------------------------------|---------|
+| WORK                      | no       | none    | none | none    | See [WORK key](#work-key)                                                        |         |
+| STORAGE                   | yes      | none    | 4    | 500     | How much of the resource can be stored per tile.                                 |         |
+| DEGRADE_RATE              | no       | 0.75    | 0.0  | 1.0     | Multiplier for how fast stored resources in degrades.                            |         |
+| INDUSTRY.OUT.\<RESOURCE\> | no       | none    | 0.0  | 10000.0 | Produced resource with amount. See [INDUSTRY key](#industry-and-industries-keys) |         |
+| ENVIRONMENT_EMIT          | no       | none    | none | none    | See [ENVIRONMENT_EMIT key](#environment_emit-key)                                |         |
+| UPGRADES                  | no       | none    | none | none    | See [UPGRADES key](#upgrades-key)                                                |         |
+
+### ITEMS
+
+#### Furniture
+1) Storage
+2) Auxiliaries
+
+#### Stats multipliers per furniture
+1) Workers
+2) Efficiency
+3) Irrigation
+4) Output
 
 ## ADMIN rooms
 
@@ -991,11 +1430,11 @@ For `TEMPLE_` rooms only.
 
 For `TOMB_` rooms only.
 
-| Key      | Required | Default | Min  | Max  | Description                                                                                                                      | Example |
-|----------|----------|---------|------|------|----------------------------------------------------------------------------------------------------------------------------------|---------|
-| MONUMENT     | no       | none    | none | none | Which monument to be used as statues.<br/>Possible monuments can be found in `assets/init/rooms`.<br/>Starting with `MONUMENT_`. | `MONUMENT_STATUE`        |
-| WORK     | no       | none    | none | none | See [WORK key](#work-key)                                                                                                        |         |
-| STANDING | no       | none    | none | none | See [STANDING key](#standing-key)                                                                                                |         |
+| Key      | Required | Default | Min  | Max  | Description                                                                                                                      | Example           |
+|----------|----------|---------|------|------|----------------------------------------------------------------------------------------------------------------------------------|-------------------|
+| MONUMENT | no       | none    | none | none | Which monument to be used as statues.<br/>Possible monuments can be found in `assets/init/rooms`.<br/>Starting with `MONUMENT_`. | `MONUMENT_STATUE` |
+| WORK     | no       | none    | none | none | See [WORK key](#work-key)                                                                                                        |                   |
+| STANDING | no       | none    | none | none | See [STANDING key](#standing-key)                                                                                                |                   |
 
 ### ITEMS
 
