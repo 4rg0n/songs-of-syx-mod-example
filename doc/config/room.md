@@ -10,6 +10,33 @@ All other rooms can get a new implementation with your own configuration.
 For example if you made a new weapon "Crossbow", you can have a `WORKSHOP` like `WORKSHOP_BOWYER.txt`,
 but you would call it e.g.`WORKSHOP_CROSSBOW.txt` and configure it to produce crossbows instead.
 
+## Overview
+
+* [General](#general)
+* [ADMIN](#admin-rooms)
+* [ARCHERY](#archery-rooms)
+* [ARENAG](#arenag-rooms)
+* [ARTILLERY](#artillery-rooms)
+* [BARBER](#barber-rooms)
+* [BARRACKS](#barracks-rooms)
+* [BATH](#bath-rooms)
+* [CANTEEN](#canteen-rooms)
+* [EATERY](#eatery-rooms)
+* [FARM](#farm-rooms)
+* [FIGHTPIT](#fightpit-rooms)
+* [FISHERY](#fishery-rooms)
+* [GATEHOUSE](#gatehouse-rooms)
+* [HUNTER](#hunter-rooms)
+* [LABORATORY](#laboratory-rooms)
+* [LAVATORY](#lavatory-rooms)
+* [LIBRARY](#library-rooms)
+* [MARKET](#market-rooms)
+* [MINE](#mine-rooms)
+* [MONUMENT](#mine-rooms)
+* [NURSERY](#nursery-rooms)
+* [ORCHARD](#orchard-rooms)
+* [PASTURE](#pasture-rooms)
+
 ## General
 
 For all kinds of rooms.
@@ -33,8 +60,6 @@ For all kinds of rooms.
 | BONUS.CLIMATE.\<CLIMATE\> | no       | none          | 0.0  | 2000.0 | Room bonus multiplier when in a certain climate. <br/>Possible climates can be found in `assets/init/config/CLIMATE.txt`.                                                                          | `{ COLD: 0.8, TEMPERATE: 1.0, HOT: 0.0, }`</br>or `{ *: 0.5, }` for all climates                                   |
 | ITEMS                     | no       | none          | none | none   | See [items](#items-key)                                                                                                                                                                            |                                                                                                                    |
 | SPRITES                   | yes      | none          | none | none   | See [SPRITES key](#sprites-key)                                                                                                                                                                    |                                                                                                                    |
-
-
 
 ## ADMIN rooms
 
@@ -319,19 +344,11 @@ none
 
 For `GRAVEYARD_` rooms only.
 
-| Key                 | Required | Default | Min  | Max       | Description                                                                                              | Example  |
-|---------------------|----------|---------|------|-----------|----------------------------------------------------------------------------------------------------------|----------|
-| WORK                | no       | none    | none | none      | See [WORK key](#work-key)                                                                                |          |
-| PATHWAY             | yes      | none    | none | none      | Material used for the pathways.<br/>Possible floor names can be found in `assets/init/settlement/floor`. | `STONE1` |
-| STANDING.PRIO       | no       | 1.0     | 0.0  | 100000.0  | Used for displaying standings ordered by prio.                                                           |          |
-| STANDING.INVERTED   | no       | false   | none | none      | Whether the standing shall have a negative effect.                                                       |          |
-| STANDING.MULTIPLIER | no       | 0.0     | 0.0  | 10000.0   | Multiplier for how much standing it generates.                                                           |          |
-| STANDING.EXPONENT   | no       | 1.0     | 0.01 | 100000.0  | Exponential factor for increasing the standing.                                                          |          |
-| STANDING.DISMISS    | no       | false   | none | none      | Whether the standing shall not count to the overall reachable maximum standing.                          |          |
-| STANDING.NOBLE      | no       | 0.0     | 0.0  | 1000000.0 | How much the standing affects nobles.                                                                    |          |
-| STANDING.CITIZEN    | no       | 0.0     | 0.0  | 1000000.0 | How much the standing affects normal citizens.                                                           |          |
-| STANDING.SLAVE      | no       | 0.0     | 0.0  | 1000000.0 | How much the standing affects slaves.                                                                    |          |
-| STANDING.CHILD      | no       | 0.0     | 0.0  | 1000000.0 | How much the standing affects children.                                                                  |          |
+| Key      | Required | Default | Min  | Max  | Description                                                                                              | Example  |
+|----------|----------|---------|------|------|----------------------------------------------------------------------------------------------------------|----------|
+| WORK     | no       | none    | none | none | See [WORK key](#work-key)                                                                                |          |
+| PATHWAY  | yes      | none    | none | none | Material used for the pathways.<br/>Possible floor names can be found in `assets/init/settlement/floor`. | `STONE1` |
+| STANDING | no       | none    | none | none | See [STANDING key](#standing-key)                                                                        |          |
 
 ### ITEMS
 
@@ -373,8 +390,8 @@ For `LABORATORY_` rooms only.
 
 | Key                            | Required | Default | Min                                                                                            | Max                                                                                             | Description                                                                                                                                                                                    | Example |
 |--------------------------------|----------|---------|------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
-| VALUE_DEGRADE_PER_YEAR         | yes      | none    | 0.0                                                                                            | 10.0                                                                                            | How fast knowledge shall be lost.                                                                                                                                                              |         |
-| VALUE_PER_WORKER               | no       | none    | 0.0                                                                                            | 100000.0                                                                                        | How much knowledge is generated per station.                                                                                                                                                   |         |
+| VALUE_DEGRADE_PER_YEAR         | yes      | none    | 0.0                                                                                            | 10.0                                                                                            | How fast inovation shall be lost.                                                                                                                                                              |         |
+| VALUE_PER_WORKER               | no       | none    | 0.0                                                                                            | 100000.0                                                                                        | How much inovation is generated per station.                                                                                                                                                   |         |
 | VALUE_WORK_SPEED               | no       | none    | 0.0                                                                                            | 1000.0                                                                                          | How long it takes to perform the job.                                                                                                                                                          |         |
 | CONSUMPTION.\<RESOURCE\>.RATE  | no       | none    | 0.0                                                                                            | 10000.0                                                                                         | How much of the \<RESOURCE\> is consumed per performed job.<br/>See file names in `assets/init/resource` and sub folders for possible \<RESOURCE\>s.                                           |         |
 | CONSUMPTION.\<RESOURCE\>.BONUS | no       | none    | 0.0                                                                                            | 1000.0                                                                                          | How much bonus to knowledge generation consuming the \<RESOURCE\> will give.<br/>Bonus will be added.<br/>See file names in `assets/init/resource` and sub folders for possible \<RESOURCE\>s. |         |
@@ -393,6 +410,204 @@ For `LABORATORY_` rooms only.
 #### Stats multipliers per furniture
 1) Workers
 2) Innovation
+
+## LAVATORY rooms
+
+For `LAVATORY_` rooms only.
+
+| Key                         | Required | Default | Min  | Max       | Description                                                                     | Example |
+|-----------------------------|----------|---------|------|-----------|---------------------------------------------------------------------------------|---------|
+| WORK                        | no       | none    | none | none      | See [WORK key](#work-key)                                                       |         |
+| SERVICE                     | no       | none    | none | none      | See [SERVICE key](#service-key)                                                 |         |
+| UPGRADES                    | no       | none    | none | none      | See [UPGRADES key](#upgrades-key)                                               |         |
+
+### ITEMS
+
+#### Furniture
+1) Latrine
+2) Basins
+
+#### Stats multipliers per furniture
+1) Latrines
+2) Workers
+3) Basins
+
+## LIBRARY rooms
+
+For `LIBRARY_` rooms only.
+
+| Key                            | Required | Default | Min                                                                                            | Max                                                                                             | Description                                                                                                                                                                                    | Example |
+|--------------------------------|----------|---------|------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
+| VALUE_DEGRADE_PER_YEAR         | yes      | none    | 0.0                                                                                            | 10.0                                                                                            | How fast knowledge shall be lost.                                                                                                                                                              |         |
+| VALUE_PER_WORKER               | no       | none    | 0.0                                                                                            | 100000.0                                                                                        | How much knowledge is generated per station.                                                                                                                                                   |         |
+| VALUE_WORK_SPEED               | no       | none    | 0.0                                                                                            | 1000.0                                                                                          | How long it takes to perform the job.                                                                                                                                                          |         |
+| CONSUMPTION.\<RESOURCE\>.RATE  | no       | none    | 0.0                                                                                            | 10000.0                                                                                         | How much of the \<RESOURCE\> is consumed per performed job.<br/>See file names in `assets/init/resource` and sub folders for possible \<RESOURCE\>s.                                           |         |
+| CONSUMPTION.\<RESOURCE\>.BONUS | no       | none    | 0.0                                                                                            | 1000.0                                                                                          | How much bonus to knowledge generation consuming the \<RESOURCE\> will give.<br/>Bonus will be added.<br/>See file names in `assets/init/resource` and sub folders for possible \<RESOURCE\>s. |         |
+| EXPERIENCE_BONUS.BONUS         | no       | none    | -[Double.MAX_VALUE](https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html#MAX_VALUE) | [Double.MAX_VALUE](https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html#MAX_VALUE)   |                                                                                                                                                                                                |         |
+| EXPERIENCE_BONUS.MAX_EMPLOYEES | no       | none    | 50                                                                                             | [Integer.MAX_VALUE](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#MAX_VALUE) |                                                                                                                                                                                                |         |
+| WORK                           | no       | none    | none                                                                                           | none                                                                                            | See [WORK key](#work-key)                                                                                                                                                                      |         |
+| UPGRADES                       | no       | none    | none                                                                                           | none                                                                                            | See [UPGRADES key](#upgrades-key)                                                                                                                                                              |         |
+
+### ITEMS
+
+#### Furniture
+1) Shelf
+2) Carpet
+
+#### Stats multipliers per furniture
+1) Workers
+2) Knowledge
+3) Efficiency
+
+## MARKET rooms
+
+For `MARKET_` rooms only.
+
+| Key                         | Required | Default | Min  | Max       | Description                                                                     | Example |
+|-----------------------------|----------|---------|------|-----------|---------------------------------------------------------------------------------|---------|
+| WORK                        | no       | none    | none | none      | See [WORK key](#work-key)                                                       |         |
+| SERVICE                     | no       | none    | none | none      | See [SERVICE key](#service-key)                                                 |         |
+| UPGRADES                    | no       | none    | none | none      | See [UPGRADES key](#upgrades-key)                                               |         |
+
+### ITEMS
+
+#### Furniture
+1) Stall
+
+#### Stats multipliers per furniture
+1) Storage
+2) Workers
+
+## MINE rooms
+
+For `MINE_` rooms only.
+
+| Key                | Required | Default | Min  | Max    | Description                                                                                                                | Example |
+|--------------------|----------|---------|------|--------|----------------------------------------------------------------------------------------------------------------------------|---------|
+| MINABLE            | no       | none    | none | none   | The resource which can be mined with this mine.<br/>See file names in `assets/init/resource/mineable` for possible values. | `CLAY`  |
+| YEILD_WORKER_DAILY | yes      | none    | 0.0  | 1000.0 | How much of the resource one worker can mine per day.                                                                      |         |
+| STORAGE            | yes      | none    | 4    | 500    | How much of the resource can be stored per tile.                                                                           |         |
+| DEGRADE_RATE       | no       | 0.75    | 0.0  | 1.0    | Multiplier for how fast stored resources in degrades.                                                                      |         |
+| WORK               | no       | none    | none | none   | See [WORK key](#work-key)                                                                                                  |         |
+| UPGRADES           | no       | none    | none | none   | See [UPGRADES key](#upgrades-key)                                                                                          |         |
+| ENVIRONMENT_EMIT   | no       | none    | none | none   | See [ENVIRONMENT_EMIT key](#environment_emit-key)                                                                          |         |
+
+### ITEMS
+
+#### Furniture
+1) Storage
+2) Auxiliaries
+
+#### Stats multipliers per furniture
+1) Workers
+2) Deposits
+3) Efficiency
+4) Output
+
+## MONUMENT rooms
+
+For `MONUMENT_` rooms only.
+
+| Key                           | Required | Default | Min                                                                                              | Max                                                                                             | Description                                                                                                                                                                         | Example |
+|-------------------------------|----------|---------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
+| SOLID                         | no       | false   | none                                                                                             | none                                                                                            | Whether citizens can walk through the monument.                                                                                                                                     |         |
+| MAX_VALUE                     | yes      | none    | -[Integer.MAX_VALUE](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#MAX_VALUE) | [Integer.MAX_VALUE](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#MAX_VALUE) | Maximum environment bonus the monument will produce.                                                                                                                                |         |
+| STANDING                      | yes      | none    | none                                                                                             | none                                                                                            | See [STANDING key](#standing-key)                                                                                                                                                   |         |
+| STANDING_UPGRADE.STANDING     | no       | none    | none                                                                                             | none                                                                                            | How much standing a bigger version of the monument will give (e.g. torches).<br/>The values will be added to the values defined in `STANDING`<br/>See [STANDING key](#standing-key) |         |
+| FULFILLMENT_BONUS.\<BOOSTER\> | no       | none    | none                                                                                             | none                                                                                            | Bonus citizens will receive when in proximity of the monument. See [boosts](boost.md)                                                                                               |         |
+
+### ITEMS
+
+#### Furniture
+1) The monument itself
+
+#### Stats multipliers per furniture
+none
+
+## NURSERY rooms
+
+For `NURSERY_` rooms only.
+
+| Key                      | Required | Default | Min  | Max     | Description                                                                                                                                                            | Example                                                          |
+|--------------------------|----------|---------|------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+| RACE                     | yes      | none    | none | none    | The race the nursery is for.<br/>Possible races can be found in `assets/init/race`.                                                                                    | `Q_AMEVIA`                                                       |
+| INCUBATION_DAYS          | yes      | none    | 0    | 127     | How long it takes for a infant to be grown into a child.                                                                                                               |                                                                  |
+| WORK                     | no       | none    | none | none    | See [WORK key](#work-key)                                                                                                                                              |                                                                  |
+| INDUSTRY.IN.\<RESOURCE\> | yes      | none    | 0.0  | 10000.0 | Input resource consumed when nursing infants.<br/>Possible \<RESOURCE\>s can be found in `assets/init/resource`.<br/>See [INDUSTRY key](#industry-and-industries-keys) | See [INDUSTRY and INDUSTRIES key](#industry-and-industries-keys) |
+
+### ITEMS
+
+#### Furniture
+1) Crib
+2) Carpet
+
+#### Stats multipliers per furniture
+1) Clutches
+2) Workers
+3) Efficiency
+
+## ORCHARD rooms
+
+For `ORCHARD_` rooms only.
+
+| Key                       | Required | Default | Min  | Max                                                                                             | Description                                                                                                                                                        | Example                                                          |
+|---------------------------|----------|---------|------|-------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+| INDOORS                   | no       | false   | none | none                                                                                            | Whether the orchard must be in an enclosed room with walls.                                                                                                        |                                                                  |
+| EXTRA_RESOURCE            | yes      | none    | none | none                                                                                            | Additional resource generated when working.<br/>See file names in `assets/init/resource` and sub folders for possible values.                                      |                                                                  |
+| EXTRA_RESOURCE_AMOUNT     | yes      | none    | 0    | [Integer.MAX_VALUE](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#MAX_VALUE) | How much of the additional resource you will get per tile.                                                                                                         |                                                                  |
+| DAYS_TILL_GROWTH          | yes      | none    | 8    | 1024                                                                                            | How long it will take for the trees to be fully grown and ready for producing resources.                                                                           |                                                                  |
+| RIPE_AT_PART_OF_YEAR      | yes      | none    | 0.0  | 1.0                                                                                             | At which part of the year the resources can be harvested.                                                                                                          |                                                                  |
+| WORK                      | no       | none    | none | none                                                                                            | See [WORK key](#work-key)                                                                                                                                          |                                                                  |
+| INDUSTRY.OUT.\<RESOURCE\> | yes      | none    | 0.0  | 10000.0                                                                                         | Output resource produced when harvesting.<br/>Possible \<RESOURCE\>s can be found in `assets/init/resource`.<br/>See [INDUSTRY key](#industry-and-industries-keys) | See [INDUSTRY and INDUSTRIES key](#industry-and-industries-keys) |
+
+### ITEMS
+
+#### Furniture
+1) Tree
+
+#### Stats multipliers per furniture
+1) Soil
+2) Farmers
+3) Irrigation
+4) Yearly Output
+
+## PASTURE rooms
+
+For `PASTURE_` rooms only.
+
+| Key                                  | Required | Default | Min  | Max  | Description                                                                                                                                                                                         | Example  |
+|--------------------------------------|----------|---------|------|------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
+| WORK                                 | no       | none    | none | none | See [WORK key](#work-key)                                                                                                                                                                           |          |
+| ANIMAL                               | yes      | none    | none | none | Which animal the pasture will use.<br/>Possible animals can be found in `assets/init/animal`.                                                                                                       | `AUROCH` |
+| FENCE                                | yes      | none    | none | none | Which kind of fence to use for the borders.<br/>Possible fences can be found in `assets/init/settlement/fence`.                                                                                     | `WOOD`   |
+| INDUSTRIES.INDUSTRY.OUT.\<RESOURCE\> | yes      | none    | none | none | Which resources the pasture will produce when an animal is slaughtered. <br/>Possible \<RESOURCE\>s can be found in `assets/init/resource`.<br/>See [INDUSTRIES key](#industry-and-industries-keys) |          |
+
+### ITEMS
+
+#### Furniture
+1) Gate
+2) Hut
+
+#### Stats multipliers per furniture
+1) Workers
+2) Fertility
+3) Irrigation
+4) Output
+
+## STANDING key
+
+| Key        | Required | Default | Min  | Max       | Description                                                                     | Example |
+|------------|----------|---------|------|-----------|---------------------------------------------------------------------------------|---------|
+| PRIO       | no       | 1.0     | 0.0  | 100000.0  | Used for displaying standings ordered by prio.                                  |         |
+| INVERTED   | no       | false   | none | none      | Whether the standing shall have a negative effect.                              |         |
+| MULTIPLIER | no       | 0.0     | 0.0  | 10000.0   | Multiplier for how much standing it generates.                                  |         |
+| EXPONENT   | no       | 1.0     | 0.01 | 100000.0  | Exponential factor for increasing the standing.                                 |         |
+| DISMISS    | no       | false   | none | none      | Whether the standing shall not count to the overall reachable maximum standing. |         |
+| NOBLE      | no       | 0.0     | 0.0  | 1000000.0 | How much the standing affects nobles.                                           |         |
+| CITIZEN    | no       | 0.0     | 0.0  | 1000000.0 | How much the standing affects normal citizens.                                  |         |
+| SLAVE      | no       | 0.0     | 0.0  | 1000000.0 | How much the standing affects slaves.                                           |         |
+| CHILD      | no       | 0.0     | 0.0  | 1000000.0 | How much the standing affects children.                                         |         |
+
 
 ## UPGRADES key
 
@@ -427,46 +642,37 @@ UPGRADES: [
 
 ## SERVICE key
 
-| Key                         | Required | Default | Min  | Max       | Description                                                                               | Example  |
-|-----------------------------|----------|---------|------|-----------|-------------------------------------------------------------------------------------------|----------|
-| SERVICE.RADIUS              | no       | 150     | 0    | 50000     | How far the services reaches.                                                             |          |
-| SERVICE.STANDING.PRIO       | no       | 1.0     | 0.0  | 100000.0  | Used for displaying standings ordered by prio.                                            |          |
-| SERVICE.STANDING.INVERTED   | no       | false   | none | none      | Whether the standing shall have a negative effect.                                        |          |
-| SERVICE.STANDING.MULTIPLIER | no       | 0.0     | 0.0  | 10000.0   | Multiplier for how much standing it generates.                                            |          |
-| SERVICE.STANDING.EXPONENT   | no       | 1.0     | 0.01 | 100000.0  | Exponential factor for increasing the standing.                                           |          |
-| SERVICE.STANDING.DISMISS    | no       | false   | none | none      | Whether the standing shall not count to the overall reachable maximum standing.           |          |
-| SERVICE.STANDING.NOBLE      | no       | 0.0     | 0.0  | 1000000.0 | How much the standing affects nobles.                                                     |          |
-| SERVICE.STANDING.CITIZEN    | no       | 0.0     | 0.0  | 1000000.0 | How much the standing affects normal citizens.                                            |          |
-| SERVICE.STANDING.SLAVE      | no       | 0.0     | 0.0  | 1000000.0 | How much the standing affects slaves.                                                     |          |
-| SERVICE.STANDING.CHILD      | no       | 0.0     | 0.0  | 1000000.0 | How much the standing affects children.                                                   |          |
-| SERVICE.STANDING.OTHER      | no       | 0.0     | 0.0  | 1000000.0 | How much the standing affects all other people living in your settlement.                 |          |
-| SERVICE.USAGE               | no       | 1.0     | 0.0  | 1.0       | How much of a service need will be fulfilled when visiting the room.                      |          |
-| SERVICE.NEED                | yes      | none    | none | none      | Which need the room will fulfill. Possible needs can be found in `assets/init/stats/need` | `ARENAG` |
-| SERVICE.BOOST.\<KEY\>       | no       | none    | none | none      | See [boosts](boost.md)                                                                    |          |
+| Key           | Required | Default | Min  | Max   | Description                                                                               | Example  |
+|---------------|----------|---------|------|-------|-------------------------------------------------------------------------------------------|----------|
+| RADIUS        | no       | 150     | 0    | 50000 | How far the services reaches.                                                             |          |
+| STANDING      | no       | none    | none | none  | See [STANDING key](#standing-key)                                                         |          |
+| USAGE         | no       | 1.0     | 0.0  | 1.0   | How much of a service need will be fulfilled when visiting the room.                      |          |
+| NEED          | yes      | none    | none | none  | Which need the room will fulfill. Possible needs can be found in `assets/init/stats/need` | `ARENAG` |
+| BOOST.\<KEY\> | no       | none    | none | none  | See [boosts](boost.md)                                                                    |          |
 
 ## EMPLOYMENT key
 
 For rooms with employees.
 
-| Key                           | Required | Default | Min  | Max     | Description                                                                                | Example |
-|-------------------------------|----------|---------|------|---------|--------------------------------------------------------------------------------------------|---------|
-| EMPLOYMENT.SHIFT_OFFSET       | yes      | none    | 0.0  | 0.99    | At which percentage of a day length the work shift starts.                                 |         |
-| EMPLOYMENT.NIGHT_SHIFT        | no       | false   | none | none    | Whether employees should work at night.                                                    |         |
-| EMPLOYMENT.FULLFILLMENT       | no       | 0.5     | 0.0  | 1.0     | How much fulfillment an employee will get when working in this room.                       |         |
-| EMPLOYMENT.ACCIDENTS_PER_YEAR | no       | 0.0     | 0.0  | 10000.0 | Maximum numbers of work accidents which can happen in a year. Actual value will be halved. |         |
-| EMPLOYMENT.HEALTH_FACTOR      | no       | 1.0     | 0.0  | 1.0     | How much health will decrease (1.0 means no decrease) when working in this room.           |         |
+| Key                | Required | Default | Min  | Max     | Description                                                                                | Example |
+|--------------------|----------|---------|------|---------|--------------------------------------------------------------------------------------------|---------|
+| SHIFT_OFFSET       | yes      | none    | 0.0  | 0.99    | At which percentage of a day length the work shift starts.                                 |         |
+| NIGHT_SHIFT        | no       | false   | none | none    | Whether employees should work at night.                                                    |         |
+| FULLFILLMENT       | no       | 0.5     | 0.0  | 1.0     | How much fulfillment an employee will get when working in this room.                       |         |
+| ACCIDENTS_PER_YEAR | no       | 0.0     | 0.0  | 10000.0 | Maximum numbers of work accidents which can happen in a year. Actual value will be halved. |         |
+| HEALTH_FACTOR      | no       | 1.0     | 0.0  | 1.0     | How much health will decrease (1.0 means no decrease) when working in this room.           |         |
 
 ## WORK key
 
 For rooms with employees.
 
-| Key                     | Required | Default | Min  | Max     | Description                                                                                | Example |
-|-------------------------|----------|---------|------|---------|--------------------------------------------------------------------------------------------|---------|
-| WORK.SHIFT_OFFSET       | yes      | none    | 0.0  | 0.99    | At which percentage of a day length the work shift starts.                                 |         |
-| WORK.NIGHT_SHIFT        | no       | false   | none | none    | Whether employees should work at night.                                                    |         |
-| WORK.FULLFILLMENT       | no       | 0.5     | 0.0  | 1.0     | How much fulfillment an employee will get when working in this room.                       |         |
-| WORK.ACCIDENTS_PER_YEAR | no       | 0.0     | 0.0  | 10000.0 | Maximum numbers of work accidents which can happen in a year. Actual value will be halved. |         |
-| WORK.HEALTH_FACTOR      | no       | 1.0     | 0.0  | 1.0     | How much health will decrease (1.0 means no decrease) when working in this room.           |         |
+| Key                | Required | Default | Min  | Max     | Description                                                                                | Example |
+|--------------------|----------|---------|------|---------|--------------------------------------------------------------------------------------------|---------|
+| SHIFT_OFFSET       | yes      | none    | 0.0  | 0.99    | At which percentage of a day length the work shift starts.                                 |         |
+| NIGHT_SHIFT        | no       | false   | none | none    | Whether employees should work at night.                                                    |         |
+| FULLFILLMENT       | no       | 0.5     | 0.0  | 1.0     | How much fulfillment an employee will get when working in this room.                       |         |
+| ACCIDENTS_PER_YEAR | no       | 0.0     | 0.0  | 10000.0 | Maximum numbers of work accidents which can happen in a year. Actual value will be halved. |         |
+| HEALTH_FACTOR      | no       | 1.0     | 0.0  | 1.0     | How much health will decrease (1.0 means no decrease) when working in this room.           |         |
 
 ## ENVIRONMENT_EMIT key
 
@@ -480,10 +686,10 @@ Possible \<EMIT\> values:
 * _WATER_SWEET
 * _WATER_SALT
 
-| Key                              | Required | Default | Min | Max | Description               | Example |
-|----------------------------------|----------|---------|-----|-----|---------------------------|---------|
-| ENVIRONMENT_EMIT.\<EMIT\>.VALUE  | yes      | none    | 0.0 | 1.0 | How much it emits.        |         |
-| ENVIRONMENT_EMIT.\<EMIT\>.RADIUS | yes      | none    | 0.0 | 1.0 | How far the emit reaches. |         |
+| Key             | Required | Default | Min | Max | Description               | Example |
+|-----------------|----------|---------|-----|-----|---------------------------|---------|
+| \<EMIT\>.VALUE  | yes      | none    | 0.0 | 1.0 | How much it emits.        |         |
+| \<EMIT\>.RADIUS | yes      | none    | 0.0 | 1.0 | How far the emit reaches. |         |
 
 ## ITEMS key
 
@@ -662,7 +868,7 @@ INDUSTRIES: [
 ],
 ```
 
-Industry products with special settings example from `assets/init/room/PASTURE_AUR.txt`:
+Industry with multiple products having special AI settings example from `assets/init/room/PASTURE_AUR.txt`:
 ```
 INDUSTRIES: [
 	{
@@ -692,19 +898,17 @@ INDUSTRIES: [
 ### SPRITES key
 
 Sprites can be found in the subfolders of `assets/sprite/game`.
-The `SPRITE_KEY`s are unfortunately defined in the source code.
+The \<SPRITE_KEY\>s are unfortunately defined in the source code per room.
 
-| Key                                  | Required | Default     | Min        | Max      | Description                                                                                                                                                                                                 | Example                                                                                            |
-|--------------------------------------|----------|-------------|------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
-| SPRITES.\<SPRITE_KEY\>.TINT          | no       | true        | none       | none     | Will "shade" the sprite randomly when enabled. You can either have TINT or COLOR, not both.                                                                                                                 |                                                                                                    |
-| SPRITES.\<SPRITE_KEY\>.COLOR         | no       | 127_127_127 | none       | none     | Will colorize the sprite in given color. Can also be a list of colors. You can either have TINT or COLOR, not both.                                                                                         | `255_255_255` or<br/>`{ R: 255, G: 255, B: 255, }` or as list<br/> `[ 111_111_111, 222_222_222, ]` |
-| SPRITES.\<SPRITE_KEY\>.ROTATES       | no       | false       | none       | none     | Whether the sprite can be rotated.                                                                                                                                                                          |                                                                                                    |
-| SPRITES.\<SPRITE_KEY\>.SHADOW_LENGTH | no       | 0.0         | 0.0        | 100.0    | Length of the shadow the sprite shall produce.                                                                                                                                                              |                                                                                                    |
-| SPRITES.\<SPRITE_KEY\>.SHADOW_HEIGHT | no       | 0.0         | 0.0        | 100.0    | Height of the shadow the sprite shall produce.                                                                                                                                                              |                                                                                                    |
-| SPRITES.\<SPRITE_KEY\>.FPS           | no       | 0.0         | 0.0        | 100000.0 | Animation speed in frames per second. Used when the sprite is animated.                                                                                                                                     |                                                                                                    |
-| SPRITES.\<SPRITE_KEY\>.FPS_INTERVAL  | no       | 1.0         | 0.0        | 1.0      | Animation consistency.                                                                                                                                                                                      |                                                                                                    |
-| SPRITES.\<SPRITE_KEY\>.CIRCULAR      | no       | false       | none       | none     | Whether the animation repeats.                                                                                                                                                                              |                                                                                                    |
-| SPRITES.\<SPRITE_KEY\>.FRAMES        | no       | none        | none       | none     | Key value pairs. Consisting of a file name from a subfolder in `assets/sprite/game`<br/>and the number of the tile in given sprite sheet file.<br/>A `-` can be used instead to place an empty dummy frame. | `[ WORK: 0, WORK: 1, BASIN: 1, -, ]`                                                               |
-| SPRITES.\<SPRITE_KEY\>.OVERWRITE     | no       | none        | none       | none     | Here you can overwrite properties for each defined frame in `FRAMES`.                                                                                                                                       | `[ {}, {}, {FPS: 15, COLOR: {R:100,G:100,B:100,}, }, ]`                                            |
-
-
+| Key                          | Required | Default     | Min  | Max      | Description                                                                                                                                                                                                 | Example                                                                                            |
+|------------------------------|----------|-------------|------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
+| \<SPRITE_KEY\>.TINT          | no       | true        | none | none     | Will "shade" the sprite randomly when enabled. You can either have TINT or COLOR, not both.                                                                                                                 |                                                                                                    |
+| \<SPRITE_KEY\>.COLOR         | no       | 127_127_127 | none | none     | Will colorize the sprite in given color. Can also be a list of colors. You can either have TINT or COLOR, not both.                                                                                         | `255_255_255` or<br/>`{ R: 255, G: 255, B: 255, }` or as list<br/> `[ 111_111_111, 222_222_222, ]` |
+| \<SPRITE_KEY\>.ROTATES       | no       | false       | none | none     | Whether the sprite can be rotated.                                                                                                                                                                          |                                                                                                    |
+| \<SPRITE_KEY\>.SHADOW_LENGTH | no       | 0.0         | 0.0  | 100.0    | Length of the shadow the sprite shall produce.                                                                                                                                                              |                                                                                                    |
+| \<SPRITE_KEY\>.SHADOW_HEIGHT | no       | 0.0         | 0.0  | 100.0    | Height of the shadow the sprite shall produce.                                                                                                                                                              |                                                                                                    |
+| \<SPRITE_KEY\>.FPS           | no       | 0.0         | 0.0  | 100000.0 | Animation speed in frames per second. Used when the sprite is animated.                                                                                                                                     |                                                                                                    |
+| \<SPRITE_KEY\>.FPS_INTERVAL  | no       | 1.0         | 0.0  | 1.0      | Animation consistency.                                                                                                                                                                                      |                                                                                                    |
+| \<SPRITE_KEY\>.CIRCULAR      | no       | false       | none | none     | Whether the animation repeats.                                                                                                                                                                              |                                                                                                    |
+| \<SPRITE_KEY\>.FRAMES        | no       | none        | none | none     | Key value pairs. Consisting of a file name from a subfolder in `assets/sprite/game`<br/>and the number of the tile in given sprite sheet file.<br/>A `-` can be used instead to place an empty dummy frame. | `[ WORK: 0, WORK: 1, BASIN: 1, -, ]`                                                               |
+| \<SPRITE_KEY\>.OVERWRITE     | no       | none        | none | none     | Here you can overwrite properties for each defined frame in `FRAMES`.                                                                                                                                       | `[ {}, {}, {FPS: 15, COLOR: {R:100,G:100,B:100,}, }, ]`                                            |
