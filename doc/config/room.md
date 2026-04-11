@@ -63,7 +63,7 @@ but you would call it e.g.`WORKSHOP_CROSSBOW.txt` and configure it to produce cr
 * [LIBRARY](#library-rooms)
 * [MARKET](#market-rooms)
 * [MINE](#mine-rooms)
-* [MONUMENT](#mine-rooms)
+* [MONUMENT](#monument-rooms)
 * [NURSERY](#nursery-rooms)
 * [ORCHARD](#orchard-rooms)
 * [PASTURE](#pasture-rooms)
