@@ -1,6 +1,6 @@
 # All available vanilla game boosters
 
-:heart: Made by **[Glorify](https://github.com/hereto4)** from the SoS Discord community.
+:heart: Made by **Glorfy** from the SoS Discord community.
 
 **Note:** *All keys use their British spelling ('Honour', 'Behaviour', etc., except for 'Jewelry' which uses its American spelling), and some keys are intentionally misspelled (this will be noted next to the key).*
 
