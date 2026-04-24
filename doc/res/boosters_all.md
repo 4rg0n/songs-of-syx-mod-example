@@ -1,16 +1,17 @@
+# All available vanilla game boosters
 
 :heart: Made by **Glorify** from the SoS Discord community.
 
 **Note:** *All keys use their British spelling ('Honour', 'Behaviour', etc., except for 'Jewelry' which uses its American spelling), and some keys are intentionally misspelled (this will be noted next to the key).*
 
-### ACTIVITY
+## ACTIVITY
 * `ACTIVITY_JUDGE` . . . Judgement
 * `ACTIVITY_MOURN` . . . Mourning
 * `ACTIVITY_PUNISHMENT` . . . Punishment
 * `ACTIVITY_SOCIAL` . . . Social
 
-### BATTLE
-###### Battle Skills
+## BATTLE
+### Battle Skills
 *--references to parrying are speculative; parry may not be implemented in game (confirm in code?)*
 * `BATTLE_BLOCK` . . . Block *--ability to use parry attacks and reduce damage with block armour*
 * `BATTLE_OFFENCE_SKILL` . . . Offence *--ability to attack; exact stat effects are not defined, need to search code*
@@ -20,27 +21,27 @@
 * `BATTLE_CHARGE` . . . Charge *--adds extra damage to charge attacks*
 * `BATTLE_DEXTERITY` . . . Dexterity *--chance to ignore target's block armour when attacking*
 * `BATTLE_MORALE` . . . Morale *--prevents routing*
-###### Damage Type: Force
+### Damage Type: Force
 * `BATTLE_BLUNT_ATTACK` . . . Force *--base damage applied by all attacks; multiplies other damage types; causes knockback*
 * `BATTLE_BLUNT_DEFENCE` . . . Force Absorption *--reduction of force damage*
 * `BATTLE_BLUNT_DEFENCE_DIR` . . . Force Block *--called 'Parry' in-game; amount of force damage reduced upon successful block*
-###### Damage Type: Pierce
+### Damage Type: Pierce
 * `BATTLE_PIERCE_ATTACK` . . . Pierce Damage *--special damage applied by some attacks*
 * `BATTLE_PIERCE_DEFENCE` . . . Pierce Armour *--reduction of pierce damage*
 * `BATTLE_PIERCE_DEFENCE_DIR` . . . Pierce Block *--called 'Parry' in-game; amount of pierce damage reduced upon successful block*
-###### Damage Type: Slash
+### Damage Type: Slash
 * `BATTLE_SLASH_ATTACK` . . . Slash Damage *--special damage applied by some attacks*
 * `BATTLE_SLASH_DEFENCE` . . . Slash Armour *--reduction of pierce damage*
 * `BATTLE_SLASH_DEFENCE_DIR` . . . Slash Block *--called 'Parry' in-game; amount of slash damage reduced upon successful block*
 
-### BEHAVIOUR
+## BEHAVIOUR
 * `BEHAVIOUR_HAPPINESS` . . . Happiness
 * `BEHAVIOUR_LAWFULNESS` . . . Lawfulness
 * `BEHAVIOUR_LOYALTY` . . . Loyalty *--affects final Loyalty value after all other factors are applied*
 * `BEHAVIOUR_SANITY` . . . Sanity
 * `BEHAVIOUR_SUBMISSION` . . . Submission *--for slaves*
 
-### CIVIC
+## CIVIC
 * `CIVIC_ACCIDENT` . . . Safety *--higher value = less accidents*
 * `CIVIC_DEFLATION` . . . Deflation *--higher value = less inflation*
 * `CIVIC_DIPLOMACY` . . . Emissary Points
@@ -60,7 +61,7 @@
 * `CIVIC_SPOILAGE` . . . Conservation *--affects stored resource decay; higher value = slower decay rate*
 * `CIVIC_TRADE_FEE` . . . Trade Tariff *--incorrectly labelled 'Pacifism' in game tooltips and Dic.txt; reduces fee when trading with other rulers; higher value = higher discount (lower fee)*
 
-### CONSUMPTION
+## CONSUMPTION
 *--affects consumption rate of resources by all rooms that consume that resource*
 * `CON_ALCO_WINE` . . . Shedeh
 * `CON_BREAD` . . . Bread
@@ -86,7 +87,7 @@
 * `CON_VEGETABLE` . . . Vegetable
 * `CON_WOOD` . . . Wood
 
-### TOOL
+## TOOL
 * `EQUIP_LEVEL_TOOL_ADMIN_NORMAL` . . . Tools(Administrations)
 * `EQUIP_LEVEL_TOOL_FARM_COTTON` . . . Tools(Cotton Farms)
 * `EQUIP_LEVEL_TOOL_FARM_FRUIT` . . . Tools(Fruit Farms)
@@ -121,7 +122,7 @@
 * `EQUIP_LEVEL_TOOL_WORKSHOP_TAILOR` . . . Tools(Tailors)
 * `EQUIP_LEVEL_TOOL__WOODCUTTER` . . . Tools(Woodcutters)
 
-### NOBLE
+## NOBLE
 * `NOBLE_AGRRESSION` . . . Aggression *--affects ruler personality and AI army training; misspelling in key is intentional*
 * `NOBLE_COMPETENCE` . . . Competence *--modifiers positive effects of a noble's position by a small amount; higher competence = bigger multiplier; also affects AI army equipment usage*
 * `NOBLE_HONOUR` . . . Honour *--affects ruler personality, possibly not implemented*
@@ -129,7 +130,7 @@
 * `NOBLE_PRIDE` . . . Pride *--affects ruler personality, possibly not implemented*
 * `NOBLE_TOLERANCE` . . . Tolerance *--affects ruler personality; higher tolerance = more forgiving of crimes against their race*
 
-### PHYSICS
+## PHYSICS
 *--applies to individual citizens/soldiers*
 * `PHYSICS_ACCELERATION` . . . Acceleration *--how fast a subject speeds up*
 * `PHYSICS_DEATH_AGE` . . . Lifespan *--max allowed age of a subject*
@@ -141,7 +142,7 @@
 * `PHYSICS_SPEED` . . . Speed *--measured in tiles per second*
 * `PHYSICS_STAMINA` . . . Stamina *--affects fatigue in battle; how long a subject can travel before tiring; possibly bench usage?*
 
-### SERVICE RATE
+## SERVICE RATE
 *--the frequency at which a citizen will attempt to find a service, per day*
 * `RATES_ARENA` . . . Bloodlust *--arena usage*
 * `RATES_ARENAG` . . . Spectacle *--arena usage (non-violent)*
@@ -161,25 +162,25 @@
 * `RATES_THIRST` . . . Thirst *--tavern usage*
 * `RATES_WELL` . . . Dirtiness *--well usage*
 
-### RELIGION
+## RELIGION
 * `RELIGION_AMINION_CITY` . . . Aminionism
 * `RELIGION_ATHURI_CITY` . . . Athurism
 * `RELIGION_CRATOR_CITY` . . . Cratorism
 * `RELIGION_SHMALOR_CITY` . . . Shmalorism
 
-### ROOM
+## ROOM
 *--affects production output for rooms with a modifiable resource output amount*
-###### Government
+### Government
 * `ROOM_ADMIN_NORMAL` . . . Administrations
 * `ROOM_EMBASSY` . . . Embassies
-###### Technology
+### Technology
 * `ROOM_LABORATORY_NORMAL` . . . Laboratories
 * `ROOM_LIBRARY_NORMAL` . . . Libraries
-###### Military
+### Military
 * `ROOM_ARCHERY_VANILLA` . . . Archery Range *--affects training speed*
 * `ROOM_ARTILLERY_CATAPULT` . . . Catapults
 * `ROOM_BARRACKS_VANILLA` . . . Training Ground *--affects training speed*
-###### Farm
+### Farm
 * `ROOM_FARM_COTTON` . . . Cotton Farms
 * `ROOM_FARM_FRUIT` . . . Fruit Farms
 * `ROOM_FARM_GRAIN` . . . Grain Farms
@@ -187,24 +188,24 @@
 * `ROOM_FARM_MUSHROOM` . . . Mushroom Farms
 * `ROOM_FARM_SPICES` . . . Opiate Farms
 * `ROOM_FARM_VEG` . . . Vegetable Farms
-###### Food Other
+### Food Other
 * `ROOM_FISHERY_NORMAL` . . . Fisheries
 * `ROOM_HUNTER_NORMAL` . . . Hunters
 * `ROOM_ORCHARD_FRUIT` . . . Fruit Orchards
-###### Mine
+### Mine
 * `ROOM_MINE_CLAY` . . . Claypits
 * `ROOM_MINE_COAL` . . . Coal Mines
 * `ROOM_MINE_GEM` . . . Gem Mines
 * `ROOM_MINE_ORE` . . . Ore Mines
 * `ROOM_MINE_SITHILON` . . . Sithilon Mines
 * `ROOM_MINE_STONE` . . . Stone Mines
-###### Refiner
+### Refiner
 * `ROOM_REFINER_BAKERY` . . . Bakeries
 * `ROOM_REFINER_BREWERY` . . . Breweries
 * `ROOM_REFINER_COALER` . . . Charcoalers
 * `ROOM_REFINER_SMELTER` . . . Metal Smelters
 * `ROOM_REFINER_WEAVER` . . . Weavers
-###### Workshop
+### Workshop
 * `ROOM_WORKSHOP_BOWYER` . . . Bowyers
 * `ROOM_WORKSHOP_CARPENTER` . . . Carpenters
 * `ROOM_WORKSHOP_JEWELRY` . . . Jewellers
@@ -215,7 +216,7 @@
 * `ROOM_WORKSHOP_RATION` . . . Rationmakers
 * `ROOM_WORKSHOP_SMITHY` . . . Smithies
 * `ROOM_WORKSHOP_TAILOR` . . . Tailors
-###### Pasture
+### Pasture
 *--possibly only affects resource upkeep instead of production rate*
 * `ROOM_PASTURE_AUR` . . . Auroch Pastures
 * `ROOM_PASTURE_BALTI` . . . Balticrawler Breeder
@@ -223,7 +224,7 @@
 * `ROOM_PASTURE_GLOBDIEN` . . . Globdien Pastures
 * `ROOM_PASTURE_MOUNT` . . . War-Beast Pastures
 * `ROOM_PASTURE_ONX` . . . Onx Pastures
-###### Nursery
+### Nursery
 *--affects the room's 'coziness' score, which affects food upkeep; possibly useless as nurseries may be locked to consuming 1 food per day regardless*
 * `ROOM_NURSERY_AMEVIA` . . . Amevian Hatcheries
 * `ROOM_NURSERY_ARUAN` . . . Aruan Nurseries
@@ -232,13 +233,13 @@
 * `ROOM_NURSERY_HUMAN` . . . Human Nurseries
 * `ROOM_NURSERY_TILAPI` . . . Tilapi Nurseries
 * `ROOM_NURSERY_VARGEN` . . . Vargen Nurseries
-###### Other
+### Other
 * `ROOM_STOCKPILE` . . . Carry Capacity
 * `ROOM_UNIVERSITY_NORMAL` . . . University
 * `ROOM_WOODCUTTER` . . . Woodcutters
 
-### REGION BUILDING
-###### Agriculture
+## REGION BUILDING
+### Agriculture
 * `WORLD_BUILDING_AGRICULTURE_FARM_COTTON` . . . Cotton Farm
 * `WORLD_BUILDING_AGRICULTURE_FARM_FRUIT` . . . Fruit Farm
 * `WORLD_BUILDING_AGRICULTURE_FARM_GRAIN` . . . Grain Farm
@@ -247,20 +248,20 @@
 * `WORLD_BUILDING_AGRICULTURE_FARM_SPICES` . . . Opiate Farm
 * `WORLD_BUILDING_AGRICULTURE_FARM_VEG` . . . Vegetable Farm
 * `WORLD_BUILDING_AGRICULTURE_ORCHARD_FRUIT` . . . Fruit Orchard
-###### Civic
+### Civic
 * `WORLD_BUILDING_CIVIC_CENTRE` . . . City Hall
 * `WORLD_BUILDING_CIVIC_GROWTH` . . . Growth
 * `WORLD_BUILDING_CIVIC_HYGINE` . . . Hygiene
 * `WORLD_BUILDING_CIVIC_L_ARENA` . . . Fight Pit
 * `WORLD_BUILDING_CIVIC_L_STANDS` . . . Stands
 * `WORLD_BUILDING_CIVIC_L_TAVERN` . . . Tavern
-###### Global
+### Global
 * `WORLD_BUILDING_GLOBAL_ACADEMY` . . . School
 * `WORLD_BUILDING_GLOBAL_A_POLICE` . . . Police
 * `WORLD_BUILDING_GLOBAL_HYGINE` . . . Physician
 * `WORLD_BUILDING_GLOBAL_TAX` . . . Tax Office
 * `WORLD_BUILDING_GLOBAL_WGUILD` . . . Workers Guild
-###### Infrastructure
+### Infrastructure
 * `WORLD_BUILDING_INFRA_BANK` . . . Bank
 * `WORLD_BUILDING_INFRA_GALLOWS` . . . Law
 * `WORLD_BUILDING_INFRA_GARTHIMI` . . . Humidifier
@@ -268,44 +269,44 @@
 * `WORLD_BUILDING_INFRA_IRRIGATION` . . . Irrigation
 * `WORLD_BUILDING_INFRA_MILL` . . . Windmill
 * `WORLD_BUILDING_INFRA_ROAD` . . . Roads
-###### Military
+### Military
 * `WORLD_BUILDING_MILITARY_01_GARRISON` . . . Garrison
 * `WORLD_BUILDING_MILITARY_02_BARRACKS` . . . Barracks
 * `WORLD_BUILDING_MILITARY_03_WALLS` . . . Walls
-###### Mine
+### Mine
 * `WORLD_BUILDING_MINE_MINE_CLAY` . . . Claypit
 * `WORLD_BUILDING_MINE_MINE_COAL` . . . Coal Mine
 * `WORLD_BUILDING_MINE_MINE_GEM` . . . Gem Mine
 * `WORLD_BUILDING_MINE_MINE_ORE` . . . Ore Mine
 * `WORLD_BUILDING_MINE_MINE_SITHILON` . . . Sithilon Mine
 * `WORLD_BUILDING_MINE_MINE_STONE` . . . Stone Mine
-###### Other
+### Other
 * `WORLD_BUILDING_MINE_WOODCUTTER` . . . Woodcutter
 * `WORLD_BUILDING_PASTURE_FISHERY_NORMAL` . . . Fishery
-###### Pasture
+### Pasture
 * `WORLD_BUILDING_PASTURE_PASTURE_AUR` . . . Auroch Pasture
 * `WORLD_BUILDING_PASTURE_PASTURE_BALTI` . . . Balticrawler Breeder
 * `WORLD_BUILDING_PASTURE_PASTURE_ENT` . . . Entelodont Pasture
 * `WORLD_BUILDING_PASTURE_PASTURE_GLOBDIEN` . . . Globdien Pasture
 * `WORLD_BUILDING_PASTURE_PASTURE_MOUNT` . . . War-Beast Pasture
 * `WORLD_BUILDING_PASTURE_PASTURE_ONX` . . . Onx Pasture
-###### Religion
+### Religion
 * `WORLD_BUILDING_RELIGION_TEMPLE_AMINION` . . . Shrine to Aminion
 * `WORLD_BUILDING_RELIGION_TEMPLE_ATHURI` . . . Shrine to Athuri
 * `WORLD_BUILDING_RELIGION_TEMPLE_CRATOR` . . . Shrine to Crator
 * `WORLD_BUILDING_RELIGION_TEMPLE_SHMALOR` . . . Shrine to Shmalor
 
-### REGION PROPERTIES
-###### Military
+## REGION PROPERTIES
+### Military
 * `WORLD_CONSCRIPTABLE_TARGET` . . . Conscripts
 * `WORLD_FORTIFICATION` . . . Fortifications
 * `WORLD_GARRISON` . . . garrison
-###### Religion
+### Religion
 * `WORLD_CONVERSION_AMINION` . . . Aminionism
 * `WORLD_CONVERSION_ATHURI` . . . Athurism
 * `WORLD_CONVERSION_CRATOR` . . . Cratorism
 * `WORLD_CONVERSION_SHMALOR` . . . Shmalorism
-###### Loyalty
+### Loyalty
 * `WORLD_LOYALTY_ARUAN` . . . Loyalty: Aruans
 * `WORLD_LOYALTY_CRETONIAN` . . . Loyalty: Cretonians
 * `WORLD_LOYALTY_DONDORIAN` . . . Loyalty: Dondorians
@@ -313,7 +314,7 @@
 * `WORLD_LOYALTY_HUMAN` . . . Loyalty: Humans
 * `WORLD_LOYALTY_Q_AMEVIA` . . . Loyalty: Amevias
 * `WORLD_LOYALTY_TILAPI` . . . Loyalty: Tilapis
-###### Other
+### Other
 * `WORLD_POINT_WORKFORCE` . . . Workforce *--available workforce points in owned regions*
 * `WORLD_TAX_INCOME` . . . Taxes *--tax income from owned regions*
 * `WORLD_VISUAL_MINE` . . . *--unknown*
@@ -322,7 +323,7 @@
 * `WORLD_FULFILLMENT_EXPONENT` . . . *--unknown; possibly affects the fulfillment equation but on a region level?*
 * `WORLD_PROXIMITY` . . . Proximity *--affects proximity penalties on certain region stats and actions; higher value = higher penalties?*
 * `WORLD_HEALTH` . . . Health *--affects likelihood of disease outbreaks/spread in a region*
-###### Population
+### Population
 * `WORLD_MAX_CITY_POP` . . . *--unknown, undefined by game*
 * `WORLD_POPULATION_CAPACITY` . . . Region Capacity
 * `WORLD_POPULATION_GROWTH_ARUAN` . . . Growth: Aruans
@@ -340,7 +341,7 @@
 * `WORLD_POPULATION_TARGET_HUMAN` . . . Pop. Target: Humans
 * `WORLD_POPULATION_TARGET_Q_AMEVIA` . . . Pop. Target: Amevias
 * `WORLD_POPULATION_TARGET_TILAPI` . . . Pop. Target: Tilapis
-###### Resource Production
+### Resource Production
 * `WORLD_RESOURCE_PRODUCTION_ALCO_BEER` . . . Production: Piva
 * `WORLD_RESOURCE_PRODUCTION_ALCO_WINE` . . . Production: Shedeh
 * `WORLD_RESOURCE_PRODUCTION_ARMOUR_LEATHER` . . . Production: Leather Armours
@@ -383,7 +384,7 @@
 * `WORLD_RESOURCE_PRODUCTION__LIVESTOCK` . . . Production: Livestock
 * `WORLD_RESOURCE_PRODUCTION__STONE` . . . Production: Stone
 * `WORLD_RESOURCE_PRODUCTION__WOOD` . . . Production: Wood
-###### Resource Production (Yearly)
+### Resource Production (Yearly)
 *--unknown how this differs from non-yearly keys; possibly refers to the yearly tribute vassals give you*
 * `WORLD_WORLD_RESOURCE_PRODUCTION_ALCO_BEER_YEARLY` . . . Production: Piva
 * `WORLD_WORLD_RESOURCE_PRODUCTION_ALCO_WINE_YEARLY` . . . Production: Shedeh
