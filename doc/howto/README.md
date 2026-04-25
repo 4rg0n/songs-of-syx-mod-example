@@ -1,4 +1,4 @@
-# How to
+# How-to guides
 * [Make your own mod](make_your_own_mod.md)
 * [Setup Intellij IDEA](intellij_setup.md)
 * [Run in console](run_in_console.md)

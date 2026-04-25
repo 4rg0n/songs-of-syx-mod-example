@@ -33,13 +33,15 @@ You will need a **Java 21 JDK** for developing.
 * [Init Config Files Documentation](doc/config/README.md)
 * [Make your own Mod](doc/howto/make_your_own_mod.md)
 * [Publish your Mod](#publish-your-mod)
-* [How-to Guides](doc/howto/index.md)
+* [How-to Guides](doc/howto/README)
   * [Run in Console](doc/howto/run_in_console.md) 
   * [Add JVM Arguments](doc/howto/jvmargs.md)
   * [Understand Game Code](doc/howto/game_code.md) 
   * [Access Game Code](doc/howto/access_game_code.md) 
   * [Modding Strategy](doc/howto/modding_strategy.md) 
-  * [Add an UI Element](doc/howto/add_ui_element.md) 
+  * [Add an UI Element](doc/howto/add_ui_element.md)
+* [Explanations](doc/explanation/README.md)
+  * [Combat Mechanics](doc/explanation/combat_mechanics.md)
 * [Project Build Commands](#project-build-commands)
 * [Mod Info / Build Settings](#mod-info--build-settings)
 * [Debugging your Mod](#debugging)
@@ -143,7 +145,7 @@ mvn clean -P mods-uploader
 
 ## How-to Guides
 
-See [How-to Guides](doc/howto/index.md)
+See [How-to Guides](doc/howto/README)
 
 ## Project Build Commands
 
