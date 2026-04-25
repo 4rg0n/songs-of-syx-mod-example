@@ -212,9 +212,14 @@ See [doc/index.md](doc/README).
 ## Other Modding Resources
 
 * [Discord](https://discord.com/eacfCuE)
+* [Creating a World Template](https://docs.google.com/document/u/0/d/1dNYN1JvYSVlvEdZ81KyEVwvNRsJGDP-_Xtjk96CWlbs/mobilebasic)
 * [Make a mod](doc/res/MAKE_A_MOD.txt) (OUTDATED)
 * [Script Modding](https://docs.google.com/document/d/1FVOtfr3Y-cxH2Gw-i-OqW3Vbp0MPJp0xSyQ80UoCABE/edit) (OUTDATED)
 * [Modding Guide](https://drive.google.com/file/d/1_OesG68HtJ4CwyHK7M72hQDOaCjeqgqT/view) (OUTDATED)
+
+## Other Resources
+
+* [Songs of Syx Production Graph & Room Planner](https://nobody0.github.io/syx-vis/)
 
 
 
