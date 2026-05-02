@@ -60,12 +60,12 @@
 | key referenced by code | flavor name displayed by in-game UI | default preset value; boostables modify this value | usage and function of this key |
 
 ## ACTIVITY
-| Key                   | Name       | Default | Description |
-|-----------------------|------------|---------|-------------|
-| `ACTIVITY_JUDGE`      | Judgement  |         |             |
-| `ACTIVITY_MOURN`      | Mourning   |         |             |
-| `ACTIVITY_PUNISHMENT` | Punishment |         |             |
-| `ACTIVITY_SOCIAL`     | Social     |         |             |
+| Key                   | Name       | Default | Description                                                 |
+|-----------------------|------------|---------|-------------------------------------------------------------|
+| `ACTIVITY_JUDGE`      | Judgement  | 1       | How often a subject wants to visit a court                  |
+| `ACTIVITY_MOURN`      | Mourning   | 1       | How often a subject wants to visit a graveyard/crypt        |
+| `ACTIVITY_PUNISHMENT` | Punishment | 1       | How often a subject wants to observe a criminal be punished |
+| `ACTIVITY_SOCIAL`     | Social     | 1       | How often a subject wants to socialize with another citizen |
 
 ## BATTLE
 ### Battle Skills
@@ -73,66 +73,66 @@ references to parrying are speculative; parry may not be implemented in game (co
 
 | Key                      | Name      | Default | Description                                                                  |
 |--------------------------|-----------|---------|------------------------------------------------------------------------------|
-| `BATTLE_BLOCK`           | Block     |         | ability to use parry attacks and reduce damage with block armour             |
-| `BATTLE_OFFENCE_SKILL`   | Offence   |         | ability to attack; exact stat effects are not defined, need to search code   |
-| `BATTLE_DEFENCE_SKILL`   | Defence   |         | chance to avoid damage entirely when attacked from the front; i.e. dodge     |
-| `BATTLE_FORMATION_SKILL` | Formation |         | defensive skill when attacked in formation from the front                    |
-| `BATTLE_RANGED_BOW`      | Bow Skill |         | ability to use bows; exact stat effects are not defined, need to search code |
-| `BATTLE_CHARGE`          | Charge    |         | adds extra damage to charge attacks                                          |
-| `BATTLE_DEXTERITY`       | Dexterity |         | chance to ignore target's block armour when attacking                        |
-| `BATTLE_MORALE`          | Morale    |         | prevents routing                                                             |
+| `BATTLE_BLOCK`           | Block     | 1       | ability to use parry attacks and reduce damage with block armour             |
+| `BATTLE_OFFENCE_SKILL`   | Offence   | 1       | ability to attack; exact stat effects are not defined, need to search code   |
+| `BATTLE_DEFENCE_SKILL`   | Defence   | 1       | chance to avoid damage entirely when attacked from the front; i.e. dodge     |
+| `BATTLE_FORMATION_SKILL` | Formation | 0       | defensive skill when attacked in formation from the front                    |
+| `BATTLE_RANGED_BOW`      | Bow Skill | 0.1     | ability to use bows; exact stat effects are not defined, need to search code |
+| `BATTLE_CHARGE`          | Charge    | 1       | adds extra damage to charge attacks                                          |
+| `BATTLE_DEXTERITY`       | Dexterity | 5       | chance to ignore target's block armour when attacking                        |
+| `BATTLE_MORALE`          | Morale    | 4       | prevents routing                                                             |
 
 ### Damage Type: Force
 | Key                        | Name             | Default | Description                                                                         |
 |----------------------------|------------------|---------|-------------------------------------------------------------------------------------|
-| `BATTLE_BLUNT_ATTACK`      | Force            |         | base damage applied by all attacks; multiplies other damage types; causes knockback |
-| `BATTLE_BLUNT_DEFENCE`     | Force Absorption |         | reduction of force damage                                                           |
-| `BATTLE_BLUNT_DEFENCE_DIR` | Force Block      |         | called 'Parry' in-game; amount of force damage reduced upon successful block        |
+| `BATTLE_BLUNT_ATTACK`      | Force            | 50      | base damage applied by all attacks; multiplies other damage types; causes knockback |
+| `BATTLE_BLUNT_DEFENCE`     | Force Absorption | 40      | reduction of force damage                                                           |
+| `BATTLE_BLUNT_DEFENCE_DIR` | Force Block      | 1       | called 'Parry' in-game; amount of force damage reduced upon successful block        |
 
 ### Damage Type: Pierce
 | Key                         | Name          | Default | Description                                                                   |
 |-----------------------------|---------------|---------|-------------------------------------------------------------------------------|
-| `BATTLE_PIERCE_ATTACK`      | Pierce Damage |         | special damage applied by some attacks                                        |
-| `BATTLE_PIERCE_DEFENCE`     | Pierce Armour |         | reduction of pierce damage                                                    |
-| `BATTLE_PIERCE_DEFENCE_DIR` | Pierce Block  |         | called 'Parry' in-game; amount of pierce damage reduced upon successful block |
+| `BATTLE_PIERCE_ATTACK`      | Pierce Damage | 0       | special damage applied by some attacks                                        |
+| `BATTLE_PIERCE_DEFENCE`     | Pierce Armour | 0       | reduction of pierce damage                                                    |
+| `BATTLE_PIERCE_DEFENCE_DIR` | Pierce Block  | 0       | called 'Parry' in-game; amount of pierce damage reduced upon successful block |
 
 ### Damage Type: Slash
 | Key                        | Name         | Default | Description                                                                  |
 |----------------------------|--------------|---------|------------------------------------------------------------------------------|
-| `BATTLE_SLASH_ATTACK`      | Slash Damage |         | special damage applied by some attacks                                       |
-| `BATTLE_SLASH_DEFENCE`     | Slash Armour |         | reduction of pierce damage                                                   |
-| `BATTLE_SLASH_DEFENCE_DIR` | Slash Block  |         | called 'Parry' in-game; amount of slash damage reduced upon successful block |
+| `BATTLE_SLASH_ATTACK`      | Slash Damage | 0       | special damage applied by some attacks                                       |
+| `BATTLE_SLASH_DEFENCE`     | Slash Armour | 0       | reduction of pierce damage                                                   |
+| `BATTLE_SLASH_DEFENCE_DIR` | Slash Block  | 0       | called 'Parry' in-game; amount of slash damage reduced upon successful block |
 
 ## BEHAVIOUR
 | Key                    | Name       | Default | Description                                                     |
 |------------------------|------------|---------|-----------------------------------------------------------------|
-| `BEHAVIOUR_HAPPINESS`  | Happiness  |         |                                                                 |
-| `BEHAVIOUR_LAWFULNESS` | Lawfulness |         |                                                                 |
-| `BEHAVIOUR_LOYALTY`    | Loyalty    |         | affects final Loyalty value after all other factors are applied |
-| `BEHAVIOUR_SANITY`     | Sanity     |         |                                                                 |
-| `BEHAVIOUR_SUBMISSION` | Submission |         | for slaves                                                      |
+| `BEHAVIOUR_HAPPINESS`  | Happiness  | 1       |                                                                 |
+| `BEHAVIOUR_LAWFULNESS` | Lawfulness | 1       |                                                                 |
+| `BEHAVIOUR_LOYALTY`    | Loyalty    | 1       | affects final Loyalty value after all other factors are applied |
+| `BEHAVIOUR_SANITY`     | Sanity     | 1       |                                                                 |
+| `BEHAVIOUR_SUBMISSION` | Submission | 1       | for slaves                                                      |
 
 ## CIVIC
 | Key                      | Name              | Default | Description                                                                                                                                          |
 |--------------------------|-------------------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `CIVIC_ACCIDENT`         | Safety            |         | higher value = less accidents                                                                                                                        |
-| `CIVIC_DEFLATION`        | Deflation         |         | higher value = less inflation                                                                                                                        |
-| `CIVIC_DIPLOMACY`        | Emissary Points   |         |                                                                                                                                                      |
-| `CIVIC_FURNITURE`        | Furnishing        |         | furniture upkeep rate for citizen housing                                                                                                            |
-| `CIVIC_GOV`              | Government Points |         |                                                                                                                                                      |
-| `CIVIC_IMMIGRATION`      | Immigration Rate  |         |                                                                                                                                                      |
-| `CIVIC_INNOVATION`       | Innovation Points |         |                                                                                                                                                      |
-| `CIVIC_KNOWLEDGE`        | Knowledge Points  |         |                                                                                                                                                      |
-| `CIVIC_LANDING`          | Settle            |         | multiplies starting population and resources upon placing your throne for the first time                                                             |
-| `CIVIC_LAW`              | Law               |         |                                                                                                                                                      |
-| `CIVIC_MAINTENANCE`      | Robustness        |         | higher value = less room maintenance                                                                                                                 |
-| `CIVIC_NOBLES_MAX`       | Nobilities        |         | max number of nobles allowed                                                                                                                         |
-| `CIVIC_NOBLES_RANKS_MAX` | Noble Promotions  |         | max number of ranks for nobles                                                                                                                       |
-| `CIVIC_OPINION`          | Opinion           |         | base opinion modifier of foreign rulers towards you                                                                                                  |
-| `CIVIC_PASIFISM`         | Pacifism          |         | makes foreign rulers want to attack you less / reduces your perceived threat level to rulers (not raiders)                                           |
-| `CIVIC_RAIDING`          | Raid Security     |         | affects raider desire to demand/attack you; higher value = lower raider desire                                                                       |
-| `CIVIC_SPOILAGE`         | Conservation      |         | affects stored resource decay; higher value = slower decay rate                                                                                      |
-| `CIVIC_TRADE_FEE`        | Trade Tariff      |         | incorrectly labelled 'Pacifism' in game tooltips and Dic.txt; reduces fee when trading with other rulers; higher value = higher discount (lower fee) |
+| `CIVIC_ACCIDENT`         | Safety            | 1       | higher value = less accidents                                                                                                                        |
+| `CIVIC_DEFLATION`        | Deflation         | 1       | higher value = less inflation                                                                                                                        |
+| `CIVIC_DIPLOMACY`        | Emissary Points   | 0       | [?] having this citizen adds X amount of emissary points to your city                                                                                |
+| `CIVIC_FURNITURE`        | Furnishing        | 1       | furniture upkeep rate for citizen housing                                                                                                            |
+| `CIVIC_GOV`              | Government Points | 5       | [?] having this citizen adds X amount of emissary points to your city                                                                                |
+| `CIVIC_IMMIGRATION`      | Immigration Rate  | 1       | [?] the immigration rate of this race to your city                                                                                                   |
+| `CIVIC_INNOVATION`       | Innovation Points | 0       | [?] having this citizen adds X amount of innovation points to your city                                                                              |
+| `CIVIC_KNOWLEDGE`        | Knowledge Points  | 0       | [?] having this citizen adds X amount of knowledge points to your city                                                                               |
+| `CIVIC_LANDING`          | Settle            | 0       | multiplies starting population and resources upon placing your throne for the first time                                                             |
+| `CIVIC_LAW`              | Law               | 0       | how likely this subject is to break the law                                                                                                          |
+| `CIVIC_MAINTENANCE`      | Robustness        | 1       | higher value = less room maintenance                                                                                                                 |
+| `CIVIC_NOBLES_MAX`       | Nobilities        | 0       | max number of nobles allowed                                                                                                                         |
+| `CIVIC_NOBLES_RANKS_MAX` | Noble Promotions  | 0       | max number of ranks for nobles                                                                                                                       |
+| `CIVIC_OPINION`          | Opinion           | 1.5     | base opinion modifier of foreign rulers towards you                                                                                                  |
+| `CIVIC_PASIFISM`         | Pacifism          | 1       | makes foreign rulers want to attack you less / reduces your perceived threat level to rulers (not raiders)                                           |
+| `CIVIC_RAIDING`          | Raid Security     | 1       | affects raider desire to demand/attack you; higher value = lower raider desire                                                                       |
+| `CIVIC_SPOILAGE`         | Conservation      | 1       | affects stored resource decay; higher value = slower decay rate                                                                                      |
+| `CIVIC_TRADE_FEE`        | Trade Tariff      | 1       | incorrectly labelled 'Pacifism' in game tooltips and Dic.txt; reduces fee when trading with other rulers; higher value = higher discount (lower fee) |
 
 ## CONSUMPTION
 affects consumption rate of resources by all rooms that consume that resource
@@ -203,58 +203,58 @@ affects consumption rate of resources by all rooms that consume that resource
 ## NOBLE
 | Key                | Name       | Default | Description                                                                                                                                     |
 |--------------------|------------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-| `NOBLE_AGRRESSION` | Aggression |         | affects ruler personality and AI army training; misspelling in key is intentional                                                               |
-| `NOBLE_COMPETENCE` | Competence |         | modifiers positive effects of a noble's position by a small amount; higher competence = bigger multiplier; also affects AI army equipment usage |
-| `NOBLE_HONOUR`     | Honour     |         | affects ruler personality, possibly not implemented                                                                                             |
-| `NOBLE_MERCY`      | Mercy      |         | affects ruler personality, possibly not implemented                                                                                             |
-| `NOBLE_PRIDE`      | Pride      |         | affects ruler personality, possibly not implemented                                                                                             |
-| `NOBLE_TOLERANCE`  | Tolerance  |         | affects ruler personality; higher tolerance = more forgiving of crimes against their race                                                       |
+| `NOBLE_AGRRESSION` | Aggression | 1       | affects ruler personality and AI army training; misspelling in key is intentional                                                               |
+| `NOBLE_COMPETENCE` | Competence | 1       | modifiers positive effects of a noble's position by a small amount; higher competence = bigger multiplier; also affects AI army equipment usage |
+| `NOBLE_HONOUR`     | Honour     | 1       | affects ruler personality, possibly not implemented                                                                                             |
+| `NOBLE_MERCY`      | Mercy      | 1       | affects ruler personality, possibly not implemented                                                                                             |
+| `NOBLE_PRIDE`      | Pride      | 1       | affects ruler personality, possibly not implemented                                                                                             |
+| `NOBLE_TOLERANCE`  | Tolerance  | 1       | affects ruler personality; higher tolerance = more forgiving of crimes against their race                                                       |
 
 ## PHYSICS
 applies to individual citizens/soldiers
 
 | Key                       | Name            | Default | Description                                                                                                                 |
 |---------------------------|-----------------|---------|-----------------------------------------------------------------------------------------------------------------------------|
-| `PHYSICS_ACCELERATION`    | Acceleration    |         | how fast a subject speeds up                                                                                                |
-| `PHYSICS_DEATH_AGE`       | Lifespan        |         | max allowed age of a subject                                                                                                |
-| `PHYSICS_HEALTH`          | Health          |         | likelihood of contracting disease; possibly also affects how much damage a soldier can take before death (confirm in code?) |
-| `PHYSICS_MASS`            | Weight          |         | relevant for calculating knockback and charge impact in battle                                                              |
-| `PHYSICS_RESISTANCE_COLD` | Cold Resistance |         | possibly only functions when indoors (confirm in code?)                                                                     |
-| `PHYSICS_RESISTANCE_HOT`  | Heat Resistance |         | possibly only functions when indoors (confirm in code?)                                                                     |
-| `PHYSICS_SOILING`         | Soiling         |         | rate at which citizens cause filfth around them; higher value = faster filfth creation                                      |
-| `PHYSICS_SPEED`           | Speed           |         | measured in tiles per second                                                                                                |
-| `PHYSICS_STAMINA`         | Stamina         |         | affects fatigue in battle; how long a subject can travel before tiring; possibly bench usage?                               |
+| `PHYSICS_ACCELERATION`    | Acceleration    | 3       | how fast a subject speeds up                                                                                                |
+| `PHYSICS_DEATH_AGE`       | Lifespan        | 100     | max allowed age of a subject                                                                                                |
+| `PHYSICS_HEALTH`          | Health          | 1       | likelihood of contracting disease; possibly also affects how much damage a soldier can take before death (confirm in code?) |
+| `PHYSICS_MASS`            | Weight          | 80      | relevant for calculating knockback and charge impact in battle                                                              |
+| `PHYSICS_RESISTANCE_COLD` | Cold Resistance | 0.5     | possibly only functions when indoors (confirm in code?)                                                                     |
+| `PHYSICS_RESISTANCE_HOT`  | Heat Resistance | 0.8     | possibly only functions when indoors (confirm in code?)                                                                     |
+| `PHYSICS_SOILING`         | Soiling         | ?       | rate at which citizens cause filfth around them; higher value = faster filfth creation                                      |
+| `PHYSICS_SPEED`           | Speed           | 4.5     | measured in tiles per second                                                                                                |
+| `PHYSICS_STAMINA`         | Stamina         | 1.0     | affects fatigue in battle; how long a subject can travel before tiring; possibly bench usage?                               |
 
 ## SERVICE RATE
 the frequency at which a citizen will attempt to find a service, per day
 
 | Key                  | Name           | Default | Description                                                                     |
 |----------------------|----------------|---------|---------------------------------------------------------------------------------|
-| `RATES_ARENA`        | Bloodlust      |         | arena usage                                                                     |
-| `RATES_ARENAG`       | Spectacle      |         | arena usage (non-violent)                                                       |
-| `RATES_BATH`         | Bathing        |         | bath usage                                                                      |
-| `RATES_CONSTIPATION` | Constipation   |         | bathroom usage                                                                  |
-| `RATES_DOCTOR`       | Health Care    |         | hospital usage                                                                  |
-| `RATES_GROOMING`     | Vanity         |         | barber usage                                                                    |
-| `RATES_HEARTH`       | Loneliness     |         | hearth usage                                                                    |
-| `RATES_HUNGER`       | Hunger         |         | affects food consumption rates; does not affect food stall usage rates directly |
-| `RATES_MASSAGE`      | 'Back Pain'    |         | massage parlor usage                                                            |
-| `RATES_SHOPPING`     | Shopping       |         | market stall usage                                                              |
-| `RATES_SHRINE`       | Piety (Shrine) |         |                                                                                 |
-| `RATES_SKINNYDIP`    | Skinny-dip     |         | time spent swimming in natural water sources                                    |
-| `RATES_SPEAKER`      | News Craving   |         | speaker usage                                                                   |
-| `RATES_STAGE`        | Drama          |         | stage usage                                                                     |
-| `RATES_TEMPLE`       | Piety (Temple) |         |                                                                                 |
-| `RATES_THIRST`       | Thirst         |         | tavern usage                                                                    |
-| `RATES_WELL`         | Dirtiness      |         | well usage                                                                      |
+| `RATES_ARENA`        | Bloodlust      | 0.25    | arena usage                                                                     |
+| `RATES_ARENAG`       | Spectacle      | ?       | arena usage (non-violent)                                                       |
+| `RATES_BATH`         | Bathing        | ?       | bath usage                                                                      |
+| `RATES_CONSTIPATION` | Constipation   | ?       | bathroom usage                                                                  |
+| `RATES_DOCTOR`       | Health Care    | 0.1     | hospital usage                                                                  |
+| `RATES_GROOMING`     | Vanity         | ?       | barber usage                                                                    |
+| `RATES_HEARTH`       | Loneliness     | 0.25    | hearth usage                                                                    |
+| `RATES_HUNGER`       | Hunger         | ?       | affects food consumption rates; does not affect food stall usage rates directly |
+| `RATES_MASSAGE`      | 'Back Pain'    | 0.063   | massage parlor usage                                                            |
+| `RATES_SHOPPING`     | Shopping       | ?       | market stall usage                                                              |
+| `RATES_SHRINE`       | Piety (Shrine) | 0.25    |                                                                                 |
+| `RATES_SKINNYDIP`    | Skinny-dip     | 0.1     | time spent swimming in natural water sources                                    |
+| `RATES_SPEAKER`      | News Craving   | 0.25    | speaker usage                                                                   |
+| `RATES_STAGE`        | Drama          | 0.2     | stage usage                                                                     |
+| `RATES_TEMPLE`       | Piety (Temple) | 0.05    |                                                                                 |
+| `RATES_THIRST`       | Thirst         | ?       | tavern usage                                                                    |
+| `RATES_WELL`         | Dirtiness      | 0.25    | well usage                                                                      |
 
 ## RELIGION
-| Key                     | Name       | Default | Description |
-|-------------------------|------------|---------|-------------|
-| `RELIGION_AMINION_CITY` | Aminionism |         |             |
-| `RELIGION_ATHURI_CITY`  | Athurism   |         |             |
-| `RELIGION_CRATOR_CITY`  | Cratorism  |         |             |
-| `RELIGION_SHMALOR_CITY` | Shmalorism |         |             |
+| Key                     | Name       | Default | Description                                                      |
+|-------------------------|------------|---------|------------------------------------------------------------------|
+| `RELIGION_AMINION_CITY` | Aminionism | 1       | Chance a subject of this race will worship Aminion (Chaos God)   |
+| `RELIGION_ATHURI_CITY`  | Athurism   | 1       | Chance a subject of this race will worship Athuri (Good God)     |
+| `RELIGION_CRATOR_CITY`  | Cratorism  | 1       | Chance a subject of this race will worship Aminion (Farming God) |
+| `RELIGION_SHMALOR_CITY` | Shmalorism | 1       | Chance a subject of this race will worship Shmalor (Minion God)  |
 
 ## ROOM
 affects production output for rooms with a modifiable resource output amount
