@@ -46,6 +46,8 @@ You will need a **Java 21 JDK** for developing.
 * [Mod Info / Build Settings](#mod-info--build-settings)
 * [Debugging your Mod](#debugging)
 * [Other Modding Resources](#other-modding-resources)
+* [Other Resources](#other-resources)
+* [Java Development Resources](#java-development-resources)
 
 ## General Modding Information
 
@@ -221,9 +223,11 @@ See [doc/index.md](doc/README).
 
 * [Songs of Syx Production Graph & Room Planner](https://nobody0.github.io/syx-vis/)
 
+## Java Development Resources
 
-
-
+[Java Roadmap](https://roadmap.sh/java) (general overview)
+[Mooc Course](https://java-programming.mooc.fi/) (good when you are unfamiliar with Java)
+[Baeldung]( https://www.baeldung.com/get-started-with-java-series) (more condensed information)
 
 
 
