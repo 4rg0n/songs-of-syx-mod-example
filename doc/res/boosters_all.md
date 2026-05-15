@@ -18,7 +18,7 @@
   * [CIVIC](#civic)
   * [CONSUMPTION](#consumption)
   * [TOOL](#tool)
-  * [NOBLE](#noble)
+  * [NOBLE (AI RULERS)](#noble-ai-rulers)
   * [PHYSICS](#physics)
   * [SERVICE RATE](#service-rate)
   * [RELIGION](#religion)
@@ -200,15 +200,17 @@ affects consumption rate of resources by all rooms that consume that resource
 | `EQUIP_LEVEL_TOOL_WORKSHOP_TAILOR`    | Tools(Tailors)             |         |             |
 | `EQUIP_LEVEL_TOOL__WOODCUTTER`        | Tools(Woodcutters)         |         |             |
 
-## NOBLE
-| Key                | Name       | Default | Description                                                                                                                                     |
-|--------------------|------------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-| `NOBLE_AGRRESSION` | Aggression | 1       | affects ruler personality and AI army training; misspelling in key is intentional                                                               |
-| `NOBLE_COMPETENCE` | Competence | 1       | modifiers positive effects of a noble's position by a small amount; higher competence = bigger multiplier; also affects AI army equipment usage |
-| `NOBLE_HONOUR`     | Honour     | 1       | affects ruler personality, possibly not implemented                                                                                             |
-| `NOBLE_MERCY`      | Mercy      | 1       | affects ruler personality, possibly not implemented                                                                                             |
-| `NOBLE_PRIDE`      | Pride      | 1       | affects ruler personality, possibly not implemented                                                                                             |
-| `NOBLE_TOLERANCE`  | Tolerance  | 1       | affects ruler personality; higher tolerance = more forgiving of crimes against their race                                                       |
+## NOBLE (AI RULERS)
+misleading name; affects AI rulers, not player Nobles
+
+| Key                | Name       | Default | Description                                                                                                                                                                                                                                                                                                            |
+|--------------------|------------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `NOBLE_AGRRESSION` | Aggression | 1       | [intentional mispelling] affects AI military and war-related opinions: decreases War Declaration penalty and Failed Protection penalty, increases Joint/Mutual Wars bonus; increases garrison strength bonus and desire to maintain army presence in regions; increases equiment used in armies (alongside Competence) |
+| `NOBLE_COMPETENCE` | Competence | 1       | [java field is mispelled 'COMPETANCE'] affects overall AI power: increases initial realm size on worldgen and equipment used in armies (alongside Aggression); multiplies accumulated faction bonuses                                                                                                                  |
+| `NOBLE_HONOUR`     | Honour     | 1       | affects AI opinions: reduces Nearness (player distance) penalty, increases Betrayal (broken deals) penalty                                                                                                                                                                                                             |
+| `NOBLE_MERCY`      | Mercy      | 1       | affects AI post-battle opinions and slave economy: increases Chivarly (chivalrous post-battle actions) bonus and Cruelty (cruel post-battle actions) penalty; increases buy/sell price of slaves and reduces desire to acquire slaves                                                                                  |
+| `NOBLE_PRIDE`      | Pride      | 1       | affects AI gift-related opinions and gift size: increases Generosity (receiving gifts) bonus and Extortion (demanding gifts) penalty, as well as expected gift size in diplomatic deals.                                                                                                                               |
+| `NOBLE_TOLERANCE`  | Tolerance  | 1       | affects AI race/religion-related opinions and ruler succession: decreases Other Religion penalty and Other Race penalty; increases Kinship (same-race) bonus; reduces Kin Treatment (treatment of their race) bonus/penalty; increases chance for minority race to become ruler                                        |
 
 ## PHYSICS
 applies to individual citizens/soldiers
@@ -228,25 +230,25 @@ applies to individual citizens/soldiers
 ## SERVICE RATE
 the frequency at which a citizen will attempt to find a service, per day
 
-| Key                  | Name           | Default | Description                                                                     |
-|----------------------|----------------|---------|---------------------------------------------------------------------------------|
-| `RATES_ARENA`        | Bloodlust      | 0.25    | arena usage                                                                     |
-| `RATES_ARENAG`       | Spectacle      | ?       | arena usage (non-violent)                                                       |
-| `RATES_BATH`         | Bathing        | ?       | bath usage                                                                      |
-| `RATES_CONSTIPATION` | Constipation   | ?       | bathroom usage                                                                  |
-| `RATES_DOCTOR`       | Health Care    | 0.1     | hospital usage                                                                  |
-| `RATES_GROOMING`     | Vanity         | ?       | barber usage                                                                    |
-| `RATES_HEARTH`       | Loneliness     | 0.25    | hearth usage                                                                    |
-| `RATES_HUNGER`       | Hunger         | ?       | affects food consumption rates; does not affect food stall usage rates directly |
-| `RATES_MASSAGE`      | 'Back Pain'    | 0.063   | massage parlor usage                                                            |
-| `RATES_SHOPPING`     | Shopping       | ?       | market stall usage                                                              |
-| `RATES_SHRINE`       | Piety (Shrine) | 0.25    |                                                                                 |
-| `RATES_SKINNYDIP`    | Skinny-dip     | 0.1     | time spent swimming in natural water sources                                    |
-| `RATES_SPEAKER`      | News Craving   | 0.25    | speaker usage                                                                   |
-| `RATES_STAGE`        | Drama          | 0.2     | stage usage                                                                     |
-| `RATES_TEMPLE`       | Piety (Temple) | 0.05    |                                                                                 |
-| `RATES_THIRST`       | Thirst         | ?       | tavern usage                                                                    |
-| `RATES_WELL`         | Dirtiness      | 0.25    | well usage                                                                      |
+| Key                  | Name           | Default | Description                                  |
+|----------------------|----------------|---------|----------------------------------------------|
+| `RATES_ARENA`        | Bloodlust      | 0.25    | arena usage                                  |
+| `RATES_ARENAG`       | Spectacle      | ?       | arena usage (non-violent)                    |
+| `RATES_BATH`         | Bathing        | ?       | bath usage                                   |
+| `RATES_CONSTIPATION` | Constipation   | ?       | bathroom usage                               |
+| `RATES_DOCTOR`       | Health Care    | 0.1     | hospital usage                               |
+| `RATES_GROOMING`     | Vanity         | ?       | barber usage                                 |
+| `RATES_HEARTH`       | Loneliness     | 0.25    | hearth usage                                 |
+| `RATES_HUNGER`       | Hunger         | ?       | the rate at which the hunger need increases  |
+| `RATES_MASSAGE`      | 'Back Pain'    | 0.063   | massage parlor usage                         |
+| `RATES_SHOPPING`     | Shopping       | ?       | market stall usage                           |
+| `RATES_SHRINE`       | Piety (Shrine) | 0.25    |                                              |
+| `RATES_SKINNYDIP`    | Skinny-dip     | 0.1     | time spent swimming in natural water sources |
+| `RATES_SPEAKER`      | News Craving   | 0.25    | speaker usage                                |
+| `RATES_STAGE`        | Drama          | 0.2     | stage usage                                  |
+| `RATES_TEMPLE`       | Piety (Temple) | 0.05    |                                              |
+| `RATES_THIRST`       | Thirst         | ?       | tavern usage                                 |
+| `RATES_WELL`         | Dirtiness      | 0.25    | well usage                                   |
 
 ## RELIGION
 | Key                     | Name       | Default | Description                                                      |
