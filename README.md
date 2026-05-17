@@ -40,6 +40,7 @@ You will need a **Java 21 JDK** for developing.
   * [Access Game Code](doc/howto/access_game_code.md) 
   * [Modding Strategy](doc/howto/modding_strategy.md) 
   * [Add an UI Element](doc/howto/add_ui_element.md)
+  * [Make a Custom Room](doc/howto/make_custom_room.md)
 * [Explanations](doc/explanation/README.md)
   * [Combat Mechanics](doc/explanation/combat_mechanics.md)
 * [Project Build Commands](#project-build-commands)
