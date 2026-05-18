@@ -1,9 +1,33 @@
-# Make a Custom Room
+# Make a Custom Room via Config
+
+**Rooms** follow a special semantic.
+Each room file starting with an `_` (e.g. `_ASYLUM.txt`) is a "unique" room.
+These can't have new implementations without modifying the game code.
+
+All other rooms can get a new implementation with your own configuration though.
+For example if you made a new weapon "Crossbow", you can have a `WORKSHOP` like `WORKSHOP_BOWYER.txt`,
+but you would call it e.g.`WORKSHOP_CROSSBOW.txt` and configure it to produce crossbows instead.
+
+```
+Mod Name
+└── V70
+    └── assets
+        └── init
+            └── room
+                ├── REFINER_YOUR_NAME.txt
+                ├── MINE_YOUR_NAME.txt
+                ├── ...
+                ├── SHRINE_YOUR_NAME.txt
+                └── WORKSHOP_YOUR_NAME.txt
+```
+
+# Make a Custom Room via Code
 
 :heart: Made by **[Romping](https://github.com/Max61090)** from the SoS Discord community.
 
 There are two ways of making your kind of room. 
 One is to use the present [room configurations](../config/room.md), where you can make a new room with present features.
+See also [adding your own custom room](../README.md#adding-your-own-custom-room-via-config).
 This how-to guide will make a new room by adding features though, which requires to write some code.
 
 We will make a new `WORKSHOP`, which can produce more than one output item.
