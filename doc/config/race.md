@@ -254,7 +254,7 @@ Dynamically created via assets from: `assets/init/stats/equip`
 | LAW_EXILE     | Criminals punished by exile.                            |
 | LAW_EX_CON    | Punished criminals who are no longer imprisoned.        |
 | LAW_JUDGEMENT | Criminals processed in court.                           |
-| LAW_LAW       | [?]                                                     |
+| LAW_LAW       | Overall effectivess of punishment and arrests  		  |
 | LAW_NONE      | Criminals kept in the stockages without any punishment. |
 | LAW_PARDONED  | Criminals pardoned by you.                              |
 | LAW_PRISON    | Criminals punished by imprisonment.                     |
@@ -292,7 +292,7 @@ Dynamically created via assets from: `assets/init/room`. Via rooms beginning wit
 | POPULATION_IMMIGRANTS      | Amount of subjects who are immigrants.                                          |
 | POPULATION_MAJORITY        | Whether or not this subject's race is the majority in your city's population.   |
 | POPULATION_NATIVES         | Amount of subjects who are natives (born via nurseries).                        |
-| POPULATION_NOBLES          | Amount of nobles who share this subject's race. [?] Is it really race-specific? |
+| POPULATION_NOBLES          | Fraction of nobles who share this subject's race  							   |
 | POPULATION_SLAVES_OTHER    | Amount of slaves who aren't this subject's race.                                |
 | POPULATION_SLAVES_SELF     | Amount of slaves who are this subject's race.                                   |
 | POPULATION_TRAPPED         | Amount of subjects cut off from the throne room.                                |
