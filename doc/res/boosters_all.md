@@ -70,6 +70,7 @@
 ## BATTLE
 ### Battle Skills
 - Note: See [Combat Mechanics](doc/explanation/combat_mechanics.md) for details on the exact breakdowns
+
 | Key                      | Name      | Default | Description                                                                  |
 |--------------------------|-----------|---------|------------------------------------------------------------------------------|
 | `BATTLE_BLOCK`           | Block     | 1       | ability to block, reduces damage using block armour                          |
@@ -112,7 +113,8 @@
 | `BEHAVIOUR_SUBMISSION` | Submission | 1       | affects chance for slaves to revolt                             |
 
 ## CIVIC
-- Note: despite the names being negative, almost all boostables have a positive effect when going up. 
+- Note: despite the names being negative, almost all boostables have a positive effect when going up
+ 
 | Key                      | Name              | Default | Description                                                                                                                                          |
 |--------------------------|-------------------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `CIVIC_ACCIDENT`         | Safety            | 1       | higher value = less accidents                                                                                                                        |
@@ -165,6 +167,7 @@
 
 ## TOOL
 - maximum number equippable of tools for a specific building
+
 | Key                                   | Name                       | Default | Description |
 |---------------------------------------|----------------------------|---------|-------------|
 | `EQUIP_LEVEL_TOOL_ADMIN_NORMAL`       | Tools(Administrations)     |         |             |
