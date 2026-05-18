@@ -69,18 +69,17 @@
 
 ## BATTLE
 ### Battle Skills
-references to parrying are speculative; parry may not be implemented in game (confirm in code?)
-
+- Note: See [Combat Mechanics](doc/explanation/combat_mechanics.md) for details on the exact breakdowns
 | Key                      | Name      | Default | Description                                                                  |
 |--------------------------|-----------|---------|------------------------------------------------------------------------------|
-| `BATTLE_BLOCK`           | Block     | 1       | ability to use parry attacks and reduce damage with block armour             |
-| `BATTLE_OFFENCE_SKILL`   | Offence   | 1       | ability to attack; exact stat effects are not defined, need to search code   |
-| `BATTLE_DEFENCE_SKILL`   | Defence   | 1       | chance to avoid damage entirely when attacked from the front; i.e. dodge     |
-| `BATTLE_FORMATION_SKILL` | Formation | 0       | defensive skill when attacked in formation from the front                    |
-| `BATTLE_RANGED_BOW`      | Bow Skill | 0.1     | ability to use bows; exact stat effects are not defined, need to search code |
+| `BATTLE_BLOCK`           | Block     | 1       | ability to block, reduces damage using block armour                          |
+| `BATTLE_OFFENCE_SKILL`   | Offence   | 1       | ability to attack successfully                                               |
+| `BATTLE_DEFENCE_SKILL`   | Defence   | 1       | chance to dodge, reduced effectiveness for non-frontal attacks               |
+| `BATTLE_FORMATION_SKILL` | Formation | 0       | bonus defensive skill when attacked in formation from the front              |
+| `BATTLE_RANGED_BOW`      | Bow Skill | 0.1     | proficiency with bows, fraction of progress from min to max stats of the bow |
 | `BATTLE_CHARGE`          | Charge    | 1       | adds extra damage to charge attacks                                          |
-| `BATTLE_DEXTERITY`       | Dexterity | 5       | chance to ignore target's block armour when attacking                        |
-| `BATTLE_MORALE`          | Morale    | 4       | prevents routing                                                             |
+| `BATTLE_DEXTERITY`       | Dexterity | 5       | chance to bypass block and chance to land charge attacks                     |
+| `BATTLE_MORALE`          | Morale    | 4       | ability to stay in the fight                                                 |
 
 ### Damage Type: Force
 | Key                        | Name             | Default | Description                                                                         |
@@ -92,39 +91,40 @@ references to parrying are speculative; parry may not be implemented in game (co
 ### Damage Type: Pierce
 | Key                         | Name          | Default | Description                                                                   |
 |-----------------------------|---------------|---------|-------------------------------------------------------------------------------|
-| `BATTLE_PIERCE_ATTACK`      | Pierce Damage | 0       | special damage applied by some attacks                                        |
+| `BATTLE_PIERCE_ATTACK`      | Pierce Damage | 0       | type of damage applied by some attacks; typically better against armor than slash|
 | `BATTLE_PIERCE_DEFENCE`     | Pierce Armour | 0       | reduction of pierce damage                                                    |
 | `BATTLE_PIERCE_DEFENCE_DIR` | Pierce Block  | 0       | called 'Parry' in-game; amount of pierce damage reduced upon successful block |
 
 ### Damage Type: Slash
 | Key                        | Name         | Default | Description                                                                  |
 |----------------------------|--------------|---------|------------------------------------------------------------------------------|
-| `BATTLE_SLASH_ATTACK`      | Slash Damage | 0       | special damage applied by some attacks                                       |
-| `BATTLE_SLASH_DEFENCE`     | Slash Armour | 0       | reduction of pierce damage                                                   |
+| `BATTLE_SLASH_ATTACK`      | Slash Damage | 0       | type of damage applied by some attacks; typically higher than pierce         |
+| `BATTLE_SLASH_DEFENCE`     | Slash Armour | 0       | reduction of slash damage                                                   |
 | `BATTLE_SLASH_DEFENCE_DIR` | Slash Block  | 0       | called 'Parry' in-game; amount of slash damage reduced upon successful block |
 
 ## BEHAVIOUR
 | Key                    | Name       | Default | Description                                                     |
 |------------------------|------------|---------|-----------------------------------------------------------------|
-| `BEHAVIOUR_HAPPINESS`  | Happiness  | 1       |                                                                 |
-| `BEHAVIOUR_LAWFULNESS` | Lawfulness | 1       |                                                                 |
+| `BEHAVIOUR_HAPPINESS`  | Happiness  | 1       | affects final Happiness value after all other factors are applied|
+| `BEHAVIOUR_LAWFULNESS` | Lawfulness | 1       | affects lawfulness; chance to commit crimes                     |
 | `BEHAVIOUR_LOYALTY`    | Loyalty    | 1       | affects final Loyalty value after all other factors are applied |
-| `BEHAVIOUR_SANITY`     | Sanity     | 1       |                                                                 |
-| `BEHAVIOUR_SUBMISSION` | Submission | 1       | for slaves                                                      |
+| `BEHAVIOUR_SANITY`     | Sanity     | 1       | affects chance to go insane                                     |
+| `BEHAVIOUR_SUBMISSION` | Submission | 1       | affects chance for slaves to revolt                             |
 
 ## CIVIC
+- Note: despite the names being negative, almost all boostables have a positive effect when going up. 
 | Key                      | Name              | Default | Description                                                                                                                                          |
 |--------------------------|-------------------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `CIVIC_ACCIDENT`         | Safety            | 1       | higher value = less accidents                                                                                                                        |
 | `CIVIC_DEFLATION`        | Deflation         | 1       | higher value = less inflation                                                                                                                        |
-| `CIVIC_DIPLOMACY`        | Emissary Points   | 0       | [?] having this citizen adds X amount of emissary points to your city                                                                                |
+| `CIVIC_DIPLOMACY`        | Emissary Points   | 0       | affects amount of emissary points                                                                                                                    |
 | `CIVIC_FURNITURE`        | Furnishing        | 1       | furniture upkeep rate for citizen housing                                                                                                            |
-| `CIVIC_GOV`              | Government Points | 5       | [?] having this citizen adds X amount of emissary points to your city                                                                                |
-| `CIVIC_IMMIGRATION`      | Immigration Rate  | 1       | [?] the immigration rate of this race to your city                                                                                                   |
-| `CIVIC_INNOVATION`       | Innovation Points | 0       | [?] having this citizen adds X amount of innovation points to your city                                                                              |
-| `CIVIC_KNOWLEDGE`        | Knowledge Points  | 0       | [?] having this citizen adds X amount of knowledge points to your city                                                                               |
-| `CIVIC_LANDING`          | Settle            | 0       | multiplies starting population and resources upon placing your throne for the first time                                                             |
-| `CIVIC_LAW`              | Law               | 0       | how likely this subject is to break the law                                                                                                          |
+| `CIVIC_GOV`              | Government Points | 5       | affects amount of gov points                                                                                                                         |
+| `CIVIC_IMMIGRATION`      | Immigration Rate  | 1       | the immigration rate of this race to your city                                                                                                       |
+| `CIVIC_INNOVATION`       | Innovation Points | 0       | affects amount of innovation                                                                                                                         |
+| `CIVIC_KNOWLEDGE`        | Knowledge Points  | 0       | affects amount of knowledge                                                                                                                          |
+| `CIVIC_LANDING`          | Settle            | 0       | affects starting population and resources upon placing your throne for the first time                                                                |
+| `CIVIC_LAW`              | Law               | 0       | affects final effectiveness of arrest rates and punishments                                                                                          |
 | `CIVIC_MAINTENANCE`      | Robustness        | 1       | higher value = less room maintenance                                                                                                                 |
 | `CIVIC_NOBLES_MAX`       | Nobilities        | 0       | max number of nobles allowed                                                                                                                         |
 | `CIVIC_NOBLES_RANKS_MAX` | Noble Promotions  | 0       | max number of ranks for nobles                                                                                                                       |
@@ -135,7 +135,7 @@ references to parrying are speculative; parry may not be implemented in game (co
 | `CIVIC_TRADE_FEE`        | Trade Tariff      | 1       | incorrectly labelled 'Pacifism' in game tooltips and Dic.txt; reduces fee when trading with other rulers; higher value = higher discount (lower fee) |
 
 ## CONSUMPTION
-affects consumption rate of resources by all rooms that consume that resource
+- affects consumption rate of resources by all rooms that consume that resource
 
 | Key             | Name      | Default | Description |
 |-----------------|-----------|---------|-------------|
@@ -164,6 +164,7 @@ affects consumption rate of resources by all rooms that consume that resource
 | `CON_WOOD`      | Wood      |         |             |
 
 ## TOOL
+- maximum number equippable of tools for a specific building
 | Key                                   | Name                       | Default | Description |
 |---------------------------------------|----------------------------|---------|-------------|
 | `EQUIP_LEVEL_TOOL_ADMIN_NORMAL`       | Tools(Administrations)     |         |             |
@@ -219,13 +220,13 @@ applies to individual citizens/soldiers
 |---------------------------|-----------------|---------|-----------------------------------------------------------------------------------------------------------------------------|
 | `PHYSICS_ACCELERATION`    | Acceleration    | 3       | how fast a subject speeds up                                                                                                |
 | `PHYSICS_DEATH_AGE`       | Lifespan        | 100     | max allowed age of a subject                                                                                                |
-| `PHYSICS_HEALTH`          | Health          | 1       | likelihood of contracting disease; possibly also affects how much damage a soldier can take before death (confirm in code?) |
+| `PHYSICS_HEALTH`          | Health          | 1       | likelihood of contracting disease and healing rate from injuries                                                            |
 | `PHYSICS_MASS`            | Weight          | 80      | relevant for calculating knockback and charge impact in battle                                                              |
-| `PHYSICS_RESISTANCE_COLD` | Cold Resistance | 0.5     | possibly only functions when indoors (confirm in code?)                                                                     |
-| `PHYSICS_RESISTANCE_HOT`  | Heat Resistance | 0.8     | possibly only functions when indoors (confirm in code?)                                                                     |
-| `PHYSICS_SOILING`         | Soiling         | ?       | rate at which citizens cause filfth around them; higher value = faster filfth creation                                      |
+| `PHYSICS_RESISTANCE_COLD` | Cold Resistance | 0.5     | reduces cold exposure when indoors                                                                                          |
+| `PHYSICS_RESISTANCE_HOT`  | Heat Resistance | 0.5     | reduces heat exposure when indoors                                                                                          |
+| `PHYSICS_SOILING`         | Soiling         | 0.125   | rate at which citizens cause filth around them; higher value = faster filth creation                                        |
 | `PHYSICS_SPEED`           | Speed           | 4.5     | measured in tiles per second                                                                                                |
-| `PHYSICS_STAMINA`         | Stamina         | 1.0     | affects fatigue in battle; how long a subject can travel before tiring; possibly bench usage?                               |
+| `PHYSICS_STAMINA`         | Stamina         | 1.0     | affects fatigue in battle; how far a subject can move and fight before tiring;                                              |
 
 ## SERVICE RATE
 the frequency at which a citizen will attempt to find a service, per day
@@ -233,21 +234,21 @@ the frequency at which a citizen will attempt to find a service, per day
 | Key                  | Name           | Default | Description                                  |
 |----------------------|----------------|---------|----------------------------------------------|
 | `RATES_ARENA`        | Bloodlust      | 0.25    | arena usage                                  |
-| `RATES_ARENAG`       | Spectacle      | ?       | arena usage (non-violent)                    |
-| `RATES_BATH`         | Bathing        | ?       | bath usage                                   |
-| `RATES_CONSTIPATION` | Constipation   | ?       | bathroom usage                               |
+| `RATES_ARENAG`       | Spectacle      | 0.25    | arena usage (non-violent)                    |
+| `RATES_BATH`         | Bathing        | 0.25    | bath usage                                   |
+| `RATES_CONSTIPATION` | Constipation   | 0.25    | bathroom usage                               |
 | `RATES_DOCTOR`       | Health Care    | 0.1     | hospital usage                               |
-| `RATES_GROOMING`     | Vanity         | ?       | barber usage                                 |
+| `RATES_GROOMING`     | Vanity         | 0.1     | barber usage                                 |
 | `RATES_HEARTH`       | Loneliness     | 0.25    | hearth usage                                 |
-| `RATES_HUNGER`       | Hunger         | ?       | the rate at which the hunger need increases  |
+| `RATES_HUNGER`       | Hunger         | 0.5     | the rate at which the hunger need increases  |
 | `RATES_MASSAGE`      | 'Back Pain'    | 0.063   | massage parlor usage                         |
-| `RATES_SHOPPING`     | Shopping       | ?       | market stall usage                           |
+| `RATES_SHOPPING`     | Shopping       | 0.15    | market stall usage; acquiring furniture      |
 | `RATES_SHRINE`       | Piety (Shrine) | 0.25    |                                              |
 | `RATES_SKINNYDIP`    | Skinny-dip     | 0.1     | time spent swimming in natural water sources |
 | `RATES_SPEAKER`      | News Craving   | 0.25    | speaker usage                                |
 | `RATES_STAGE`        | Drama          | 0.2     | stage usage                                  |
 | `RATES_TEMPLE`       | Piety (Temple) | 0.05    |                                              |
-| `RATES_THIRST`       | Thirst         | ?       | tavern usage                                 |
+| `RATES_THIRST`       | Thirst         | 0.2     | thirst rate                                  |
 | `RATES_WELL`         | Dirtiness      | 0.25    | well usage                                   |
 
 ## RELIGION
@@ -332,8 +333,6 @@ affects production output for rooms with a modifiable resource output amount
 | `ROOM_WORKSHOP_TAILOR`    | Tailors      |         |             |
 
 ### Pasture
-possibly only affects resource upkeep instead of production rate
-
 | Key                     | Name                 | Default | Description |
 |-------------------------|----------------------|---------|-------------|
 | `ROOM_PASTURE_AUR`      | Auroch Pastures      |         |             |
@@ -342,6 +341,7 @@ possibly only affects resource upkeep instead of production rate
 | `ROOM_PASTURE_GLOBDIEN` | Globdien Pastures    |         |             |
 | `ROOM_PASTURE_MOUNT`    | War-Beast Pastures   |         |             |
 | `ROOM_PASTURE_ONX`      | Onx Pastures         |         |             |
+
 ### Nursery
 affects the room's 'coziness' score, which affects food upkeep; possibly useless as nurseries may be locked to consuming 1 food per day regardless
 
@@ -354,6 +354,7 @@ affects the room's 'coziness' score, which affects food upkeep; possibly useless
 | `ROOM_NURSERY_HUMAN`     | Human Nurseries     |         |             |
 | `ROOM_NURSERY_TILAPI`    | Tilapi Nurseries    |         |             |
 | `ROOM_NURSERY_VARGEN`    | Vargen Nurseries    |         |             |
+
 ### Other
 | Key                      | Name           | Default | Description |
 |--------------------------|----------------|---------|-------------|
@@ -478,17 +479,17 @@ affects the room's 'coziness' score, which affects food upkeep; possibly useless
 |------------------------------|-----------|---------|---------------------------------------------------------------------------------------------------|
 | `WORLD_POINT_WORKFORCE`      | Workforce |         | available workforce points in owned regions                                                       |
 | `WORLD_TAX_INCOME`           | Taxes     |         | tax income from owned regions                                                                     |
-| `WORLD_VISUAL_MINE`          |           |         | unknown                                                                                           |
-| `WORLD_VISUAL_ROADS`         |           |         | unknown                                                                                           |
-| `WORLD_VISUAL_WALL`          |           |         | unknown                                                                                           |
+| `WORLD_VISUAL_MINE`          |           |         | adds cosmetic mines in the region                                                                 |
+| `WORLD_VISUAL_ROADS`         |           |         | adds cosmetic roads in the region                                                                 |
+| `WORLD_VISUAL_WALL`          |           |         | adds cosmetic walls in the region                                                                 |
 | `WORLD_FULFILLMENT_EXPONENT` |           |         | unknown; possibly affects the fulfillment equation but on a region level?                         |
-| `WORLD_PROXIMITY`            | Proximity |         | affects proximity penalties on certain region stats and actions; higher value = higher penalties? |
+| `WORLD_PROXIMITY`            | Proximity |         | affects proximity penalties on certain region stats and actions; higher value = lower penalties   |
 | `WORLD_HEALTH`               | Health    |         | affects likelihood of disease outbreaks/spread in a region                                        |
 
 ### Population
 | Key                                 | Name                    | Default | Description                |
 |-------------------------------------|-------------------------|---------|----------------------------|
-| `WORLD_MAX_CITY_POP`                |                         |         | unknown, undefined by game |
+| `WORLD_MAX_CITY_POP`                |                         |         | 35,000, used to affect various population mechanics |
 | `WORLD_POPULATION_CAPACITY`         | Region Capacity         |         |                            |
 | `WORLD_POPULATION_GROWTH_ARUAN`     | Growth: Aruans          |         |                            |
 | `WORLD_POPULATION_GROWTH_CRETONIAN` | Growth: Cretonians      |         |                            |
