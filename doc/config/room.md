@@ -33,7 +33,6 @@ but you would call it e.g.`WORKSHOP_CROSSBOW.txt` and configure it to produce cr
 * [_JANITOR](#_janitor-room)
 * [_MILITARY_SUPPLY](#_military_supply-room)
 * [_PRISON](#_prison-room)
-* [_SLAVER](#_slaver-room)
 * [_STATION](#_station-room)
 * [_STOCKADE](#_stockade-room)
 * [_STOCKPILE](#_stockpile-room)
@@ -476,22 +475,6 @@ For the `_PRISON` room only.
 #### Stats multipliers per furniture
 1) Prisoners
 2) Guards
-
-## _SLAVER room
-
-For the `_SLAVER` room only.
-
-| Key       | Required | Default | Min  | Max  | Description                                                                                | Example     |
-|-----------|----------|---------|------|------|--------------------------------------------------------------------------------------------|-------------|
-| WORK      | no       | none    | none | none | See [WORK key](#work-key)                                                                  |             |
-
-### ITEMS
-
-#### Furniture
-1) Station
-
-#### Stats multipliers per furniture
-1) Clients
 
 ## _STATION room
 
@@ -1403,7 +1386,6 @@ For `TEMPLE_` rooms only.
 | Key            | Required | Default | Min  | Max  | Description                                                                                                                      | Example                                |
 |----------------|----------|---------|------|------|----------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|
 | RELIGION       | no       | none    | none | none | Which religion to worship.<br/>Possible religions can be found in `assets/init/religion`.                                        | `AMINION`                              |
-| SACRIFICE_TYPE | yes      | none    | none | none | Which type of sacrifice the religion wants.<br/>Possible values are `RESOURCE`, `ANIMAL`, `HUMAN`.                               | `HUMAN`                                |
 | SACRIFICE_TYPE | yes      | none    | none | none | Which type of sacrifice the religion wants.<br/>Possible values are `RESOURCE`, `ANIMAL`, `HUMAN`.                               | `HUMAN`                                |
 | FLOOR          | yes      | none    | none | none | Floor used for this room. Can also be a list of floors.<br/>Possible floor names can be found in `assets/init/settlement/floor`. | `WOOD` or<br/> `[DIRT, WOOD, STONE2,]` |
 | FLOOR_PATH     | no       | none    | none | none | Which floor to use for the pathways.<br/>Possible floor names can be found in `assets/init/settlement/floor`.                    | `STONE_LARGE_DARK`                     |

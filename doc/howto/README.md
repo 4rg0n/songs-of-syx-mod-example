@@ -9,6 +9,7 @@
 * [Access game code](access_game_code.md)
 * [Modding Strategy](modding_strategy.md)
 * [Add an UI Element](add_ui_element.md)
+* [Make a Custom Room](make_custom_room.md)
 
 
 

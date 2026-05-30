@@ -94,29 +94,6 @@ Mod Name
                 └── YOUR_RACE.txt
 ```
 
-### Adding your own custom room
-
-**Rooms** follow a special semantic. 
-Each room file starting with an `_` (e.g. `_ASYLUM.txt`) is a "unique" room.
-These can't have new implementations without modifying the game code. 
-
-All other rooms can get a new implementation with your own configuration though.
-For example if you made a new weapon "Crossbow", you can have a `WORKSHOP` like `WORKSHOP_BOWYER.txt`, 
-but you would call it e.g.`WORKSHOP_CROSSBOW.txt` and configure it to produce crossbows instead. 
-
-```
-Mod Name
-└── V70
-    └── assets
-        └── init
-            └── room
-                ├── REFINER_YOUR_NAME.txt
-                ├── MINE_YOUR_NAME.txt
-                ├── ...
-                ├── SHRINE_YOUR_NAME.txt
-                └── WORKSHOP_YOUR_NAME.txt
-```
-
 ## Removing all vanilla config files from a folder
 
 By placing a file named `_IgnoreVanilla.txt` in a folder, the game will ignore the vanilla files and only load your mod files.

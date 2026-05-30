@@ -15,7 +15,6 @@ You will need a **Java 21 JDK** for developing.
     * [Replacing / Overwriting whole vanilla config files](doc/README.md#replacing--overwriting-whole-vanilla-config-files)
     * [Replacing / Overwriting individual values in a vanilla config file](doc/README.md#replacing--overwriting-individual-values-in-a-vanilla-config-file)
     * [Adding your own custom config files](doc/README.md#adding-your-own-custom-config-files)
-      * [Adding your own custom room](doc/README.md#adding-your-own-custom-room)
     * [Removing all vanilla config files from a folder](doc/README.md#removing-all-vanilla-config-files-from-a-folder)
     * [Supporting multiple game versions](doc/README.md#supporting-multiple-game-versions)
   * [FAQ](doc/README.md#faq)
@@ -31,6 +30,13 @@ You will need a **Java 21 JDK** for developing.
   * [Code](https://github.com/4rg0n/songs-of-syx-mod-more-options/tree/main/mod-sdk)
   * [Documentation](https://github.com/4rg0n/songs-of-syx-mod-more-options/tree/main/mod-sdk/src/main/java/com/github/argon/sos/mod/sdk#mod-sdk)
 * [Init Config Files Documentation](doc/config/README.md)
+  * [General](doc/config/general.md)
+  * [Animals](doc/config/animal.md) 
+  * [Diseases](doc/config/disease.md) 
+  * [Races](doc/config/race.md)
+  * [Religions](doc/config/religion.md)
+  * [Resources](doc/config/resource.md) 
+  * [Rooms](doc/config/room.md)
 * [Make your own Mod](doc/howto/make_your_own_mod.md)
 * [Publish your Mod](#publish-your-mod)
 * [How-to Guides](doc/howto/README)
@@ -40,12 +46,17 @@ You will need a **Java 21 JDK** for developing.
   * [Access Game Code](doc/howto/access_game_code.md) 
   * [Modding Strategy](doc/howto/modding_strategy.md) 
   * [Add an UI Element](doc/howto/add_ui_element.md)
+  * [Make a Custom Room](doc/howto/make_custom_room.md)
+    * [Via Config](doc/howto/make_custom_room.md#make-a-custom-room-via-config)
+    * [Via Code](doc/howto/make_custom_room.md#make-a-custom-room-via-code)
 * [Explanations](doc/explanation/README.md)
   * [Combat Mechanics](doc/explanation/combat_mechanics.md)
 * [Project Build Commands](#project-build-commands)
 * [Mod Info / Build Settings](#mod-info--build-settings)
 * [Debugging your Mod](#debugging)
 * [Other Modding Resources](#other-modding-resources)
+* [Other Resources](#other-resources)
+* [Java Development Resources](#java-development-resources)
 
 ## General Modding Information
 
@@ -221,9 +232,11 @@ See [doc/index.md](doc/README).
 
 * [Songs of Syx Production Graph & Room Planner](https://nobody0.github.io/syx-vis/)
 
+## Java Development Resources
 
-
-
+[Java Roadmap](https://roadmap.sh/java) (general overview)
+[Mooc Course](https://java-programming.mooc.fi/) (good when you are unfamiliar with Java)
+[Baeldung]( https://www.baeldung.com/get-started-with-java-series) (more condensed information)
 
 
 
