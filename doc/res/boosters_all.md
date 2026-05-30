@@ -7,7 +7,11 @@
 
 <!-- TOC -->
 * [All available vanilla game boosters ```v71```](#all-available-vanilla-game-boosters-v71)
-    * [Table Format](#table-format)
+  * [v71 Changes (from v70)](#v71-changes-from-v70)
+    * [Renamed / Restructured](#renamed--restructured)
+    * [Dropped (no replacement)](#dropped-no-replacement)
+    * [New in v71](#new-in-v71)
+  * [Table Format](#table-format)
   * [ACTIVITY](#activity)
   * [BATTLE](#battle)
     * [Battle Skills](#battle-skills)
@@ -55,7 +59,45 @@
     * [Resource Production (Yearly)](#resource-production-yearly)
 <!-- TOC -->
 
-### Table Format
+## v71 Changes (from v70)
+Boost-key differences between v70 and v71.19, verified against the runtime boost-key registry dump (v70 = 355 keys, v71 = 402 keys). Most "dropped + new" pairs are the same function re-keyed — see Renamed below.
+
+### Renamed / Restructured
+| Function                            | v70 key                                        | v71 key                                                                       |
+|-------------------------------------|------------------------------------------------|-------------------------------------------------------------------------------|
+| Region resource production          | `WORLD_RESOURCE_PRODUCTION_<res>`              | `WORLD_PRODUCTION_RES_<res>`                                                  |
+| Region resource production (yearly) | `WORLD_WORLD_RESOURCE_PRODUCTION_<res>_YEARLY` | `WORLD_PRODUCTION_RES_<res>_YEARLY`                                           |
+| Tax income (yearly)                 | `WORLD_WORLD_TAX_INCOME_YEARLY`                | `WORLD_TAX_INCOME_YEARLY`                                                     |
+| Resource consumption                | `CON_<res>` (per-resource, 23 keys)            | per-room `ROOM_CONSUMPTION_<room>` + per-recipe `ROOM_CONSUMPTION_<room>_<i>` |
+| Nurseries                           | `ROOM_NURSERY_<race>` (5 races)                | `ROOM_NURSERY_NORMAL` + `ROOM_BREEDER_GARTHIMI`                               |
+| Max city population                 | `WORLD_MAX_CITY_POP`                           | `WORLD_MAX_CITY_POPCITIZEN` + `WORLD_MAX_CITY_POPSLAVE`                       |
+| Fulfillment exponent                | `WORLD_FULFILLMENT_EXPONENT`                   | `WORLD_FULFILLMENT_EXPONENT_CITIZEN` + `WORLD_FULFILLMENT_EXPONENT_SLAVE`     |
+
+### Dropped (no replacement)
+| Key               | Name (v70)   |
+|-------------------|--------------|
+| `CIVIC_PASIFISM`  | Pacifism     |
+| `CIVIC_TRADE_FEE` | Trade Tariff |
+
+### New in v71
+| Key                                          | Name                   | Notes                                  |
+|----------------------------------------------|------------------------|----------------------------------------|
+| `BEHAVIOUR_HAPPINESS_SLAVES`                 | Happiness (Slaves)     |                                        |
+| `CIVIC_ADMIN`                                | Administration         |                                        |
+| `CIVIC_TRUST`                                | Trust                  |                                        |
+| `CIVIC_EDUCATION_LIMIT_0`                    | Study Limit: Childhood |                                        |
+| `CIVIC_EDUCATION_LIMIT_1`                    | Study Limit: Adulthood |                                        |
+| `PHYSICS_REPRODUCTION_AGE`                   | Reproduction Age       | new breeding mechanic                  |
+| `PHYSICS_REPRODUCTION_SPEED`                 | Natural Births /year   | new breeding mechanic                  |
+| `RATES_COURT`                                | Justice                | court service rate                     |
+| `RATES_STOCKS`                               | Punishment             | stocks service rate                    |
+| `ROOM_SCHOOL_NORMAL`                         | Schools                |                                        |
+| `SLAVE_PRODUCTION_<race>`                    | Captives: \<race\>     | 8 races (region property)              |
+| `WORLD_PRODUCTION_SLAVE_<race>`              | Production: \<race\>   | 8 races (slave production)             |
+| `WORLD_PRODUCTION_SLAVE_<race>_YEARLY`       | Production: \<race\>   | 8 races (yearly)                       |
+| `WORLD_PROXIMITY_TOLL`                       | Proximity (Toll)       |                                        |
+
+## Table Format
 | Key                    | Name                                | Default                                            | Description                    |
 |------------------------|-------------------------------------|----------------------------------------------------|--------------------------------|
 | key referenced by code | flavor name displayed by in-game UI | default preset value; boostables modify this value | usage and function of this key |
