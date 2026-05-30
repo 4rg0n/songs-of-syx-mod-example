@@ -1,12 +1,12 @@
-# All available vanilla game boosters ```v70```
+﻿# All available vanilla game boosters ```v71```
 
 :heart: Made by [Glorfy](https://github.com/hereto4) from the SoS Discord community.
 
-- Note 1: 'Default' values are based on v68 and may have changed in v70.
+- Note 1: 'Default' values are based on v68/v70 and may have changed in v71; some have been re-verified against v71.19 source.
 - Note 2: All keys use their British spelling ('Honour', 'Behaviour', etc., except for 'Jewelry' which uses its American spelling), and some keys are intentionally misspelled (this will be noted next to the key).
 
 <!-- TOC -->
-* [All available vanilla game boosters ```v70```](#all-available-vanilla-game-boosters-v70)
+* [All available vanilla game boosters ```v71```](#all-available-vanilla-game-boosters-v71)
     * [Table Format](#table-format)
   * [ACTIVITY](#activity)
   * [BATTLE](#battle)
@@ -47,6 +47,7 @@
   * [REGION PROPERTIES](#region-properties)
     * [Military](#military-2)
     * [Religion](#religion-2)
+    * [Captives](#captives)
     * [Loyalty](#loyalty)
     * [Other](#other-2)
     * [Population](#population)
@@ -71,22 +72,22 @@
 ### Battle Skills
 references to parrying are speculative; parry may not be implemented in game (confirm in code?)
 
-| Key                      | Name      | Default | Description                                                                  |
-|--------------------------|-----------|---------|------------------------------------------------------------------------------|
-| `BATTLE_BLOCK`           | Block     | 1       | ability to use parry attacks and reduce damage with block armour             |
-| `BATTLE_OFFENCE_SKILL`   | Offence   | 1       | ability to attack; exact stat effects are not defined, need to search code   |
-| `BATTLE_DEFENCE_SKILL`   | Defence   | 1       | chance to avoid damage entirely when attacked from the front; i.e. dodge     |
-| `BATTLE_FORMATION_SKILL` | Formation | 0       | defensive skill when attacked in formation from the front                    |
-| `BATTLE_RANGED_BOW`      | Bow Skill | 0.1     | ability to use bows; exact stat effects are not defined, need to search code |
-| `BATTLE_CHARGE`          | Charge    | 1       | adds extra damage to charge attacks                                          |
-| `BATTLE_DEXTERITY`       | Dexterity | 5       | chance to ignore target's block armour when attacking                        |
-| `BATTLE_MORALE`          | Morale    | 4       | prevents routing                                                             |
+| Key                      | Name       | Default | Description                                                                  |
+|--------------------------|------------|---------|------------------------------------------------------------------------------|
+| `BATTLE_BLOCK`           | Block      | 1       | ability to use parry attacks and reduce damage with block armour             |
+| `BATTLE_OFFENCE_SKILL`   | Offence    | 1       | ability to attack; exact stat effects are not defined, need to search code   |
+| `BATTLE_DEFENCE_SKILL`   | Defence    | 1       | chance to avoid damage entirely when attacked from the front; i.e. dodge     |
+| `BATTLE_FORMATION_SKILL` | Formation  | 0       | defensive skill when attacked in formation from the front                    |
+| `BATTLE_RANGED_BOW`      | Skill: Bow | 0.1     | ability to use bows; exact stat effects are not defined, need to search code |
+| `BATTLE_CHARGE`          | Charge     | 1       | adds extra damage to charge attacks                                          |
+| `BATTLE_DEXTERITY`       | Dexterity  | 5       | chance to ignore target's block armour when attacking                        |
+| `BATTLE_MORALE`          | Morale     | 4       | prevents routing                                                             |
 
 ### Damage Type: Force
 | Key                        | Name             | Default | Description                                                                         |
 |----------------------------|------------------|---------|-------------------------------------------------------------------------------------|
-| `BATTLE_BLUNT_ATTACK`      | Force            | 50      | base damage applied by all attacks; multiplies other damage types; causes knockback |
-| `BATTLE_BLUNT_DEFENCE`     | Force Absorption | 40      | reduction of force damage                                                           |
+| `BATTLE_BLUNT_ATTACK`      | Force            | 40      | base damage applied by all attacks; multiplies other damage types; causes knockback |
+| `BATTLE_BLUNT_DEFENCE`     | Force Absorbtion | 40      | [intentional mispelling] reduction of force damage                                  |
 | `BATTLE_BLUNT_DEFENCE_DIR` | Force Block      | 1       | called 'Parry' in-game; amount of force damage reduced upon successful block        |
 
 ### Damage Type: Pierce
@@ -104,64 +105,80 @@ references to parrying are speculative; parry may not be implemented in game (co
 | `BATTLE_SLASH_DEFENCE_DIR` | Slash Block  | 0       | called 'Parry' in-game; amount of slash damage reduced upon successful block |
 
 ## BEHAVIOUR
-| Key                    | Name       | Default | Description                                                     |
-|------------------------|------------|---------|-----------------------------------------------------------------|
-| `BEHAVIOUR_HAPPINESS`  | Happiness  | 1       |                                                                 |
-| `BEHAVIOUR_LAWFULNESS` | Lawfulness | 1       |                                                                 |
-| `BEHAVIOUR_LOYALTY`    | Loyalty    | 1       | affects final Loyalty value after all other factors are applied |
-| `BEHAVIOUR_SANITY`     | Sanity     | 1       |                                                                 |
-| `BEHAVIOUR_SUBMISSION` | Submission | 1       | for slaves                                                      |
+| Key                          | Name               | Default | Description                                                     |
+|------------------------------|--------------------|---------|-----------------------------------------------------------------|
+| `BEHAVIOUR_HAPPINESS`        | Happiness          | 1       |                                                                 |
+| `BEHAVIOUR_HAPPINESS_SLAVES` | Happiness (Slaves) | 0.5     | happiness for slaves; boosts increase submission                |
+| `BEHAVIOUR_LAWFULNESS`       | Lawfulness         | 1       |                                                                 |
+| `BEHAVIOUR_LOYALTY`          | Loyalty            | 1       | affects final Loyalty value after all other factors are applied |
+| `BEHAVIOUR_SANITY`           | Sanity             | 1       |                                                                 |
+| `BEHAVIOUR_SUBMISSION`       | Submission         | 1       | for slaves                                                      |
 
 ## CIVIC
-| Key                      | Name              | Default | Description                                                                                                                                          |
-|--------------------------|-------------------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `CIVIC_ACCIDENT`         | Safety            | 1       | higher value = less accidents                                                                                                                        |
-| `CIVIC_DEFLATION`        | Deflation         | 1       | higher value = less inflation                                                                                                                        |
-| `CIVIC_DIPLOMACY`        | Emissary Points   | 0       | [?] having this citizen adds X amount of emissary points to your city                                                                                |
-| `CIVIC_FURNITURE`        | Furnishing        | 1       | furniture upkeep rate for citizen housing                                                                                                            |
-| `CIVIC_GOV`              | Government Points | 5       | [?] having this citizen adds X amount of emissary points to your city                                                                                |
-| `CIVIC_IMMIGRATION`      | Immigration Rate  | 1       | [?] the immigration rate of this race to your city                                                                                                   |
-| `CIVIC_INNOVATION`       | Innovation Points | 0       | [?] having this citizen adds X amount of innovation points to your city                                                                              |
-| `CIVIC_KNOWLEDGE`        | Knowledge Points  | 0       | [?] having this citizen adds X amount of knowledge points to your city                                                                               |
-| `CIVIC_LANDING`          | Settle            | 0       | multiplies starting population and resources upon placing your throne for the first time                                                             |
-| `CIVIC_LAW`              | Law               | 0       | how likely this subject is to break the law                                                                                                          |
-| `CIVIC_MAINTENANCE`      | Robustness        | 1       | higher value = less room maintenance                                                                                                                 |
-| `CIVIC_NOBLES_MAX`       | Nobilities        | 0       | max number of nobles allowed                                                                                                                         |
-| `CIVIC_NOBLES_RANKS_MAX` | Noble Promotions  | 0       | max number of ranks for nobles                                                                                                                       |
-| `CIVIC_OPINION`          | Opinion           | 1.5     | base opinion modifier of foreign rulers towards you                                                                                                  |
-| `CIVIC_PASIFISM`         | Pacifism          | 1       | makes foreign rulers want to attack you less / reduces your perceived threat level to rulers (not raiders)                                           |
-| `CIVIC_RAIDING`          | Raid Security     | 1       | affects raider desire to demand/attack you; higher value = lower raider desire                                                                       |
-| `CIVIC_SPOILAGE`         | Conservation      | 1       | affects stored resource decay; higher value = slower decay rate                                                                                      |
-| `CIVIC_TRADE_FEE`        | Trade Tariff      | 1       | incorrectly labelled 'Pacifism' in game tooltips and Dic.txt; reduces fee when trading with other rulers; higher value = higher discount (lower fee) |
+| Key                       | Name                   | Default | Description                                                                              |
+|---------------------------|------------------------|---------|------------------------------------------------------------------------------------------|
+| `CIVIC_ACCIDENT`          | Safety                 | 1       | higher value = less accidents                                                            |
+| `CIVIC_ADMIN`             | Administration         | 0       | administration points; used for technologies / region building                           |
+| `CIVIC_DEFLATION`         | Deflation              | 1       | higher value = less inflation                                                            |
+| `CIVIC_DIPLOMACY`         | Emissary Points        | 0       | emissary points; used to manipulate opinions of factions                                 |
+| `CIVIC_EDUCATION_LIMIT_0` | Study Limit: Childhood | 10      | education limit during childhood (per age-type, index 0)                                 |
+| `CIVIC_EDUCATION_LIMIT_1` | Study Limit: Adulthood | 10      | education limit during adulthood (per age-type, index 1)                                 |
+| `CIVIC_FURNITURE`         | Furnishing             | 1       | furniture upkeep rate for citizen housing                                                |
+| `CIVIC_GOV`               | Gov Points             | 5       | main currency to build your realm with; gained by assigning nobles to government duties  |
+| `CIVIC_IMMIGRATION`       | Immigration Speed      | 4.5     | increases the replenishment of the immigration pool                                      |
+| `CIVIC_INNOVATION`        | Innovation             | 0       | innovation points; used for technologies                                                 |
+| `CIVIC_KNOWLEDGE`         | Knowledge              | 0       | knowledge points; used for technologies                                                  |
+| `CIVIC_LANDING`           | Settle                 | 0       | multiplies starting population and resources upon placing your throne for the first time |
+| `CIVIC_LAW`               | Law                    | 0       | the law of your city                                                                     |
+| `CIVIC_MAINTENANCE`       | Robustness             | 1       | higher value = less room maintenance                                                     |
+| `CIVIC_NOBLES_MAX`        | Nobilities             | 0       | max number of nobles allowed                                                             |
+| `CIVIC_NOBLES_RANKS_MAX`  | Noble Promotions       | 0       | max number of ranks for nobles                                                           |
+| `CIVIC_OPINION`           | Opinion                | 1.5     | base opinion modifier of foreign rulers towards you                                      |
+| `CIVIC_RAIDING`           | Raid Security          | 1       | affects raider desire to demand/attack you; higher value = lower raider desire           |
+| `CIVIC_SPOILAGE`          | Conservation           | 1       | affects stored resource decay; higher value = slower decay rate                          |
+| `CIVIC_TRUST`             | Trust                  | 0       | a faction's reliability in keeping treaties and not starting war against you             |
 
 ## CONSUMPTION
-affects consumption rate of resources by all rooms that consume that resource
+v71 no longer exposes per-resource `CON_<resource>` boostables. Consumption is now per-room and registered under the ROOM (`ROOM_`) category. Each consuming room gets `ROOM_CONSUMPTION_<roomkey>` (single-recipe consumption rooms), and industry rooms with multiple input+output recipes get `ROOM_CONSUMPTION_<roomkey>_<i>` (one per recipe, `i` starting at 0). Higher value = higher consumption rate.
 
-| Key             | Name      | Default | Description |
-|-----------------|-----------|---------|-------------|
-| `CON_ALCO_WINE` | Shedeh    |         |             |
-| `CON_BREAD`     | Bread     |         |             |
-| `CON_CLAY`      | Clay      |         |             |
-| `CON_COAL`      | Coal      |         |             |
-| `CON_COTTON`    | Fibre     |         |             |
-| `CON_FABRIC`    | Fabric    |         |             |
-| `CON_FISH`      | Fish      |         |             |
-| `CON_FRUIT`     | Fruit     |         |             |
-| `CON_FURNITURE` | Furniture |         |             |
-| `CON_GEM`       | Gem       |         |             |
-| `CON_GRAIN`     | Grain     |         |             |
-| `CON_HERB`      | Herb      |         |             |
-| `CON_LEATHER`   | Leather   |         |             |
-| `CON_MEAT`      | Meat      |         |             |
-| `CON_METAL`     | Metal     |         |             |
-| `CON_OPIATES`   | Opiate    |         |             |
-| `CON_ORE`       | Ore       |         |             |
-| `CON_PAPER`     | Paper     |         |             |
-| `CON_POTTERY`   | Pottery   |         |             |
-| `CON_RATION`    | Ration    |         |             |
-| `CON_STONE`     | Stone     |         |             |
-| `CON_VEGETABLE` | Vegetable |         |             |
-| `CON_WOOD`      | Wood      |         |             |
+| Key                                     | Name                             | Default | Description                                                                  |
+|-----------------------------------------|----------------------------------|---------|------------------------------------------------------------------------------|
+| `ROOM_CONSUMPTION_ADMIN_NORMAL`         | Consumption Rate: Administration | 1       | resource consumption rate of Administrations                                 |
+| `ROOM_CONSUMPTION_LABORATORY_NORMAL`    | Consumption Rate: Laboratory     | 1       | resource consumption rate of Laboratories                                    |
+| `ROOM_CONSUMPTION_LIBRARY_NORMAL`       | Consumption Rate: Library        | 1       | resource consumption rate of Libraries                                       |
+| `ROOM_CONSUMPTION__EMBASSY`             | Consumption Rate: Embassy        | 1       | resource consumption rate of Embassies (room key `_EMBASSY`)                 |
+| `ROOM_CONSUMPTION_REFINER_BAKERY_0`     | Bakery Input: I                  | 1       | per-recipe input consumption rate (`i` 0-based, one per input+output recipe) |
+| `ROOM_CONSUMPTION_REFINER_BAKERY_1`     | Bakery Input: II                 | 1       |                                                                              |
+| `ROOM_CONSUMPTION_REFINER_BREWERY_0`    | Brewery Input: I                 | 1       |                                                                              |
+| `ROOM_CONSUMPTION_REFINER_BREWERY_1`    | Brewery Input: II                | 1       |                                                                              |
+| `ROOM_CONSUMPTION_REFINER_COALER_0`     | Charcoaler Input: I              | 1       |                                                                              |
+| `ROOM_CONSUMPTION_REFINER_SMELTER_0`    | Metal Smelter Input: I           | 1       |                                                                              |
+| `ROOM_CONSUMPTION_REFINER_WEAVER_0`     | Weaver Input: I                  | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_BOWYER_0`    | Bowyer Input: I                  | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_CARPENTER_0` | Carpenter Input: I               | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_CARPENTER_1` | Carpenter Input: II              | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_CARPENTER_2` | Carpenter Input: III             | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_CARPENTER_3` | Carpenter Input: IV              | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_CARPENTER_4` | Carpenter Input: V               | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_JEWELRY_0`   | Jeweller Input: I                | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_MASON_0`     | Masonry Input: I                 | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_MECHANIC_0`  | Mechanic Input: I                | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_PAPER_0`     | Papermaker Input: I              | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_POTTERY_0`   | Pottery Input: I                 | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_RATION_0`    | Rationmaker Input: I             | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_RATION_1`    | Rationmaker Input: II            | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_RATION_2`    | Rationmaker Input: III           | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_RATION_3`    | Rationmaker Input: IV            | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_RATION_4`    | Rationmaker Input: V             | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_RATION_5`    | Rationmaker Input: VI            | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_SMITHY_0`    | Smithy Input: I                  | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_SMITHY_1`    | Smithy Input: II                 | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_SMITHY_2`    | Smithy Input: III                | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_SMITHY_3`    | Smithy Input: IV                 | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_SMITHY_4`    | Smithy Input: V                  | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_TAILOR_0`    | Tailor Input: I                  | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_TAILOR_1`    | Tailor Input: II                 | 1       |                                                                              |
+| `ROOM_CONSUMPTION_WORKSHOP_TAILOR_2`    | Tailor Input: III                | 1       |                                                                              |
 
 ## TOOL
 | Key                                   | Name                       | Default | Description |
@@ -215,39 +232,43 @@ misleading name; affects AI rulers, not player Nobles
 ## PHYSICS
 applies to individual citizens/soldiers
 
-| Key                       | Name            | Default | Description                                                                                                                 |
-|---------------------------|-----------------|---------|-----------------------------------------------------------------------------------------------------------------------------|
-| `PHYSICS_ACCELERATION`    | Acceleration    | 3       | how fast a subject speeds up                                                                                                |
-| `PHYSICS_DEATH_AGE`       | Lifespan        | 100     | max allowed age of a subject                                                                                                |
-| `PHYSICS_HEALTH`          | Health          | 1       | likelihood of contracting disease; possibly also affects how much damage a soldier can take before death (confirm in code?) |
-| `PHYSICS_MASS`            | Weight          | 80      | relevant for calculating knockback and charge impact in battle                                                              |
-| `PHYSICS_RESISTANCE_COLD` | Cold Resistance | 0.5     | possibly only functions when indoors (confirm in code?)                                                                     |
-| `PHYSICS_RESISTANCE_HOT`  | Heat Resistance | 0.8     | possibly only functions when indoors (confirm in code?)                                                                     |
-| `PHYSICS_SOILING`         | Soiling         | ?       | rate at which citizens cause filfth around them; higher value = faster filfth creation                                      |
-| `PHYSICS_SPEED`           | Speed           | 4.5     | measured in tiles per second                                                                                                |
-| `PHYSICS_STAMINA`         | Stamina         | 1.0     | affects fatigue in battle; how long a subject can travel before tiring; possibly bench usage?                               |
+| Key                          | Name                 | Default | Description                                                                                                                 |
+|------------------------------|----------------------|---------|-----------------------------------------------------------------------------------------------------------------------------|
+| `PHYSICS_ACCELERATION`       | Acceleration         | 3       | how fast a subject speeds up                                                                                                |
+| `PHYSICS_DEATH_AGE`          | Lifespan             | 100     | max allowed age of a subject                                                                                                |
+| `PHYSICS_HEALTH`             | Health               | 1       | likelihood of contracting disease; possibly also affects how much damage a soldier can take before death (confirm in code?) |
+| `PHYSICS_MASS`               | Weight               | 80      | relevant for calculating knockback and charge impact in battle                                                              |
+| `PHYSICS_RESISTANCE_COLD`    | Cold Resistance      | 0.5     | the ability for a subject to endure cold temperatures                                                                       |
+| `PHYSICS_RESISTANCE_HOT`     | Heat Resistance      | 0.5     | the ability for a subject to endure hot temperatures                                                                        |
+| `PHYSICS_REPRODUCTION_AGE`   | Reproduction Age     | 0.5     | the part of a subject's life it stays fertile                                                                               |
+| `PHYSICS_REPRODUCTION_SPEED` | Natural Births /year | 0.1     | the speed at which a subject propagates naturally                                                                           |
+| `PHYSICS_SOILING`            | Soiling              | 0.125   | rate at which subjects become dirty; higher value = faster filth creation                                                   |
+| `PHYSICS_SPEED`              | Speed                | 4.5     | measured in tiles per second                                                                                                |
+| `PHYSICS_STAMINA`            | Stamina              | 1.0     | how long a subject can walk or run before needing to rest                                                                   |
 
 ## SERVICE RATE
 the frequency at which a citizen will attempt to find a service, per day
 
 | Key                  | Name           | Default | Description                                  |
 |----------------------|----------------|---------|----------------------------------------------|
-| `RATES_ARENA`        | Bloodlust      | 0.25    | arena usage                                  |
-| `RATES_ARENAG`       | Spectacle      | ?       | arena usage (non-violent)                    |
-| `RATES_BATH`         | Bathing        | ?       | bath usage                                   |
-| `RATES_CONSTIPATION` | Constipation   | ?       | bathroom usage                               |
+| `RATES_ARENA`        | Blood lust     | 0.25    | arena usage                                  |
+| `RATES_ARENAG`       | Spectacle      | 0.25    | arena usage (non-violent)                    |
+| `RATES_BATH`         | Bathing        | 0.25    | bath usage                                   |
+| `RATES_CONSTIPATION` | Constipation   | 0.25    | bathroom usage                               |
+| `RATES_COURT`        | Justice        | 0.0625  | court usage (new in v71)                     |
 | `RATES_DOCTOR`       | Health Care    | 0.1     | hospital usage                               |
-| `RATES_GROOMING`     | Vanity         | ?       | barber usage                                 |
+| `RATES_GROOMING`     | Vanity         | 0.1     | barber usage                                 |
 | `RATES_HEARTH`       | Loneliness     | 0.25    | hearth usage                                 |
-| `RATES_HUNGER`       | Hunger         | ?       | the rate at which the hunger need increases  |
-| `RATES_MASSAGE`      | 'Back Pain'    | 0.063   | massage parlor usage                         |
-| `RATES_SHOPPING`     | Shopping       | ?       | market stall usage                           |
+| `RATES_HUNGER`       | Hunger         | 0.5     | the rate at which the hunger need increases  |
+| `RATES_MASSAGE`      | 'Back Pain'    | 0.0625  | massage parlor usage                         |
+| `RATES_SHOPPING`     | Shopping       | 0.15    | market stall usage                           |
 | `RATES_SHRINE`       | Piety (Shrine) | 0.25    |                                              |
-| `RATES_SKINNYDIP`    | Skinny-dip     | 0.1     | time spent swimming in natural water sources |
+| `RATES_SKINNYDIP`    | Skinny dip     | 0.1     | time spent swimming in natural water sources |
 | `RATES_SPEAKER`      | News Craving   | 0.25    | speaker usage                                |
 | `RATES_STAGE`        | Drama          | 0.2     | stage usage                                  |
+| `RATES_STOCKS`       | Punishment     | 0.1     | stocks/punishment usage (new in v71)         |
 | `RATES_TEMPLE`       | Piety (Temple) | 0.05    |                                              |
-| `RATES_THIRST`       | Thirst         | ?       | tavern usage                                 |
+| `RATES_THIRST`       | Thirst         | 0.2     | tavern usage                                 |
 | `RATES_WELL`         | Dirtiness      | 0.25    | well usage                                   |
 
 ## RELIGION
@@ -272,6 +293,7 @@ affects production output for rooms with a modifiable resource output amount
 |--------------------------|--------------|---------|-------------|
 | `ROOM_LABORATORY_NORMAL` | Laboratories |         |             |
 | `ROOM_LIBRARY_NORMAL`    | Libraries    |         |             |
+| `ROOM_SCHOOL_NORMAL`     | Schools      |         |             |
 
 ### Military
 | Key                       | Name            | Default | Description            |
@@ -345,21 +367,16 @@ possibly only affects resource upkeep instead of production rate
 ### Nursery
 affects the room's 'coziness' score, which affects food upkeep; possibly useless as nurseries may be locked to consuming 1 food per day regardless
 
-| Key                      | Name                | Default | Description |
-|--------------------------|---------------------|---------|-------------|
-| `ROOM_NURSERY_AMEVIA`    | Amevian Hatcheries  |         |             |
-| `ROOM_NURSERY_ARUAN`     | Aruan Nurseries     |         |             |
-| `ROOM_NURSERY_CRETONIAN` | Cretonian Breeders  |         |             |
-| `ROOM_NURSERY_GARTHIMI`  | Garthimi Hatcheries |         |             |
-| `ROOM_NURSERY_HUMAN`     | Human Nurseries     |         |             |
-| `ROOM_NURSERY_TILAPI`    | Tilapi Nurseries    |         |             |
-| `ROOM_NURSERY_VARGEN`    | Vargen Nurseries    |         |             |
+| Key                     | Name              | Default | Description                                             |
+|-------------------------|-------------------|---------|---------------------------------------------------------|
+| `ROOM_NURSERY_NORMAL`   | Nurseries         |         | v71 collapsed the per-race nurseries into a single room |
+| `ROOM_BREEDER_GARTHIMI` | Garthimi Breeders |         | Garthimi-specific breeder room                          |
 ### Other
-| Key                      | Name           | Default | Description |
-|--------------------------|----------------|---------|-------------|
-| `ROOM_STOCKPILE`         | Carry Capacity |         |             |
-| `ROOM_UNIVERSITY_NORMAL` | University     |         |             |
-| `ROOM_WOODCUTTER`        | Woodcutters    |         |             |
+| Key                      | Name           | Default | Description                                                |
+|--------------------------|----------------|---------|------------------------------------------------------------|
+| `ROOM_STOCKPILE`         | Carry Capacity |         |                                                            |
+| `ROOM_UNIVERSITY_NORMAL` | University     |         |                                                            |
+| `ROOM_WOODCUTTER`        | Woodcutters    |         |                                                            |
 
 ## REGION BUILDING
 
@@ -438,12 +455,12 @@ affects the room's 'coziness' score, which affects food upkeep; possibly useless
 | `WORLD_BUILDING_PASTURE_PASTURE_ONX`      | Onx Pasture          |         |             |
 
 ### Religion
-| Key                                      | Name              | Default | Description |
-|------------------------------------------|-------------------|---------|-------------|
-| `WORLD_BUILDING_RELIGION_TEMPLE_AMINION` | Shrine to Aminion |         |             |
-| `WORLD_BUILDING_RELIGION_TEMPLE_ATHURI`  | Shrine to Athuri  |         |             |
-| `WORLD_BUILDING_RELIGION_TEMPLE_CRATOR`  | Shrine to Crator  |         |             |
-| `WORLD_BUILDING_RELIGION_TEMPLE_SHMALOR` | Shrine to Shmalor |         |             |
+| Key                                      | Name              | Default | Description                                                            |
+|------------------------------------------|-------------------|---------|------------------------------------------------------------------------|
+| `WORLD_BUILDING_RELIGION_TEMPLE_AMINION` | Shrine to Aminion |         | generated from the temple/shrine of each religion (key = religion key) |
+| `WORLD_BUILDING_RELIGION_TEMPLE_ATHURI`  | Shrine to Athuri  |         |                                                                        |
+| `WORLD_BUILDING_RELIGION_TEMPLE_CRATOR`  | Shrine to Crator  |         |                                                                        |
+| `WORLD_BUILDING_RELIGION_TEMPLE_SHMALOR` | Shrine to Shmalor |         |                                                                        |
 
 ## REGION PROPERTIES
 
@@ -462,10 +479,23 @@ affects the room's 'coziness' score, which affects food upkeep; possibly useless
 | `WORLD_CONVERSION_CRATOR`  | Cratorism  |         |             |
 | `WORLD_CONVERSION_SHMALOR` | Shmalorism |         |             |
 
+### Captives
+Per-region slave/captive output target, one key per race (`SLAVE_PRODUCTION_` + race key). Distinct from the daily/yearly `WORLD_PRODUCTION_SLAVE_<race>` production boostables.
+
+| Key                          | Name                 | Default | Description |
+|------------------------------|----------------------|---------|-------------|
+| `SLAVE_PRODUCTION_ARGONOSH`  | Captives: Argonosh   |         |             |
+| `SLAVE_PRODUCTION_CANTOR`    | Captives: Cantors    |         |             |
+| `SLAVE_PRODUCTION_CRETONIAN` | Captives: Cretonians |         |             |
+| `SLAVE_PRODUCTION_DONDORIAN` | Captives: Dondorians |         |             |
+| `SLAVE_PRODUCTION_GARTHIMI`  | Captives: Garthimis  |         |             |
+| `SLAVE_PRODUCTION_HUMAN`     | Captives: Humans     |         |             |
+| `SLAVE_PRODUCTION_Q_AMEVIA`  | Captives: Amevias    |         |             |
+| `SLAVE_PRODUCTION_TILAPI`    | Captives: Tilapis    |         |             |
+
 ### Loyalty
 | Key                       | Name                | Default | Description |
 |---------------------------|---------------------|---------|-------------|
-| `WORLD_LOYALTY_ARUAN`     | Loyalty: Aruans     |         |             |
 | `WORLD_LOYALTY_CRETONIAN` | Loyalty: Cretonians |         |             |
 | `WORLD_LOYALTY_DONDORIAN` | Loyalty: Dondorians |         |             |
 | `WORLD_LOYALTY_GARTHIMI`  | Loyalty: Garthimis  |         |             |
@@ -474,129 +504,149 @@ affects the room's 'coziness' score, which affects food upkeep; possibly useless
 | `WORLD_LOYALTY_TILAPI`    | Loyalty: Tilapis    |         |             |
 
 ### Other
-| Key                          | Name      | Default | Description                                                                                       |
-|------------------------------|-----------|---------|---------------------------------------------------------------------------------------------------|
-| `WORLD_POINT_WORKFORCE`      | Workforce |         | available workforce points in owned regions                                                       |
-| `WORLD_TAX_INCOME`           | Taxes     |         | tax income from owned regions                                                                     |
-| `WORLD_VISUAL_MINE`          |           |         | unknown                                                                                           |
-| `WORLD_VISUAL_ROADS`         |           |         | unknown                                                                                           |
-| `WORLD_VISUAL_WALL`          |           |         | unknown                                                                                           |
-| `WORLD_FULFILLMENT_EXPONENT` |           |         | unknown; possibly affects the fulfillment equation but on a region level?                         |
-| `WORLD_PROXIMITY`            | Proximity |         | affects proximity penalties on certain region stats and actions; higher value = higher penalties? |
-| `WORLD_HEALTH`               | Health    |         | affects likelihood of disease outbreaks/spread in a region                                        |
+| Key                                  | Name             | Default | Description                                                                                                  |
+|--------------------------------------|------------------|---------|--------------------------------------------------------------------------------------------------------------|
+| `WORLD_POINT_WORKFORCE`              | Workforce        |         | available workforce points in owned regions; used to construct and run buildings, excess used for industries |
+| `WORLD_TAX_INCOME`                   | Taxes            |         | tax income from owned regions                                                                                |
+| `WORLD_VISUAL_MINE`                  |                  |         | unknown (visual cache)                                                                                       |
+| `WORLD_VISUAL_ROADS`                 |                  |         | unknown (visual cache)                                                                                       |
+| `WORLD_VISUAL_WALL`                  |                  |         | unknown (visual cache)                                                                                       |
+| `WORLD_FULFILLMENT_EXPONENT_CITIZEN` |                  |         | per-class fulfillment/happiness exponent (citizens); replaces v70's single `WORLD_FULFILLMENT_EXPONENT`      |
+| `WORLD_FULFILLMENT_EXPONENT_SLAVE`   |                  |         | per-class fulfillment/happiness exponent (slaves)                                                            |
+| `WORLD_PROXIMITY`                    | Proximity        |         | physical distance from a region to your capital; affects tribute and loyalty                                 |
+| `WORLD_PROXIMITY_TOLL`               | Proximity (Toll) |         | proximity factor applied to tolls/trade                                                                      |
+| `WORLD_HEALTH`                       | Health           |         | affects likelihood of disease outbreaks/spread in a region                                                   |
 
 ### Population
-| Key                                 | Name                    | Default | Description                |
-|-------------------------------------|-------------------------|---------|----------------------------|
-| `WORLD_MAX_CITY_POP`                |                         |         | unknown, undefined by game |
-| `WORLD_POPULATION_CAPACITY`         | Region Capacity         |         |                            |
-| `WORLD_POPULATION_GROWTH_ARUAN`     | Growth: Aruans          |         |                            |
-| `WORLD_POPULATION_GROWTH_CRETONIAN` | Growth: Cretonians      |         |                            |
-| `WORLD_POPULATION_GROWTH_DONDORIAN` | Growth: Dondorians      |         |                            |
-| `WORLD_POPULATION_GROWTH_GARTHIMI`  | Growth: Garthimis       |         |                            |
-| `WORLD_POPULATION_GROWTH_HUMAN`     | Growth: Humans          |         |                            |
-| `WORLD_POPULATION_GROWTH_Q_AMEVIA`  | Growth: Amevias         |         |                            |
-| `WORLD_POPULATION_GROWTH_TILAPI`    | Growth: Tilapis         |         |                            |
-| `WORLD_POPULATION_GROWTH_Vargen`    | Growth: Vargen          |         |                            |
-| `WORLD_POPULATION_TARGET_ARUAN`     | Pop. Target: Aruans     |         |                            |
-| `WORLD_POPULATION_TARGET_CRETONIAN` | Pop. Target: Cretonians |         |                            |
-| `WORLD_POPULATION_TARGET_DONDORIAN` | Pop. Target: Dondorians |         |                            |
-| `WORLD_POPULATION_TARGET_GARTHIMI`  | Pop. Target: Garthimis  |         |                            |
-| `WORLD_POPULATION_TARGET_HUMAN`     | Pop. Target: Humans     |         |                            |
-| `WORLD_POPULATION_TARGET_Q_AMEVIA`  | Pop. Target: Amevias    |         |                            |
-| `WORLD_POPULATION_TARGET_TILAPI`    | Pop. Target: Tilapis    |         |                            |
+| Key                                 | Name                    | Default | Description                                                                                                           |
+|-------------------------------------|-------------------------|---------|-----------------------------------------------------------------------------------------------------------------------|
+| `WORLD_MAX_CITY_POPCITIZEN`         |                         |         | per-class max city pop (citizens); note: no underscore between `POP` and class key; replaces v70 `WORLD_MAX_CITY_POP` |
+| `WORLD_MAX_CITY_POPSLAVE`           |                         |         | per-class max city pop (slaves)                                                                                       |
+| `WORLD_POPULATION_CAPACITY`         | Region Capacity         |         |                                                                                                                       |
+| `WORLD_POPULATION_GROWTH_CRETONIAN` | Growth: Cretonians      |         |                                                                                                                       |
+| `WORLD_POPULATION_GROWTH_DONDORIAN` | Growth: Dondorians      |         |                                                                                                                       |
+| `WORLD_POPULATION_GROWTH_GARTHIMI`  | Growth: Garthimis       |         |                                                                                                                       |
+| `WORLD_POPULATION_GROWTH_HUMAN`     | Growth: Humans          |         |                                                                                                                       |
+| `WORLD_POPULATION_GROWTH_Q_AMEVIA`  | Growth: Amevias         |         |                                                                                                                       |
+| `WORLD_POPULATION_GROWTH_TILAPI`    | Growth: Tilapis         |         |                                                                                                                       |
+| `WORLD_POPULATION_TARGET_CRETONIAN` | Pop. Target: Cretonians |         |                                                                                                                       |
+| `WORLD_POPULATION_TARGET_DONDORIAN` | Pop. Target: Dondorians |         |                                                                                                                       |
+| `WORLD_POPULATION_TARGET_GARTHIMI`  | Pop. Target: Garthimis  |         |                                                                                                                       |
+| `WORLD_POPULATION_TARGET_HUMAN`     | Pop. Target: Humans     |         |                                                                                                                       |
+| `WORLD_POPULATION_TARGET_Q_AMEVIA`  | Pop. Target: Amevias    |         |                                                                                                                       |
+| `WORLD_POPULATION_TARGET_TILAPI`    | Pop. Target: Tilapis    |         |                                                                                                                       |
 
 ### Resource Production
-| Key                                        | Name                        | Default | Description |
-|--------------------------------------------|-----------------------------|---------|-------------|
-| `WORLD_RESOURCE_PRODUCTION_ALCO_BEER`      | Production: Piva            |         |             |
-| `WORLD_RESOURCE_PRODUCTION_ALCO_WINE`      | Production: Shedeh          |         |             |
-| `WORLD_RESOURCE_PRODUCTION_ARMOUR_LEATHER` | Production: Leather Armours |         |             |
-| `WORLD_RESOURCE_PRODUCTION_ARMOUR_PLATE`   | Production: Plate Armours   |         |             |
-| `WORLD_RESOURCE_PRODUCTION_BOW`            | Production: Bows            |         |             |
-| `WORLD_RESOURCE_PRODUCTION_BREAD`          | Production: Bread           |         |             |
-| `WORLD_RESOURCE_PRODUCTION_CLAY`           | Production: Clay            |         |             |
-| `WORLD_RESOURCE_PRODUCTION_CLOTHES`        | Production: Clothes         |         |             |
-| `WORLD_RESOURCE_PRODUCTION_COAL`           | Production: Coal            |         |             |
-| `WORLD_RESOURCE_PRODUCTION_COTTON`         | Production: Fibre           |         |             |
-| `WORLD_RESOURCE_PRODUCTION_EGG`            | Production: Eggs            |         |             |
-| `WORLD_RESOURCE_PRODUCTION_FABRIC`         | Production: Fabric          |         |             |
-| `WORLD_RESOURCE_PRODUCTION_FISH`           | Production: Fish            |         |             |
-| `WORLD_RESOURCE_PRODUCTION_FRUIT`          | Production: Fruit           |         |             |
-| `WORLD_RESOURCE_PRODUCTION_FURNITURE`      | Production: Furniture       |         |             |
-| `WORLD_RESOURCE_PRODUCTION_GEM`            | Production: Gems            |         |             |
-| `WORLD_RESOURCE_PRODUCTION_GRAIN`          | Production: Grain           |         |             |
-| `WORLD_RESOURCE_PRODUCTION_HERB`           | Production: Herbs           |         |             |
-| `WORLD_RESOURCE_PRODUCTION_JEWELRY`        | Production: Jewelry         |         |             |
-| `WORLD_RESOURCE_PRODUCTION_LEATHER`        | Production: Leather         |         |             |
-| `WORLD_RESOURCE_PRODUCTION_MACHINERY`      | Production: Machinery       |         |             |
-| `WORLD_RESOURCE_PRODUCTION_MEAT`           | Production: Meat            |         |             |
-| `WORLD_RESOURCE_PRODUCTION_METAL`          | Production: Metal           |         |             |
-| `WORLD_RESOURCE_PRODUCTION_MUSHROOM`       | Production: Mushrooms       |         |             |
-| `WORLD_RESOURCE_PRODUCTION_OPIATES`        | Production: Opiates         |         |             |
-| `WORLD_RESOURCE_PRODUCTION_ORE`            | Production: Ore             |         |             |
-| `WORLD_RESOURCE_PRODUCTION_PAPER`          | Production: Paper           |         |             |
-| `WORLD_RESOURCE_PRODUCTION_POTTERY`        | Production: Pottery         |         |             |
-| `WORLD_RESOURCE_PRODUCTION_RATION`         | Production: Rations         |         |             |
-| `WORLD_RESOURCE_PRODUCTION_SITHILON`       | Production: Sithilon ores   |         |             |
-| `WORLD_RESOURCE_PRODUCTION_STONE_CUT`      | Production: Cut Stone       |         |             |
-| `WORLD_RESOURCE_PRODUCTION_TOOL`           | Production: Tools           |         |             |
-| `WORLD_RESOURCE_PRODUCTION_VEGETABLE`      | Production: Vegetables      |         |             |
-| `WORLD_RESOURCE_PRODUCTION_WEAPON_HAMMER`  | Production: Warhammers      |         |             |
-| `WORLD_RESOURCE_PRODUCTION_WEAPON_MOUNT`   | Production: War-Beast       |         |             |
-| `WORLD_RESOURCE_PRODUCTION_WEAPON_SHIELD`  | Production: Shields         |         |             |
-| `WORLD_RESOURCE_PRODUCTION_WEAPON_SHORT`   | Production: Falcatas        |         |             |
-| `WORLD_RESOURCE_PRODUCTION_WEAPON_SLASH`   | Production: Flanxes         |         |             |
-| `WORLD_RESOURCE_PRODUCTION_WEAPON_SPEAR`   | Production: Spears          |         |             |
-| `WORLD_RESOURCE_PRODUCTION__LIVESTOCK`     | Production: Livestock       |         |             |
-| `WORLD_RESOURCE_PRODUCTION__STONE`         | Production: Stone           |         |             |
-| `WORLD_RESOURCE_PRODUCTION__WOOD`          | Production: Wood            |         |             |
+v71 renamed these from `WORLD_RESOURCE_PRODUCTION_<res>` to `WORLD_PRODUCTION_<tradable>`, where `<tradable>` is the trade key from `init/trade/TR.java`: `RES_<res>` (raw resource key with any leading underscore stripped, e.g. `_LIVESTOCK`→`RES_LIVESTOCK`, `_STONE`→`RES_STONE`, `_WOOD`→`RES_WOOD`) **and** `SLAVE_<race>` (one per race, slaves are tradables too). So there are two key shapes: `WORLD_PRODUCTION_RES_<res>` and `WORLD_PRODUCTION_SLAVE_<race>`. This is the per-region daily production amount; each also has a `_YEARLY` variant (see next section). Verified against the runtime boost-key registry dump.
+
+| Key                                   | Name                        | Default | Description                                                                     |
+|---------------------------------------|-----------------------------|---------|---------------------------------------------------------------------------------|
+| `WORLD_PRODUCTION_RES_ALCO_BEER`      | Production: Piva            |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_ALCO_WINE`      | Production: Shedeh          |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_ARMOUR_LEATHER` | Production: Leather Armours |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_ARMOUR_PLATE`   | Production: Plate Armours   |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_BOW`            | Production: Bows            |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_BREAD`          | Production: Bread           |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_CLAY`           | Production: Clay            |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_CLOTHES`        | Production: Clothes         |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_COAL`           | Production: Coal            |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_COTTON`         | Production: Fibre           |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_EGG`            | Production: Eggs            |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_FABRIC`         | Production: Fabric          |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_FISH`           | Production: Fish            |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_FRUIT`          | Production: Fruit           |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_FURNITURE`      | Production: Furniture       |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_GEM`            | Production: Gems            |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_GRAIN`          | Production: Grain           |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_HERB`           | Production: Herbs           |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_JEWELRY`        | Production: Jewelry         |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_LEATHER`        | Production: Leather         |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_MACHINERY`      | Production: Machinery       |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_MEAT`           | Production: Meat            |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_METAL`          | Production: Metal           |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_MUSHROOM`       | Production: Mushrooms       |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_OPIATES`        | Production: Opiates         |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_ORE`            | Production: Ore             |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_PAPER`          | Production: Paper           |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_POTTERY`        | Production: Pottery         |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_RATION`         | Production: Rations         |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_SITHILON`       | Production: Sithilon ores   |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_STONE_CUT`      | Production: Cut Stone       |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_TOOL`           | Production: Tools           |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_VEGETABLE`      | Production: Vegetables      |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_WEAPON_HAMMER`  | Production: Warhammers      |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_WEAPON_MOUNT`   | Production: War-Beast       |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_WEAPON_SHIELD`  | Production: Shields         |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_WEAPON_SHORT`   | Production: Falcatas        |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_WEAPON_SLASH`   | Production: Flanxes         |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_WEAPON_SPEAR`   | Production: Spears          |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_LIVESTOCK`      | Production: Livestock       |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_STONE`          | Production: Stone           |         |                                                                                 |
+| `WORLD_PRODUCTION_RES_WOOD`           | Production: Wood            |         |                                                                                 |
+| `WORLD_PRODUCTION_SLAVE_ARGONOSH`     | Production: Argonosh        |         | per-region daily slave (captive) output; one key per race (`SLAVE_` + race key) |
+| `WORLD_PRODUCTION_SLAVE_CANTOR`       | Production: Cantors         |         |                                                                                 |
+| `WORLD_PRODUCTION_SLAVE_CRETONIAN`    | Production: Cretonians      |         |                                                                                 |
+| `WORLD_PRODUCTION_SLAVE_DONDORIAN`    | Production: Dondorians      |         |                                                                                 |
+| `WORLD_PRODUCTION_SLAVE_GARTHIMI`     | Production: Garthimis       |         |                                                                                 |
+| `WORLD_PRODUCTION_SLAVE_HUMAN`        | Production: Humans          |         |                                                                                 |
+| `WORLD_PRODUCTION_SLAVE_Q_AMEVIA`     | Production: Amevias         |         |                                                                                 |
+| `WORLD_PRODUCTION_SLAVE_TILAPI`       | Production: Tilapis         |         |                                                                                 |
 
 ### Resource Production (Yearly)
-unknown how this differs from non-yearly keys; possibly refers to the yearly tribute vassals give you
+v71 renamed these from `WORLD_WORLD_RESOURCE_PRODUCTION_<res>_YEARLY` to `WORLD_PRODUCTION_RES_<res>_YEARLY`. This is the yearly-accumulated delivery portion (seasonal/once-a-year output, e.g. farm harvests and tribute) as opposed to the daily `WORLD_PRODUCTION_RES_<res>`.
 
-| Key                                                     | Name                        | Default | Description |
-|---------------------------------------------------------|-----------------------------|---------|-------------|
-| `WORLD_WORLD_RESOURCE_PRODUCTION_ALCO_BEER_YEARLY`      | Production: Piva            |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_ALCO_WINE_YEARLY`      | Production: Shedeh          |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_ARMOUR_LEATHER_YEARLY` | Production: Leather Armours |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_ARMOUR_PLATE_YEARLY`   | Production: Plate Armours   |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_BOW_YEARLY`            | Production: Bows            |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_BREAD_YEARLY`          | Production: Bread           |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_CLAY_YEARLY`           | Production: Clay            |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_CLOTHES_YEARLY`        | Production: Clothes         |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_COAL_YEARLY`           | Production: Coal            |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_COTTON_YEARLY`         | Production: Fibre           |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_EGG_YEARLY`            | Production: Eggs            |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_FABRIC_YEARLY`         | Production: Fabric          |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_FISH_YEARLY`           | Production: Fish            |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_FRUIT_YEARLY`          | Production: Fruit           |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_FURNITURE_YEARLY`      | Production: Furniture       |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_GEM_YEARLY`            | Production: Gems            |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_GRAIN_YEARLY`          | Production: Grain           |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_HERB_YEARLY`           | Production: Herbs           |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_JEWELRY_YEARLY`        | Production: Jewelry         |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_LEATHER_YEARLY`        | Production: Leather         |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_MACHINERY_YEARLY`      | Production: Machinery       |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_MEAT_YEARLY`           | Production: Meat            |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_METAL_YEARLY`          | Production: Metal           |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_MUSHROOM_YEARLY`       | Production: Mushrooms       |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_OPIATES_YEARLY`        | Production: Opiates         |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_ORE_YEARLY`            | Production: Ore             |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_PAPER_YEARLY`          | Production: Paper           |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_POTTERY_YEARLY`        | Production: Pottery         |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_RATION_YEARLY`         | Production: Rations         |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_SITHILON_YEARLY`       | Production: Sithilon ores   |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_STONE_CUT_YEARLY`      | Production: Cut Stone       |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_TOOL_YEARLY`           | Production: Tools           |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_VEGETABLE_YEARLY`      | Production: Vegetables      |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_WEAPON_HAMMER_YEARLY`  | Production: Warhammers      |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_WEAPON_MOUNT_YEARLY`   | Production: War-Beast       |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_WEAPON_SHIELD_YEARLY`  | Production: Shields         |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_WEAPON_SHORT_YEARLY`   | Production: Falcatas        |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_WEAPON_SLASH_YEARLY`   | Production: Flanxes         |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION_WEAPON_SPEAR_YEARLY`   | Production: Spears          |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION__LIVESTOCK_YEARLY`     | Production: Livestock       |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION__STONE_YEARLY`         | Production: Stone           |         |             |
-| `WORLD_WORLD_RESOURCE_PRODUCTION__WOOD_YEARLY`          | Production: Wood            |         |             |
-| `WORLD_WORLD_TAX_INCOME_YEARLY`                         | Taxes                       |         |             |
+| Key                                          | Name                        | Default | Description |
+|----------------------------------------------|-----------------------------|---------|-------------|
+| `WORLD_PRODUCTION_RES_ALCO_BEER_YEARLY`      | Production: Piva            |         |             |
+| `WORLD_PRODUCTION_RES_ALCO_WINE_YEARLY`      | Production: Shedeh          |         |             |
+| `WORLD_PRODUCTION_RES_ARMOUR_LEATHER_YEARLY` | Production: Leather Armours |         |             |
+| `WORLD_PRODUCTION_RES_ARMOUR_PLATE_YEARLY`   | Production: Plate Armours   |         |             |
+| `WORLD_PRODUCTION_RES_BOW_YEARLY`            | Production: Bows            |         |             |
+| `WORLD_PRODUCTION_RES_BREAD_YEARLY`          | Production: Bread           |         |             |
+| `WORLD_PRODUCTION_RES_CLAY_YEARLY`           | Production: Clay            |         |             |
+| `WORLD_PRODUCTION_RES_CLOTHES_YEARLY`        | Production: Clothes         |         |             |
+| `WORLD_PRODUCTION_RES_COAL_YEARLY`           | Production: Coal            |         |             |
+| `WORLD_PRODUCTION_RES_COTTON_YEARLY`         | Production: Fibre           |         |             |
+| `WORLD_PRODUCTION_RES_EGG_YEARLY`            | Production: Eggs            |         |             |
+| `WORLD_PRODUCTION_RES_FABRIC_YEARLY`         | Production: Fabric          |         |             |
+| `WORLD_PRODUCTION_RES_FISH_YEARLY`           | Production: Fish            |         |             |
+| `WORLD_PRODUCTION_RES_FRUIT_YEARLY`          | Production: Fruit           |         |             |
+| `WORLD_PRODUCTION_RES_FURNITURE_YEARLY`      | Production: Furniture       |         |             |
+| `WORLD_PRODUCTION_RES_GEM_YEARLY`            | Production: Gems            |         |             |
+| `WORLD_PRODUCTION_RES_GRAIN_YEARLY`          | Production: Grain           |         |             |
+| `WORLD_PRODUCTION_RES_HERB_YEARLY`           | Production: Herbs           |         |             |
+| `WORLD_PRODUCTION_RES_JEWELRY_YEARLY`        | Production: Jewelry         |         |             |
+| `WORLD_PRODUCTION_RES_LEATHER_YEARLY`        | Production: Leather         |         |             |
+| `WORLD_PRODUCTION_RES_MACHINERY_YEARLY`      | Production: Machinery       |         |             |
+| `WORLD_PRODUCTION_RES_MEAT_YEARLY`           | Production: Meat            |         |             |
+| `WORLD_PRODUCTION_RES_METAL_YEARLY`          | Production: Metal           |         |             |
+| `WORLD_PRODUCTION_RES_MUSHROOM_YEARLY`       | Production: Mushrooms       |         |             |
+| `WORLD_PRODUCTION_RES_OPIATES_YEARLY`        | Production: Opiates         |         |             |
+| `WORLD_PRODUCTION_RES_ORE_YEARLY`            | Production: Ore             |         |             |
+| `WORLD_PRODUCTION_RES_PAPER_YEARLY`          | Production: Paper           |         |             |
+| `WORLD_PRODUCTION_RES_POTTERY_YEARLY`        | Production: Pottery         |         |             |
+| `WORLD_PRODUCTION_RES_RATION_YEARLY`         | Production: Rations         |         |             |
+| `WORLD_PRODUCTION_RES_SITHILON_YEARLY`       | Production: Sithilon ores   |         |             |
+| `WORLD_PRODUCTION_RES_STONE_CUT_YEARLY`      | Production: Cut Stone       |         |             |
+| `WORLD_PRODUCTION_RES_TOOL_YEARLY`           | Production: Tools           |         |             |
+| `WORLD_PRODUCTION_RES_VEGETABLE_YEARLY`      | Production: Vegetables      |         |             |
+| `WORLD_PRODUCTION_RES_WEAPON_HAMMER_YEARLY`  | Production: Warhammers      |         |             |
+| `WORLD_PRODUCTION_RES_WEAPON_MOUNT_YEARLY`   | Production: War-Beast       |         |             |
+| `WORLD_PRODUCTION_RES_WEAPON_SHIELD_YEARLY`  | Production: Shields         |         |             |
+| `WORLD_PRODUCTION_RES_WEAPON_SHORT_YEARLY`   | Production: Falcatas        |         |             |
+| `WORLD_PRODUCTION_RES_WEAPON_SLASH_YEARLY`   | Production: Flanxes         |         |             |
+| `WORLD_PRODUCTION_RES_WEAPON_SPEAR_YEARLY`   | Production: Spears          |         |             |
+| `WORLD_PRODUCTION_RES_LIVESTOCK_YEARLY`      | Production: Livestock       |         |             |
+| `WORLD_PRODUCTION_RES_STONE_YEARLY`          | Production: Stone           |         |             |
+| `WORLD_PRODUCTION_RES_WOOD_YEARLY`           | Production: Wood            |         |             |
+| `WORLD_PRODUCTION_SLAVE_ARGONOSH_YEARLY`     | Production: Argonosh        |         |             |
+| `WORLD_PRODUCTION_SLAVE_CANTOR_YEARLY`       | Production: Cantors         |         |             |
+| `WORLD_PRODUCTION_SLAVE_CRETONIAN_YEARLY`    | Production: Cretonians      |         |             |
+| `WORLD_PRODUCTION_SLAVE_DONDORIAN_YEARLY`    | Production: Dondorians      |         |             |
+| `WORLD_PRODUCTION_SLAVE_GARTHIMI_YEARLY`     | Production: Garthimis       |         |             |
+| `WORLD_PRODUCTION_SLAVE_HUMAN_YEARLY`        | Production: Humans          |         |             |
+| `WORLD_PRODUCTION_SLAVE_Q_AMEVIA_YEARLY`     | Production: Amevias         |         |             |
+| `WORLD_PRODUCTION_SLAVE_TILAPI_YEARLY`       | Production: Tilapis         |         |             |
+| `WORLD_TAX_INCOME_YEARLY`                    | Taxes                       |         |             |
+
+<!-- v71.19 update: race-derived region keys (loyalty/growth/target) removed AMEVIA→Q_AMEVIA. CON_<res> removed → per-room ROOM_CONSUMPTION_<room>[_i]. FULLY reconciled against the runtime boost-key registry dump (402 keys). Production keys use TR.java tradable keys: WORLD_PRODUCTION_RES_<res> (leading underscore stripped) + WORLD_PRODUCTION_SLAVE_<race>, both with _YEARLY variants. Added SLAVE_PRODUCTION_<race> (Captives) region family. WORLD_BUILDING_RELIGION_TEMPLE_<rel> retained. Per-race nurseries→ROOM_NURSERY_NORMAL + ROOM_BREEDER_GARTHIMI. Added ROOM_SCHOOL_NORMAL. CON_<res> removed → per-room ROOM_CONSUMPTION_<room> + per-recipe ROOM_CONSUMPTION_<room>_<i> (full list) + ROOM_CONSUMPTION__EMBASSY. CIVIC dropped PASIFISM/TRADE_FEE, added ADMIN/TRUST/EDUCATION_LIMIT_0/1. PHYSICS added REPRODUCTION_AGE/SPEED (RESISTANCE_HOT 0.8→0.5, SOILING 0.125). BEHAVIOUR added HAPPINESS_SLAVES. SERVICE RATE added RATES_COURT/RATES_STOCKS. WORLD_FULFILLMENT_EXPONENT & WORLD_MAX_CITY_POP became per-HCLASS (CITIZEN/SLAVE). Added WORLD_PROXIMITY_TOLL. BATTLE_BLUNT_ATTACK default 50→40. -->
