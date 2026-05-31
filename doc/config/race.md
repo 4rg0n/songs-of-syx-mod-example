@@ -41,26 +41,29 @@
 ## RACE KEYS
 Info: [Integr.MAX_VALUE](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#MAX_VALUE)
 
-| Key              | Type          | Required | Default | Min    | Max  | Description                                                                                                                                                                                                                                                                                                                     | Example                                                                                                      |
-|------------------|---------------|----------|---------|--------|------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| PLAYABLE         | boolean       | no       | false   | none   | none | Whether the race can be played by the player.                                                                                                                                                                                                                                                                                   |                                                                                                              |
-| TRAITS.\<TRAIT\> | keylist:float | no       | none    | 0.0    | 1.0  | List of traits with their chances the race can have.<br/>Possible race names can be found in `assets/init/race/trait`.                                                                                                                                                                                                          | `{ *: 0.1, COMPOTENT: 0.3, CRUEL: 0.2, }`<br/>or `{ *: 0.5, }` for all                                       |
-| BOOST.\<KEY\>    |               | no       | none    | none   | none | See [boosts](boost.md)                                                                                                                                                                                                                                                                                                          |                                                                                                              |
-| STATS.\<KEY\>    |               | no       | none    | none   | none | See [race stats](#race-stats)                                                                                                                                                                                                                                                                                                   |                                                                                                              |
+| Key                              | Type              | Required | Default | Min  | Max   | Description                                                                                                                                                                                                    | Example                                                                |
+|----------------------------------|-------------------|----------|---------|------|-------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|
+| PLAYABLE                         | boolean           | no       | false   | none | none  | Whether the race can be played by the player.                                                                                                                                                                  |                                                                        |
+| TRAITS.\<TRAIT\>                 | keylist:float     | no       | none    | 0.0  | 1.0   | List of traits with their chances the race can have.<br/>Possible race names can be found in `assets/init/race/trait`.                                                                                         | `{ *: 0.1, COMPOTENT: 0.3, CRUEL: 0.2, }`<br/>or `{ *: 0.5, }` for all |
+| BOOST.\<KEY\>                    |                   | no       | none    | none | none  | See [boosts](boost.md)                                                                                                                                                                                         |                                                                        |
+| STATS.\<KEY\>                    |                   | no       | none    | none | none  | See [race stats](#race-stats)                                                                                                                                                                                  |                                                                        |
+| MILITARY_SUPPLY_USE.\<RESOURCE\> | keylist:integer   | no       | none    | 0    | 10000 | Per-resource army supply efficiency for this race.<br/>Possible \<RESOURCE\> names come from supply resources in `assets/init/resource/supply`.                                                                | `{ *: 1, }`                                                            |
+| ROOM_FLOOR_OVERRIDE.\<ROOM\>     | keylist:floorlist | no       | none    | none | none  | Overrides the default floor tiers (low/medium/high) used when this race auto-builds the given room.<br/>Possible \<ROOM\> names come from `assets/init/room`; floor names from `assets/init/settlement/floor`. | `{ _HEARTH: [DARK1, DARK2, DARK3,], }`                                 |
+| TECH                             | keylist           | no       | none    | none | none  | [?] Present in base-game race files (e.g. `[ *, ]`) but not parsed by the v71 race loader; appears vestigial.                                                                                                  | `[ *, ]`                                                               |
 
 ### FILES
-| Keys                      | Type     | Required | Default    | Min  | Max  | Description                                                                                                                                                            | Example                                                                                                      |
-|---------------------------|----------|----------|------------|------|------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| BIO_FILE                  | filename | yes      | none       | none | none | File name (without file extension) of the general race bio file found in `assets/text/race/bio`.<br/>Used for the description when inspecting a citizen.               | `Dry`                                                                                                        |
-| BIO_FILE_SPECIFIC         | filename | yes      | none       | none | none | File name (without file extension) of the specific race bio file found in `assets/text/race/bio/specific`<br/>Used for the race description when inspecting a citizen. | `Human`                                                                                                      |
-| SPRITE_FILE               | filename | yes      | none       | none | none | File name (without file extension) of the race sprite sheet file found in `assets/sprite/race`.                                                                        | `Human`                                                                                                      |
-| ICON_BIG                  | path     | no       | dummy icon | none | none | File path and sprite tile to the race big icon found in `assets/sprite/icon/`.                                                                                         | `32->race->Human->0`<br/>The real path would be:<br/>`assets/init/icon/32/race/Human.png` first (0) tile.    |
-| ICON_SMALL                | path     | no       | dummy icon | none | none | File path and sprite tile to the race small icon found in `assets/sprite/icon/`.                                                                                       |
-| HOME                      | filename | yes      | none       | none | none | File name (without file extension) of the race' home configuration found in `assets/init/race/home`<br/>Used for furnishing the homes.                                 | `HUMAN`                                                                                                      |
-| KING_FILE                 | filename | yes      | none       | none | none | File name (without file extension) of the race' king file found in `assets/text/race/king`<br/>Used for AI kings when communicating with the player.                   | `Normal`                                                                                                     |
-| RAID_TEXT_FILE            | filename | yes      | none       | none | none | File name (without file extension) of the race' raid messages file found in `assets/text/race/raider/message`<br/>Used for raider messages.                            | `Normal`                                                                                                     |
-| RAIDER_NAME_FILE          | filename | yes      | none       | none | none | File name (without file extension) of the race' raider names file found in `assets/text/race/raider/name`<br/>Used for naming the raider leader.                       | `Normal`                                                                                                     |
-| WORLD_NAME_FILE           | filename | yes      | none       | none | none | File name (without file extension) of the race' world name file found in `assets/text/names/world`<br/>Used for region names in the world.                             | `Misc`                                                                                                       |
+| Keys              | Type     | Required | Default    | Min  | Max  | Description                                                                                                                                                                                                                     | Example                                                                                                   |
+|-------------------|----------|----------|------------|------|------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| BIO_FILE          | filename | yes      | none       | none | none | File name (without file extension) of the general race bio file found in `assets/text/race/bio`.<br/>Used for the description when inspecting a citizen.                                                                        | `Dry`                                                                                                     |
+| BIO_FILE_SPECIFIC | filename | no       | none       | none | none | File name (without file extension) of the specific race bio file found in `assets/text/race/bio/specific`<br/>Used for the race description when inspecting a citizen. (Optional in v71; typically only playable races set it.) | `Human`                                                                                                   |
+| SPRITE_FILE       | filename | yes      | none       | none | none | File name (without file extension) of the race sprite sheet file found in `assets/sprite/race`.                                                                                                                                 | `Human`                                                                                                   |
+| ICON_BIG          | path     | no       | dummy icon | none | none | File path and sprite tile to the race big icon found in `assets/sprite/icon/`.                                                                                                                                                  | `32->race->Human->0`<br/>The real path would be:<br/>`assets/init/icon/32/race/Human.png` first (0) tile. |
+| ICON_SMALL        | path     | no       | dummy icon | none | none | File path and sprite tile to the race small icon found in `assets/sprite/icon/`.                                                                                                                                                |
+| HOME              | filename | yes      | none       | none | none | File name (without file extension) of the race' home configuration found in `assets/init/race/home`<br/>Used for furnishing the homes.                                                                                          | `HUMAN`                                                                                                   |
+| KING_FILE         | filename | yes      | none       | none | none | File name (without file extension) of the race' king file found in `assets/text/race/king`<br/>Used for AI kings when communicating with the player.                                                                            | `Normal`                                                                                                  |
+| RAID_TEXT_FILE    | filename | yes      | none       | none | none | File name (without file extension) of the race' raid messages file found in `assets/text/race/raider/message`<br/>Used for raider messages.                                                                                     | `Normal`                                                                                                  |
+| RAIDER_NAME_FILE  | filename | yes      | none       | none | none | File name (without file extension) of the race' raider names file found in `assets/text/race/raider/name`<br/>Used for naming the raider leader.                                                                                | `Normal`                                                                                                  |
+| WORLD_NAME_FILE   | filename | yes      | none       | none | none | File name (without file extension) of the race' world name file found in `assets/text/names/world`<br/>Used for region names in the world.                                                                                      | `Misc`                                                                                                    |
 
 ### POPULATION
 | Key                            | Type  | Required | Default | Min    | Max      | Description                                                                                                                                                                             | Example                                                                                                      |
@@ -79,15 +82,17 @@ Info: [Integr.MAX_VALUE](https://docs.oracle.com/javase/8/docs/api/java/lang/Int
 | TOURIST.TOURIST_TEXT_FILE | filename | no       | none    | none | none     | File name containing the review texts for tourists in `assets/text/race/tourist`. |         |
 
 ### PROPERTIES
-| Key                       | Type    | Required | Default          | Min  | Max              | Description                                            | Example |
-|---------------------------|---------|----------|------------------|------|------------------|--------------------------------------------------------|---------|
-| PROPERTIES.HEIGHT         | integer | yes      | none             | 0    | 200              | Height from ground level. [?] Used for...?             |         |
-| PROPERTIES.WIDTH          | integer | yes      | none             | 5    | 15               | Size of the hit box.                                   |         |
-| PROPERTIES.ADULT_AT_DAY   | integer | yes      | none             | 0    | Integr.MAX_VALUE | Days until adulthood.                                  |         |
-| PROPERTIES.RAID_MERCINARY | float   | yes      | none             | 0.0  | 100000.0         | Chance for the race to spawn in a group of mercenaries |         |
-| PROPERTIES.SLAVE_PRICE    | integer | no       | ADULT_AT_DAY*2+5 | 0    | Integr.MAX_VALUE | Price of the race as slaves.                           |         |
-| PROPERTIES.SLEEPS         | boolean | no       | false            | none | none             | Whether the race needs to sleep.                       |         |                                                                                                              
-| PROPERTIES.CORPSE_DECAY   | boolean | no       | false            | none | none             | Whether the dead body decays.                          |         |
+| Key                             | Type    | Required | Default | Min  | Max              | Description                                                                                                   | Example |
+|---------------------------------|---------|----------|---------|------|------------------|---------------------------------------------------------------------------------------------------------------|---------|
+| PROPERTIES.HEIGHT               | integer | yes      | none    | 0    | 200              | Height from ground level. [?] Used for...?                                                                    |         |
+| PROPERTIES.WIDTH                | integer | yes      | none    | 5    | 15               | Size of the hit box.                                                                                          |         |
+| PROPERTIES.BABY_DAYS            | integer | yes      | none    | 0    | Integr.MAX_VALUE | Days spent as a baby (in the nursery). `ADULT_AT_DAY` (used in v70) is now derived as `BABY_DAYS+CHILD_DAYS`. |         |
+| PROPERTIES.CHILD_DAYS           | integer | yes      | none    | 0    | Integr.MAX_VALUE | Days spent as a child after being a baby. Adulthood is reached at `BABY_DAYS+CHILD_DAYS`.                     |         |
+| PROPERTIES.RAID_MERCINARY       | float   | yes      | none    | 0.0  | 100000.0         | Chance for the race to spawn in a group of mercenaries.                                                       |         |
+| PROPERTIES.SLAVE_PRICE          | float   | yes      | none    | 0.0  | Integr.MAX_VALUE | Price of the race as slaves.                                                                                  |         |
+| PROPERTIES.SLAVE_PRICE_RECOVERY | float   | yes      | none    | 0.0  | 10.0             | [?] Rate at which the slave price recovers/normalizes.                                                        |         |
+| PROPERTIES.SLEEPS               | boolean | yes      | none    | none | none             | Whether the race needs to sleep.                                                                              |         |
+| PROPERTIES.CORPSE_DECAY         | boolean | yes      | none    | none | none             | Whether the dead body decays.                                                                                 |         |
 
 ### EQUIPMENT
 | Key                     | Type    | Required | Default | Min    | Max   | Description                                                                                                                                                                                                                                                                                                                     | Example                                                                                                      |
@@ -102,18 +107,21 @@ Info: [Integr.MAX_VALUE](https://docs.oracle.com/javase/8/docs/api/java/lang/Int
 | RESOURCE.\<RESOURCE\>          | keylist:integer  | no       | none    | 0   | 100000           | List of resources with amounts the race produces when cannibalized.<br/>Possible \<RESOURCE\> names can be found in `assets/init/resource`.      | `{ MEAT: 2ß, COTTON: 10, }`  |
 
 ### PREFERENCES
-| Key                                    | Type          | Required | Default | Min      | Max     | Description                                                                                                                                                             | Example                                                                                        |
-|----------------------------------------|---------------|----------|---------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
-| PREFERRED.FOOD.\<FOOD\>                | keylist       | no       | none    | none     | none    | List of foods the race prefers.<br/>Possible \<FOOD\> names can be found in `assets/init/resource/edible`.                                                              | `[ MEAT, FISH, EGG ]`<br/>or `[ *, ]` for all                                                  |
-| PREFERRED.DRINK.\<DRINK\>              | keylist:float | no       | none    | none     | none    | List of drinks the race prefers.<br/>Possible \<DRINK\> names can be found in `assets/init/resource/drinkable`.                                                         | `[ ALCO_BEER, ]`<br/>or `[ *, ]` for all                                                       |
-| PREFERRED.WORK.\<ROOM\>                | keylist:float | no       | none    | -10000.0 | 10000.0 | List of rooms and their "prefer values" the race prefers to work in.<br/>Possible \<ROOM\> names can be found in `assets/init/room`.                                    | `{ *: 0.3, MINE_CLAY: 0.1, BARRACKS_VANILLA: 1.0, _GUARD: 1.0, }`<br/>or `{ *: 0.5, }` for all |
-| PREFERRED.STRUCTURE.\<STRUCTURE\>      | keylist:float | no       | none    | 0.0      | 1.0     | List of wall structures and their "prefer values" the race prefers.<br/>Possible \<STRUCTURE\> names can be found in `assets/init/settlement/structure`.                | `{ _MUD: 0.1, WOOD: 0.5, STONE: 1.0, }`<br/>or `{ *: 0.5, }` for all                           |
-| PREFERRED.ROAD.\<FLOOR\>               | keylist:float | no       | none    | 0.0      | 1.0     | List of roads and their "prefer values" the race prefers.<br/>Possible \<FLOOR\> names can be found in `assets/init/settlement/floor`.                                  | `{ *: 0.1, DARK1: 0.5, DARK2: 0.8, DARK3: 1.0, }`<br/>or `{ *: 0.5, }` for all                 |
-| PREFERRED.POOL.\<POOL_ROOM\>           | keylist:float | no       | none    | 0.0      | 1.0     | List of pool rooms and their "prefer values" the race prefers to bath in.<br/>Possible \<POOL_ROOM\> names can be found in `assets/init/room`. They start with `POOL_`. | `{ *: 0.3, POOL_POND: 0.1, }`<br/>or `{ *: 0.5, }` for all                                     |
-| PREFERRED.OTHER_RACES.\<RACE\>         | keylist:float | no       | none    | 0.0      | 1.0     | List of races and their "prefer values" the race prefers to be with.<br/>Possible \<RACE\> names can be found in `assets/init/race`.                                    | `{ *: 0.3, GARTHIMI: 0.1, TILAPI: 0.5, _TILAPI: 1.0, }`<br/>or `{ *: 0.5, }` for all           |
-| PREFERRED.OTHER_RACES_REVERSE.\<RACE\> | keylist:float | no       | none    | 0.0      | 1.0     | List of modded races and their "prefer values" the race prefers to be with.<br/>Possible \<RACE\> names can be found in `assets/init/race`.                             | `{ DRAKEN: 0.3, }`<br/>or `{ *: 0.5, }` for all                                                |
-| PREFERRED.RESOURCE_RPICE_MUL           | float         | no       | none    | 0.0      | 100.0   | Price multiplier for resources the AI sells.                                                                                                                            |                                                                                                |
-| PREFERRED.RESOURCE_RPICE_CAP           | float         | no       | none    | 0.0      | 1.0     | Price multiplier for resources the AI buys.                                                                                                                             |                                                                                                | | `24->race->Human->0`<br/>The real path would be:<br/>`assets/init/icon/24/race/Human.png` first (0) tile.    |
+| Key                                    | Type          | Required | Default | Min  | Max   | Description                                                                                                                                                                                                                                                                                                                 | Example                                                                                        |
+|----------------------------------------|---------------|----------|---------|------|-------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| PREFERRED.FOOD.\<FOOD\>                | keylist       | no       | none    | none | none  | List of foods the race prefers.<br/>Possible \<FOOD\> names can be found in `assets/init/resource/edible`.                                                                                                                                                                                                                  | `[ MEAT, FISH, EGG ]`<br/>or `[ *, ]` for all                                                  |
+| PREFERRED.DRINK.\<DRINK\>              | keylist:float | no       | none    | none | none  | List of drinks the race prefers.<br/>Possible \<DRINK\> names can be found in `assets/init/resource/drinkable`.                                                                                                                                                                                                             | `[ ALCO_BEER, ]`<br/>or `[ *, ]` for all                                                       |
+| PREFERRED.WORK.\<ROOM\>                | keylist:float | no       | none    | 0.0  | 1.0   | List of rooms and their "prefer values" the race prefers to work in.<br/>Possible \<ROOM\> names can be found in `assets/init/room`.                                                                                                                                                                                        | `{ *: 0.3, MINE_CLAY: 0.1, BARRACKS_VANILLA: 1.0, _GUARD: 1.0, }`<br/>or `{ *: 0.5, }` for all |
+| PREFERRED.STRUCTURE.\<STRUCTURE\>      | keylist:float | no       | none    | 0.0  | 1.0   | List of wall structures and their "prefer values" the race prefers.<br/>Possible \<STRUCTURE\> names can be found in `assets/init/settlement/structure`.                                                                                                                                                                    | `{ _MUD: 0.1, WOOD: 0.5, STONE: 1.0, }`<br/>or `{ *: 0.5, }` for all                           |
+| PREFERRED.ROAD.\<FLOOR\>               | keylist:float | no       | none    | 0.0  | 1.0   | List of roads and their "prefer values" the race prefers.<br/>Possible \<FLOOR\> names can be found in `assets/init/settlement/floor`.                                                                                                                                                                                      | `{ *: 0.1, DARK1: 0.5, DARK2: 0.8, DARK3: 1.0, }`<br/>or `{ *: 0.5, }` for all                 |
+| PREFERRED.POOL.\<POOL_ROOM\>           | keylist:float | no       | none    | 0.0  | 1.0   | List of pool rooms and their "prefer values" the race prefers to bath in.<br/>Possible \<POOL_ROOM\> names can be found in `assets/init/room`. They start with `POOL_`.                                                                                                                                                     | `{ *: 0.3, POOL_POND: 0.1, }`<br/>or `{ *: 0.5, }` for all                                     |
+| PREFERRED.OTHER_RACES.\<RACE\>         | keylist:float | no       | none    | 0.0  | 1.0   | List of races and their "prefer values" the race prefers to be with.<br/>Possible \<RACE\> names can be found in `assets/init/race`.                                                                                                                                                                                        | `{ *: 0.3, GARTHIMI: 0.1, TILAPI: 0.5, _TILAPI: 1.0, }`<br/>or `{ *: 0.5, }` for all           |
+| PREFERRED.OTHER_RACES_REVERSE.\<RACE\> | keylist:float | no       | none    | 0.0  | 1.0   | List of modded races and their "prefer values" the race prefers to be with.<br/>Possible \<RACE\> names can be found in `assets/init/race`.                                                                                                                                                                                 | `{ DRAKEN: 0.3, }`<br/>or `{ *: 0.5, }` for all                                                |
+| PREFERRED.WORLD_BUILDING.\<BUILDING\>  | keylist:float | no       | none    | 0.0  | 100.0 | Overrides the loyalty/population/growth boosts of world-map buildings for this race.<br/>Possible \<BUILDING\> names come from `assets/init/world/region/building` (the `WORLD_BUILDING` map), e.g. `CIVIC_L_TAVERN`. (NOTE: some base-game files use a `BUILDING_OVERRIDE` key, but only `WORLD_BUILDING` is read in v71.) | `{ CIVIC_L_TAVERN: 1.5, CIVIC_L_STANDS: 1.25, }`                                               |
+| PREFERRED.CRIME.\<CRIME\>              | keylist:json  | no       | none    | none | none  | Per-crime overrides of the default `FREEDOM` and `LAW` values for this race.<br/>Possible \<CRIME\> names come from `assets/init/config/LAW.txt` (`CRIMES`): WAR, MURDER, THEFT, VANDALISM, FLASHING, DISRESPECT, SPEECH, PLEASURE + S_* slave variants. Each value is a json with `FREEDOM` (0..1) and/or `LAW` (0..1).    | `{ FLASHING: { FREEDOM: 0.75, }, }`                                                            |
+| PREFERRED.PUNISHMENT.\<PUNISHMENT\>    | keylist:float | no       | none    | 0.0  | 1.0   | Per-punishment override value for this race.<br/>Possible \<PUNISHMENT\> names come from `assets/init/config/LAW.txt` (`PUNISHMENTS`): PARDON, NONE, BANISH, PRISON, EXECUTE, ENSLAVE.                                                                                                                                      | `{ BANISH: 1.0, }`                                                                             |
+| PREFERRED.RESOURCE_RPICE_MUL           | float         | no       | none    | 0.0  | 100.0 | Price multiplier for resources the AI sells.                                                                                                                                                                                                                                                                                |                                                                                                |
+| PREFERRED.RESOURCE_RPICE_CAP           | float         | no       | none    | 0.0  | 1.0   | Price multiplier for resources the AI buys.                                                                                                                                                                                                                                                                                 |                                                                                                |
 
 ## RACE STATS
 
@@ -128,17 +136,21 @@ Some of them are hard coded or consist of loaded game assets like `STORED_MEAT`,
 Lists with all stats available in the vanilla game is below. '[Invert]' in the Description column indicates that existing race files use INVERTED = true for that key to indicate it has a negative effect (such as the presence of corpses in your city), and is thus suggested you do the same if you want to keep the intended effect of that key.
 
 ### ACCESS
-| Key                 | Description                                   |
-|---------------------|-----------------------------------------------|
-| ACCESS_LIGHT        | Access to torches and other light sources.    |
-| ACCESS_NOISE        | [Invert] Access to noise; [?] inverted.       |
-| ACCESS_SHAPE_ROUND  | Access to round buildings.                    |
-| ACCESS_SHAPE_SQUARE | Access to square buildings.                   |
-| ACCESS_SPACE        | Access to open spaces; [?] deprecated in v70. |
-| ACCESS_URBANISATION | [?] Access to tight/cluttered spaces.         |
-| ACCESS_ACCESS_WATER | [?] Access to any source of water.            |
-| ACCESS_WATER_SALT   | Access to salt water (oceans).                |
-| ACCESS_WATER_SWEET  | Access to fresh water (rivers, lakes, wells). |
+Dynamically created from the settlement environment map (`SETT.ENV().map`) plus building-shape and combined-water stats. (The `MONUMENTS_` keys come from a sub-collection of the same group — see [MONUMENTS](#monuments).)
+
+| Key                 | Description                                          |
+|---------------------|------------------------------------------------------|
+| ACCESS_LIGHT        | Access to torches and other light sources.           |
+| ACCESS_NOISE        | [Invert] Exposure to noise.                          |
+| ACCESS_SPACE        | Access to open spaces. (Still present in v71.)       |
+| ACCESS_URBANISATION | [?] Exposure to tight/cluttered/urban spaces.        |
+| ACCESS_GUARD        | [?] Guardpost coverage / proximity of guards.        |
+| ACCESS_PUNISHMENT   | [?] Exposure to nearby punishment activities.        |
+| ACCESS_WATER_SALT   | Access to salt water (oceans).                       |
+| ACCESS_WATER_SWEET  | Access to fresh water (rivers, lakes, wells).        |
+| ACCESS_WATER        | Combined access to any source of water (salt+sweet). |
+| ACCESS_SHAPE_ROUND  | Access to round buildings.                           |
+| ACCESS_SHAPE_SQUARE | Access to square buildings.                          |
 
 ### APPEARANCE
 | Key             | Description                                           |
@@ -182,19 +194,21 @@ Lists with all stats available in the vanilla game is below. '[Invert]' in the D
 | EDUCATION_INDOCTRINATION | Average indoctrination level in your city. |
 
 ### ENVIRONMENT
-| Key                        | Description                                               |
-|----------------------------|-----------------------------------------------------------|
-| ENVIRONMENT_BUILDING_PREF  | [?] Presence of preferred building structure types.       |
-| ENVIRONMENT_CANNIBALISM    | Eating other races.                                       |
-| ENVIRONMENT_CLIMATE        | [?] Presence of preferred climates.                       |
-| ENVIRONMENT_OTHERS         | [?]                                                       |
-| ENVIRONMENT_POOL_PREF      | [?] Presence of preferred pool rooms.                     |
-| ENVIRONMENT_ROAD_ACCESS    | [?]                                                       |
-| ENVIRONMENT_ROAD_PREF      | [?] Presence of preferred road floors.                    |
-| ENVIRONMENT_UNBURRIED      | [?] Presence of dead subjects contained in burial mounds. |
+| Key                          | Description                                                                  |
+|------------------------------|------------------------------------------------------------------------------|
+| ENVIRONMENT_BUILDING_PREF    | [?] Presence of preferred building structure types.                          |
+| ENVIRONMENT_ROAD_PREF        | [?] Presence of preferred road floors.                                       |
+| ENVIRONMENT_ROAD_ACCESS      | [?] Whether the subject has road access (standing on a road).                |
+| ENVIRONMENT_POOL_PREF        | [?] Presence of preferred pool rooms.                                        |
+| ENVIRONMENT_CLIMATE          | [?] Presence of preferred climates.                                          |
+| ENVIRONMENT_PATHOGENS        | [Invert] Exposure to ground moisture/pathogens (disease risk).               |
+| ENVIRONMENT_OTHERS           | [?] How well the present mix of other races matches this race's preferences. |
+| ENVIRONMENT_CANNIBALISM      | Eating other races.                                                          |
+| ENVIRONMENT_CANNIBALISM_PREF | [?] Cannibalism weighted by this race's dislike of the eaten races.          |
+| ENVIRONMENT_UNBURRIED        | [Invert] Presence of dead subjects contained in burial mounds.               |
 
 ### EQUIP
-Dynamically created via assets from: `assets/init/stats/equip`
+Dynamically created via assets from: `assets/init/stats/equip` (subfolders `battle/`, `civic/`, `ranged/`). The key is `EQUIP_{SUBFOLDER}_{FILE}` (a leading `_` in a file name collapses, so `civic/_CLOTHES.txt` becomes `EQUIP_CIVIC_CLOTHES`). The base game ships a `civic/_EXAMPLE.txt` modding template (yielding `EQUIP_CIVIC_EXAMPLE`).
 
 | Key                         | Description                     |
 |-----------------------------|---------------------------------|
@@ -245,33 +259,25 @@ Dynamically created via assets from: `assets/init/stats/equip`
 | HOME_HOUSED    | Whether a subject is housed or homeless.         |
 
 ### LAW
-| Key           | Description                                             |
-|---------------|---------------------------------------------------------|
-| LAW_ARENA     | Criminals punished by fighting in the arena.            |
-| LAW_ENSLAVED  | Criminals punished by enslavement.                      |
-| LAW_EQUALITY  | Fair treatment of all races.                            |
-| LAW_EXECUTION | Criminals punished by execution.                        |
-| LAW_EXILE     | Criminals punished by exile.                            |
-| LAW_EX_CON    | Punished criminals who are no longer imprisoned.        |
-| LAW_JUDGEMENT | Criminals processed in court.                           |
-| LAW_LAW       | Overall effectivess of punishment and arrests  		  |
-| LAW_NONE      | Criminals kept in the stockages without any punishment. |
-| LAW_PARDONED  | Criminals pardoned by you.                              |
-| LAW_PRISON    | Criminals punished by imprisonment.                     |
-| LAW_STOCKS    | Criminals punished by the stocks.                       |
+In v71 the crime/punishment system was reworked. Crimes and punishments are no longer individual race-stat keys; instead a race tunes them via [`PREFERRED.CRIME`](#preferences) and [`PREFERRED.PUNISHMENT`](#preferences) (crimes: WAR/MURDER/THEFT/VANDALISM/FLASHING/DISRESPECT/SPEECH/PLEASURE + S_* slave variants; punishments: PARDON/NONE/BANISH/PRISON/EXECUTE/ENSLAVE — all defined in `assets/init/config/LAW.txt`). The only actual `LAW_` race-stat keys created by the v71 stat code are:
+
+| Key               | Description                                                                |
+|-------------------|----------------------------------------------------------------------------|
+| LAW_EQUALITY      | Fair (equal) treatment of all races under the law.                         |
+| LAW_GUARDS        | [?] Effective guard power/coverage relative to population.                 |
+| LAW_EX_CON        | [?] Presence of punished criminals who are no longer imprisoned (ex-cons). |
+| LAW_EXECUTE_ARENA | [?] Executions carried out as arena spectacles (fight pits / grand arena). |
 
 ### MONUMENTS
 Dynamically created via assets from: `assets/init/room`. Via rooms beginning with `MONUMENT_`.
 
-| Key                               | Description                                                       |
-|-----------------------------------|-------------------------------------------------------------------|
-| MONUMENTS_MONUMENT_BLOB           | Access to humidifiers.                                            |
-| MONUMENTS_MONUMENT_FLOWER         | Access to flower decorations.                                     |
-| MONUMENTS_MONUMENT_PILLAR         | Access to pillar decorations.                                     |
-| MONUMENTS_MONUMENT_STATUE         | Access to statue decorations.                                     |
-| MONUMENTS_MONUMENT_TORCH          | Access to torches.                                                |
-| MONUMENTS_MONUMENT_TORCH_UPGRADED | Access to upgraded torches.                                       |
-| MONUMENTS_MONUMENT_TREE           | Access to tree decorations. NOT natural trees; player-built only. |
+| Key                          | Description                                          |
+|------------------------------|------------------------------------------------------|
+| MONUMENTS_MONUMENT_BLOB      | Access to blob/humidifier decorations.               |
+| MONUMENTS_MONUMENT_DEATH     | Access to death-themed decorations.                  |
+| MONUMENTS_MONUMENT_NATURE    | Access to nature decorations.                        |
+| MONUMENTS_MONUMENT_SCULPTURE | Access to sculpture/statue decorations.              |
+| MONUMENTS_MONUMENT_TORCH     | Access to torch decorations.                         |
 
 ### NEEDS
 | Key              | Description |
@@ -292,7 +298,7 @@ Dynamically created via assets from: `assets/init/room`. Via rooms beginning wit
 | POPULATION_IMMIGRANTS      | Amount of subjects who are immigrants.                                          |
 | POPULATION_MAJORITY        | Whether or not this subject's race is the majority in your city's population.   |
 | POPULATION_NATIVES         | Amount of subjects who are natives (born via nurseries).                        |
-| POPULATION_NOBLES          | Fraction of nobles who share this subject's race  							   |
+| POPULATION_NOBLES          | Amount of nobles who share this subject's race. [?] Is it really race-specific? |
 | POPULATION_SLAVES_OTHER    | Amount of slaves who aren't this subject's race.                                |
 | POPULATION_SLAVES_SELF     | Amount of slaves who are this subject's race.                                   |
 | POPULATION_TRAPPED         | Amount of subjects cut off from the throne room.                                |
@@ -308,28 +314,30 @@ Access to religion rooms.
 | RELIGION_TEMPLE              | Access to a temple of this subject's religion. |
 
 ### SERVICE
-Access to service rooms. Dynamically created via assets from: `assets/init/room`. Via rooms containing a `SERVICE` section in their config.
+Access to service rooms. Dynamically created from rooms that register a service-access module. The key is the room key (a leading `_` collapses, so room `_STOCKS` becomes `SERVICE_STOCKS`). Note that temples/shrines map to the [RELIGION](#religion) category instead, and nurseries/hospital are handled separately, so not every room with a `SERVICE` section produces a `SERVICE_` key. `SERVICE_BENCH` and `SERVICE_MISC_SKINNYDIP` are special non-room services.
 
-| Key                      | Description                        |
-|--------------------------|------------------------------------|
-| SERVICE_ARENAG_NORMAL    | Access to a Grand Arena.           |
-| SERVICE_BARBER_NORMAL    | Access to a Barber.                |
-| SERVICE_BATH_NORMAL      | Access to a Bathhouse.             |
-| SERVICE_BENCH            | Access to benches.                 |
-| SERVICE_CANTEEN_NORMAL   | Access to a Canteen.               |
-| SERVICE_EATERY_NORMAL    | Access to an Eatery.               |
-| SERVICE_FIGHTPIT_NORMAL  | Access to a Fight Pit.             |
-| SERVICE_HEARTH           | Access to a Hearth.                |
-| SERVICE_HOSPITAL         | Access to a Hospital.              |
-| SERVICE_LAVATORY_NORMAL  | Access to a Lavatory               |
-| SERVICE_MARKET_NORMAL    | Access to a Market                 |
-| SERVICE_MISC_SKINNYDIP   | Access to any skinny-dip location. |
-| SERVICE_PHYSICIAN_NORMAL | Access to a Physician.             |
-| SERVICE_PLEASURE_NORMAL  | Access to a Massage Parlor.        |
-| SERVICE_SPEAKER_NORMAL   | Access to a Speaker.               |
-| SERVICE_STAGE_NORMAL     | Access to a Stage.                 |
-| SERVICE_TAVERN_NORMAL    | Access to a Tavern.                |
-| SERVICE_WELL_NORMAL      | Access to a Well.                  |
+| Key                      | Description                                             |
+|--------------------------|---------------------------------------------------------|
+| SERVICE_ARENAG_NORMAL    | Access to a Grand Arena.                                |
+| SERVICE_BARBER_NORMAL    | Access to a Barber.                                     |
+| SERVICE_BATH_NORMAL      | Access to a Bathhouse.                                  |
+| SERVICE_BENCH            | Access to benches.                                      |
+| SERVICE_CANTEEN_NORMAL   | Access to a Canteen.                                    |
+| SERVICE_COURT            | Access to a Court.                                      |
+| SERVICE_EATERY_NORMAL    | Access to an Eatery.                                    |
+| SERVICE_FIGHTPIT_NORMAL  | Access to a Fight Pit.                                  |
+| SERVICE_HEARTH           | Access to a Hearth.                                     |
+| SERVICE_HOSPITAL         | Access to a Hospital.                                   |
+| SERVICE_LAVATORY_NORMAL  | Access to a Lavatory                                    |
+| SERVICE_MARKET_NORMAL    | Access to a Market                                      |
+| SERVICE_MISC_SKINNYDIP   | Access to any skinny-dip location.                      |
+| SERVICE_PHYSICIAN_NORMAL | Access to a Physician.                                  |
+| SERVICE_PLEASURE_NORMAL  | Access to a Massage Parlor.                             |
+| SERVICE_SPEAKER_NORMAL   | Access to a Speaker.                                    |
+| SERVICE_STAGE_NORMAL     | Access to a Stage.                                      |
+| SERVICE_STOCKS           | [Invert] Exposure to the Stocks (a punishment service). |
+| SERVICE_TAVERN_NORMAL    | Access to a Tavern.                                     |
+| SERVICE_WELL_NORMAL      | Access to a Well.                                       |
 
 ### STORED
 Resources stored in your stockpiles. Dynamically created via assets from: `assets/init/resource`.
@@ -393,7 +401,7 @@ Resources stored in your stockpiles. Dynamically created via assets from: `asset
 A single stat may look like e.g.:
 ```
 STATS: {
-	MONUMENTS_MONUMENT_FLOWER: {
+	MONUMENTS_MONUMENT_NATURE: {
 		CITIZEN: 0.5,
 		SLAVE: 0.5,
 		PRIO: 10,
@@ -429,3 +437,5 @@ Referencing values used in base-game race files, the game tends to reuse certain
 - 0 (subject does not care)
 
 Values indicate desire (positive effect) by default; if key INVERTED = true, then values indicate dislike instead (negative effect).
+
+<!-- v71.19 update: re-grounded against extracted v71.19 assets + decompiled stat sources; PROPERTIES (BABY_DAYS/CHILD_DAYS/SLAVE_PRICE_RECOVERY), new PREFERRED CRIME/PUNISHMENT/WORLD_BUILDING, ROOM_FLOOR_OVERRIDE/MILITARY_SUPPLY_USE; ACCESS adds GUARD/PUNISHMENT/WATER (SPACE not deprecated); ENVIRONMENT adds PATHOGENS/CANNIBALISM_PREF; LAW reworked to EQUALITY/GUARDS/EX_CON/EXECUTE_ARENA (crimes/punishments now via PREFERRED); MONUMENTS = BLOB/DEATH/NATURE/SCULPTURE/TORCH; SERVICE adds COURT/STOCKS; STORED/EQUIP/STAT-categories verified unchanged. -->
