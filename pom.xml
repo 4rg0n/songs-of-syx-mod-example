@@ -174,8 +174,8 @@
             * Run a "mvn validate" to install the new version in the local maven repository
             * Maven is then able to find and resolve the new Songs of Syx code
          -->
-        <game.version.major>70</game.version.major>
-        <game.version.minor>32</game.version.minor>
+        <game.version.major>71</game.version.major>
+        <game.version.minor>33</game.version.minor>
 
         <!-- Mod SDK (this only applies when "mod-sdk" profile is enabled) -->
         <mod.sdk.version>0</mod.sdk.version>

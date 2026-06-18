@@ -1,4 +1,4 @@
-# Songs of Syx Modding Guide and Template for V70
+# Songs of Syx Modding Guide and Template for V71
 
 This project is intended for people who want to start modding for the game [Songs of Syx](https://store.steampowered.com/app/1162750/Songs_of_Syx/).
 It contains [documentation](doc/README) on general modding techniques and serves as a starting point if you want to create code mods.

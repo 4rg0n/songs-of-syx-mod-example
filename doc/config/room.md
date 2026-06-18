@@ -1552,7 +1552,7 @@ For rooms with employees.
 |--------------------|----------|---------|------|---------|--------------------------------------------------------------------------------------------|---------|
 | SHIFT_OFFSET       | yes      | none    | 0.0  | 0.99    | At which percentage of a day length the work shift starts.                                 |         |
 | NIGHT_SHIFT        | no       | false   | none | none    | Whether employees should work at night.                                                    |         |
-| FULLFILLMENT       | no       | 0.5     | 0.0  | 1.0     | How much fulfillment an employee will get when working in this room.                       |         |
+| FULLFILLMENT       | no       | 0.5     | 0.0  | 100.0   | How much fulfillment an employee will get when working in this room.                       |         |
 | ACCIDENTS_PER_YEAR | no       | 0.0     | 0.0  | 10000.0 | Maximum numbers of work accidents which can happen in a year. Actual value will be halved. |         |
 | HEALTH_FACTOR      | no       | 1.0     | 0.0  | 1.0     | How much health will decrease (1.0 means no decrease) when working in this room.           |         |
 

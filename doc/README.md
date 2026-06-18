@@ -13,7 +13,7 @@ You can find a simple [example mod here](example).
 
 ```
 Mod Name            // this should be the name of your mod
-├── V70             // this must be the game major version
+├── V71             // this must be the game major version
 |   ├── assets      // here all sorts of configurations, sprites and sounds are located
 |   ├── campaigns   // custom made campaigns (I guess it's still WIP)
 |   ├── examples    // a place to put some example save games for your mod
@@ -55,7 +55,7 @@ You can replace vanilla game files by naming them the same as the original and p
 
 ```
 Mod Name
-└── V70
+└── V71
     └── assets
         └── init
             └── race
@@ -87,7 +87,7 @@ The same way it's possible to add your own custom files in some places, e.g. for
 
 ```
 Mod Name
-└── V70
+└── V71
     └── assets
         └── init
             └── race
@@ -101,7 +101,7 @@ With this, it's possible to e.g. remove all vanilla races from the game and only
 
 ```
 Mod Name
-└── V70
+└── V71
     └── assets
         └── init
             └── race
@@ -117,7 +117,7 @@ If you want to, you can have multiple `Vxx` folders in your mod, for supporting 
 Mod Name
 ├── V68
 ├── V69
-└── V70            
+└── V71            
 ```
 
 # Mod Locations
@@ -183,7 +183,7 @@ ln -s /home/bob/.local/share/steam/steamapps/workshop/content/1162750 mods
 
 Does your mod folder contain an [_Info.txt](#_infotxt) file with the correct content?  
 Did you name your version folder correct? 
-For example `V70` and **not** `v70`?
+For example `V71` and **not** `v71`?
 
 # Game Boosters
 
