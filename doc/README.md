@@ -36,6 +36,11 @@ INFO: "Example",
 The `_Info.txt` is essential for your mod. 
 It has to be named exactly `_Info.txt`. 
 Naming it `_info.txt` won't work.
+Also be careful when on **Windows**.
+It will hide file endings by default. 
+Naming a file `_Info.txt` could be in reality `_Info.txt.txt`. 
+See: [How to enable file extensions](https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-enable-hidden-file-extensions-in-Windows.html)
+
 It contains the following meta information:
 
 * **VERSION** is the version of your mod: `MAJOR.MINOR.PATCH` (https://semver.org/).
