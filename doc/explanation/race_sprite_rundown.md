@@ -1,4 +1,4 @@
-Race sprite sheets can be found ad ./dat/asset/sprite/race
+Race sprite sheets can be found at `/data/asset/sprite/race`. In the games `base/data.zip` located in the installation directory.
 Each race has their own named sprite sheet. An empty one can be found at [../img/sprite](../img/sprite). Note that the numbered sprite sheet will not work.
 
 ## Rundown
