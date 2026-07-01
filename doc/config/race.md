@@ -1,5 +1,7 @@
 # RACE `data/assets/init/race`
 
+You may want to look into the [race sprite rundown](../explanation/race_sprite_rundown.md) too.
+
 <!-- TOC -->
 * [RACE `data/assets/init/race`](#race-dataassetsinitrace)
   * [RACE KEYS](#race-keys)
