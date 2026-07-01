@@ -1,5 +1,5 @@
 Race sprite sheets can be found ad ./dat/asset/sprite/race
-Each race has their own named sprite sheet. An empty one can be found at ../img./sprite. Note that the numbered spritesheet will not work.
+Each race has their own named sprite sheet. An empty one can be found at [../img/sprite](../img/sprite). Note that the numbered sprite sheet will not work.
 
 ## Rundown
 The [numbered spritesheet](#Numbered-spritesheet) has the corrosponding numbers. It is a good idea to not only look at this when making a new sprite, but also one of the existing races.  
