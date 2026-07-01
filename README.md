@@ -51,6 +51,7 @@ You will need a **Java 21 JDK** for developing.
     * [Via Code](doc/howto/make_custom_room.md#make-a-custom-room-via-code)
 * [Explanations](doc/explanation/README.md)
   * [Combat Mechanics](doc/explanation/combat_mechanics.md)
+  * [Race Sprite Rundown](doc/explanation/race_sprite_rundown.md)
 * [Project Build Commands](#project-build-commands)
 * [Mod Info / Build Settings](#mod-info--build-settings)
 * [Debugging your Mod](#debugging)
