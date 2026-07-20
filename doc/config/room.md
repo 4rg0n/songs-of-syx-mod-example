@@ -1684,6 +1684,13 @@ The first defined `public final FurnisherStat workers = new FurnisherStat.Furnis
 Industries come in different flavors depending on the room.
 Possible in and output resources can be found in `assets/init/resource`.
 
+### IN and OUT with resources
+
+| Key                       | Required | Default | Min | Max    | Description                             | Example |
+|---------------------------|----------|---------|-----|--------|-----------------------------------------|---------|
+| INDUSTRY.OUT.\<RESOURCE\> | no       | none    | 0   | 100000 | How much of a resource a room produces. |         |
+| INDUSTRY.IN.\<RESOURCE\>  | no       | none    | 0   | 100000 | How much of a resource a room consumes. |         |
+
 Only output example from: `assets/init/room/FARM_FRUIT.txt`
 ```
 INDUSTRY: {
@@ -1762,6 +1769,14 @@ INDUSTRIES: [
 ],
 ```
 
+### IN and OUT with PLAYER and AI
+
+| Key                                   | Required | Default | Min | Max    | Description                                                                                                                              | Example |
+|---------------------------------------|----------|---------|-----|--------|------------------------------------------------------------------------------------------------------------------------------------------|---------|
+| INDUSTRY.OUT.\<RESOURCE\>.PLAYER      | no       | none    | 0   | 100000 | How much of a resource a room produces for the player per update tick.<br\>A room will produce 1 unit per default when not boosted.      |         |
+| INDUSTRY.OUT.\<RESOURCE\>.AI_RATE     | no       | none    | 0   | 100000 | How much of a resource a room produces for the AI factions per update tick.<br\>A room will consume 1 unit per default when not boosted. |         |
+| INDUSTRY.OUT.\<RESOURCE\>.AI_RECOVERY | no       | none    | 0   | 100000 | Used for calculating the daily consumption amount of a \<RESOURCE\> for the AI factions per update tick.                                 |         |
+
 Industry with multiple products having special AI settings example from `assets/init/room/PASTURE_AUR.txt`:
 ```
 INDUSTRIES: [
@@ -1770,18 +1785,18 @@ INDUSTRIES: [
 			OUT: {
 				MEAT: {
 					PLAYER: 0.56,
-					AI: 1.12,
-					AI_SPEED: 0.5,
+					AI_RATE: 1.12,
+					AI_RECOVERY: 0.5,
 				},
 				LEATHER: {
 					PLAYER: 0.56,
-					AI: 1.12,
-					AI_SPEED: 0.5,
+					AI_RATE: 1.12,
+					AI_RECOVERY: 0.5,
 				}, 
 				LIVESTOCK: {
 					PLAYER: 0.0875,
-					AI: 0.875,
-					AI_SPEED: 0.1,
+					AI_RATE: 0.875,
+					AI_RECOVERY: 0.1,
 				},
 			},
 		},
