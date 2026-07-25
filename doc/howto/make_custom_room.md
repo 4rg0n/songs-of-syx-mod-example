@@ -10,7 +10,7 @@ but you would call it e.g.`WORKSHOP_CROSSBOW.txt` and configure it to produce cr
 
 ```
 Mod Name
-└── V70
+└── V71
     └── assets
         └── init
             └── room

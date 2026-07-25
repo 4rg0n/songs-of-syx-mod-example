@@ -14,7 +14,10 @@ It is shipped with its own Java Runtime Environment (JRE) found in the game inst
 ## How can I read and browse the source code of Songs of Syx?
 
 You can either follow the [Setup IntelliJ IDEA](../../doc/howto/intellij_setup.md) guide or look into the game installation directory under `info/SongsOfSyx-sources.jar`.
-This is a `zip` archive, which you can extract and browse.
+This is a `zip` archive, which you can extract and browse.  
+**Mac** users does not have the `SongsOfSyx-sources.jar` included in the program and
+must manually extract the game code from the main `./SongsOfSyx.jar` with the command `jar xf <file_path>.jar`. 
+To make it work, zip the extracted folder, rename it to `SongsOfSyx-sources`, change the file ending to `.jar` and place it in `info/` 
 
 ## Important packages
 
@@ -134,6 +137,35 @@ There are a few exceptions like adding a new room.
 You may have to overwrite whole game classes
 or rely on somewhat more unconventional methods if you want to add something in most cases.
 See: [Access game code](access_game_code.md)
+
+### Violation of static context
+
+The game has a lot of its data and other things in `static` fields.
+When the JVM starts, one of the first things it does, is to fill any fields with the `static` keyword.
+But a lot of the game resources aren't ready or initialized when the Java JVM executes your `static` stuff.
+In the best case you will get a `NullPointerException` when trying to access something and at worst you will get something like this:
+
+```java
+import init.sprite.UI.UI;
+import snake2d.util.sprite.text.Font;
+import util.gui.misc.GButt;
+
+public class MyButton extends GButt.ButtPanel {
+    
+    // bad idea :x
+    public static final Font DEFAULT_FONT = UI.FONT().H2;
+
+    public MyButton(String text) {
+        super(DEFAULT_FONT.getText(text));
+    }
+}
+```
+
+We are declaring a static `DEFAULT_FONT` in our button to use.
+But the game won't have loaded the fonts yet when this `static` field is initialized.
+Which will result in broken buttons:
+
+![broken buttons](../img/broken_buttons.png)
 
 ## GUI
 

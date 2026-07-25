@@ -32,16 +32,23 @@
     **Game Installation**
     * **Windows:** `C:\Program Files (x86)\Steam\steamapps\common\Songs of Syx`
     * **Linux:** `~/.steam/steam/steamapps/common/Songs of Syx`
+    * **Mac:** `~/Library/Application Support/Steam/steamapps/common/Songs of Syx/SongsOfSyxMac.app/Contents/Resources`
 
     **Mod Directory**
     * **Windows:** `${user.home}/AppData/Roaming/songsofsyx/mods/`
     * **Linux:** `~/.local/share/songsofsyx/mods/`
+    * **Mac:** `~/Library/Application Support/songsofsyx/mods`
 
     **[Mod Uploader](https://github.com/VizardAlpha/SteamWorkshopManager/releases/)**
-    * **Windows:** `${user.home}/AppData/Roaming/songsofsyx/mods-uploader/`
+    * **Windows:**`${user.home}/AppData/Roaming/songsofsyx/mods-uploader/`
     * **Linux:** `~/.local/share/songsofsyx/mods-uploader/`
+    * **Mac:** `Must be installed manually and changed in pom.xml`
 
-    :warning: You may have to adjust these paths accordingly.
+
+>   **Warning:** Mac users must manually extract the source code from the jar. Check [game_code](game_code.md) 
+>   on how to do it
+
+>   **Warning:** You may have to adjust these paths accordingly.
 
 
 7) On the right hand side click on the `M` icon and doubleclick the maven `validate` command: 

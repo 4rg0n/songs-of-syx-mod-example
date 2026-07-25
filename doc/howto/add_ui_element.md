@@ -44,12 +44,16 @@ public class ReflectionUtil {
     }
 
     public static <T> Optional<T> getDeclaredFieldValue(String fieldName, Object instance) {
-        return getDeclaredField(fieldName, instance.getClass()).map(field ->
-            (T) getDeclaredFieldValue(field, instance).orElse(null)
+        return getDeclaredField(fieldName, instance).flatMap(field ->
+            getDeclaredFieldValue(field, instance)
         );
     }
 }
 ```
+
+> **Note:** The third overload passes `instance` directly to `getDeclaredField` (not `instance.getClass()`).
+> Passing `instance.getClass()` would cause `getDeclaredField` to call `getClass()` a second time on the
+> resulting `Class<?>` object, ending up looking for fields on `java.lang.Class` instead of your target.
 
 Now you can do something similar for accessing stuff in the game UI. 
 In this case a `Singleton` pattern fits better than static methods. 
@@ -157,7 +161,7 @@ public class GameUiApi {
     private <T> Optional<T> extractFromIterable(Iterable<?> iterable, Class<T> clazz) {
         for (Object inter : iterable) {
             if (clazz.isInstance(inter)) {
-                log.debug("Found ui element %s", clazz.getSimpleName());
+                System.out.println("Found ui element " + clazz.getSimpleName());
                 return Optional.of((T) inter);
             }
         }
@@ -167,18 +171,36 @@ public class GameUiApi {
 }
 ```
 
-Now that you have that, you can finally inject your button into the UI:
+Now that you have that, you can finally inject your button into the UI.
+
+The right place to do this is `createInstance()`. The game creates all views (`VIEW`, `SettView`,
+`UIPanelTop`, etc.) **before** calling `createInstance()`, so `VIEW.s()` is safe to access there.
+The lifecycle order is:
+
+```
+initBeforeGameCreated()   ← VIEW does not exist yet
+initBeforeGameInited()    ← VIEW does not exist yet
+new VIEW(game)            ← SettView, UIPanelTop, etc. are created here
+createInstance()          ← VIEW is fully ready; inject UI elements here
+```
+
+> **Note:** `SCRIPT` does not have an `onViewSetup()` method in V71. Use `createInstance()` instead.
+
+> **Note:** `UIPanelTopSett.addExtraElement(RENDEROBJ)` is a public static method that appears designed
+> for mod injection, but in V71 the `extrabutts` list it populates is never consumed by the
+> `UIPanelTopSett` constructor. Use the reflection approach above instead.
 
 ```java
 public final class YourScript implements SCRIPT {
     @Override
-    public void onViewSetup() {
+    public SCRIPT_INSTANCE createInstance() {
         GButt.Panel button = new GButt.Panel("BUTTON");
         button.clickActionSet(() -> {
             System.out.println("BUTTON clicked!"); 
         });
 
         GameUiApi.getInstance().injectIntoUITopPanels(button);
+        return new YourScriptInstance();
     }
 }
 ```

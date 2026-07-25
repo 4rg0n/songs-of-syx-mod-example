@@ -4,6 +4,7 @@
 
 - Note 1: 'Default' values are based on v68/v70 and may have changed in v71; some have been re-verified against v71.19 source.
 - Note 2: All keys use their British spelling ('Honour', 'Behaviour', etc., except for 'Jewelry' which uses its American spelling), and some keys are intentionally misspelled (this will be noted next to the key).
+-
 
 <!-- TOC -->
 * [All available vanilla game boosters ```v71```](#all-available-vanilla-game-boosters-v71)
@@ -181,46 +182,49 @@ references to parrying are speculative; parry may not be implemented in game (co
 | `CIVIC_TRUST`             | Trust                  | 0       | a faction's reliability in keeping treaties and not starting war against you             |
 
 ## CONSUMPTION
-v71 no longer exposes per-resource `CON_<resource>` boostables. Consumption is now per-room and registered under the ROOM (`ROOM_`) category. Each consuming room gets `ROOM_CONSUMPTION_<roomkey>` (single-recipe consumption rooms), and industry rooms with multiple input+output recipes get `ROOM_CONSUMPTION_<roomkey>_<i>` (one per recipe, `i` starting at 0). Higher value = higher consumption rate.
+v71 no longer exposes per-resource `CON_<resource>` boostables. Consumption is now per-room and registered under the ROOM (`ROOM_`) category. Each consuming room gets `ROOM_CONSUMPTION_<roomkey>` (single-recipe consumption rooms), and industry rooms with multiple input+output recipes get `ROOM_CONSUMPTION_<roomkey>_<i>` (one per recipe, `i` starting at 0).
 
-| Key                                     | Name                             | Default | Description                                                                  |
-|-----------------------------------------|----------------------------------|---------|------------------------------------------------------------------------------|
-| `ROOM_CONSUMPTION_ADMIN_NORMAL`         | Consumption Rate: Administration | 1       | resource consumption rate of Administrations                                 |
-| `ROOM_CONSUMPTION_LABORATORY_NORMAL`    | Consumption Rate: Laboratory     | 1       | resource consumption rate of Laboratories                                    |
-| `ROOM_CONSUMPTION_LIBRARY_NORMAL`       | Consumption Rate: Library        | 1       | resource consumption rate of Libraries                                       |
-| `ROOM_CONSUMPTION__EMBASSY`             | Consumption Rate: Embassy        | 1       | resource consumption rate of Embassies (room key `_EMBASSY`)                 |
-| `ROOM_CONSUMPTION_REFINER_BAKERY_0`     | Bakery Input: I                  | 1       | per-recipe input consumption rate (`i` 0-based, one per input+output recipe) |
-| `ROOM_CONSUMPTION_REFINER_BAKERY_1`     | Bakery Input: II                 | 1       |                                                                              |
-| `ROOM_CONSUMPTION_REFINER_BREWERY_0`    | Brewery Input: I                 | 1       |                                                                              |
-| `ROOM_CONSUMPTION_REFINER_BREWERY_1`    | Brewery Input: II                | 1       |                                                                              |
-| `ROOM_CONSUMPTION_REFINER_COALER_0`     | Charcoaler Input: I              | 1       |                                                                              |
-| `ROOM_CONSUMPTION_REFINER_SMELTER_0`    | Metal Smelter Input: I           | 1       |                                                                              |
-| `ROOM_CONSUMPTION_REFINER_WEAVER_0`     | Weaver Input: I                  | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_BOWYER_0`    | Bowyer Input: I                  | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_CARPENTER_0` | Carpenter Input: I               | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_CARPENTER_1` | Carpenter Input: II              | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_CARPENTER_2` | Carpenter Input: III             | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_CARPENTER_3` | Carpenter Input: IV              | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_CARPENTER_4` | Carpenter Input: V               | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_JEWELRY_0`   | Jeweller Input: I                | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_MASON_0`     | Masonry Input: I                 | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_MECHANIC_0`  | Mechanic Input: I                | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_PAPER_0`     | Papermaker Input: I              | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_POTTERY_0`   | Pottery Input: I                 | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_RATION_0`    | Rationmaker Input: I             | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_RATION_1`    | Rationmaker Input: II            | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_RATION_2`    | Rationmaker Input: III           | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_RATION_3`    | Rationmaker Input: IV            | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_RATION_4`    | Rationmaker Input: V             | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_RATION_5`    | Rationmaker Input: VI            | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_SMITHY_0`    | Smithy Input: I                  | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_SMITHY_1`    | Smithy Input: II                 | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_SMITHY_2`    | Smithy Input: III                | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_SMITHY_3`    | Smithy Input: IV                 | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_SMITHY_4`    | Smithy Input: V                  | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_TAILOR_0`    | Tailor Input: I                  | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_TAILOR_1`    | Tailor Input: II                 | 1       |                                                                              |
-| `ROOM_CONSUMPTION_WORKSHOP_TAILOR_2`    | Tailor Input: III                | 1       |                                                                              |
+**NOTE! This is a consumption-*efficiency* divisor, NOT a multiplier** (hbase value `1`).
+The engine computes input use as `production_rate / ROOM_CONSUMPTION_*`, so **higher value = LOWER input consumption**. To halve a recipe's input use set `>MUL: 2`; to *double* it, set `>MUL: 0.5`. The value is resolved **per worker against that worker's race**, so setting it in a race's `BOOST{}` block affects only that race's workers. It does **not** compound across workers — each worker's share is divided once, so an all-one-race crew scales the room's total input use by that single factor regardless of headcount.
+
+| Key                                     | Name                             | Default | Description                                                   |
+|-----------------------------------------|----------------------------------|---------|---------------------------------------------------------------|
+| `ROOM_CONSUMPTION_ADMIN_NORMAL`         | Consumption Rate: Administration | 1       | resource consumption rate of Administrations                  |
+| `ROOM_CONSUMPTION_LABORATORY_NORMAL`    | Consumption Rate: Laboratory     | 1       | resource consumption rate of Laboratories                     |
+| `ROOM_CONSUMPTION_LIBRARY_NORMAL`       | Consumption Rate: Library        | 1       | resource consumption rate of Libraries                        |
+| `ROOM_CONSUMPTION__EMBASSY`             | Consumption Rate: Embassy        | 1       | resource consumption rate of Embassies (room key `_EMBASSY`)  |
+| `ROOM_CONSUMPTION_REFINER_BAKERY_0`     | Bakery Input: I                  | 1       | Recipe ... GRAIN 6 + WOOD 1 → BREAD 6                         |
+| `ROOM_CONSUMPTION_REFINER_BAKERY_1`     | Bakery Input: II                 | 1       | Recipe ... GRAIN 7 + COAL 0.5 → BREAD 7                       |
+| `ROOM_CONSUMPTION_REFINER_BREWERY_0`    | Brewery Input: I                 | 1       | Recipe ... GRAIN 2 + POTTERY 0.25 + COAL 0.5 → ALCO_BEER 2.5  |
+| `ROOM_CONSUMPTION_REFINER_BREWERY_1`    | Brewery Input: II                | 1       | Recipe ... FRUIT 2 + POTTERY 0.25 + COAL 0.5 → ALCO_WINE 2.25 |
+| `ROOM_CONSUMPTION_REFINER_COALER_0`     | Charcoaler Input: I              | 1       | Recipe ... WOOD 2 → COAL 6                                    |
+| `ROOM_CONSUMPTION_REFINER_SMELTER_0`    | Metal Smelter Input: I           | 1       | Recipe ... COAL 1.25 + ORE 1.25 → METAL 0.5                   |
+| `ROOM_CONSUMPTION_REFINER_WEAVER_0`     | Weaver Input: I                  | 1       | Recipe ... COTTON 2 → FABRIC 2                                |
+| `ROOM_CONSUMPTION_WORKSHOP_BOWYER_0`    | Bowyer Input: I                  | 1       | Recipe ... WOOD 4 + LEATHER 1 → BOW 0.4                       |
+| `ROOM_CONSUMPTION_WORKSHOP_CARPENTER_0` | Carpenter Input: I               | 1       | Recipe ... WOOD 2 → FURNITURE 0.5                             |
+| `ROOM_CONSUMPTION_WORKSHOP_CARPENTER_1` | Carpenter Input: II              | 1       | Recipe ... WOOD 2 + STONE 2.5 → WEAPON_SPEAR 0.5              |
+| `ROOM_CONSUMPTION_WORKSHOP_CARPENTER_2` | Carpenter Input: III             | 1       | Recipe ... WOOD 1 + METAL 0.4 → WEAPON_SPEAR 1.0              |
+| `ROOM_CONSUMPTION_WORKSHOP_CARPENTER_3` | Carpenter Input: IV              | 1       | Recipe ... WOOD 2 + STONE 2.5 → WEAPON_HAMMER 0.25            |
+| `ROOM_CONSUMPTION_WORKSHOP_CARPENTER_4` | Carpenter Input: V               | 1       | Recipe ... WOOD 6 + LEATHER 2 → WEAPON_SHIELD 1.0             |
+| `ROOM_CONSUMPTION_WORKSHOP_JEWELRY_0`   | Jeweller Input: I                | 1       | Recipe ... METAL 0.04 + GEM 0.1 → JEWELRY 0.1                 |
+| `ROOM_CONSUMPTION_WORKSHOP_MASON_0`     | Masonry Input: I                 | 1       | Recipe ... STONE 2 → STONE_CUT 0.5                            |
+| `ROOM_CONSUMPTION_WORKSHOP_MECHANIC_0`  | Mechanic Input: I                | 1       | Recipe ... FURNITURE 1 + METAL 0.4 → MACHINERY 0.25           |
+| `ROOM_CONSUMPTION_WORKSHOP_PAPER_0`     | Papermaker Input: I              | 1       | Recipe ... WOOD 2 → PAPER 0.75                                |
+| `ROOM_CONSUMPTION_WORKSHOP_POTTERY_0`   | Pottery Input: I                 | 1       | Recipe ... CLAY 1 → POTTERY 1                                 |
+| `ROOM_CONSUMPTION_WORKSHOP_RATION_0`    | Rationmaker Input: I             | 1       | Recipe ... BREAD 6 → RATION 2                                 |
+| `ROOM_CONSUMPTION_WORKSHOP_RATION_1`    | Rationmaker Input: II            | 1       | Recipe ... BREAD 3 + HERB 0.025 → RATION 2.5                  |
+| `ROOM_CONSUMPTION_WORKSHOP_RATION_2`    | Rationmaker Input: III           | 1       | Recipe ... MEAT 3 + HERB 0.125 → RATION 3                     |
+| `ROOM_CONSUMPTION_WORKSHOP_RATION_3`    | Rationmaker Input: IV            | 1       | Recipe ... FISH 3 + HERB 0.125 → RATION 3                     |
+| `ROOM_CONSUMPTION_WORKSHOP_RATION_4`    | Rationmaker Input: V             | 1       | Recipe ... FRUIT 3 + ALCO_WINE 1 → RATION 3                   |
+| `ROOM_CONSUMPTION_WORKSHOP_RATION_5`    | Rationmaker Input: VI            | 1       | Recipe ... VEGETABLE 3 + ALCO_WINE 1 → RATION 3               |
+| `ROOM_CONSUMPTION_WORKSHOP_SMITHY_0`    | Smithy Input: I                  | 1       | Recipe ... COAL 2 + METAL 0.4 → TOOL 2                        |
+| `ROOM_CONSUMPTION_WORKSHOP_SMITHY_1`    | Smithy Input: II                 | 1       | Recipe ... COAL 2 + METAL 0.4 → ARMOUR_PLATE 0.15             |
+| `ROOM_CONSUMPTION_WORKSHOP_SMITHY_2`    | Smithy Input: III                | 1       | Recipe ... COAL 2 + METAL 0.4 → WEAPON_SHORT 0.5              |
+| `ROOM_CONSUMPTION_WORKSHOP_SMITHY_3`    | Smithy Input: IV                 | 1       | Recipe ... COAL 2 + METAL 0.4 → WEAPON_SLASH 0.25             |
+| `ROOM_CONSUMPTION_WORKSHOP_SMITHY_4`    | Smithy Input: V                  | 1       | Recipe ... COAL 1 + METAL 0.4 + WOOD 2 → WEAPON_HAMMER 0.5    |
+| `ROOM_CONSUMPTION_WORKSHOP_TAILOR_0`    | Tailor Input: I                  | 1       | Recipe ... LEATHER 4 → CLOTHES 3                              |
+| `ROOM_CONSUMPTION_WORKSHOP_TAILOR_1`    | Tailor Input: II                 | 1       | Recipe ... FABRIC 4 → CLOTHES 3                               |
+| `ROOM_CONSUMPTION_WORKSHOP_TAILOR_2`    | Tailor Input: III                | 1       | Recipe ... LEATHER 2 → ARMOUR_LEATHER 0.25                    |
 
 ## TOOL
 | Key                                   | Name                       | Default | Description |

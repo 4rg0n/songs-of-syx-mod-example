@@ -1,4 +1,4 @@
-# Songs of Syx Modding Guide and Template for V70
+# Songs of Syx Modding Guide and Template for V71
 
 This project is intended for people who want to start modding for the game [Songs of Syx](https://store.steampowered.com/app/1162750/Songs_of_Syx/).
 It contains [documentation](doc/README) on general modding techniques and serves as a starting point if you want to create code mods.
@@ -31,7 +31,8 @@ You will need a **Java 21 JDK** for developing.
   * [Documentation](https://github.com/4rg0n/songs-of-syx-mod-more-options/tree/main/mod-sdk/src/main/java/com/github/argon/sos/mod/sdk#mod-sdk)
 * [Init Config Files Documentation](doc/config/README.md)
   * [General](doc/config/general.md)
-  * [Animals](doc/config/animal.md) 
+  * [Animals](doc/config/animal.md)
+  * [Boosters](doc/config/boosters.md)
   * [Diseases](doc/config/disease.md) 
   * [Races](doc/config/race.md)
   * [Religions](doc/config/religion.md)
@@ -51,6 +52,7 @@ You will need a **Java 21 JDK** for developing.
     * [Via Code](doc/howto/make_custom_room.md#make-a-custom-room-via-code)
 * [Explanations](doc/explanation/README.md)
   * [Combat Mechanics](doc/explanation/combat_mechanics.md)
+  * [Race Sprite Rundown](doc/explanation/race_sprite_rundown.md)
 * [Project Build Commands](#project-build-commands)
 * [Mod Info / Build Settings](#mod-info--build-settings)
 * [Debugging your Mod](#debugging)
@@ -118,9 +120,13 @@ Also, the name of your built `*.jar` file may be different.
 
 ## Mod SDK (Optional)
 
-:information_source: The Mod SDK is still somewhat experimental. 
-I'm using it for my [More Options](https://github.com/4rg0n/songs-of-syx-mod-more-options) mod. 
-That's also the place where currently the [code](https://github.com/4rg0n/songs-of-syx-mod-more-options/tree/main/mod-sdk) and [documentation](https://github.com/4rg0n/songs-of-syx-mod-more-options/tree/main/mod-sdk/src/main/java/com/github/argon/sos/mod/sdk#mod-sdk) of it lives.
+:information_source: The Mod SDK is still somewhat experimental.
+I'm using it for my [More Options](https://github.com/4rg0n/songs-of-syx-mod-more-options) mod.
+
+To enable it, you have to enable the `mod-sdk` maven profile.
+Here you can find the [code](https://github.com/4rg0n/songs-of-syx-mod-more-options/tree/main/mod-sdk) and [documentation](https://github.com/4rg0n/songs-of-syx-mod-more-options/tree/main/mod-sdk/src/main/java/com/github/argon/sos/mod/sdk#mod-sdk) of it.
+
+:information_source: Be sure to add the [Mod SDK](https://steamcommunity.com/sharedfiles/filedetails/?id=3331182511) as dependency to your mod in the Steam Workshop.
 
 See [Mod SDK Setup](doc/howto/mod_sdk_setup.md)
 

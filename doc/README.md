@@ -6,14 +6,14 @@ As soon as you want to change a behavior or add a new feature, you will have to 
 
 # Mod folder structure
 
-The mod structure reflects the structure found in the game `base/data.zip/data` folder. 
+The mod structure reflects the structure found in the game `base/data.zip/data` folder in the game installation directory. 
 I would suggest you extract it and open the folder in an editor of your choice (e.g. IDEA or VS Code).
 This way you can easily search and browse through the vanilla game files and get a better understanding of them.
 You can find a simple [example mod here](example).
 
 ```
 Mod Name            // this should be the name of your mod
-├── V70             // this must be the game major version
+├── V71             // this must be the game major version
 |   ├── assets      // here all sorts of configurations, sprites and sounds are located
 |   ├── campaigns   // custom made campaigns (I guess it's still WIP)
 |   ├── examples    // a place to put some example save games for your mod
@@ -36,6 +36,11 @@ INFO: "Example",
 The `_Info.txt` is essential for your mod. 
 It has to be named exactly `_Info.txt`. 
 Naming it `_info.txt` won't work.
+Also be careful when on **Windows**.
+It will hide file endings by default. 
+Naming a file `_Info.txt` could be in reality `_Info.txt.txt`. 
+See: [How to enable file extensions](https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-enable-hidden-file-extensions-in-Windows.html)
+
 It contains the following meta information:
 
 * **VERSION** is the version of your mod: `MAJOR.MINOR.PATCH` (https://semver.org/).
@@ -55,7 +60,7 @@ You can replace vanilla game files by naming them the same as the original and p
 
 ```
 Mod Name
-└── V70
+└── V71
     └── assets
         └── init
             └── race
@@ -87,7 +92,7 @@ The same way it's possible to add your own custom files in some places, e.g. for
 
 ```
 Mod Name
-└── V70
+└── V71
     └── assets
         └── init
             └── race
@@ -101,7 +106,7 @@ With this, it's possible to e.g. remove all vanilla races from the game and only
 
 ```
 Mod Name
-└── V70
+└── V71
     └── assets
         └── init
             └── race
@@ -117,7 +122,7 @@ If you want to, you can have multiple `Vxx` folders in your mod, for supporting 
 Mod Name
 ├── V68
 ├── V69
-└── V70            
+└── V71            
 ```
 
 # Mod Locations
@@ -130,6 +135,7 @@ Here you can manually install mods. When developing a mod, I would suggest to us
 
 * **Windows:** `%APPDATA%\songsofsyx\mods`
 * **Linux:** `~/.local/share/songsofsyx/mods`
+* **Mac:** `~/Library/Application Support/songsofsyx/mods`
 
 ## Steam Only
 
@@ -137,6 +143,7 @@ Here Steam will store your subscribed mods.
 
 * **Windows:** `C:\Program Files (x86)\Steam\steamapps\workshop\content\1162750`
 * **Linux:** `~/.steam/steam/steamapps/workshop/content/1162750`
+* **Mac:** `~/Library/Application Support/Steam/steamapps/workshop/content/1162750`
 
 # FAQ
 
@@ -183,7 +190,7 @@ ln -s /home/bob/.local/share/steam/steamapps/workshop/content/1162750 mods
 
 Does your mod folder contain an [_Info.txt](#_infotxt) file with the correct content?  
 Did you name your version folder correct? 
-For example `V70` and **not** `v70`?
+For example `V71` and **not** `v71`?
 
 # Game Boosters
 
@@ -205,7 +212,7 @@ BOOST: {
 {BOOSTER_KEY}>{ADD|MUL}: 0.0,
 ```
 
-* [All possible BOOSTER_KEYs](res/boosters_all.md)
+* [All possible BOOSTER_KEYs](config/boosters.md)
 
 # Scripting / Coding
 

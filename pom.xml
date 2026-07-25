@@ -38,65 +38,26 @@
             </activation>
         </profile>
         <profile>
-            <id>mod-sdk-steam</id>
+            <id>mac</id>
             <properties>
-                <mod.sdk.directory>${game.workshop.directory}/${mod.sdk.workshop.id}</mod.sdk.directory>
+                <game.mod.directory>${user.home}/Library/Application Support/songsofsyx/mods</game.mod.directory>
+                <game.workshop.directory>${user.home}/Library/Application Support/Steam/steamapps/workshop/content/1162750</game.workshop.directory>
+                <game.install.directory>${user.home}/Library/Application Support/Steam/steamapps/common/Songs of Syx/SongsOfSyxMac.app/Contents/Resources</game.install.directory>
+                <game.mod.uploader.directory>${user.home}/Library/Application Support/songsofsyx/mod-uploader</game.mod.uploader.directory>
             </properties>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <os>
+                    <family>unix</family>
+                </os>
             </activation>
         </profile>
         <profile>
             <id>mod-sdk</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-install-plugin</artifactId>
-                        <executions>
-                            <!-- Install mod-sdk jar as dependency code -->
-                            <execution>
-                                <id>install-mod-sdk-jar</id>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>install-file</goal>
-                                </goals>
-                                <configuration>
-                                    <groupId>com.github.argon.sos</groupId>
-                                    <artifactId>sos-mod-sdk</artifactId>
-                                    <version>sdk-${mod.sdk.version}</version>
-                                    <packaging>jar</packaging>
-                                    <file>${mod.sdk.jar.directory}/${mod.sdk.name}.jar</file>
-                                    <generatePom>true</generatePom>
-                                </configuration>
-                            </execution>
-
-                            <!-- Install mod-sdk source jar as dependency code -->
-                            <execution>
-                                <id>install-mod-sdk-sources-jar</id>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>install-file</goal>
-                                </goals>
-                                <configuration>
-                                    <groupId>com.github.argon.sos</groupId>
-                                    <artifactId>sos-mod-sdk</artifactId>
-                                    <version>sdk-${mod.sdk.version}</version>
-                                    <packaging>jar</packaging>
-                                    <classifier>sources</classifier>
-                                    <file>${mod.sdk.jar.src.directory}/${mod.sdk.name}-sources.jar</file>
-                                    <generatePom>false</generatePom>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
             <dependencies>
                 <dependency>
-                    <groupId>com.github.argon.sos</groupId>
+                    <groupId>io.github.4rg0n</groupId>
                     <artifactId>sos-mod-sdk</artifactId>
-                    <version>sdk-${mod.sdk.version}</version>
+                    <version>${mod.sdk.version}</version>
                 </dependency>
             </dependencies>
         </profile>
@@ -135,7 +96,7 @@
                                 <configuration>
                                     <outputDirectory>${mod.uploader.directory}</outputDirectory>
                                     <includeEmptyDirs>true</includeEmptyDirs>
-                                    <overwrite>true</overwrite>
+                                    <changeDetection>always</changeDetection>
                                     <resources>
                                         <resource>
                                             <directory>${mod.build.output.directory}</directory>
@@ -166,25 +127,16 @@
         <mod.author>Jake</mod.author>
         <mod.info>Example</mod.info>
         <!--
-            This is the game version you are currently using. When the game updates:
-            * Download the new game version if you don't have it
-            * Check the version of the game by launching it
-            * Run a "mvn clean" for removing up the old version
-            * Change the version here
-            * Run a "mvn validate" to install the new version in the local maven repository
-            * Maven is then able to find and resolve the new Songs of Syx code
-         -->
-        <game.version.major>70</game.version.major>
-        <game.version.minor>32</game.version.minor>
-
-        <!-- Mod SDK (this only applies when "mod-sdk" profile is enabled) -->
-        <mod.sdk.version>0</mod.sdk.version>
-        <mod.sdk.name>Mod SDK V${mod.sdk.version}</mod.sdk.name>
-        <mod.sdk.workshop.id>3331182511</mod.sdk.workshop.id>
-        <mod.sdk.directory>${game.mod.directory}/${mod.sdk.name}</mod.sdk.directory>
-        <mod.sdk.jar.directory>${mod.sdk.directory}/${game.version.directory}/script</mod.sdk.jar.directory>
-        <mod.sdk.jar.src.directory>${mod.sdk.jar.directory}/_src</mod.sdk.jar.src.directory>
-
+           This is the game version you are currently using. When the game updates:
+           * Download the new game version if you don't have it
+           * Check the version of the game by launching it
+           * Run a "mvn clean" for removing up the old version
+           * Change the version here
+           * Run a "mvn validate" to install the new version in the local maven repository
+           * Maven is then able to find and resolve the new Songs of Syx code
+        -->
+        <game.version.major>71</game.version.major>
+        <game.version.minor>44</game.version.minor>
 
         <!-- Build settings -->
         <game.version.directory>V${game.version.major}</game.version.directory>
@@ -203,19 +155,20 @@
         <mod.files.directory>${project.basedir}/src/main/resources/${mod.files.name}</mod.files.directory>
 
         <!-- Dependency versions -->
-        <junit-jupiter-engine.version>5.9.2</junit-jupiter-engine.version>
-        <mockito-core.version>4.11.0</mockito-core.version>
-        <assertj-core.version>3.24.2</assertj-core.version>
-        <lombok.version>1.18.42</lombok.version>
+        <junit-jupiter-engine.version>6.1.2</junit-jupiter-engine.version>
+        <mockito-core.version>5.23.0</mockito-core.version>
+        <assertj-core.version>3.27.7</assertj-core.version>
+        <lombok.version>1.18.46</lombok.version>
+        <!-- Mod SDK (this only applies when "mod-sdk" profile is enabled) -->
+        <mod.sdk.version>0.1.5</mod.sdk.version>
 
         <!-- Build plugin versions -->
-        <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <junit-platform-surefire-provider.version>1.3.2</junit-platform-surefire-provider.version>
-        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
-        <maven-install-plugin.version>3.1.0</maven-install-plugin.version>
-        <maven-clean-plugin.version>3.2.0</maven-clean-plugin.version>
-        <maven-shade-plugin.version>3.6.0</maven-shade-plugin.version>
+        <maven-resources-plugin.version>3.5.0</maven-resources-plugin.version>
+        <maven-surefire-plugin.version>3.5.6</maven-surefire-plugin.version>
+        <maven-source-plugin.version>3.4.0</maven-source-plugin.version>
+        <maven-install-plugin.version>3.1.4</maven-install-plugin.version>
+        <maven-clean-plugin.version>3.5.0</maven-clean-plugin.version>
+        <maven-shade-plugin.version>3.6.2</maven-shade-plugin.version>
     </properties>
 
     <dependencies>
@@ -501,7 +454,7 @@
                         <configuration>
                             <outputDirectory>${mod.install.directory}</outputDirectory>
                             <includeEmptyDirs>true</includeEmptyDirs>
-                            <overwrite>true</overwrite>
+                            <changeDetection>always</changeDetection>
                             <resources>
                                 <resource>
                                     <directory>${mod.build.output.directory}</directory>
@@ -517,15 +470,24 @@
 
             <!-- Testing -->
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>properties</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.junit.platform</groupId>
-                        <artifactId>junit-platform-surefire-provider</artifactId>
-                        <version>${junit-platform-surefire-provider.version}</version>
-                    </dependency>
-                </dependencies>
+                <configuration>
+                    <!-- Attach Mockito as an agent -->
+                    <argLine>-javaagent:${org.mockito:mockito-core:jar}</argLine>
+                </configuration>
             </plugin>
         </plugins>
     </build>

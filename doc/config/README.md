@@ -5,6 +5,7 @@ This is handy if you want to add your own content via mods.
 
 * [General](general.md)
 * [Animals](animal.md) `assets/init/animal`
+* [Boosters](boosters.md)
 * [Diseases](disease.md) `assets/init/disease`
 * [Races](race.md) `assets/init/race`
 * [Religions](religion.md) `assets/init/religion`
