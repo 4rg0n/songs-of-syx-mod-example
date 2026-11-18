@@ -157,3 +157,13 @@ public abstract class Job implements SETT_JOB {
 When this is referenced by another class via `Job.NOTHING`, the reference won't be there anymore in the compiled Java Bytecode.
 It will replace all references with its real value. In this case `0x07F`.
 So if you want this to be changed, you would also need to replace all classes in your mod, where the reference is used.
+
+## Bytecode manipulation via Polyphon
+
+[VizardAlpha](https://github.com/VizardAlpha) made a little neat library called [Polyphon](https://polyphon-docs.vercel.app/).
+Since Java code is [compiled just in time](https://en.wikipedia.org/wiki/Just-in-time_compilation), you can manipulate the outcome of the [JVM bytecode](https://en.wikipedia.org/wiki/JVM_bytecode).
+This means instead of replacing whole classes to change a few code lines, you can inject or alter code into them without touching the original game source classes.
+
+**But why do I need this?** If you want to maintain a maximum of compatibility to other code mods, this is the way to go.
+Because without it, it will result into conflicts when two mods touch the same game source class file.
+
